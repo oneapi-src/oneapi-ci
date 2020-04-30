@@ -1,6 +1,8 @@
 services:
   - docker
 
+language: minimal
+
 addons:
   apt:
     packages:
