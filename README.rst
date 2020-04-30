@@ -4,27 +4,27 @@
 
 TravisCI:
 
-.. image:: https://travis-ci.com/rscohn2/oneapi-ci.svg?branch=master
+.. image:: https://travis-ci.com/rscohn2/oneapi-ci.svg?branch=container
    :target: https://travis-ci.com/rscohn2/oneapi-ci
 
 CircleCI:
 
-.. image:: https://circleci.com/gh/rscohn2/oneapi-ci.svg?style=svg
+.. image:: https://circleci.com/gh/rscohn2/oneapi-ci/tree/container.svg?style=svg
    :target: https://circleci.com/gh/rscohn2/oneapi-ci
 
 GitHub: container exceeds size limit
 
-.. image:: https://github.com/rscohn2/oneapi-ci/workflows/CI/badge.svg
+.. image:: https://github.com/rscohn2/oneapi-ci/workflows/CI/badge.svg?branch=container
    :target: https://github.com/rscohn2/oneapi-ci
 
 GitLab: container exceeds size limit
 
-.. image:: https://gitlab.com/rscohn2/oneapi-ci/badges/master/pipeline.svg
+.. image:: https://gitlab.com/rscohn2/oneapi-ci/badges/container/pipeline.svg
    :target: https://gitlab.com/rscohn2/oneapi-ci
 
 Azure Pipelines: container exceeds size limit
 
-.. image:: https://rscohn2.visualstudio.com/oneapi-ci/_apis/build/status/rscohn2.oneapi-ci?branchName=master
+.. image:: https://rscohn2.visualstudio.com/oneapi-ci/_apis/build/status/rscohn2.oneapi-ci?branchName=container
    :target: https://rscohn2.visualstudio.com/oneapi-ci/_build
 
 Appveyor:
