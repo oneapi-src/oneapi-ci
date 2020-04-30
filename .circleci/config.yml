@@ -8,5 +8,7 @@ jobs:
       - run:
           command: |
             cd src
+	    set +e
             . /opt/intel/inteloneapi/setvars.sh
+	    set -e
             make
