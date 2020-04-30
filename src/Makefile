@@ -1,11 +1,11 @@
-CXX          = dpcpp
-DPCPP_SAMPLE = get-platforms
+CXX          = icc
+CPP_SAMPLE = hello
 
-${DPCPP_SAMPLE}.out: ${DPCPP_SAMPLE}.bin
-	./${DPCPP_SAMPLE}.bin > $@
+${CPP_SAMPLE}.out: ${CPP_SAMPLE}.bin
+	./${CPP_SAMPLE}.bin > $@
 	cat $@
 
-${DPCPP_SAMPLE}.bin: ${DPCPP_SAMPLE}.cpp
+${CPP_SAMPLE}.bin: ${CPP_SAMPLE}.cpp
 	${CXX} -o $@ $^
 
 clean:
