@@ -26,3 +26,8 @@ Azure Pipelines:
 
 .. image:: https://rscohn2.visualstudio.com/oneapi-ci/_apis/build/status/rscohn2.oneapi-ci?branchName=master
    :target: https://rscohn2.visualstudio.com/oneapi-ci/_build
+
+Appveyor:
+
+.. image:: https://ci.appveyor.com/api/projects/status/i4es5h2ub7blrtcc?svg=true
+   :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci
