@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: intel/oneapi-basekitw
+    container: intel/oneapi-basekit
     steps:
     - uses: actions/checkout@v2
     - name: Build
