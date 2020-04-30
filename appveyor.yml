@@ -1,7 +1,0 @@
-image: Ubuntu
-
-services:
-- docker
-
-build_script:
-- docker run -w=/tmp/ci/src -v $(pwd):/tmp/ci intel/oneapi-basekit make
