@@ -5,4 +5,3 @@ services:
 
 test_script:
 - docker run -w=/tmp/ci/src -v $(pwd):/tmp/ci intel/oneapi-basekit /bin/sh -c ". /opt/intel/inteloneapi/setvars.sh; make"
-s
