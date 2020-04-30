@@ -5,6 +5,6 @@ container: intel/oneapi-basekit
 
 steps:
 - script: |
-  cd src
-  . /opt/intel/inteloneapi/setvars.sh
-  make
+     cd src
+     source /opt/intel/inteloneapi/setvars.sh
+     make
