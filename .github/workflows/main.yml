@@ -11,4 +11,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: |
-          cd src && make
+          cd src
+	  . /opt/intel/inteloneapi/setvars.sh
+          make

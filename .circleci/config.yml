@@ -5,4 +5,8 @@ jobs:
       - image: intel/oneapi-basekit
     steps:
       - checkout
-      - run: cd src && make
+      - run:
+          command: |
+            cd src
+            . /opt/intel/inteloneapi/setvars.sh
+            make
