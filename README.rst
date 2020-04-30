@@ -12,17 +12,17 @@ CircleCI:
 .. image:: https://circleci.com/gh/rscohn2/oneapi-ci.svg?style=svg
    :target: https://circleci.com/gh/rscohn2/oneapi-ci
 
-GitHub:
+GitHub: container exceeds size limit
 
 .. image:: https://github.com/rscohn2/oneapi-ci/workflows/CI/badge.svg
    :target: https://github.com/rscohn2/oneapi-ci
 
-GitLab:
+GitLab: container exceeds size limit
 
 .. image:: https://gitlab.com/rscohn2/oneapi-ci/badges/master/pipeline.svg
    :target: https://gitlab.com/rscohn2/oneapi-ci
 
-Azure Pipelines:
+Azure Pipelines: container exceeds size limit
 
 .. image:: https://rscohn2.visualstudio.com/oneapi-ci/_apis/build/status/rscohn2.oneapi-ci?branchName=master
    :target: https://rscohn2.visualstudio.com/oneapi-ci/_build
