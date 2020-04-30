@@ -12,5 +12,5 @@ jobs:
     - name: Build
       run: |
           cd src
-	  . /opt/intel/inteloneapi/setvars.sh
+          . /opt/intel/inteloneapi/setvars.sh
           make
