@@ -1,0 +1,10 @@
+pool:
+  vmImage: 'ubuntu-16.04'
+
+container: intel/oneapi-basekit
+
+steps:
+- script: |
+  cd src
+  . /opt/intel/inteloneapi/setvars.sh
+  make
