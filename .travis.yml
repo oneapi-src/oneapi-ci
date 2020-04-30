@@ -8,7 +8,7 @@ addons:
       
 before_install:
 - docker pull intel/oneapi-basekit
-- docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-basekit make
+- docker run -w=/tmp/ci/src -v $(pwd):/tmp/ci intel/oneapi-basekit make
 
 
 

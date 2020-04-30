@@ -2,4 +2,4 @@ build:
   image: intel/oneapi-basekit
   stage: build
   script:
-    - make
+    - cd src && make
