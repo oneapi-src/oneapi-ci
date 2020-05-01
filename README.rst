@@ -2,6 +2,9 @@
  oneAPI CI Samples
 ===================
 
+This branch contains sample CI config files for using oneAPI and
+containers. See `master branch`_ for samples for other methods.
+
 TravisCI:
 
 .. image:: https://travis-ci.com/rscohn2/oneapi-ci.svg?branch=container
@@ -31,3 +34,5 @@ Appveyor:
 
 .. image:: https://ci.appveyor.com/api/projects/status/i4es5h2ub7blrtcc?svg=true
    :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci
+
+.. _`master branch`: https://github.com/rscohn2/oneapi-ci
