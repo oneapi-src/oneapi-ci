@@ -11,7 +11,6 @@ build:
     - echo "deb https://apt.repos.intel.com/oneapi all main" > /etc/apt/sources.list.d/oneAPI.list
     - apt-get -qqq update
     - apt-get install -y intel-oneapi-icc intel-oneapi-ifort
-    - set -ex
     - . /opt/intel/inteloneapi/setvars.sh
     - cd src
     - make
