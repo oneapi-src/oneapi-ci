@@ -7,11 +7,11 @@ build:
     - apt-get -qqq update
     - apt-get install -y \
               build-essential \
-	      ca-certificates \
-	      cmake \
-	      gnupg \
-	      man-db \
-	      pkg-config \
+              ca-certificates \
+              cmake \
+              gnupg \
+              man-db \
+              pkg-config \
               wget
     - wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
     - apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
@@ -22,4 +22,3 @@ build:
     - . /opt/intel/inteloneapi/setvars.sh
     - cd src
     - make
-
