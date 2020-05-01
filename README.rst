@@ -8,7 +8,7 @@ methods: Intel's `docker containers`_ (see `container branch`_) and
 
 Apt install works the same on most CI systems, so we only show a
 GitLab example. For containers, we show examples for many of the
-propular public CI systems.
+popular public CI systems.
 
 Using containers can be as simple as changing the docker image name in
 your config file. Downloading a container is usually faster than
@@ -16,8 +16,7 @@ installing a lot of software. However, the container is large because
 it has many components in it. The large container will take time to
 download and may be too big to fit on the limited size disks that CI
 systems provide. Intel's container may not have all the software that
-you need installed, and then you will also have to install software on
-top.
+you need, and then you will also have to install software on top.
 
 The apt method looks a little more complicated than containers, but it
 only requires you to copy the example and adjust the set of packages
