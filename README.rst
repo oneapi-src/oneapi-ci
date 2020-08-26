@@ -31,7 +31,7 @@ with exactly the software you need.
 
 GitLab:
 
-.. image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/apt/pipeline.svg
+.. image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/master/pipeline.svg
    :target: https://gitlab.com/mmzakhar/oneapi-ci/pipelines
 
 .. _`docker containers`: https://software.intel.com/en-us/get-started-with-intel-oneapi-base-linux-using-containers
