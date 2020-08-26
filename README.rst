@@ -31,10 +31,10 @@ with exactly the software you need.
 
 GitLab:
 
-.. image:: https://gitlab.com/rscohn2/oneapi-ci/badges/apt/pipeline.svg
-   :target: https://gitlab.com/rscohn2/oneapi-ci/pipelines
+.. image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/apt/pipeline.svg
+   :target: https://gitlab.com/mmzakhar/oneapi-ci/pipelines
 
 .. _`docker containers`: https://software.intel.com/en-us/get-started-with-intel-oneapi-base-linux-using-containers
 .. _`apt repos`: https://software.intel.com/en-us/articles/oneapi-repo-instructions
-.. _`master branch`: https://github.com/rscohn2/oneapi-ci/tree/master
-.. _`container branch`: https://github.com/rscohn2/oneapi-ci/tree/container
+.. _`master branch`: https://github.com/mmzakhar/oneapi-ci/tree/master
+.. _`container branch`: https://github.com/mmzakhar/oneapi-ci/tree/container
