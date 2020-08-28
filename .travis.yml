@@ -3,11 +3,18 @@ services:
 
 language: minimal
 
+os:
+  - windows
+  - linux
+  - osx
+  
 addons:
   apt:
     packages:
       - docker-ce
       
 before_install:
-- docker pull intel/oneapi-basekit
-- docker run -w=/tmp/ci/src -v $(pwd):/tmp/ci intel/oneapi-basekit make
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then docker pull intel/oneapi-basekit
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then docker run -w=/tmp/ci/src -v $(pwd):/tmp/ci intel/oneapi-basekit make
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then echo Hello Windows
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then uname -a
