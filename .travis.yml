@@ -1,20 +1,14 @@
-services:
-  - docker
-
 language: minimal
-
-os:
-  - windows
-  - linux
-  - osx
-  
-addons:
-  apt:
-    packages:
-      - docker-ce
+jobs:
+    include:
+    - name: build_windows
+      os: windows
+      install:
+      - curl.exe --output w_hpckit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
+      - ./w_hpckit.exe -s -x -f w_hpckit_extracted 
+      - w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept
+      script:
+      - cd src
+      - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\vsdevcmd" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
+      - ./build.bat
       
-before_install:
-- if [ "$TRAVIS_OS_NAME" = "linux" ]; then docker pull intel/oneapi-basekit
-- if [ "$TRAVIS_OS_NAME" = "linux" ]; then docker run -w=/tmp/ci/src -v $(pwd):/tmp/ci intel/oneapi-basekit make
-- if [ "$TRAVIS_OS_NAME" = "windows" ]; then echo Hello Windows
-- if [ "$TRAVIS_OS_NAME" = "osx" ]; then uname -a
