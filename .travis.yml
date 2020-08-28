@@ -15,9 +15,9 @@ jobs:
       os: osx
       osx_image: xcode12u
       install:
-      - curl --output m_hpckit.dmg --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg
+      - curl --output m_hpckit.dmg --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885_offline.dmg
       - hdiutil attach m_hpckit.dmg
-      - travis_wait 20 /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept
+      - /Volumes/m_HPCKit_b_2021.1.8.1885_offline/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept
       script:
       - source /opt/intel/oneapi/setvars.sh
       - make -f Makefile.macos
