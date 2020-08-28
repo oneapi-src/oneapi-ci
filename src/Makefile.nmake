@@ -1,2 +1,2 @@
 get-platforms.exe: get-platforms.cpp
- icl get-platforms.cpp 
+ dpcpp get-platforms.cpp 
