@@ -1,24 +1,89 @@
 language: minimal
 jobs:
-    include:
-    - name: build_windows
+  include:
+    - name: build_windows_c++
       os: windows
       install:
-      - curl.exe --output w_basekit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
-      - ./w_basekit.exe -s -x -f w_basekit_extracted 
-      - w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept
+        - curl.exe --output w_hpckit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
+        - ./w_hpckit.exe -s -x -f w_hpckit_extracted 
+        - w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept
       script:
-      - cd src
-      - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
-      - ./build.bat
-    - name: build_mac
+        - cd src\c++
+        - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
+        - ./build.bat
+        
+    - name: build_windows_dpc++
+      os: windows
+      install:
+        - curl.exe --output w_basekit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
+        - ./w_basekit.exe -s -x -f w_basekit_extracted 
+        - w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept
+      script:
+        - cd src\dpc++
+        - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
+        - ./build.bat
+        
+    - name: build_linux_apt_c++
+      os: linux
+      install:
+        - wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        - apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        - echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
+        - apt-get update
+        - apt-get install -y intel-hpckit
+      script:
+        - cd src\c++
+        - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
+        - ./build.bat
+        
+    - name: build_linux_apt_dpc++
+      os: linux
+      install:
+        - wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        - apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        - echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
+        - apt-get update
+        - apt-get install -y intel-basekit
+      script:
+        - cd src\dpc++
+        - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
+        - ./build.bat
+        
+    - name: build_linux_container_c++
+      os: linux
+      services:
+        - docker
+      addons:
+        apt:
+          packages:
+            - docker-ce
+      install:
+        - docker pull intel/oneapi-hpckit
+      script:
+        - docker run -w=/tmp/ci/src/c++ -v $(pwd):/tmp/ci intel/oneapi-basekit make
+        
+    - name: build_linux_container_dpc++
+      os: linux
+      services:
+        - docker
+      addons:
+        apt:
+          packages:
+            - docker-ce
+      install:
+        - docker pull intel/oneapi-basekit
+      script:
+        - docker run -w=/tmp/ci/src/dpc++ -v $(pwd):/tmp/ci intel/oneapi-basekit make
+        
+    - name: build_mac_c++
       os: osx
       osx_image: xcode12u
       install:
-      - curl --output m_hpckit.dmg --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885_offline.dmg
-      - hdiutil attach m_hpckit.dmg
-      - travis_wait 30 /Volumes/m_HPCKit_b_2021.1.8.1885_offline/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept
+        - curl --output m_hpckit.dmg --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg
+        - hdiutil attach m_hpckit.dmg
+        - /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept
       script:
-      - source /opt/intel/oneapi/setvars.sh
-      - make -f Makefile.macos
+        - cd src/c++
+        - source /opt/intel/oneapi/setvars.sh
+        - make -f Makefile.macos
       
