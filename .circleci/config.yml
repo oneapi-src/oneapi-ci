@@ -7,6 +7,7 @@ jobs:
   build_windows_cpp:
     executor:
       name: win/default
+      shell: bash.exe
     steps:
       - checkout
       - run:
@@ -23,6 +24,7 @@ jobs:
   build_windows_dpcpp:
     executor:
       name: win/default
+      shell: bash.exe
     steps:
       - checkout
       - run:
@@ -61,4 +63,11 @@ jobs:
             . /opt/intel/inteloneapi/setvars.sh
             set -e
             make
-            
+workflows:
+  build-all:
+    jobs:
+    - build_windows_cpp
+    - build_windows_dpcpp
+    - build_linux_container_cpp
+    - build_linux_container_dpcpp
+    
