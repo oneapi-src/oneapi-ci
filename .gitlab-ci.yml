@@ -68,18 +68,4 @@ build_linux_apt_dpcpp:
     - set -e
     - cd src/dpc++
     - make
-    
-build_linux_container_cpp:
-  image: intel/oneapi-hpckit
-  stage: build
-  script:
-    - cd src/c++
-    - make
-    
-build_linux_container_dpcpp:
-  image: intel/oneapi-basekit
-  stage: build
-  script:
-    - cd src/dpc++
-    - make
       
