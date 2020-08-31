@@ -50,7 +50,7 @@ jobs:
         - cd src/dpc++
         - source /opt/intel/oneapi/setvars.sh
         - make
-        
+
     - name: build_linux_container_c++
       os: linux
       services:
