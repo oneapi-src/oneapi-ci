@@ -40,7 +40,7 @@ jobs:
           shell: bash.exe
           no_output_timeout: 30m
           
-    build_linux_apt_cpp:
+  build_linux_apt_cpp:
     docker:
       - image: ubuntu:latest
     steps:
