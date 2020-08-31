@@ -2,6 +2,7 @@
  oneAPI CI Samples
 ===================
 
+<<<<<<< HEAD
 This repo has samples of CI scripts using oneAPI. We tried 2 different
 methods: Intel's `docker containers`_ (see `container branch`_) and
 `apt repos`_ (see `master branch`_).
@@ -28,9 +29,29 @@ that same script from all your CI config files.
 I recommend starting with the apt method. If you have a lot of
 software to install, then you are best off creating your own container
 with exactly the software you need.
+=======
+This branch contains sample CI config files for using oneAPI and
+containers. See `master branch`_ for samples for other methods.
 
-GitLab:
+TravisCI:
 
+.. image:: https://travis-ci.com/rscohn2/oneapi-ci.svg?branch=container
+   :target: https://travis-ci.com/rscohn2/oneapi-ci
+
+CircleCI:
+
+.. image:: https://circleci.com/gh/rscohn2/oneapi-ci/tree/container.svg?style=svg
+   :target: https://circleci.com/gh/rscohn2/oneapi-ci
+
+GitHub: container exceeds size limit
+
+.. image:: https://github.com/rscohn2/oneapi-ci/workflows/CI/badge.svg?branch=container
+   :target: https://github.com/rscohn2/oneapi-ci
+>>>>>>> container
+
+GitLab: container exceeds size limit
+
+<<<<<<< HEAD
 .. image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/apt/pipeline.svg
    :target: https://gitlab.com/mmzakhar/oneapi-ci/pipelines
 
@@ -38,3 +59,19 @@ GitLab:
 .. _`apt repos`: https://software.intel.com/en-us/articles/oneapi-repo-instructions
 .. _`master branch`: https://github.com/mmzakhar/oneapi-ci/tree/master
 .. _`container branch`: https://github.com/mmzakhar/oneapi-ci/tree/container
+=======
+.. image:: https://gitlab.com/rscohn2/oneapi-ci/badges/container/pipeline.svg
+   :target: https://gitlab.com/rscohn2/oneapi-ci
+
+Azure Pipelines: container exceeds size limit
+
+.. image:: https://rscohn2.visualstudio.com/oneapi-ci/_apis/build/status/rscohn2.oneapi-ci?branchName=container
+   :target: https://rscohn2.visualstudio.com/oneapi-ci/_build
+
+Appveyor:
+
+.. image:: https://ci.appveyor.com/api/projects/status/i4es5h2ub7blrtcc?svg=true
+   :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci
+
+.. _`master branch`: https://github.com/rscohn2/oneapi-ci
+>>>>>>> container
