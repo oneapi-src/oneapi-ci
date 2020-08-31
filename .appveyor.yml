@@ -30,7 +30,7 @@ for:
         cd src
         cd c++
         "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
-        nmake /f Makefile.nmake"
+        nmake /f Makefile.nmake
   -
     matrix:
       only:
@@ -44,8 +44,8 @@ for:
     - cmd: |
         cd src
         cd c++
-        echo '"C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
-        ./build.bat
+        "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+        nmake /f Makefile.nmake
   -
     matrix:
       only:
