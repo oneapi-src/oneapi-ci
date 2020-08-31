@@ -55,7 +55,9 @@ jobs:
             echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
             apt-get update
             apt-get install -y intel-oneapi-icc
-            cd src/c++
+      - run:
+          command: |
+            cd src/dpc++
             source /opt/intel/oneapi/setvars.sh
             make
             
@@ -74,6 +76,8 @@ jobs:
             echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
             apt-get update
             apt-get install -y intel-oneapi-dpcpp-compiler
+      - run:
+          command: |
             cd src/dpc++
             source /opt/intel/oneapi/setvars.sh
             make
