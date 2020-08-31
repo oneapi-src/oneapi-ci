@@ -40,6 +40,38 @@ jobs:
           shell: bash.exe
           no_output_timeout: 30m
           
+    build_linux_apt_cpp:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - run:
+          command: |
+            wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+            sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+            echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+            sudo apt-get update
+            sudo apt-get install -y intel-oneapi-icc
+            cd src/c++
+            source /opt/intel/oneapi/setvars.sh
+            make
+            
+  build_linux_apt_dpcpp:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - run:
+          command: |
+            wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+            sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+            echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+            sudo apt-get update
+            sudo apt-get install -y intel-oneapi-dpcpp-compiler
+            cd src/dpc++
+            source /opt/intel/oneapi/setvars.sh
+            make
+            
   build_linux_container_cpp:
     docker:
       - image: intel/oneapi-hpckit
@@ -64,6 +96,8 @@ workflows:
     jobs:
     - build_windows_cpp
     - build_windows_dpcpp
+    - build_linux_apt_cpp
+    - build_linux_apt_dpcpp
     - build_linux_container_cpp
     - build_linux_container_dpcpp
     
