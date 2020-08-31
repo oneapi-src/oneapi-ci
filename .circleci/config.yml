@@ -1,6 +1,55 @@
-version: 2.0
+version: 2.1
+
+orbs:
+  win: circleci/windows@2.2.0
+
 jobs:
-  build:
+  build_windows_c++:
+    executor:
+      name: win/default
+    steps:
+      - checkout
+      - run:
+          command: |
+            curl.exe --output w_hpckit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
+            ./w_hpckit.exe -s -x -f w_hpckit_extracted 
+            w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept
+            cd src
+            cd c++
+            echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
+            ./build.bat
+          shell: bash.exe
+          
+  build_windows_dpc++:
+    executor:
+      name: win/default
+    steps:
+      - checkout
+      - run:
+          command: |
+            curl.exe --output w_basekit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
+            ./w_basekit.exe -s -x -f w_basekit_extracted 
+            w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept
+            cd src
+            cd dpc++
+            echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
+            ./build.bat
+          shell: bash.exe
+          
+  build_linux_container_c++:
+    docker:
+      - image: intel/oneapi-hpckit
+    steps:
+      - checkout
+      - run:
+          command: |
+            cd src/c++
+            set +e
+            . /opt/intel/inteloneapi/setvars.sh
+            set -e
+            make
+            
+  build_linux_container_dpc++:
     docker:
       - image: intel/oneapi-basekit
     steps:
@@ -12,3 +61,4 @@ jobs:
             . /opt/intel/inteloneapi/setvars.sh
             set -e
             make
+            
