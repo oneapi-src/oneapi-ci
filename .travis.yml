@@ -30,7 +30,7 @@ jobs:
       install:
         - wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
         - sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
-        - echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
+        - echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
         - sudo apt-get update
         - sudo apt-get install -y intel-hpckit
       script:
@@ -43,7 +43,7 @@ jobs:
       install:
         - wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
         - sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
-        - echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
+        - echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
         - sudo apt-get update
         - sudo apt-get install -y intel-basekit
       script:
@@ -62,7 +62,7 @@ jobs:
       install:
         - docker pull intel/oneapi-hpckit
       script:
-        - docker run -w=/tmp/ci/src/c++ -v $(pwd):/tmp/ci intel/oneapi-basekit make
+        - docker run -w=/tmp/ci/src/c++ -v $(pwd):/tmp/ci intel/oneapi-hpckit make
         
     - name: build_linux_container_dpc++
       os: linux
