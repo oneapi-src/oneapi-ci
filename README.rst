@@ -2,7 +2,6 @@
  oneAPI CI Samples
 ===================
 
-<<<<<<< HEAD
 This repo has samples of CI scripts using oneAPI. We tried 2 different
 methods: Intel's `docker containers`_ (see `container branch`_) and
 `apt repos`_ (see `master branch`_).
@@ -47,12 +46,12 @@ GitHub: container exceeds size limit
 
 .. image:: https://github.com/rscohn2/oneapi-ci/workflows/CI/badge.svg?branch=container
    :target: https://github.com/rscohn2/oneapi-ci
->>>>>>> container
 
 GitLab: container exceeds size limit
 
-<<<<<<< HEAD
 .. image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/apt/pipeline.svg
+=======
+.. image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/master/pipeline.svg
    :target: https://gitlab.com/mmzakhar/oneapi-ci/pipelines
 
 .. _`docker containers`: https://software.intel.com/en-us/get-started-with-intel-oneapi-base-linux-using-containers
@@ -74,4 +73,3 @@ Appveyor:
    :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci
 
 .. _`master branch`: https://github.com/rscohn2/oneapi-ci
->>>>>>> container
