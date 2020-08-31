@@ -1,7 +1,7 @@
 language: minimal
 jobs:
   include:
-    - name: build_windows_c++
+    - name: build_windows_cpp
       os: windows
       install:
         - curl.exe --output w_hpckit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
@@ -13,7 +13,7 @@ jobs:
         - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
         - ./build.bat
         
-    - name: build_windows_dpc++
+    - name: build_windows_dpcpp
       os: windows
       install:
         - curl.exe --output w_basekit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
@@ -25,7 +25,7 @@ jobs:
         - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
         - ./build.bat
         
-    - name: build_linux_apt_c++
+    - name: build_linux_apt_cpp
       os: linux
       dist: bionic
       install:
@@ -33,13 +33,13 @@ jobs:
         - sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
         - echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
         - sudo apt-get update
-        - sudo apt-get install -y intel-hpckit
+        - sudo apt-get install -y intel-oneapi-icc
       script:
         - cd src/c++
         - source /opt/intel/oneapi/setvars.sh
         - make
         
-    - name: build_linux_apt_dpc++
+    - name: build_linux_apt_dpcpp
       os: linux
       dist: bionic
       install:
@@ -47,13 +47,13 @@ jobs:
         - sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
         - echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
         - sudo apt-get update
-        - sudo apt-get install -y intel-basekit
+        - sudo apt-get install -y intel-oneapi-dpcpp-compiler
       script:
         - cd src/dpc++
         - source /opt/intel/oneapi/setvars.sh
         - make
 
-    - name: build_linux_container_c++
+    - name: build_linux_container_cpp
       os: linux
       services:
         - docker
@@ -66,7 +66,7 @@ jobs:
       script:
         - docker run -w=/tmp/ci/src/c++ -v $(pwd):/tmp/ci intel/oneapi-hpckit make
         
-    - name: build_linux_container_dpc++
+    - name: build_linux_container_dpcpp
       os: linux
       services:
         - docker
@@ -79,7 +79,7 @@ jobs:
       script:
         - docker run -w=/tmp/ci/src/dpc++ -v $(pwd):/tmp/ci intel/oneapi-basekit make
         
-    - name: build_mac_c++
+    - name: build_mac_cpp
       os: osx
       osx_image: xcode12u
       install:

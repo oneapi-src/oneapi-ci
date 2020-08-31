@@ -20,6 +20,7 @@ jobs:
             echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
             ./build.bat
           shell: bash.exe
+          no_output_timeout: 30m
           
   build_windows_dpcpp:
     executor:
@@ -37,6 +38,7 @@ jobs:
             echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
             ./build.bat
           shell: bash.exe
+          no_output_timeout: 30m
           
   build_linux_container_cpp:
     docker:
@@ -46,9 +48,6 @@ jobs:
       - run:
           command: |
             cd src/c++
-            set +e
-            . /opt/intel/oneapi/setvars.sh
-            set -e
             make
             
   build_linux_container_dpcpp:
@@ -59,9 +58,6 @@ jobs:
       - run:
           command: |
             cd src/dpc++
-            set +e
-            . /opt/intel/oneapi/setvars.sh
-            set -e
             make
 workflows:
   build-all:
