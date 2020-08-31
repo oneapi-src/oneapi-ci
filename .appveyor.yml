@@ -43,7 +43,7 @@ for:
     build_script:
     - cmd: |
         cd src
-        cd c++
+        cd dpc++
         "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
         nmake /f Makefile.nmake
   -
