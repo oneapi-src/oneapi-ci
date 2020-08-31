@@ -34,9 +34,8 @@ jobs:
         - sudo apt-get update
         - sudo apt-get install -y intel-hpckit
       script:
-        - cd src\c++
-        - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
-        - ./build.bat
+        - cd src/c++
+        - make
         
     - name: build_linux_apt_dpc++
       os: linux
@@ -47,9 +46,8 @@ jobs:
         - sudo apt-get update
         - sudo apt-get install -y intel-basekit
       script:
-        - cd src\dpc++
-        - echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
-        - ./build.bat
+        - cd src/dpc++
+        - make
         
     - name: build_linux_container_c++
       os: linux
