@@ -1,0 +1,14 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: intel/oneapi-basekit
+    steps:
+      - checkout
+      - run:
+          command: |
+            cd src/dpc++
+            set +e
+            . /opt/intel/inteloneapi/setvars.sh
+            set -e
+            make
