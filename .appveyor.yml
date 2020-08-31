@@ -29,7 +29,6 @@ for:
     - cmd: |
         cd src
         cd c++
-        "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
         "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
         nmake /f Makefile.nmake"
   -
@@ -45,7 +44,7 @@ for:
     - cmd: |
         cd src
         cd c++
-        echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
+        echo '"C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
         ./build.bat
   -
     matrix:
