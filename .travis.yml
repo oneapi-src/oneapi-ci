@@ -87,7 +87,8 @@ jobs:
         - hdiutil attach m_hpckit.dmg
         - /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept --continue-with-optional-error=yes --log-dir=. &
         - sleep 10
-        - tail -f $(ls installer*)
+        - pwd
+        - ls
       script:
         - cd src/c++
         - source /opt/intel/oneapi/setvars.sh
