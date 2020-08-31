@@ -6,7 +6,7 @@ jobs:
       install:
         - curl.exe --output w_hpckit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
         - ./w_hpckit.exe -s -x -f w_hpckit_extracted 
-        - w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept
+        - w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept --continue-with-optional-error=yes
       script:
         - cd src
         - cd c++
@@ -18,7 +18,7 @@ jobs:
       install:
         - curl.exe --output w_basekit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
         - ./w_basekit.exe -s -x -f w_basekit_extracted 
-        - w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept
+        - w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept --continue-with-optional-error=yes
       script:
         - cd src
         - cd dpc++
@@ -85,7 +85,7 @@ jobs:
       install:
         - curl --output m_hpckit.dmg --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg
         - hdiutil attach m_hpckit.dmg
-        - /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept
+        - /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept --continue-with-optional-error=yes
       script:
         - cd src/c++
         - source /opt/intel/oneapi/setvars.sh
