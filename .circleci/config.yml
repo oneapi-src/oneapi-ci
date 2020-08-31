@@ -57,9 +57,8 @@ jobs:
             apt-get install -y intel-oneapi-icc
       - run:
           command: |
-            cd src/dpc++
+            cd src/c++
             source /opt/intel/oneapi/setvars.sh
-            make
             
   build_linux_apt_dpcpp:
     docker:
@@ -79,7 +78,6 @@ jobs:
       - run:
           command: |
             cd src/dpc++
-            source /opt/intel/oneapi/setvars.sh
             make
             
   build_linux_container_cpp:
