@@ -13,12 +13,10 @@ environment:
       appveyor_build_worker_image: Ubuntu
       
     - job_name: build_linux_container_cpp
-      services:
-        - docker
+      appveyor_build_worker_image: Ubuntu
       
     - job_name: build_linux_container_dpcpp
-      services:
-        - docker
+      appveyor_build_worker_image: Ubuntu
       
     - job_name: build_mac_cpp
       appveyor_build_worker_image: macos
@@ -92,6 +90,8 @@ for:
     matrix:
       only:
         - job_name: build_linux_container_cpp
+    services:
+      - docker
     build_script:
       - docker run -w=/tmp/ci/src/c++ -v $(pwd):/tmp/ci intel/oneapi-hpckit make
         
@@ -99,6 +99,8 @@ for:
     matrix:
       only:
         - job_name: build_linux_container_dpcpp
+    services:
+      - docker
     build_script:
       - docker run -w=/tmp/ci/src/dpc++ -v $(pwd):/tmp/ci intel/oneapi-basekit make
       
