@@ -31,5 +31,5 @@ with exactly the software you need.
 
 
 | CI  | CI config | CI status | Windows (C++) | Windows (DPC++) | Linux (C++), APT | Linux (DPC++), APT | Linux (C++), Container | Linux (DPC++),  Container | macOS (C++) |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Travis CI  | [.travis.yaml](https://github.com/mmzakhar/oneapi-ci/blob/master/.travis.yml) | [![Alt text](https://travis-ci.com/mmzakhar/oneapi-ci.svg?branch=master)](https://travis-ci.com/mmzakhar/oneapi-ci)|*|*|*|*|*|*|*|
