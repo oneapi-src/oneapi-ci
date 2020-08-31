@@ -29,8 +29,8 @@ for:
     install:
       ps: |
         curl.exe --output w_hpckit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
-        ./w_hpckit.exe -s -x -f w_hpckit_extracted 
-        w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
+        ./w_hpckit.exe -s -x -f w_hpckit_extracted  | out-null
+        w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0 | out-null
     build_script:
     - ps: |
         cd src
@@ -44,8 +44,8 @@ for:
     install:
       ps: |
         curl.exe --output w_basekit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
-        ./w_basekit.exe -s -x -f w_basekit_extracted 
-        w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
+        ./w_basekit.exe -s -x -f w_basekit_extracted  | out-null
+        w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0 | out-null
     build_script:
     - ps: |
         cd src
@@ -93,6 +93,7 @@ for:
     services:
       - docker
     build_script:
+      - docker pull intel/oneapi-hpckit
       - docker run -w=/tmp/ci/src/c++ -v $(pwd):/tmp/ci intel/oneapi-hpckit make
         
   -
@@ -102,6 +103,7 @@ for:
     services:
       - docker
     build_script:
+      - docker pull intel/oneapi-basekit
       - docker run -w=/tmp/ci/src/dpc++ -v $(pwd):/tmp/ci intel/oneapi-basekit make
       
   -
