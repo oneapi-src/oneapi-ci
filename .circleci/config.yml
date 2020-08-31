@@ -47,6 +47,7 @@ jobs:
       - checkout
       - run:
           command: |
+            export DEBIAN_FRONTEND=noninteractive
             apt-get update
             apt-get install -y wget build-essential pkg-config cmake ca-certificates gnupg
             wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
@@ -65,6 +66,7 @@ jobs:
       - checkout
       - run:
           command: |
+            export DEBIAN_FRONTEND=noninteractive
             apt-get update
             apt-get install -y wget build-essential pkg-config cmake ca-certificates gnupg
             wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
