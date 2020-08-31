@@ -28,48 +28,8 @@ that same script from all your CI config files.
 I recommend starting with the apt method. If you have a lot of
 software to install, then you are best off creating your own container
 with exactly the software you need.
-=======
-This branch contains sample CI config files for using oneAPI and
-containers. See `master branch`_ for samples for other methods.
 
-TravisCI:
 
-.. image:: https://travis-ci.com/rscohn2/oneapi-ci.svg?branch=container
-   :target: https://travis-ci.com/rscohn2/oneapi-ci
-
-CircleCI:
-
-.. image:: https://circleci.com/gh/rscohn2/oneapi-ci/tree/container.svg?style=svg
-   :target: https://circleci.com/gh/rscohn2/oneapi-ci
-
-GitHub: container exceeds size limit
-
-.. image:: https://github.com/rscohn2/oneapi-ci/workflows/CI/badge.svg?branch=container
-   :target: https://github.com/rscohn2/oneapi-ci
-
-GitLab: container exceeds size limit
-
-.. image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/apt/pipeline.svg
-=======
-.. image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/master/pipeline.svg
-   :target: https://gitlab.com/mmzakhar/oneapi-ci/pipelines
-
-.. _`docker containers`: https://software.intel.com/en-us/get-started-with-intel-oneapi-base-linux-using-containers
-.. _`apt repos`: https://software.intel.com/en-us/articles/oneapi-repo-instructions
-.. _`master branch`: https://github.com/mmzakhar/oneapi-ci/tree/master
-.. _`container branch`: https://github.com/mmzakhar/oneapi-ci/tree/container
-=======
-.. image:: https://gitlab.com/rscohn2/oneapi-ci/badges/container/pipeline.svg
-   :target: https://gitlab.com/rscohn2/oneapi-ci
-
-Azure Pipelines: container exceeds size limit
-
-.. image:: https://rscohn2.visualstudio.com/oneapi-ci/_apis/build/status/rscohn2.oneapi-ci?branchName=container
-   :target: https://rscohn2.visualstudio.com/oneapi-ci/_build
-
-Appveyor:
-
-.. image:: https://ci.appveyor.com/api/projects/status/i4es5h2ub7blrtcc?svg=true
-   :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci
-
-.. _`master branch`: https://github.com/rscohn2/oneapi-ci
+| CI  | CI config | CI page | CI status | Windows (C++) | Windows (DPC++) | Linux (C++), APT | Linux (DPC++), APT | Linux (C++), Container | Linux (DPC++),  Container | macOS (C++) |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Travis CI  | [.travis.yaml](https://github.com/mmzakhar/oneapi-ci/blob/master/.travis.yml) | [CI status](https://travis-ci.com/github/mmzakhar/oneapi-ci)|[![Alt text](https://travis-ci.com/mmzakhar/oneapi-ci.svg?branch=master)](https://travis-ci.com/mmzakhar/oneapi-ci)|*|*|*|*|*|*|*|
