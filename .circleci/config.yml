@@ -14,7 +14,7 @@ jobs:
           command: |
             curl.exe --output w_hpckit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
             ./w_hpckit.exe -s -x -f w_hpckit_extracted 
-            w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept --continue-with-optional-error=yes --log-dir=. -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
+            w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
             cd src
             cd c++
             echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
@@ -32,7 +32,7 @@ jobs:
           command: |
             curl.exe --output w_basekit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
             ./w_basekit.exe -s -x -f w_basekit_extracted 
-            w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept --continue-with-optional-error=yes --log-dir=. -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
+            w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
             cd src
             cd dpc++
             echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
@@ -55,10 +55,11 @@ jobs:
             echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
             apt-get update
             apt-get install -y intel-oneapi-icc
-      - run:
-          command: |
             cd src/c++
+            set +e
             source /opt/intel/oneapi/setvars.sh
+            set -e
+            make
             
   build_linux_apt_dpcpp:
     docker:
@@ -75,9 +76,10 @@ jobs:
             echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
             apt-get update
             apt-get install -y intel-oneapi-dpcpp-compiler
-      - run:
-          command: |
             cd src/dpc++
+            set +e
+            source /opt/intel/oneapi/setvars.sh
+            set -e
             make
             
   build_linux_container_cpp:

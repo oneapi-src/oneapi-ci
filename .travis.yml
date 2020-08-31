@@ -85,10 +85,7 @@ jobs:
       install:
         - curl --output m_hpckit.dmg --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg
         - hdiutil attach m_hpckit.dmg
-        - sudo /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept --continue-with-optional-error=yes --log-dir=. &
-        - sleep 30
-        - ls
-        - tail -f $(ls bootstrapper*)
+        - sudo /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept --continue-with-optional-error=yes
       script:
         - cd src/c++
         - source /opt/intel/oneapi/setvars.sh
