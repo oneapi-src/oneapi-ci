@@ -47,6 +47,7 @@ jobs:
       - checkout
       - run:
           command: |
+            apt-get update
             wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
             sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
             echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
@@ -63,6 +64,7 @@ jobs:
       - checkout
       - run:
           command: |
+            apt-get update
             apt-get install -y wget
             wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
             sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
