@@ -4,7 +4,7 @@ orbs:
   win: circleci/windows@2.2.0
 
 jobs:
-  build_windows_c++:
+  build_windows_cpp:
     executor:
       name: win/default
     steps:
@@ -20,7 +20,7 @@ jobs:
             ./build.bat
           shell: bash.exe
           
-  build_windows_dpc++:
+  build_windows_dpcpp:
     executor:
       name: win/default
     steps:
@@ -36,7 +36,7 @@ jobs:
             ./build.bat
           shell: bash.exe
           
-  build_linux_container_c++:
+  build_linux_container_cpp:
     docker:
       - image: intel/oneapi-hpckit
     steps:
@@ -49,7 +49,7 @@ jobs:
             set -e
             make
             
-  build_linux_container_dpc++:
+  build_linux_container_dpcpp:
     docker:
       - image: intel/oneapi-basekit
     steps:
