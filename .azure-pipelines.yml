@@ -12,8 +12,7 @@ jobs:
       start /wait w_hpckit_extracted\bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
       cd src
       cd c++
-      "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
-      nmake /f Makefile.nmake
+      "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake
 
 - job: build_windows_dpcpp
   pool:
@@ -25,8 +24,7 @@ jobs:
       start /wait w_basekit_extracted\bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
       cd src
       cd dpc++
-      "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
-      nmake /f Makefile.nmake
+      "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake
       
 - job: build_linux_apt_cpp
   pool:
@@ -69,7 +67,7 @@ jobs:
 - job: build_linux_container_cpp
   pool:
     vmImage: 'ubuntu-latest'
-  container: intel/oneapi-basekit:latest
+  container: intel/oneapi-hpckit:latest
   steps:
   - script: |
       cd src/c++
@@ -78,7 +76,7 @@ jobs:
 - job: build_linux_container_dpcpp
   pool:
     vmImage: 'ubuntu-latest'
-  container: intel/oneapi-hpckit:latest
+  container: intel/oneapi-basekit:latest
   steps:
   - script: |
       cd src/dpc++
