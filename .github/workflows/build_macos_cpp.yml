@@ -20,6 +20,7 @@ jobs:
         source /opt/intel/oneapi/setvars.sh
         make -f Makefile.macos
     - name: get_logs
+      if: ${{ always() }}
       run: |
         cat $(ls bootstrapper*)
         cat $(ls installer*)
