@@ -20,7 +20,6 @@ jobs:
             echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
             ./build.bat
           shell: bash.exe
-          no_output_timeout: 30m
           
   build_windows_dpcpp:
     executor:
@@ -38,7 +37,6 @@ jobs:
             echo '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" && "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && nmake /f Makefile.nmake"' > build.bat
             ./build.bat
           shell: bash.exe
-          no_output_timeout: 30m
           
   build_linux_apt_cpp:
     docker:
