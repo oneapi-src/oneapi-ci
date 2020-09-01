@@ -89,7 +89,7 @@ jobs:
       run: |
           cd src/c++
           make
-  build_linux_container_cpp:
+  build_linux_container_dpcpp:
     runs-on: ubuntu-latest
     container: intel/oneapi-basekit
     steps:
