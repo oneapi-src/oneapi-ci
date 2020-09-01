@@ -80,6 +80,24 @@ jobs:
         source /opt/intel/oneapi/setvars.sh
         set -e
         make
+  build_linux_container_cpp:
+    runs-on: ubuntu-latest
+    container: intel/oneapi-hpckit
+    steps:
+    - uses: actions/checkout@v2
+    - name: build_linux_container_cpp
+      run: |
+          cd src/c++
+          make
+  build_linux_container_cpp:
+    runs-on: ubuntu-latest
+    container: intel/oneapi-basekit
+    steps:
+    - uses: actions/checkout@v2
+    - name: build_linux_container_dpcpp
+      run: |
+          cd src/dpc++
+          make
   build_macos_cpp:
     runs-on: macos-latest
     defaults:
