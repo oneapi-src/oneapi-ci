@@ -1,0 +1,28 @@
+name: build_linux_apt_dpcpp
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: build_linux_apt_dpcpp
+      run: |
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y wget build-essential pkg-config cmake ca-certificates gnupg
+        wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        echo "deb https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
+        apt-get update
+        apt-get install -y intel-oneapi-dpcpp-compiler
+        cd src/dpc++
+        set +e
+        source /opt/intel/oneapi/setvars.sh
+        set -e
+        make
