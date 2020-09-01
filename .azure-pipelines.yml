@@ -1,0 +1,10 @@
+pool:
+  vmImage: 'ubuntu-16.04'
+
+container: intel/oneapi-basekit:latest
+
+steps:
+- script: |
+     cd src/dpc++
+     make
+     
