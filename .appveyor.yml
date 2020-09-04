@@ -43,7 +43,7 @@ for:
       only:
         - job_name: build_windows_cpp
     install:
-      cmd: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
+      cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_CPP_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat c++
   -
@@ -51,7 +51,7 @@ for:
       only:
         - job_name: build_windows_fortran
     install:
-      cmd: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
+      cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_FORTRAN_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat fortran
   -
@@ -59,7 +59,7 @@ for:
       only:
         - job_name: build_windows_dpcpp
     install:
-      cmd: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+      cmd: scripts/install_windows.bat %WINDOWS_BASEKIT_URL% %WINDOWS_DPCPP_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat dpc++
   -
