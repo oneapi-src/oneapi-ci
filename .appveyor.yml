@@ -74,12 +74,6 @@ for:
       only:
         - job_name: build_mac_cpp
     install:
-      sh: |
-        curl --output m_hpckit.dmg --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg
-        hdiutil attach m_hpckit.dmg
-        sudo /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept --continue-with-optional-error=yes
+      sh: scripts/install_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.cpp-compiler
     build_script:
-      sh: |
-        cd src/c++
-        source /opt/intel/oneapi/setvars.sh
-        make -f Makefile.macos
+      sh: scripts/build_macos.sh c++
