@@ -48,6 +48,6 @@ jobs:
     - name: build_mac_cpp
       os: osx
       osx_image: xcode11.6
-      install: scripts/install_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.cpp-compiler
+      install: scripts/install_debug_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.cpp-compiler
       script: scripts/build_macos.sh c++
       
