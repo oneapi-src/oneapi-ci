@@ -27,13 +27,13 @@ build_linux_apt_cpp:
   image: ubuntu:latest
   stage: build
   script:
-    - scripts/install_linux_apt.sh intel-oneapi-icc
+    - . scripts/install_linux_apt.sh intel-oneapi-icc
     - scripts/build_linux.sh c++
 
 build_linux_apt_dpcpp:
   image: ubuntu:latest
   stage: build
   script:
-    - scripts/install_linux_apt.sh intel-oneapi-dpcpp-compiler
+    - . scripts/install_linux_apt.sh intel-oneapi-dpcpp-compiler
     - scripts/build_linux.sh dpc++
       
