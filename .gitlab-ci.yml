@@ -14,6 +14,14 @@ build_windows_cpp:
   script:
     - scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.cpp-compiler
     - scripts/build_windows.bat c++ 2019_build_tools
+    
+build_windows_fortran:
+  extends:
+  - .shared_windows_runners
+  stage: build
+  script:
+    - scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.ifort-compiler
+    - scripts/build_windows.bat fortran 2019_build_tools
 
 build_windows_dpcpp:
   extends:
@@ -29,6 +37,13 @@ build_linux_apt_cpp:
   script:
     - . scripts/install_linux_apt_no_sudo.sh intel-oneapi-icc
     - scripts/build_linux.sh c++
+    
+build_linux_apt_fortran:
+  image: ubuntu:latest
+  stage: build
+  script:
+    - . scripts/install_linux_apt_no_sudo.sh intel-oneapi-ifort
+    - scripts/build_linux.sh fortran
 
 build_linux_apt_dpcpp:
   image: ubuntu:latest

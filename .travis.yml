@@ -5,7 +5,12 @@ jobs:
       os: windows
       install: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.cpp-compiler
       script: scripts/build_windows.bat c++ 2017_build_tools
-        
+      
+    - name: build_windows_fortran
+      os: windows
+      install: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.ifort-compiler
+      script: scripts/build_windows.bat fortran 2017_build_tools
+      
     - name: build_windows_dpcpp
       os: windows
       install: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe intel.oneapi.win.dpcpp-compiler
@@ -16,6 +21,12 @@ jobs:
       dist: bionic
       install: scripts/install_linux_apt.sh intel-oneapi-icc
       script: scripts/build_linux.sh c++
+      
+    - name: build_linux_apt_fortran
+      os: linux
+      dist: bionic
+      install: scripts/install_linux_apt.sh intel-oneapi-ifort
+      script: scripts/build_linux.sh fortran
         
     - name: build_linux_apt_dpcpp
       os: linux
@@ -33,6 +44,17 @@ jobs:
             - docker-ce
       install: docker pull intel/oneapi-hpckit
       script: docker run -w=/tmp/ci/src/c++ -v $(pwd):/tmp/ci intel/oneapi-hpckit make
+      
+    - name: build_linux_container_fortran
+      os: linux
+      services:
+        - docker
+      addons:
+        apt:
+          packages:
+            - docker-ce
+      install: docker pull intel/oneapi-hpckit
+      script: docker run -w=/tmp/ci/src/fortran -v $(pwd):/tmp/ci intel/oneapi-hpckit make
         
     - name: build_linux_container_dpcpp
       os: linux
@@ -48,6 +70,12 @@ jobs:
     - name: build_mac_cpp
       os: osx
       osx_image: xcode11.6
-      install: scripts/install_debug_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.cpp-compiler
+      install: scripts/install_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.cpp-compiler
       script: scripts/build_macos.sh c++
+      
+    - name: build_mac_fortran
+      os: osx
+      osx_image: xcode11.6
+      install: scripts/install_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.ifort-compiler
+      script: scripts/build_macos.sh fortran
       

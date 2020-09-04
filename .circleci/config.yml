@@ -17,6 +17,19 @@ jobs:
           name: build
           command: scripts/build_windows.bat c++ 2017_build_tools
           
+  build_windows_fortran:
+    executor:
+      name: win/default
+      shell: bash.exe
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.ifort-compiler
+      - run:
+          name: build
+          command: scripts/build_windows.bat fortran 2017_build_tools
+          
   build_windows_dpcpp:
     executor:
       name: win/default
@@ -41,6 +54,18 @@ jobs:
       - run:
           name: build
           command: scripts/build_linux.sh c++
+          
+  build_linux_apt_fortran:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-ifort
+      - run:
+          name: build
+          command: scripts/build_linux.sh fortran
             
   build_linux_apt_dpcpp:
     docker:
@@ -62,6 +87,15 @@ jobs:
       - run:
           name: build
           command: scripts/build_linux.sh c++
+          
+  build_linux_container_fortran:
+    docker:
+      - image: intel/oneapi-hpckit
+    steps:
+      - checkout
+      - run:
+          name: build
+          command: scripts/build_linux.sh fortran
             
   build_linux_container_dpcpp:
     docker:
@@ -76,7 +110,9 @@ workflows:
   build-all:
     jobs:
     - build_linux_apt_cpp
+    - build_linux_apt_fortran
     - build_linux_apt_dpcpp
     - build_linux_container_cpp
+    - build_linux_container_fortran
     - build_linux_container_dpcpp
     

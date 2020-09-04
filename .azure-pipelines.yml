@@ -11,6 +11,15 @@ jobs:
   - script: scripts/build_windows.bat c++
     displayName: build
     
+- job: build_windows_fortran
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - script: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.ifort-compiler
+    displayName: install
+  - script: scripts/build_windows.bat fortran
+    displayName: build
+    
 - job: build_windows_dpcpp
   pool:
     vmImage: 'windows-latest'
@@ -27,6 +36,15 @@ jobs:
   - script: scripts/install_linux_apt.sh intel-oneapi-icc
     displayName: install
   - script: scripts/build_linux.sh c++
+    displayName: build
+    
+- job: build_linux_apt_fortran
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: scripts/install_linux_apt.sh intel-oneapi-ifort
+    displayName: install
+  - script: scripts/build_linux.sh fortran
     displayName: build
 
 - job: build_linux_apt_dpcpp
@@ -45,6 +63,14 @@ jobs:
   steps:
   - script: scripts/build_linux.sh c++
     displayName: build
+    
+- job: build_linux_container_fortran
+  pool:
+    vmImage: 'ubuntu-latest'
+  container: intel/oneapi-hpckit:latest
+  steps:
+  - script: scripts/build_linux.sh fortran
+    displayName: build
 
 - job: build_linux_container_dpcpp
   pool:
@@ -62,3 +88,13 @@ jobs:
     displayName: install
   - script: scripts/build_macos.sh c++
     displayName: build
+    
+- job: build_macOS_fortran
+  pool:
+    vmImage: 'macOS-latest'
+  steps:
+  - script: scripts/install_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.ifort-compiler
+    displayName: install
+  - script: scripts/build_macos.sh fortran
+    displayName: build
+    
