@@ -1,12 +1,36 @@
 trigger:
 - master
 
+variables:
+  - name: WINDOWS_BASEKIT_URL
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
+  - name: WINDOWS_HPCKIT_URL
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
+  - name: MACOS_HPCKIT_URL
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg
+  - name: WINDOWS_CPP_COMPONENTS
+    value: intel.oneapi.win.cpp-compiler
+  - name: WINDOWS_FORTRAN_COMPONENTS
+    value: intel.oneapi.win.ifort-compiler
+  - name: WINDOWS_DPCPP_COMPONENTS
+    value: intel.oneapi.win.dpcpp-compiler
+  - name: LINUX_CPP_COMPONENTS
+    value: intel-oneapi-icc
+  - name: LINUX_FORTRAN_COMPONENTS
+    value: intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
+  - name: LINUX_DPCPP_COMPONENTS
+    value: intel-oneapi-dpcpp-compiler
+  - name: MACOS_CPP_COMPONENTS
+    value: intel.oneapi.mac.cpp-compiler
+  - name: MACOS_FORTRAN_COMPONENTS
+    value: intel.oneapi.mac.ifort-compiler
+
 jobs:
 - job: build_windows_cpp
   pool:
     vmImage: 'windows-latest'
   steps:
-  - script: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.cpp-compiler
+  - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
   - script: scripts/build_windows.bat c++
     displayName: build
@@ -15,7 +39,7 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - script: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.ifort-compiler
+  - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
   - script: scripts/build_windows.bat fortran
     displayName: build
@@ -24,7 +48,7 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - script: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe intel.oneapi.win.dpcpp-compiler
+  - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
   - script: scripts/build_windows.bat dpc++
     displayName: build
@@ -33,7 +57,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: scripts/install_linux_apt.sh intel-oneapi-icc
+  - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh c++
     displayName: build
@@ -42,7 +66,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: scripts/install_linux_apt.sh intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
+  - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh fortran
     displayName: build
@@ -51,7 +75,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: scripts/install_linux_apt.sh intel-oneapi-dpcpp-compiler
+  - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh dpc++
     displayName: build
@@ -84,7 +108,7 @@ jobs:
   pool:
     vmImage: 'macOS-latest'
   steps:
-  - script: scripts/install_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.cpp-compiler
+  - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_CPP_COMPONENTS)
     displayName: install
   - script: scripts/build_macos.sh c++
     displayName: build
@@ -93,7 +117,7 @@ jobs:
   pool:
     vmImage: 'macOS-latest'
   steps:
-  - script: scripts/install_macos.sh https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg intel.oneapi.mac.ifort-compiler
+  - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_FORTRAN_COMPONENTS)
     displayName: install
   - script: scripts/build_macos.sh fortran
     displayName: build
