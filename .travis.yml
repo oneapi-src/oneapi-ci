@@ -25,7 +25,7 @@ jobs:
     - name: build_linux_apt_fortran
       os: linux
       dist: bionic
-      install: scripts/install_linux_apt.sh intel-oneapi-ifort
+      install: scripts/install_linux_apt.sh intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
       script: scripts/build_linux.sh fortran
         
     - name: build_linux_apt_dpcpp

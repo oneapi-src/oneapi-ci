@@ -60,7 +60,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install
-      run: scripts/install_linux_apt.sh intel-oneapi-ifort
+      run: scripts/install_linux_apt.sh intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
     - name: build
       run: scripts/build_linux.sh fortran
       

@@ -42,7 +42,7 @@ build_linux_apt_fortran:
   image: ubuntu:latest
   stage: build
   script:
-    - . scripts/install_linux_apt_no_sudo.sh intel-oneapi-ifort
+    - . scripts/install_linux_apt_no_sudo.sh intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
     - scripts/build_linux.sh fortran
 
 build_linux_apt_dpcpp:

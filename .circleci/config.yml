@@ -62,7 +62,7 @@ jobs:
       - checkout
       - run:
           name: install
-          command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-ifort
+          command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
       - run:
           name: build
           command: scripts/build_linux.sh fortran

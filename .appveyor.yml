@@ -62,7 +62,7 @@ for:
       only:
         - job_name: build_linux_apt_fortran
     install:
-      sh: scripts/install_linux_apt.sh intel-oneapi-ifort
+      sh: scripts/install_linux_apt.sh intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
     build_script:
       sh: scripts/build_linux.sh fortran
   -

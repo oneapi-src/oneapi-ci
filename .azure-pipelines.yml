@@ -42,7 +42,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: scripts/install_linux_apt.sh intel-oneapi-ifort
+  - script: scripts/install_linux_apt.sh intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
     displayName: install
   - script: scripts/build_linux.sh fortran
     displayName: build
