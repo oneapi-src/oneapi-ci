@@ -2,6 +2,11 @@
 
 COMPONENTS=$(echo $1 | sed "s/,/ /g")
 
+if ! command -v sudo &> /dev/null
+then
+    alias sudo=''
+fi
+
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
 sudo apt-get install -y wget build-essential pkg-config cmake ca-certificates gnupg
