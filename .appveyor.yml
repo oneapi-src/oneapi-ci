@@ -21,31 +21,17 @@ for:
       only:
         - job_name: build_windows_cpp
     install:
-      cmd: |
-        curl.exe --output w_hpckit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
-        start /wait ./w_hpckit.exe -s -x -f w_hpckit_extracted
-        start /wait w_hpckit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.cpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
+      cmd: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.cpp-compiler
     build_script:
-    - cmd: |
-        cd src
-        cd c++
-        "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
-        nmake /f Makefile.nmake
+    - cmd: scripts/build_windows.bat c++
   -
     matrix:
       only:
         - job_name: build_windows_dpcpp
     install:
-      cmd: |
-        curl.exe --output w_basekit.exe --url https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
-        start /wait ./w_basekit.exe -s -x -f w_basekit_extracted
-        start /wait w_basekit_extracted/bootstrapper.exe -s --action install --components=intel.oneapi.win.dpcpp-compiler --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
+      cmd: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe intel.oneapi.win.dpcpp-compiler
     build_script:
-    - cmd: |
-        cd src
-        cd dpc++
-        "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
-        nmake /f Makefile.nmake
+    - cmd: scripts/build_windows.bat dpc++
   -
     matrix:
       only:
