@@ -23,7 +23,7 @@ for:
     install:
       cmd: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe intel.oneapi.win.cpp-compiler
     build_script:
-    - cmd: scripts/build_windows.bat c++
+      cmd: scripts/build_windows.bat c++
   -
     matrix:
       only:
@@ -31,7 +31,7 @@ for:
     install:
       cmd: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe intel.oneapi.win.dpcpp-compiler
     build_script:
-    - cmd: scripts/build_windows.bat dpc++
+      cmd: scripts/build_windows.bat dpc++
   -
     matrix:
       only:
@@ -79,7 +79,7 @@ for:
         hdiutil attach m_hpckit.dmg
         sudo /Volumes/m_HPCKit_b_2021.1.8.1885/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components=intel.oneapi.mac.cpp-compiler --eula=accept --continue-with-optional-error=yes
     build_script:
-    - sh: |
+      sh: |
         cd src/c++
         source /opt/intel/oneapi/setvars.sh
         make -f Makefile.macos
