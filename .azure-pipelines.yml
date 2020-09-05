@@ -25,6 +25,15 @@ variables:
   - name: MACOS_FORTRAN_COMPONENTS
     value: intel.oneapi.mac.ifort-compiler
 
+resources:
+    containers:
+      - container: oneapi-hpckit
+        image: intel/oneapi-hpckit:latest
+        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
+      - container: oneapi-basekit
+        image: intel/oneapi-basekit:latest
+        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
+        
 jobs:
 - job: build_windows_cpp
   pool:
@@ -83,11 +92,6 @@ jobs:
 - job: build_linux_container_cpp
   pool:
     vmImage: 'ubuntu-latest'
-  resources:
-    containers:
-      - container: oneapi-hpckit
-        image: intel/oneapi-hpckit:latest
-        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
   container: oneapi-hpckit
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
@@ -98,11 +102,6 @@ jobs:
 - job: build_linux_container_fortran
   pool:
     vmImage: 'ubuntu-latest'
-  resources:
-    containers:
-      - container: oneapi-hpckit
-        image: intel/oneapi-hpckit:latest
-        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
   container: oneapi-hpckit
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
@@ -113,11 +112,6 @@ jobs:
 - job: build_linux_container_dpcpp
   pool:
     vmImage: 'ubuntu-latest'
-  resources:
-    containers:
-      - container: oneapi-basekit
-        image: intel/oneapi-basekit:latest
-        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
   container: oneapi-basekit
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
