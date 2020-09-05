@@ -26,18 +26,22 @@ icl -O2 src\intrin_ftz_sample.cpp
 intrin_dot_sample.exe
 intrin_double_sample.exe
 intrin_ftz_sample.exe
+set RESULT=%ERRORLEVEL%
 goto exit
 
 :fortran
 cd oneAPI-samples\DirectProgramming\Fortran\CombinationalLogic\openmp-primes
 ifort -O2 -fpp -qopenmp src\openmp_sample.f90
 openmp_sample.exe
+set RESULT=%ERRORLEVEL%
 goto exit
 
 :dpcpp
 cd oneAPI-samples\DirectProgramming\DPC++\DenseLinearAlgebra\vector-add
 nmake -f Makefile.win
 nmake -f Makefile.win run
+set RESULT=%ERRORLEVEL%
 goto exit
 
 :exit
+exit /b %RESULT%
