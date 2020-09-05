@@ -2,6 +2,17 @@
 
 LANGUAGE=$1
 
-cd src/$LANGUAGE
+git clone https://github.com/oneapi-src/oneAPI-samples.git
+
 source /opt/intel/oneapi/setvars.sh
-make -f Makefile.macos
+
+case $LANGUAGE in
+c++)
+  cd oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics
+  make && make run
+  ;;
+fortran)
+  cd oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes
+  make && make run
+  ;;
+esac
