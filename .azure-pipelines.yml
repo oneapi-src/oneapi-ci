@@ -85,24 +85,30 @@ jobs:
     vmImage: 'ubuntu-latest'
   container: intel/oneapi-hpckit:latest
   steps:
-  - script: scripts/build_linux.sh c++
-    displayName: build
+    - script: apt update && apt install -y git
+      displayName: install_git
+    - script: scripts/build_linux.sh c++
+      displayName: build
     
 - job: build_linux_container_fortran
   pool:
     vmImage: 'ubuntu-latest'
   container: intel/oneapi-hpckit:latest
   steps:
-  - script: scripts/build_linux.sh fortran
-    displayName: build
+    - script: apt update && apt install -y git
+      displayName: install_git
+    - script: scripts/build_linux.sh fortran
+      displayName: build
 
 - job: build_linux_container_dpcpp
   pool:
     vmImage: 'ubuntu-latest'
   container: intel/oneapi-basekit:latest
   steps:
-  - script: scripts/build_linux.sh dpc++
-    displayName: build
+    - script: apt update && apt install -y git
+      displayName: install_git
+    - script: scripts/build_linux.sh dpc++
+      displayName: build
 
 - job: build_macOS_cpp
   pool:
