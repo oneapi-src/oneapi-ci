@@ -56,7 +56,7 @@ jobs:
           packages:
             - docker-ce
       install: docker pull intel/oneapi-hpckit
-      script: docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-hpckit scripts/build_linux.sh c++
+      script: docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-hpckit /bin/bash -c "apt update && apt install git && scripts/build_linux.sh c++"
       
     - name: build_linux_container_fortran
       os: linux
@@ -67,7 +67,7 @@ jobs:
           packages:
             - docker-ce
       install: docker pull intel/oneapi-hpckit
-      script: docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-hpckit scripts/build_linux.sh fortran
+      script: docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-hpckit /bin/bash -c "apt update && apt install git && scripts/build_linux.sh fortran"
         
     - name: build_linux_container_dpcpp
       os: linux
@@ -78,7 +78,7 @@ jobs:
           packages:
             - docker-ce
       install: docker pull intel/oneapi-basekit
-      script: docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-basekit scripts/build_linux.sh dpc++
+      script: docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-basekit /bin/bash -c "apt update && apt install git && scripts/build_linux.sh dpc++"
         
     - name: build_mac_cpp
       os: osx

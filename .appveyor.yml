@@ -94,7 +94,7 @@ for:
       - docker
     build_script:
       - docker pull intel/oneapi-hpckit
-      - docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-hpckit scripts/build_linux.sh c++
+      - docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-hpckit /bin/bash -c "apt update && apt install git && scripts/build_linux.sh c++"
   -
     matrix:
       only:
@@ -103,7 +103,7 @@ for:
       - docker
     build_script:
       - docker pull intel/oneapi-hpckit
-      - docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-hpckit scripts/build_linux.sh fortran
+      - docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-hpckit /bin/bash -c "apt update && apt install git && scripts/build_linux.sh fortran"
   -
     matrix:
       only:
@@ -112,7 +112,7 @@ for:
       - docker
     build_script:
       - docker pull intel/oneapi-basekit
-      - docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-basekit scripts/build_linux.sh dpc++
+      - docker run -w=/tmp/ci -v $(pwd):/tmp/ci intel/oneapi-basekit /bin/bash -c "apt update && apt install git && scripts/build_linux.sh dpc++"
   -
     matrix:
       only:
