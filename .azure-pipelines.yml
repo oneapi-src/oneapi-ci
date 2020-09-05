@@ -83,9 +83,14 @@ jobs:
 - job: build_linux_container_cpp
   pool:
     vmImage: 'ubuntu-latest'
-  container: intel/oneapi-hpckit:latest
+  resources:
+    containers:
+      - container: oneapi-hpckit
+        image: intel/oneapi-hpckit:latest
+        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
+  container: oneapi-hpckit
   steps:
-    - script: ps aux | grep dpkg && ps aux | grep apt && apt-get update && apt-get install -y git
+    - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
     - script: scripts/build_linux.sh c++
       displayName: build
@@ -93,9 +98,14 @@ jobs:
 - job: build_linux_container_fortran
   pool:
     vmImage: 'ubuntu-latest'
-  container: intel/oneapi-hpckit:latest
+  resources:
+    containers:
+      - container: oneapi-hpckit
+        image: intel/oneapi-hpckit:latest
+        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
+  container: oneapi-hpckit
   steps:
-    - script: ps aux | grep dpkg && ps aux | grep apt && apt-get update && apt-get install -y git
+    - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
     - script: scripts/build_linux.sh fortran
       displayName: build
@@ -103,9 +113,14 @@ jobs:
 - job: build_linux_container_dpcpp
   pool:
     vmImage: 'ubuntu-latest'
-  container: intel/oneapi-basekit:latest
+  resources:
+    containers:
+      - container: oneapi-basekit
+        image: intel/oneapi-basekit:latest
+        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
+  container: oneapi-basekit
   steps:
-    - script: ps aux | grep dpkg && ps aux | grep apt && apt-get update && apt-get install -y git
+    - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
     - script: scripts/build_linux.sh dpc++
       displayName: build
