@@ -53,7 +53,7 @@ jobs:
           command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-icc
       - run:
           name: build
-          command: scripts/build_linux.sh c++
+          command: . scripts/build_linux.sh c++
           
   build_linux_apt_fortran:
     docker:
@@ -65,7 +65,7 @@ jobs:
           command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
       - run:
           name: build
-          command: scripts/build_linux.sh fortran
+          command: . scripts/build_linux.sh fortran
             
   build_linux_apt_dpcpp:
     docker:
@@ -77,12 +77,15 @@ jobs:
           command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-dpcpp-compiler
       - run:
           name: build
-          command: scripts/build_linux.sh dpc++
+          command: . scripts/build_linux.sh dpc++
             
   build_linux_container_cpp:
     docker:
       - image: intel/oneapi-hpckit
     steps:
+      - run:
+          name: install_git
+          command: apt install -y git
       - checkout
       - run:
           name: build
@@ -92,6 +95,9 @@ jobs:
     docker:
       - image: intel/oneapi-hpckit
     steps:
+      - run:
+          name: install_git
+          command: apt install -y git
       - checkout
       - run:
           name: build
@@ -101,6 +107,9 @@ jobs:
     docker:
       - image: intel/oneapi-basekit
     steps:
+      - run:
+          name: install_git
+          command: apt install -y git
       - checkout
       - run:
           name: build
