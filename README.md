@@ -13,7 +13,7 @@
 2. Integration of Intel(R) oneAPI Toolkit Containers in the CI systems.
 3. Building of Code samples for Intel(R) oneAPI toolkits in 3 different languages: C++, Fortran and DPC++.
 
-> The repo also scripts that can be used in CI configurations to collect detailed installation logs in case of any installation issues. Replace calls to "install" scripts with calls to "install_debug" or "install_debug_hang" scripts to use this functionality).
+> The repo also contains scripts that can be used in CI configurations to collect detailed installation logs in case of any installation issues. Replace calls to "install" scripts with calls to "install_debug" or "install_debug_hang" scripts to use this functionality).
 
 #### Summary of what's included and the status of CI builds is provided in the table below. 
 
