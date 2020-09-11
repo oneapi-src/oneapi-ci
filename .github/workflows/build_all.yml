@@ -1,0 +1,145 @@
+name: build_all
+
+on:
+  push
+
+env:
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg
+  WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
+  WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
+  WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
+  LINUX_CPP_COMPONENTS: intel-oneapi-icc
+  LINUX_FORTRAN_COMPONENTS: intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta08
+  LINUX_DPCPP_COMPONENTS: intel-oneapi-dpcpp-compiler
+  MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
+  MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
+  
+jobs:
+  build_windows_cpp:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
+    - name: build
+      run: scripts/build_windows.bat c++
+      
+  build_windows_fortran:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
+    - name: build
+      run: scripts/build_windows.bat fortran
+        
+  build_windows_dpcpp:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+    - name: build
+      run: scripts/build_windows.bat dpc++
+        
+  build_linux_apt_cpp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
+    - name: build
+      run: scripts/build_linux.sh c++
+      
+  build_linux_apt_fortran:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
+    - name: build
+      run: scripts/build_linux.sh fortran
+      
+  build_linux_apt_dpcpp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
+    - name: build
+      run: scripts/build_linux.sh dpc++
+      
+  build_linux_container_cpp:
+    runs-on: ubuntu-latest
+    container: intel/oneapi-hpckit
+    steps:
+      - uses: actions/checkout@v2
+      - name: install_git
+        run: apt update && apt install -y git
+      - name: build
+        run: scripts/build_linux.sh c++
+      
+  build_linux_container_fortran:
+    runs-on: ubuntu-latest
+    container: intel/oneapi-hpckit
+    steps:
+      - uses: actions/checkout@v2
+      - name: install_git
+        run: apt update && apt install -y git
+      - name: build
+        run: scripts/build_linux.sh fortran
+      
+  build_linux_container_dpcpp:
+    runs-on: ubuntu-latest
+    container: intel/oneapi-basekit
+    steps:
+      - uses: actions/checkout@v2
+      - name: install_git
+        run: apt update && apt install -y git
+      - name: build
+        run: scripts/build_linux.sh dpc++
+      
+  build_macos_cpp:
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
+    - name: build
+      run: scripts/build_macos.sh c++
+      
+  build_macos_fortran:
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
+    - name: build
+      run: scripts/build_macos.sh fortran
+      

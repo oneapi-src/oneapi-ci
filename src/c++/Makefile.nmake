@@ -1,0 +1,3 @@
+hello.exe: hello.cpp
+ icl hello.cpp
+ hello.exe

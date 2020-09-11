@@ -1,0 +1,3 @@
+hello.exe: hello.f90
+ ifort hello.f90
+ hello.exe
