@@ -7,7 +7,7 @@ demonstrate installing Intel\ |r| oneAPI toolkit components and building
 applications:
 
 ===============  ===========================================
-Compilers        icpc, ifort, dpcpp
+Compilers        icc, ifort, dpcpp
 OS platforms     Linux, Windows, MacOS
 Install methods  Intel\ |r| installer, apt, docker container
 ===============  ===========================================
