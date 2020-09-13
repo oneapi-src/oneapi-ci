@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
 LANGUAGE=$1
 
 git clone https://github.com/oneapi-src/oneAPI-samples.git

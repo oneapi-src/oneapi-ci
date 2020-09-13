@@ -1,3 +1,7 @@
+REM SPDX-FileCopyrightText: 2020 Intel Corporation
+REM
+REM SPDX-License-Identifier: MIT
+
 set LANGUAGE=%1
 set VS_VER=%2
 

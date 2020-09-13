@@ -1,3 +1,7 @@
+.. SPDX-FileCopyrightText: 2020 Intel Corporation
+..
+.. SPDX-License-Identifier: CC-BY-4.0
+
 ============================
 Intel\ |r| oneAPI CI Samples
 ============================
@@ -11,6 +15,9 @@ Compilers        icc, ifort, dpcpp
 OS platforms     Linux, Windows, MacOS
 Install methods  Intel\ |r| installer, apt, docker container
 ===============  ===========================================
+
+The config files show examples of all supported configurations. Delete
+the ones you do not want.
 
 Status
 ======

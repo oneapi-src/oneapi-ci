@@ -1,3 +1,7 @@
+REM SPDX-FileCopyrightText: 2020 Intel Corporation
+REM
+REM SPDX-License-Identifier: MIT
+
 set URL=%1
 set COMPONENTS=%2
 

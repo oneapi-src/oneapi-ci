@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
 FC       = ifort
 F_SAMPLE = hello
 

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2020 Intel Corporation
+//
+// SPDX-License-Identifier: MIT
+
 #include <iostream>
 using namespace std;
 

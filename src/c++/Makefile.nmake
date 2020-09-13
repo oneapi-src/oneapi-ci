@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
 hello.exe: hello.cpp
  icl hello.cpp
  hello.exe
