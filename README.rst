@@ -6,6 +6,10 @@
 Intel\ |r| oneAPI CI Samples
 ============================
 
+.. image:: https://api.reuse.software/badge/github.com/oneapi-src/oneapi-ci
+   :target: https://api.reuse.software/info/github.com/oneapi-src/oneapi-ci
+   :alt: REUSE status
+
 This repo contains sample Public/Cloud CI configurations that
 demonstrate installing Intel\ |r| oneAPI toolkit components and building
 applications:
@@ -69,16 +73,22 @@ functionality.
 
 .. |TravisStatus| image:: https://travis-ci.org/oneapi-src/oneapi-ci.svg?branch=master
    :target: https://travis-ci.org/github/oneapi-src/oneapi-ci
+   :alt: Build status
 .. |CircleStatus| image:: https://circleci.com/gh/mmzakhar/oneapi-ci.svg
    :target: https://circleci.com/gh/mmzakhar/oneapi-ci
+   :alt: Build status
 .. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/c1lc5jrl6akdb2ey?svg=true
    :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci
+   :alt: Build status
 .. |GitLabStatus| image:: https://gitlab.com/rscohn2/oneapi-ci-mirror/badges/master/pipeline.svg
    :target: https://gitlab.com/rscohn2/oneapi-ci-mirror/-/commits/master
+   :alt: Build status
 .. |GitHubStatus| image:: https://github.com/oneapi-src/oneapi-ci/workflows/build_all/badge.svg
    :target: https://github.com/oneapi-src/oneapi-ci/actions?query=workflow%3Abuild_all
+   :alt: Build status
 .. |AzureStatus| image:: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_apis/build/status/oneapi-src.oneapi-ci?branchName=master
    :target: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_build
+   :alt: Build status
 
 .. |r| unicode:: U+000AE
 .. |c| unicode:: U+2714
