@@ -71,23 +71,23 @@ functionality.
 .. _`.github/workflows/build_all.yml`: .github/workflows/build_all.yml
 .. _`.azure-pipelines.yml`: .azure-pipelines.yml
 
-.. |TravisStatus| image:: https://travis-ci.org/oneapi-src/oneapi-ci.svg?branch=master
-   :target: https://travis-ci.org/github/oneapi-src/oneapi-ci
+.. |TravisStatus| image:: https://travis-ci.com/mmzakhar/oneapi-ci.svg?branch=master
+   :target: https://travis-ci.com/github/mmzakhar/oneapi-ci
    :alt: Build status
-.. |CircleStatus| image:: https://circleci.com/gh/oneapi-src/oneapi-ci.svg
-   :target: https://circleci.com/gh/oneapi-src/oneapi-ci
+.. |CircleStatus| image:: https://circleci.com/gh/mmzakhar/oneapi-ci.svg
+   :target: https://circleci.com/gh/mmzakhar/oneapi-ci
    :alt: Build status
-.. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/c1lc5jrl6akdb2ey?svg=true
-   :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci
+.. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/y06fiwtls22x7475?svg=true
+   :target: https://ci.appveyor.com/project/mmzakhar/oneapi-ci
    :alt: Build status
-.. |GitLabStatus| image:: https://gitlab.com/rscohn2/oneapi-ci-mirror/badges/master/pipeline.svg
-   :target: https://gitlab.com/rscohn2/oneapi-ci-mirror/-/commits/master
+.. |GitLabStatus| image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/master/pipeline.svg
+   :target: https://gitlab.com/mmzakhar/oneapi-ci/-/commits/master
    :alt: Build status
-.. |GitHubStatus| image:: https://github.com/oneapi-src/oneapi-ci/workflows/build_all/badge.svg
-   :target: https://github.com/oneapi-src/oneapi-ci/actions?query=workflow%3Abuild_all
+.. |GitHubStatus| image:: https://github.com/mmzakhar/oneapi-ci/workflows/build_all/badge.svg
+   :target: https://github.com/mmzakhar/oneapi-ci/actions?query=workflow%3Abuild_all
    :alt: Build status
-.. |AzureStatus| image:: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_apis/build/status/oneapi-src.oneapi-ci?branchName=master
-   :target: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_build
+.. |AzureStatus| image:: https://dev.azure.com/maximmzakharov/oneapi-ci/_apis/build/status/mmzakhar.oneapi-ci?branchName=master
+   :target: https://dev.azure.com/maximmzakharov/oneapi-ci/_build
    :alt: Build status
 
 .. |r| unicode:: U+000AE
