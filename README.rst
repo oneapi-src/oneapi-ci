@@ -74,8 +74,8 @@ functionality.
 .. |TravisStatus| image:: https://travis-ci.org/oneapi-src/oneapi-ci.svg?branch=master
    :target: https://travis-ci.org/github/oneapi-src/oneapi-ci
    :alt: Build status
-.. |CircleStatus| image:: https://circleci.com/gh/mmzakhar/oneapi-ci.svg
-   :target: https://circleci.com/gh/mmzakhar/oneapi-ci
+.. |CircleStatus| image:: https://circleci.com/gh/oneapi-src/oneapi-ci.svg
+   :target: https://circleci.com/gh/oneapi-src/oneapi-ci
    :alt: Build status
 .. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/c1lc5jrl6akdb2ey?svg=true
    :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci

@@ -5,9 +5,9 @@
 language: minimal
 env:
   global:
-    - WINDOWS_BASEKIT_URL=https://registrationcenter-download.intel.com/akdlm/irc_nas/16862/w_BaseKit_b_2021.1.8.1967.exe
-    - WINDOWS_HPCKIT_URL=https://registrationcenter-download.intel.com/akdlm/irc_nas/16863/w_HPCKit_b_2021.1.8.1882.exe
-    - MACOS_HPCKIT_URL=https://registrationcenter-download.intel.com/akdlm/irc_nas/16865/m_HPCKit_b_2021.1.8.1885.dmg
+    - WINDOWS_BASEKIT_URL=https://registrationcenter-download.intel.com/akdlm/irc_nas/16958/w_BaseKit_b_2021.1.9.2200.exe
+    - WINDOWS_HPCKIT_URL=https://registrationcenter-download.intel.com/akdlm/irc_nas/16959/w_HPCKit_b_2021.1.9.2229.exe
+    - MACOS_HPCKIT_URL=https://registrationcenter-download.intel.com/akdlm/irc_nas/16956/m_HPCKit_b_2021.1.9.2197.dmg
     - WINDOWS_CPP_COMPONENTS=intel.oneapi.win.cpp-compiler
     - WINDOWS_FORTRAN_COMPONENTS=intel.oneapi.win.ifort-compiler
     - WINDOWS_DPCPP_COMPONENTS=intel.oneapi.win.dpcpp-compiler
