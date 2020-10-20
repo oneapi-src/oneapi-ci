@@ -27,7 +27,7 @@ Sign your work
 Please use the sign-off line at the end of the patch. Your signature
 certifies that you wrote the patch or otherwise have the right to pass
 it on as an open-source patch. The rules are pretty simple: if you can
-certify the below (from https:://developercertificate.org)::
+certify `Linux Foundation Developer Certification of Origin`_ below::
 
   Developer Certificate of Origin Version 1.1
 
@@ -71,3 +71,4 @@ If you set your user.name and user.email git configs, you can sign your
 commit automatically with git commit -s.
 
 .. _licenses: LICENSES
+.. _`Linux Foundation Developer Certification of Origin`: https:://developercertificate.org
