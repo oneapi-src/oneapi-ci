@@ -95,7 +95,7 @@ jobs:
 
 - job: build_linux_container_cpp
   pool:
-    vmImage: 'ubuntu-18.04'
+    vmImage: 'ubuntu-20.04'
   container: oneapi-hpckit
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
@@ -105,7 +105,7 @@ jobs:
     
 - job: build_linux_container_fortran
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'ubuntu-20.04'
   container: oneapi-hpckit
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
@@ -115,7 +115,7 @@ jobs:
 
 - job: build_linux_container_dpcpp
   pool:
-    vmImage: 'ubuntu-14.04'
+    vmImage: 'ubuntu-20.04'
   container: oneapi-basekit
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
