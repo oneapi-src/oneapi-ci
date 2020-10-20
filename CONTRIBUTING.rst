@@ -27,7 +27,7 @@ Sign your work
 Please use the sign-off line at the end of the patch. Your signature
 certifies that you wrote the patch or otherwise have the right to pass
 it on as an open-source patch. The rules are pretty simple: if you can
-certify the below (from https:://Developercertificate.org)::
+certify the below (from https:://developercertificate.org)::
 
   Developer Certificate of Origin Version 1.1
 
