@@ -64,6 +64,25 @@ issues. Replace calls to "install" scripts with calls to
 "install_debug" or "install_debug_hang" scripts to use this
 functionality.
 
+License
+=======
+
+See licenses_
+
+Contribute
+==========
+
+See contributing_.
+
+Security
+========
+
+See `security guidelines`_.
+
+.. _licenses: LICENSES
+.. _contributing: CONTRIBUTING.rst
+.. _`security guidelines`: https://www.intel.com/content/www/us/en/security-center/default.html
+
 .. _`.travis.yml`: .travis.yml
 .. _`.circleci/config.yml`: .circleci/config.yml
 .. _`.appveyor.yml`: .appveyor.yml
