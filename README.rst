@@ -97,7 +97,7 @@ See `security guidelines`_.
    :target: https://circleci.com/gh/oneapi-src/oneapi-ci
    :alt: Build status
 .. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/c1lc5jrl6akdb2ey?svg=true
-   :target: https://ci.appveyor.com/project/rscohn2/oneapi-ci
+   :target: https://ci.appveyor.com/project/oneapi-ci/oneapi-ci
    :alt: Build status
 .. |GitLabStatus| image:: https://gitlab.com/rscohn2/oneapi-ci-mirror/badges/master/pipeline.svg
    :target: https://gitlab.com/rscohn2/oneapi-ci-mirror/-/commits/master
