@@ -32,6 +32,15 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++
+    - name: Saving install logs
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
       
   build_windows_fortran:
     runs-on: windows-latest
@@ -44,6 +53,15 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran
+    - name: Saving install logs
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
         
   build_windows_dpcpp:
     runs-on: windows-latest
@@ -56,6 +74,15 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++
+    - name: Saving install logs
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
         
   build_linux_apt_cpp:
     runs-on: ubuntu-latest
