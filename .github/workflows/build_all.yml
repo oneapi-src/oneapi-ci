@@ -161,6 +161,14 @@ jobs:
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
     - name: build
       run: scripts/build_macos.sh c++
+    - name: Saving install logs
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs
+        path: |
+          bootstrapper*
+          installer*
       
   build_macos_fortran:
     runs-on: macos-latest
@@ -173,4 +181,12 @@ jobs:
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_macos.sh fortran
+    - name: Saving install logs
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs
+        path: |
+          bootstrapper*
+          installer*
+          
       
