@@ -47,6 +47,15 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat c++
     displayName: build
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: '**/$(BuildConfiguration)/**/?(*.log)'
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs
     
 - job: build_windows_fortran
   pool:
@@ -56,6 +65,15 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat fortran
     displayName: build
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: '**/$(BuildConfiguration)/**/?(*.log)'
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs
     
 - job: build_windows_dpcpp
   pool:
@@ -65,6 +83,15 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat dpc++
     displayName: build
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: '**/$(BuildConfiguration)/**/?(*.log)'
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs
     
 - job: build_linux_apt_cpp
   pool:
@@ -131,6 +158,15 @@ jobs:
     displayName: install
   - script: scripts/build_macos.sh c++
     displayName: build
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: '**/$(BuildConfiguration)/**/?(*.log)'
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs
     
 - job: build_macOS_fortran
   pool:
@@ -140,4 +176,13 @@ jobs:
     displayName: install
   - script: scripts/build_macos.sh fortran
     displayName: build
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: '**/$(BuildConfiguration)/**/?(*.log)'
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs
     
