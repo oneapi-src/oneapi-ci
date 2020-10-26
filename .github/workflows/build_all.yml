@@ -36,7 +36,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
-        name: InstallLogs
+        name: InstallLogs_${{ github.job }}
         path: |
           extract.log
           bootstrapper*
@@ -58,7 +58,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
-        name: InstallLogs
+        name: InstallLogs_${{ github.job }}
         path: |
           extract.log
           bootstrapper*
@@ -80,7 +80,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
-        name: InstallLogs
+        name: InstallLogs_${{ github.job }}
         path: |
           extract.log
           bootstrapper*
@@ -168,7 +168,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
-        name: InstallLogs
+        name: InstallLogs_${{ github.job }}
         path: |
           bootstrapper*
           installer*
@@ -189,7 +189,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
-        name: InstallLogs
+        name: InstallLogs_${{ github.job }}
         path: |
           bootstrapper*
           installer*

@@ -22,11 +22,11 @@ jobs:
           command: scripts/build_windows.bat c++ 2017_build_tools
       - run:
           command: |
-            mkdir logs
-            cp extract* bootstrapper* installer* logs
+            mkdir InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs
           when: always
       - store_artifacts:
-          path: logs
+          path: InstallLogs
           
   build_windows_fortran:
     executor:
@@ -42,11 +42,11 @@ jobs:
           command: scripts/build_windows.bat fortran 2017_build_tools
       - run:
           command: |
-            mkdir logs
-            cp extract* bootstrapper* installer* logs
+            mkdir InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs
           when: always
       - store_artifacts:
-          path: logs
+          path: InstallLogs
           
   build_windows_dpcpp:
     executor:
@@ -62,11 +62,11 @@ jobs:
           command: scripts/build_windows.bat dpc++ 2017_build_tools
       - run:
           command: |
-            mkdir logs
-            cp extract* bootstrapper* installer* logs
+            mkdir InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs
           when: always
       - store_artifacts:
-          path: logs
+          path: InstallLogs
           
   build_linux_apt_cpp:
     docker:
