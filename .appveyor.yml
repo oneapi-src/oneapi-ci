@@ -11,7 +11,7 @@ environment:
     WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
     WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
     LINUX_CPP_COMPONENTS: intel-oneapi-icc
-    LINUX_FORTRAN_COMPONENTS: intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta09
+    LINUX_FORTRAN_COMPONENTS: intel-oneapi-ifort
     LINUX_DPCPP_COMPONENTS: intel-oneapi-dpcpp-compiler
     MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
     MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler

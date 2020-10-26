@@ -21,7 +21,7 @@ variables:
   - name: LINUX_CPP_COMPONENTS
     value: intel-oneapi-icc
   - name: LINUX_FORTRAN_COMPONENTS
-    value: intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta09
+    value: intel-oneapi-ifort
   - name: LINUX_DPCPP_COMPONENTS
     value: intel-oneapi-dpcpp-compiler
   - name: MACOS_CPP_COMPONENTS
