@@ -137,6 +137,9 @@ jobs:
 workflows:
   build-all:
     jobs:
+    - build_windows_cpp
+    - build_windows_fortran
+    - build_windows_dpcpp
     - build_linux_apt_cpp
     - build_linux_apt_fortran
     - build_linux_apt_dpcpp
