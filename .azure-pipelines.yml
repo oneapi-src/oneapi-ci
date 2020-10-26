@@ -58,7 +58,7 @@ jobs:
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_windows_fortran
   pool:
@@ -79,7 +79,7 @@ jobs:
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_windows_dpcpp
   pool:
@@ -100,7 +100,7 @@ jobs:
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_linux_apt_cpp
   pool:
@@ -177,7 +177,7 @@ jobs:
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_macOS_fortran
   pool:
@@ -197,5 +197,5 @@ jobs:
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs
+      artifactName: InstallLogs_$(Agent.JobName)
     
