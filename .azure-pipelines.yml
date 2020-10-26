@@ -50,7 +50,10 @@ jobs:
   - task: CopyFiles@2
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      contents: '**/$(BuildConfiguration)/?(*.log)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
     inputs:
@@ -68,7 +71,10 @@ jobs:
   - task: CopyFiles@2
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      contents: '**/$(BuildConfiguration)/?(*.log)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
     inputs:
@@ -86,7 +92,10 @@ jobs:
   - task: CopyFiles@2
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      contents: '**/$(BuildConfiguration)/?(*.log)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
     inputs:
@@ -161,7 +170,9 @@ jobs:
   - task: CopyFiles@2
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      contents: '**/$(BuildConfiguration)/?(*.log)'
+      contents: |
+        bootstrapper*
+        installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
     inputs:
@@ -179,7 +190,9 @@ jobs:
   - task: CopyFiles@2
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
-      contents: '**/$(BuildConfiguration)/?(*.log)'
+      contents: |
+        bootstrapper*
+        installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
     inputs:
