@@ -50,6 +50,12 @@ for:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_CPP_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat c++
+    artifacts:
+      - name: InstallLogs
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
   -
     matrix:
       only:
@@ -58,6 +64,12 @@ for:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_FORTRAN_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat fortran
+    artifacts:
+      - name: InstallLogs
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
   -
     matrix:
       only:
@@ -66,6 +78,12 @@ for:
       cmd: scripts/install_windows.bat %WINDOWS_BASEKIT_URL% %WINDOWS_DPCPP_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat dpc++
+    artifacts:
+      - name: InstallLogs
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
   -
     matrix:
       only:
@@ -90,6 +108,7 @@ for:
       sh: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     build_script:
       sh: scripts/build_linux.sh dpc++
+      
   -
     matrix:
       only:
@@ -98,6 +117,11 @@ for:
       sh: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
     build_script:
       sh: scripts/build_macos.sh c++
+    artifacts:
+      - name: InstallLogs
+        path: |
+          bootstrapper*
+          installer*
   -
     matrix:
       only:
@@ -106,4 +130,8 @@ for:
       sh: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
     build_script:
       sh: scripts/build_macos.sh fortran
-      
+    artifacts:
+      - name: InstallLogs
+        path: |
+          bootstrapper*
+          installer*

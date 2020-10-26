@@ -20,6 +20,11 @@ jobs:
       - run:
           name: build
           command: scripts/build_windows.bat c++ 2017_build_tools
+      - store_artifacts:
+          path: | 
+            extract*
+            bootstrapper*
+            installer*
           
   build_windows_fortran:
     executor:
@@ -33,6 +38,11 @@ jobs:
       - run:
           name: build
           command: scripts/build_windows.bat fortran 2017_build_tools
+      - store_artifacts:
+          path: | 
+            extract*
+            bootstrapper*
+            installer*
           
   build_windows_dpcpp:
     executor:
@@ -46,6 +56,11 @@ jobs:
       - run:
           name: build
           command: scripts/build_windows.bat dpc++ 2017_build_tools
+      - store_artifacts:
+          path: | 
+            extract*
+            bootstrapper*
+            installer*
           
   build_linux_apt_cpp:
     docker:
