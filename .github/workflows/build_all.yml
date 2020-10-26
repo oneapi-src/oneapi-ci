@@ -33,7 +33,7 @@ jobs:
     - name: build
       run: scripts/build_windows.bat c++
     - name: Saving install logs
-      if: ${{ failure() }}
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs
@@ -41,6 +41,7 @@ jobs:
           extract.log
           bootstrapper*
           installer*
+        retention-days: 7
       
   build_windows_fortran:
     runs-on: windows-latest
@@ -54,7 +55,7 @@ jobs:
     - name: build
       run: scripts/build_windows.bat fortran
     - name: Saving install logs
-      if: ${{ failure() }}
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs
@@ -62,6 +63,7 @@ jobs:
           extract.log
           bootstrapper*
           installer*
+        retention-days: 7
         
   build_windows_dpcpp:
     runs-on: windows-latest
@@ -75,7 +77,7 @@ jobs:
     - name: build
       run: scripts/build_windows.bat dpc++
     - name: Saving install logs
-      if: ${{ failure() }}
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs
@@ -83,6 +85,7 @@ jobs:
           extract.log
           bootstrapper*
           installer*
+        retention-days: 7
         
   build_linux_apt_cpp:
     runs-on: ubuntu-latest
@@ -162,13 +165,14 @@ jobs:
     - name: build
       run: scripts/build_macos.sh c++
     - name: Saving install logs
-      if: ${{ failure() }}
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs
         path: |
           bootstrapper*
           installer*
+        retention-days: 7
       
   build_macos_fortran:
     runs-on: macos-latest
@@ -182,11 +186,12 @@ jobs:
     - name: build
       run: scripts/build_macos.sh fortran
     - name: Saving install logs
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs
         path: |
           bootstrapper*
           installer*
-          
+        retention-days: 7
       
