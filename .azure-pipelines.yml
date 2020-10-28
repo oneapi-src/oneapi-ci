@@ -19,7 +19,7 @@ variables:
   - name: WINDOWS_DPCPP_COMPONENTS
     value: intel.oneapi.win.dpcpp-compiler
   - name: LINUX_CPP_COMPONENTS
-    value: intel-oneapi-dpcpp-cpp-compiler
+    value: intel-oneapi-dpcpp-cpp-compiler-pro
   - name: LINUX_FORTRAN_COMPONENTS
     value: intel-oneapi-ifort
   - name: LINUX_DPCPP_COMPONENTS

@@ -75,7 +75,7 @@ jobs:
       - checkout
       - run:
           name: install
-          command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-dpcpp-cpp-compiler
+          command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-dpcpp-cpp-compiler-pro
       - run:
           name: build
           command: scripts/build_linux.sh c++
