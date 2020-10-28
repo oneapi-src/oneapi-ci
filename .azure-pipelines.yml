@@ -7,11 +7,11 @@ trigger:
 
 variables:
   - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/16958/w_BaseKit_b_2021.1.9.2200.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260.exe
   - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/16959/w_HPCKit_b_2021.1.9.2229.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266.exe
   - name: MACOS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/16956/m_HPCKit_b_2021.1.9.2197.dmg
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-compiler
   - name: WINDOWS_FORTRAN_COMPONENTS
@@ -19,11 +19,11 @@ variables:
   - name: WINDOWS_DPCPP_COMPONENTS
     value: intel.oneapi.win.dpcpp-compiler
   - name: LINUX_CPP_COMPONENTS
-    value: intel-oneapi-icc
+    value: intel-oneapi-dpcpp-cpp-compiler-pro
   - name: LINUX_FORTRAN_COMPONENTS
-    value: intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta09
+    value: intel-oneapi-ifort
   - name: LINUX_DPCPP_COMPONENTS
-    value: intel-oneapi-dpcpp-compiler
+    value: intel-oneapi-dpcpp-cpp-compiler
   - name: MACOS_CPP_COMPONENTS
     value: intel.oneapi.mac.cpp-compiler
   - name: MACOS_FORTRAN_COMPONENTS
@@ -47,6 +47,20 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat c++
     displayName: build
+  - task: CopyFiles@2
+    condition: always()
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_windows_fortran
   pool:
@@ -56,6 +70,20 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat fortran
     displayName: build
+  - task: CopyFiles@2
+    condition: always()
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_windows_dpcpp
   pool:
@@ -65,6 +93,20 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat dpc++
     displayName: build
+  - task: CopyFiles@2
+    condition: always()
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_linux_apt_cpp
   pool:
@@ -131,6 +173,19 @@ jobs:
     displayName: install
   - script: scripts/build_macos.sh c++
     displayName: build
+  - task: CopyFiles@2
+    condition: always()
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_macOS_fortran
   pool:
@@ -140,4 +195,17 @@ jobs:
     displayName: install
   - script: scripts/build_macos.sh fortran
     displayName: build
+  - task: CopyFiles@2
+    condition: always()
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
     
