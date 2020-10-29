@@ -90,8 +90,8 @@ See `security guidelines`_.
 .. _`.github/workflows/build_all.yml`: .github/workflows/build_all.yml
 .. _`.azure-pipelines.yml`: .azure-pipelines.yml
 
-.. |TravisStatus| image:: https://travis-ci.org/oneapi-src/oneapi-ci.svg?branch=master
-   :target: https://travis-ci.org/github/oneapi-src/oneapi-ci
+.. |TravisStatus| image:: https://travis-ci.com/oneapi-src/oneapi-ci.svg?branch=master
+   :target: https://travis-ci.com/oneapi-src/oneapi-ci
    :alt: Build status
 .. |CircleStatus| image:: https://circleci.com/gh/oneapi-src/oneapi-ci.svg
    :target: https://circleci.com/gh/oneapi-src/oneapi-ci
