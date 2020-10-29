@@ -8,15 +8,15 @@ on:
   push
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/16958/w_BaseKit_b_2021.1.9.2200.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/16959/w_HPCKit_b_2021.1.9.2229.exe
-  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/16956/m_HPCKit_b_2021.1.9.2197.dmg
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266.exe
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
   WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
-  LINUX_CPP_COMPONENTS: intel-oneapi-icc
-  LINUX_FORTRAN_COMPONENTS: intel-oneapi-ifort,intel-oneapi-compiler-shared-2021.1-beta09
-  LINUX_DPCPP_COMPONENTS: intel-oneapi-dpcpp-compiler
+  LINUX_CPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler-pro
+  LINUX_FORTRAN_COMPONENTS: intel-oneapi-ifort
+  LINUX_DPCPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
   
@@ -32,6 +32,16 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
       
   build_windows_fortran:
     runs-on: windows-latest
@@ -44,6 +54,16 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
         
   build_windows_dpcpp:
     runs-on: windows-latest
@@ -56,6 +76,16 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
         
   build_linux_apt_cpp:
     runs-on: ubuntu-latest
@@ -134,6 +164,15 @@ jobs:
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
     - name: build
       run: scripts/build_macos.sh c++
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
       
   build_macos_fortran:
     runs-on: macos-latest
@@ -146,4 +185,13 @@ jobs:
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_macos.sh fortran
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
       
