@@ -25,7 +25,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: bash
+        shell: cmd
     steps:
     - uses: actions/checkout@v2
     - name: install
@@ -47,7 +47,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: bash
+        shell: cmd
     steps:
     - uses: actions/checkout@v2
     - name: install
@@ -69,7 +69,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: bash
+        shell: cmd
     steps:
     - uses: actions/checkout@v2
     - name: install
