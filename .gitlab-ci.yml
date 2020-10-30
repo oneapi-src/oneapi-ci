@@ -29,7 +29,7 @@ build_windows_cpp:
   - .shared_windows_runners
   stage: build
   script:
-    - scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
+    - scripts/install_debug_hang_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - scripts/build_windows.bat c++ 2019_build_tools
   artifacts:
     paths:
@@ -43,7 +43,7 @@ build_windows_fortran:
   - .shared_windows_runners
   stage: build
   script:
-    - scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
+    - scripts/install_debug_hang_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - scripts/build_windows.bat fortran 2019_build_tools
   artifacts:
     paths:
@@ -57,7 +57,8 @@ build_windows_dpcpp:
   - .shared_windows_runners
   stage: build
   script:
-    - scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+    - scripts/install_debug_hang_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+    - scripts/install_debug_hang_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - scripts/build_windows.bat dpc++ 2019_build_tools
   artifacts:
     paths:
