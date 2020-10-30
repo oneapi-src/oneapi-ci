@@ -32,16 +32,16 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++
-    # - name: Saving install logs
-      # if: ${{ always() }}
-      # uses: actions/upload-artifact@v2
-      # with:
-        # name: InstallLogs_${{ github.job }}
-        # path: |
-          # extract.log
-          # bootstrapper*
-          # installer*
-        # retention-days: 7
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
       
   build_windows_fortran:
     runs-on: windows-latest
@@ -54,16 +54,16 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran
-    # - name: Saving install logs
-      # if: ${{ always() }}
-      # uses: actions/upload-artifact@v2
-      # with:
-        # name: InstallLogs_${{ github.job }}
-        # path: |
-          # extract.log
-          # bootstrapper*
-          # installer*
-        # retention-days: 7
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
         
   build_windows_dpcpp:
     runs-on: windows-latest
@@ -76,16 +76,16 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++
-    # - name: Saving install logs
-      # if: ${{ always() }}
-      # uses: actions/upload-artifact@v2
-      # with:
-        # name: InstallLogs_${{ github.job }}
-        # path: |
-          # extract.log
-          # bootstrapper*
-          # installer*
-        # retention-days: 7
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
         
   build_linux_apt_cpp:
     runs-on: ubuntu-latest

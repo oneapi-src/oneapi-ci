@@ -56,11 +56,11 @@ jobs:
         bootstrapper*
         installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
-  # - task: PublishBuildArtifacts@1
-    # condition: always()
-    # inputs:
-      # pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      # artifactName: InstallLogs_$(Agent.JobName)
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_windows_fortran
   pool:
@@ -79,11 +79,11 @@ jobs:
         bootstrapper*
         installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
-  # - task: PublishBuildArtifacts@1
-    # condition: always()
-    # inputs:
-      # pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      # artifactName: InstallLogs_$(Agent.JobName)
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_windows_dpcpp
   pool:
@@ -102,11 +102,11 @@ jobs:
         bootstrapper*
         installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
-  # - task: PublishBuildArtifacts@1
-    # condition: always()
-    # inputs:
-      # pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      # artifactName: InstallLogs_$(Agent.JobName)
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_linux_apt_cpp
   pool:
