@@ -8,6 +8,8 @@ stages:
 variables:
   WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260.exe
   WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266.exe
+  WINDOWS_BASEKIT_URL_BETA09: https://registrationcenter-download.intel.com/akdlm/irc_nas/16958/w_BaseKit_b_2021.1.9.2200.exe
+  WINDOWS_HPCKIT_URL_BETA09: https://registrationcenter-download.intel.com/akdlm/irc_nas/16959/w_HPCKit_b_2021.1.9.2229.exe
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
@@ -28,6 +30,7 @@ build_windows_cpp:
   extends:
   - .shared_windows_runners
   stage: build
+  timeout: 10m
   script:
     - scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - scripts/build_windows.bat c++ 2019_build_tools
@@ -42,6 +45,7 @@ build_windows_fortran:
   extends:
   - .shared_windows_runners
   stage: build
+  timeout: 10m
   script:
     - scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - scripts/build_windows.bat fortran 2019_build_tools
@@ -56,8 +60,54 @@ build_windows_dpcpp:
   extends:
   - .shared_windows_runners
   stage: build
+  timeout: 10m
   script:
     - scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+    - scripts/build_windows.bat dpc++ 2019_build_tools
+  artifacts:
+    paths:
+      - extract.log
+      - bootstrapper*
+      - installer*
+    expire_in: 1 week
+    
+build_windows_cpp_beta09:
+  extends:
+  - .shared_windows_runners
+  stage: build
+  timeout: 10m
+  script:
+    - scripts/install_windows.bat $WINDOWS_HPCKIT_URL_BETA09 $WINDOWS_CPP_COMPONENTS
+    - scripts/build_windows.bat c++ 2019_build_tools
+  artifacts:
+    paths:
+      - extract.log
+      - bootstrapper*
+      - installer*
+    expire_in: 1 week
+    
+build_windows_fortran_beta09:
+  extends:
+  - .shared_windows_runners
+  stage: build
+  timeout: 10m
+  script:
+    - scripts/install_windows.bat $WINDOWS_HPCKIT_URL_BETA09 $WINDOWS_FORTRAN_COMPONENTS
+    - scripts/build_windows.bat fortran 2019_build_tools
+  artifacts:
+    paths:
+      - extract.log
+      - bootstrapper*
+      - installer*
+    expire_in: 1 week
+    
+build_windows_dpcpp_beta09:
+  extends:
+  - .shared_windows_runners
+  stage: build
+  timeout: 10m
+  script:
+    - scripts/install_windows.bat $WINDOWS_BASEKIT_URL_BETA09 $WINDOWS_DPCPP_COMPONENTS
     - scripts/build_windows.bat dpc++ 2019_build_tools
   artifacts:
     paths:
