@@ -56,7 +56,8 @@ jobs:
           extract.log
           bootstrapper*
           installer*
-          screenshot.png
+          screenshot1.png
+          screenshot2.png
         retention-days: 7
       
   build_windows_fortran:
@@ -92,7 +93,8 @@ jobs:
           extract.log
           bootstrapper*
           installer*
-          screenshot.png
+          screenshot1.png
+          screenshot2.png
         retention-days: 7
         
   build_windows_dpcpp:
@@ -128,7 +130,8 @@ jobs:
           extract.log
           bootstrapper*
           installer*
-          screenshot.png
+          screenshot1.png
+          screenshot2.png
         retention-days: 7
         
   build_windows_cpp_beta09:
