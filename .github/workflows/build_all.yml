@@ -28,11 +28,11 @@ jobs:
     timeout-minutes: 10
     defaults:
       run:
-        shell: cmd
+        shell: bash
     steps:
     - uses: actions/checkout@v2
     - name: install
-      run: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_CPP_COMPONENTS%
+      run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++
     - name: take screenshot
@@ -55,11 +55,11 @@ jobs:
     timeout-minutes: 10
     defaults:
       run:
-        shell: cmd
+        shell: bash
     steps:
     - uses: actions/checkout@v2
     - name: install
-      run: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_FORTRAN_COMPONENTS%
+      run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran
     - name: take screenshot
@@ -82,11 +82,11 @@ jobs:
     timeout-minutes: 10
     defaults:
       run:
-        shell: cmd
+        shell: bash
     steps:
     - uses: actions/checkout@v2
     - name: install
-      run: scripts/install_windows.bat %WINDOWS_BASEKIT_URL% %WINDOWS_DPCPP_COMPONENTS%
+      run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++
     - name: take screenshot
@@ -109,11 +109,11 @@ jobs:
     timeout-minutes: 10
     defaults:
       run:
-        shell: cmd
+        shell: bash
     steps:
     - uses: actions/checkout@v2
     - name: install
-      run: scripts/install_windows.bat %WINDOWS_HPCKIT_URL_BETA09% %WINDOWS_CPP_COMPONENTS%
+      run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL_BETA09 $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++
     - name: Saving install logs
@@ -132,11 +132,11 @@ jobs:
     timeout-minutes: 10
     defaults:
       run:
-        shell: cmd
+        shell: bash
     steps:
     - uses: actions/checkout@v2
     - name: install
-      run: scripts/install_windows.bat %WINDOWS_HPCKIT_URL_BETA09% %WINDOWS_FORTRAN_COMPONENTS%
+      run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL_BETA09 $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran
     - name: Saving install logs
@@ -155,11 +155,11 @@ jobs:
     timeout-minutes: 10
     defaults:
       run:
-        shell: cmd
+        shell: bash
     steps:
     - uses: actions/checkout@v2
     - name: install
-      run: scripts/install_windows.bat %WINDOWS_BASEKIT_URL_BETA09% %WINDOWS_DPCPP_COMPONENTS%
+      run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL_BETA09 $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++
     - name: Saving install logs
