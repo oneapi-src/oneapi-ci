@@ -35,6 +35,9 @@ jobs:
       run: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_CPP_COMPONENTS%
     - name: build
       run: scripts/build_windows.bat c++
+    - name: take screenshot
+      if: ${{ always() }}
+      run: scripts/take_screenshot.bat
     - name: Saving install logs
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
@@ -44,6 +47,7 @@ jobs:
           extract.log
           bootstrapper*
           installer*
+          screenshot.png
         retention-days: 7
       
   build_windows_fortran:
@@ -58,6 +62,9 @@ jobs:
       run: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_FORTRAN_COMPONENTS%
     - name: build
       run: scripts/build_windows.bat fortran
+    - name: take screenshot
+      if: ${{ always() }}
+      run: scripts/take_screenshot.bat
     - name: Saving install logs
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
@@ -67,6 +74,7 @@ jobs:
           extract.log
           bootstrapper*
           installer*
+          screenshot.png
         retention-days: 7
         
   build_windows_dpcpp:
@@ -81,6 +89,9 @@ jobs:
       run: scripts/install_windows.bat %WINDOWS_BASEKIT_URL% %WINDOWS_DPCPP_COMPONENTS%
     - name: build
       run: scripts/build_windows.bat dpc++
+    - name: take screenshot
+      if: ${{ always() }}
+      run: scripts/take_screenshot.bat
     - name: Saving install logs
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
@@ -90,6 +101,7 @@ jobs:
           extract.log
           bootstrapper*
           installer*
+          screenshot.png
         retention-days: 7
         
   build_windows_cpp_beta09:
