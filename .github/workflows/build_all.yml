@@ -35,9 +35,18 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++
+    - name: alt+tab
+      if: ${{ always() }}
+      run: wscript scripts/switch_windows.vbs
     - name: take screenshot
       if: ${{ always() }}
-      run: scripts/take_screenshot.bat
+      run: scripts/take_screenshot.bat screenshot1.png
+    - name: alt+tab
+      if: ${{ always() }}
+      run: wscript scripts/switch_windows.vbs
+    - name: take screenshot
+      if: ${{ always() }}
+      run: scripts/take_screenshot.bat screenshot2.png
     - name: Saving install logs
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
@@ -62,9 +71,18 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran
+    - name: alt+tab
+      if: ${{ always() }}
+      run: wscript scripts/switch_windows.vbs
     - name: take screenshot
       if: ${{ always() }}
-      run: scripts/take_screenshot.bat
+      run: scripts/take_screenshot.bat screenshot1.png
+    - name: alt+tab
+      if: ${{ always() }}
+      run: wscript scripts/switch_windows.vbs
+    - name: take screenshot
+      if: ${{ always() }}
+      run: scripts/take_screenshot.bat screenshot2.png
     - name: Saving install logs
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
@@ -89,9 +107,18 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++
+    - name: alt+tab
+      if: ${{ always() }}
+      run: wscript scripts/switch_windows.vbs
     - name: take screenshot
       if: ${{ always() }}
-      run: scripts/take_screenshot.bat
+      run: scripts/take_screenshot.bat screenshot1.png
+    - name: alt+tab
+      if: ${{ always() }}
+      run: wscript scripts/switch_windows.vbs
+    - name: take screenshot
+      if: ${{ always() }}
+      run: scripts/take_screenshot.bat screenshot2.png
     - name: Saving install logs
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
