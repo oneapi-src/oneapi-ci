@@ -2,6 +2,5 @@
 #
 # SPDX-License-Identifier: MIT
 
-clang-format
 git+https://github.com/fsfe/reuse-tool.git
 pre-commit
