@@ -41,18 +41,18 @@ Azure Pipelines     `.azure-pipelines.yml`_             |AzureStatus|
 Supported Configurations
 ========================
 
-===============  ===  =======  =====  ===  =======  =====  ===  =======  =====  ===  =======
-CI                    Linux APT          Linux Docker          Windows            MacOS         
----------------  -------------------  -------------------  -------------------  ------------
-\                C++  Fortran  DPC++  C++  Fortran  DPC++  C++  Fortran  DPC++  C++  Fortran
-===============  ===  =======  =====  ===  =======  =====  ===  =======  =====  ===  =======
-Travis CI        |c|  |c|      |c|    |c|  |c|      |c|    |c|  |c|      |c|    |c|      |c|
-Circle CI        |c|  |c|      |c|    |c|  |c|      |c|    |x|  |x|      |x|    |x|      |x|
-AppVeyor         |c|  |c|      |c|    |x|  |x|      |x|    |c|  |c|      |c|    |c|      |c|
-GitLab CI        |c|  |c|      |c|    |x|  |x|      |x|    |c|  |c|      |c|    |x|      |x|
-GitHub Actions   |c|  |c|      |c|    |c|  |c|      |c|    |c|  |c|      |c|    |c|      |c|
-Azure Pipelines  |c|  |c|      |c|    |c|  |c|      |c|    |c|  |c|      |c|    |c|      |c|
-===============  ===  =======  =====  ===  =======  =====  ===  =======  =====  ===  =======
+======== === ======= ===== === ======= ===== === ======= ===== === =======
+CI           Linux APT        Linux Docker        Windows         MacOS
+-------- ----------------- ----------------- ----------------- -----------
+\        C++ Fortran DPC++ C++ Fortran DPC++ C++ Fortran DPC++ C++ Fortran
+======== === ======= ===== === ======= ===== === ======= ===== === =======
+Travis   |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
+Circle   |c|   |c|    |c|  |c|   |c|    |c|  |x|   |x|    |x|  |x|   |x|
+AppVeyor |c|   |c|    |c|  |x|   |x|    |x|  |c|   |c|    |c|  |c|   |c|
+GitLab   |c|   |c|    |c|  |x|   |x|    |x|  |c|   |c|    |c|  |x|   |x|
+GitHub   |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
+Azure    |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
+======== === ======= ===== === ======= ===== === ======= ===== === =======
 
 
 Troubleshooting
