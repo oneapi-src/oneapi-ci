@@ -37,7 +37,7 @@ resources:
       - container: oneapi-basekit
         image: intel/oneapi-basekit:latest
         options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
-        
+
 jobs:
 - job: build_windows_cpp
   pool:
@@ -61,7 +61,7 @@ jobs:
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
-    
+
 - job: build_windows_fortran
   pool:
     vmImage: 'windows-latest'
@@ -84,7 +84,7 @@ jobs:
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
-    
+
 - job: build_windows_dpcpp
   pool:
     vmImage: 'windows-latest'
@@ -107,7 +107,7 @@ jobs:
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
-    
+
 - job: build_linux_apt_cpp
   pool:
     vmImage: 'ubuntu-latest'
@@ -116,7 +116,7 @@ jobs:
     displayName: install
   - script: scripts/build_linux.sh c++
     displayName: build
-    
+
 - job: build_linux_apt_fortran
   pool:
     vmImage: 'ubuntu-latest'
@@ -144,7 +144,7 @@ jobs:
       displayName: install_git
     - script: scripts/build_linux.sh c++
       displayName: build
-    
+
 - job: build_linux_container_fortran
   pool:
     vmImage: 'ubuntu-20.04'
@@ -186,7 +186,7 @@ jobs:
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
-    
+
 - job: build_macOS_fortran
   pool:
     vmImage: 'macOS-latest'
@@ -208,4 +208,3 @@ jobs:
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
-    

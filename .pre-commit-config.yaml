@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+exclude: LICENSES
+
+repos:
+-   repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+    -   id: black
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: 3.7.9
+    hooks:
+    -   id: flake8
+-   repo: https://github.com/pycqa/doc8
+    rev: master
+    hooks:
+    -   id: doc8
+-   repo: https://github.com/pycqa/isort
+    rev: develop
+    hooks:
+    -   id: isort
+-   repo: https://github.com/pocc/pre-commit-hooks
+    rev: master
+    hooks:
+    -   id: clang-format
+-   repo: https://github.com/fsfe/reuse-tool
+    rev: master
+    hooks:
+    -   id: reuse
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.7.1.1
+    hooks:
+    -   id: shellcheck
+        args: [-x, --exclude=SC2001, --exclude=SC2164]
+-   repo: https://gitlab.com/devopshq/gitlab-ci-linter
+    rev: master
+    hooks:
+    -   id: gitlab-ci-linter
