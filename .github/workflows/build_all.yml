@@ -47,7 +47,6 @@ jobs:
       
   build_windows_fortran:
     runs-on: windows-latest
-    needs: build_windows_cpp
     defaults:
       run:
         shell: bash
@@ -75,7 +74,6 @@ jobs:
         
   build_windows_dpcpp:
     runs-on: windows-latest
-    needs: build_windows_fortran
     defaults:
       run:
         shell: bash
@@ -100,7 +98,6 @@ jobs:
         
   build_linux_apt_cpp:
     runs-on: ubuntu-latest
-    needs: build_windows_dpcpp
     defaults:
       run:
         shell: bash
@@ -113,7 +110,6 @@ jobs:
       
   build_linux_apt_fortran:
     runs-on: ubuntu-latest
-    needs: build_windows_dpcpp
     defaults:
       run:
         shell: bash
@@ -126,7 +122,6 @@ jobs:
       
   build_linux_apt_dpcpp:
     runs-on: ubuntu-latest
-    needs: build_windows_dpcpp
     defaults:
       run:
         shell: bash
@@ -139,7 +134,6 @@ jobs:
       
   build_linux_container_cpp:
     runs-on: ubuntu-20.04
-    needs: build_windows_dpcpp
     container: intel/oneapi-hpckit
     steps:
       - uses: actions/checkout@v2
@@ -150,7 +144,6 @@ jobs:
       
   build_linux_container_fortran:
     runs-on: ubuntu-20.04
-    needs: build_windows_dpcpp
     container: intel/oneapi-hpckit
     steps:
       - uses: actions/checkout@v2
@@ -161,7 +154,6 @@ jobs:
       
   build_linux_container_dpcpp:
     runs-on: ubuntu-20.04
-    needs: build_windows_dpcpp
     container: intel/oneapi-basekit
     steps:
       - uses: actions/checkout@v2
@@ -172,7 +164,6 @@ jobs:
       
   build_macos_cpp:
     runs-on: macos-latest
-    needs: build_windows_dpcpp
     defaults:
       run:
         shell: bash
@@ -194,7 +185,6 @@ jobs:
       
   build_macos_fortran:
     runs-on: macos-latest
-    needs: build_windows_dpcpp
     defaults:
       run:
         shell: bash
