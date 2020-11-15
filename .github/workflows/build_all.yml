@@ -34,7 +34,7 @@ jobs:
     - name: install1
       run: curl.exe --output webimage.exe --url $WINDOWS_HPCKIT_URL --retry 5 --retry-delay 5
     - name: install2
-      run: start /b /wait webimage.exe -s -x -f webimage_extracted --log extract.log
+      run: webimage.exe -s -x -f webimage_extracted --log extract.log
     - name: install3
       run: webimage_extracted\bootstrapper.exe -s --action install --components=$WINDOWS_CPP_COMPONENTS --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0 --log-dir .
     - name: build
@@ -63,7 +63,7 @@ jobs:
     - name: install1
       run: curl.exe --output webimage.exe --url $WINDOWS_HPCKIT_URL --retry 5 --retry-delay 5
     - name: install2
-      run: start /b /wait webimage.exe -s -x -f webimage_extracted --log extract.log
+      run: webimage.exe -s -x -f webimage_extracted --log extract.log
     - name: install3
       run: webimage_extracted\bootstrapper.exe -s --action install --components=$WINDOWS_FORTRAN_COMPONENTS --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0 --log-dir .
     - name: build
@@ -95,7 +95,7 @@ jobs:
     - name: install1
       run: curl.exe --output webimage.exe --url $WINDOWS_BASEKIT_URL --retry 5 --retry-delay 5
     - name: install2
-      run: start /b /wait webimage.exe -s -x -f webimage_extracted --log extract.log
+      run: webimage.exe -s -x -f webimage_extracted --log extract.log
     - name: install3
       run: webimage_extracted\bootstrapper.exe -s --action install --components=$WINDOWS_DPCPP_COMPONENTS --eula=accept --continue-with-optional-error=yes -p=NEED_VS2017_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0 --log-dir .
     - name: build
