@@ -23,6 +23,7 @@ env:
 jobs:
   build_windows_cpp:
     runs-on: windows-latest
+    timeout-minutes: 10
     defaults:
       run:
         shell: bash
@@ -41,12 +42,11 @@ jobs:
           extract.log
           bootstrapper*
           installer*
-          screenshot1.png
-          screenshot2.png
         retention-days: 7
       
   build_windows_fortran:
     runs-on: windows-latest
+    timeout-minutes: 10
     defaults:
       run:
         shell: bash
@@ -68,12 +68,11 @@ jobs:
           extract.log
           bootstrapper*
           installer*
-          screenshot1.png
-          screenshot2.png
         retention-days: 7
         
   build_windows_dpcpp:
     runs-on: windows-latest
+    timeout-minutes: 10
     defaults:
       run:
         shell: bash
@@ -92,8 +91,6 @@ jobs:
           extract.log
           bootstrapper*
           installer*
-          screenshot1.png
-          screenshot2.png
         retention-days: 7
         
   build_linux_apt_cpp:
