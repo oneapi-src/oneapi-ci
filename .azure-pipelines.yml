@@ -40,7 +40,6 @@ resources:
         
 jobs:
 - job: build_windows_cpp
-  timeoutInMinutes: 10
   pool:
     vmImage: 'windows-latest'
   steps:
@@ -64,7 +63,6 @@ jobs:
       artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_windows_fortran
-  timeoutInMinutes: 10
   pool:
     vmImage: 'windows-latest'
   steps:
@@ -88,7 +86,6 @@ jobs:
       artifactName: InstallLogs_$(Agent.JobName)
     
 - job: build_windows_dpcpp
-  timeoutInMinutes: 10
   pool:
     vmImage: 'windows-latest'
   steps:

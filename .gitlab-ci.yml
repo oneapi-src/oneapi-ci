@@ -28,7 +28,6 @@ build_windows_cpp:
   extends:
   - .shared_windows_runners
   stage: build
-  timeout: 10m
   script:
     - scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - scripts/build_windows.bat c++ 2019_build_tools
@@ -44,7 +43,6 @@ build_windows_fortran:
   extends:
   - .shared_windows_runners
   stage: build
-  timeout: 10m
   script:
     - scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - scripts/build_windows.bat fortran 2019_build_tools
@@ -60,7 +58,6 @@ build_windows_dpcpp:
   extends:
   - .shared_windows_runners
   stage: build
-  timeout: 10m
   script:
     - scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - scripts/build_windows.bat dpc++ 2019_build_tools
