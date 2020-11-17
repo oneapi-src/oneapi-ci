@@ -10,4 +10,3 @@ COMPONENTS=$2
 curl --output webimage.dmg --url "$URL" --retry 5 --retry-delay 5
 hdiutil attach webimage.dmg
 sudo /Volumes/"$(basename "$URL" .dmg)"/bootstrapper.app/Contents/MacOS/bootstrapper -s --action install --components="$COMPONENTS" --eula=accept --continue-with-optional-error=yes --log-dir=.
-
