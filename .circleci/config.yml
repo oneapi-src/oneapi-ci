@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: install
-          command: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266.exe intel.oneapi.win.cpp-compiler
+          command: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe intel.oneapi.win.cpp-compiler
       - run:
           name: build
           command: scripts/build_windows.bat c++ 2017_build_tools
@@ -36,7 +36,7 @@ jobs:
       - checkout
       - run:
           name: install
-          command: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266.exe intel.oneapi.win.ifort-compiler
+          command: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe intel.oneapi.win.ifort-compiler
       - run:
           name: build
           command: scripts/build_windows.bat fortran 2017_build_tools
@@ -56,7 +56,7 @@ jobs:
       - checkout
       - run:
           name: install
-          command: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260.exe intel.oneapi.win.dpcpp-compiler
+          command: scripts/install_windows.bat https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe intel.oneapi.win.dpcpp-compiler
       - run:
           name: build
           command: scripts/build_windows.bat dpc++ 2017_build_tools
