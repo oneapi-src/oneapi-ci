@@ -2,5 +2,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-git+https://github.com/fsfe/reuse-tool.git
-pre-commit
+[tool.black]
+line-length = 79
+skip-string-normalization = true

@@ -41,18 +41,18 @@ Azure Pipelines     `.azure-pipelines.yml`_             |AzureStatus|
 Supported Configurations
 ========================
 
-===============  ===  =======  =====  ===  =======  =====  ===  =======  =====  ===  =======
-CI                    Linux APT          Linux Docker          Windows            MacOS         
----------------  -------------------  -------------------  -------------------  ------------
-\                C++  Fortran  DPC++  C++  Fortran  DPC++  C++  Fortran  DPC++  C++  Fortran
-===============  ===  =======  =====  ===  =======  =====  ===  =======  =====  ===  =======
-Travis CI        |c|  |c|      |c|    |c|  |c|      |c|    |c|  |c|      |c|    |c|      |c|
-Circle CI        |c|  |c|      |c|    |c|  |c|      |c|    |x|  |x|      |x|    |x|      |x|
-AppVeyor         |c|  |c|      |c|    |x|  |x|      |x|    |c|  |c|      |c|    |c|      |c|
-GitLab CI        |c|  |c|      |c|    |x|  |x|      |x|    |c|  |c|      |c|    |x|      |x|
-GitHub Actions   |c|  |c|      |c|    |c|  |c|      |c|    |c|  |c|      |c|    |c|      |c|
-Azure Pipelines  |c|  |c|      |c|    |c|  |c|      |c|    |c|  |c|      |c|    |c|      |c|
-===============  ===  =======  =====  ===  =======  =====  ===  =======  =====  ===  =======
+======== === ======= ===== === ======= ===== === ======= ===== === =======
+CI           Linux APT        Linux Docker        Windows         MacOS
+-------- ----------------- ----------------- ----------------- -----------
+\        C++ Fortran DPC++ C++ Fortran DPC++ C++ Fortran DPC++ C++ Fortran
+======== === ======= ===== === ======= ===== === ======= ===== === =======
+Travis   |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
+Circle   |c|   |c|    |c|  |c|   |c|    |c|  |x|   |x|    |x|  |x|   |x|
+AppVeyor |c|   |c|    |c|  |x|   |x|    |x|  |c|   |c|    |c|  |c|   |c|
+GitLab   |c|   |c|    |c|  |x|   |x|    |x|  |c|   |c|    |c|  |x|   |x|
+GitHub   |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
+Azure    |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
+======== === ======= ===== === ======= ===== === ======= ===== === =======
 
 
 Troubleshooting
@@ -64,6 +64,25 @@ issues. Replace calls to "install" scripts with calls to
 "install_debug" or "install_debug_hang" scripts to use this
 functionality.
 
+License
+=======
+
+See licenses_
+
+Contribute
+==========
+
+See contributing_.
+
+Security
+========
+
+See `security guidelines`_.
+
+.. _licenses: LICENSES
+.. _contributing: CONTRIBUTING.rst
+.. _`security guidelines`: https://www.intel.com/content/www/us/en/security-center/default.html
+
 .. _`.travis.yml`: .travis.yml
 .. _`.circleci/config.yml`: .circleci/config.yml
 .. _`.appveyor.yml`: .appveyor.yml
@@ -74,8 +93,8 @@ functionality.
 .. |TravisStatus| image:: https://travis-ci.com/mmzakhar/oneapi-ci.svg?branch=master
    :target: https://travis-ci.com/github/mmzakhar/oneapi-ci
    :alt: Build status
-.. |CircleStatus| image:: https://circleci.com/gh/mmzakhar/oneapi-ci.svg
-   :target: https://circleci.com/gh/mmzakhar/oneapi-ci
+.. |CircleStatus| image:: https://circleci.com/gh/oneapi-src/oneapi-ci.svg
+   :target: https://circleci.com/gh/oneapi-src/oneapi-ci
    :alt: Build status
 .. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/y06fiwtls22x7475?svg=true
    :target: https://ci.appveyor.com/project/mmzakhar/oneapi-ci
