@@ -4,8 +4,8 @@
 
 environment:
   global:
-    WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260.exe
-    WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266.exe
+    WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe
+    WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe
     MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg
     WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
     WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
@@ -50,6 +50,8 @@ for:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_CPP_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat c++
+
+    # Delete the following if you don't want to save install logs
     artifacts:
       - name: InstallLogs
         path: |
@@ -64,6 +66,8 @@ for:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_FORTRAN_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat fortran
+
+    # Delete the following if you don't want to save install logs
     artifacts:
       - name: InstallLogs
         path: |
@@ -78,6 +82,8 @@ for:
       cmd: scripts/install_windows.bat %WINDOWS_BASEKIT_URL% %WINDOWS_DPCPP_COMPONENTS%
     build_script:
       cmd: scripts/build_windows.bat dpc++
+
+    # Delete the following if you don't want to save install logs
     artifacts:
       - name: InstallLogs
         path: |
@@ -117,6 +123,8 @@ for:
       sh: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
     build_script:
       sh: scripts/build_macos.sh c++
+
+    # Delete the following if you don't want to save install logs
     artifacts:
       - name: InstallLogs
         path: |
@@ -130,6 +138,8 @@ for:
       sh: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
     build_script:
       sh: scripts/build_macos.sh fortran
+
+    # Delete the following if you don't want to save install logs
     artifacts:
       - name: InstallLogs
         path: |

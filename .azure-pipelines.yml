@@ -7,9 +7,9 @@ trigger:
 
 variables:
   - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe
   - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe
   - name: MACOS_HPCKIT_URL
     value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg
   - name: WINDOWS_CPP_COMPONENTS
@@ -47,6 +47,8 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat c++
     displayName: build
+
+  # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
     condition: always()
     inputs:
@@ -70,6 +72,8 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat fortran
     displayName: build
+
+  # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
     condition: always()
     inputs:
@@ -93,6 +97,8 @@ jobs:
     displayName: install
   - script: scripts/build_windows.bat dpc++
     displayName: build
+
+  # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
     condition: always()
     inputs:
@@ -173,6 +179,8 @@ jobs:
     displayName: install
   - script: scripts/build_macos.sh c++
     displayName: build
+
+  # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
     condition: always()
     inputs:
@@ -195,6 +203,8 @@ jobs:
     displayName: install
   - script: scripts/build_macos.sh fortran
     displayName: build
+
+  # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
     condition: always()
     inputs:
