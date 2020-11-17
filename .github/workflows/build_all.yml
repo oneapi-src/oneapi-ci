@@ -23,7 +23,6 @@ env:
 jobs:
   build_windows_cpp:
     runs-on: windows-latest
-    timeout-minutes: 30
     defaults:
       run:
         shell: cmd
@@ -53,7 +52,6 @@ jobs:
       
   build_windows_fortran:
     runs-on: windows-latest
-    timeout-minutes: 30
     defaults:
       run:
         shell: cmd
@@ -83,7 +81,6 @@ jobs:
         
   build_windows_dpcpp:
     runs-on: windows-latest
-    timeout-minutes: 30
     defaults:
       run:
         shell: cmd
