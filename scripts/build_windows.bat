@@ -15,7 +15,7 @@ IF "%VS_VER%"=="2019_build_tools" (
 
 @call "C:\Program Files (x86)\Intel\oneAPI\compiler\2021.1-beta10\env\vars.bat"
 
-git clone -–depth 1 https://github.com/oneapi-src/oneAPI-samples.git
+git clone --depth 1 https://github.com/oneapi-src/oneAPI-samples.git
 
 if "%LANGUAGE%" == "c++" goto cpp
 if "%LANGUAGE%" == "fortran" goto fortran
