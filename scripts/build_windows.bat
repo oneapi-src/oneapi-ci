@@ -13,7 +13,7 @@ IF "%VS_VER%"=="2019_build_tools" (
 @call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 )
 
-tree.com C:\Program Files (x86)\Intel\oneAPI
+tree.com "C:\Program Files (x86)\Intel\oneAPI"
 
 @call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
 
