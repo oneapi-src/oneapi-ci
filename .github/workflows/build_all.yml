@@ -138,12 +138,15 @@ jobs:
           !/opt/intel/oneapi/compiler/2021.1-beta10/linux/bin/ia32
           !/opt/intel/oneapi/compiler/2021.1-beta10/linux/lib/emu
           !/opt/intel/oneapi/compiler/2021.1-beta10/linux/lib/oclfpga
-        key: test-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-reduced-2
+        key: test-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-reduced-3
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     - name: build
       run: scripts/build_linux.sh c++
+    - name: remove unused files before caching
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/remove_unused_files.sh
 
   build_linux_apt_fortran:
     runs-on: ubuntu-latest
@@ -162,14 +165,15 @@ jobs:
       with:
         path: |
           /opt/intel/oneapi/compiler
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/compiler/lib/ia32_lin
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/bin/ia32
-        key: test-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-reduced-2
+        key: test-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-reduced-3
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_linux.sh fortran
+    - name: remove unused files before caching
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/remove_unused_files.sh
 
   build_linux_apt_dpcpp:
     runs-on: ubuntu-latest
@@ -189,16 +193,15 @@ jobs:
         path: |
           /opt/intel/oneapi/compiler
           /opt/intel/oneapi/tbb
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/compiler/lib/ia32_lin
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/bin/ia32
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/lib/emu
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/lib/oclfpga
-        key: test-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb-reduced-2
+        key: test-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb-reduced-3
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_linux.sh dpc++
+    - name: remove unused files before caching
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/remove_unused_files.sh
 
   build_linux_container_cpp:
     runs-on: ubuntu-20.04
