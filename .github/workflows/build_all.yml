@@ -132,8 +132,13 @@ jobs:
       id: cache-install
       uses: actions/cache@v2
       with:
-        path: /opt/intel/oneapi/compiler
-        key: install-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler
+        path: |
+          /opt/intel/oneapi/compiler
+          !/opt/intel/oneapi/compiler/**/linux/compiler/lib/ia32_lin
+          !/opt/intel/oneapi/compiler/**/linux/bin/ia32
+          !/opt/intel/oneapi/compiler/**/linux/lib/emu/
+          !/opt/intel/oneapi/compiler/**/linux/lib/oclfpga/
+        key: test-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-reduced-1
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
@@ -155,8 +160,11 @@ jobs:
       id: cache-install
       uses: actions/cache@v2
       with:
-        path: /opt/intel/oneapi/compiler
-        key: install-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler
+        path: |
+          /opt/intel/oneapi/compiler
+          !/opt/intel/oneapi/compiler/**/linux/compiler/lib/ia32_lin
+          !/opt/intel/oneapi/compiler/**/linux/bin/ia32
+        key: test-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-reduced-1
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
@@ -181,7 +189,11 @@ jobs:
         path: |
           /opt/intel/oneapi/compiler
           /opt/intel/oneapi/tbb
-        key: install-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb
+          !/opt/intel/oneapi/compiler/**/linux/compiler/lib/ia32_lin
+          !/opt/intel/oneapi/compiler/**/linux/bin/ia32
+          !/opt/intel/oneapi/compiler/**/linux/lib/emu/
+          !/opt/intel/oneapi/compiler/**/linux/lib/oclfpga/
+        key: test-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb-reduced-1
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS

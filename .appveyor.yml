@@ -97,7 +97,6 @@ for:
     install:
       sh: |
         scripts/setup_apt_repo_linux.sh
-        scripts/install_prerequisites_linux_apt.sh
         scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     build_script:
       sh: scripts/build_linux.sh c++
@@ -108,7 +107,6 @@ for:
     install:
       sh: |
         scripts/setup_apt_repo_linux.sh
-        scripts/install_prerequisites_linux_apt.sh
         scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     build_script:
       sh: scripts/build_linux.sh fortran
@@ -119,7 +117,6 @@ for:
     install:
       sh: |
         scripts/setup_apt_repo_linux.sh
-        scripts/install_prerequisites_linux_apt.sh
         scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     build_script:
       sh: scripts/build_linux.sh dpc++

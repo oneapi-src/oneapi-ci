@@ -120,8 +120,6 @@ jobs:
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
-  - script: scripts/install_prerequisites_linux_apt.sh
-    displayName: install prerequisites
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh c++
@@ -133,8 +131,6 @@ jobs:
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
-  - script: scripts/install_prerequisites_linux_apt.sh
-    displayName: install prerequisites
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh fortran
@@ -146,8 +142,6 @@ jobs:
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
-  - script: scripts/install_prerequisites_linux_apt.sh
-    displayName: install prerequisites
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh dpc++
