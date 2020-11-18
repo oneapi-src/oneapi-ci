@@ -95,7 +95,9 @@ for:
       only:
         - job_name: build_linux_apt_cpp
     install:
-      sh: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
+      sh: |
+        scripts/setup_apt_repo_linux.sh
+        scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     build_script:
       sh: scripts/build_linux.sh c++
   -
@@ -103,7 +105,9 @@ for:
       only:
         - job_name: build_linux_apt_fortran
     install:
-      sh: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
+      sh: |
+        scripts/setup_apt_repo_linux.sh
+        scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     build_script:
       sh: scripts/build_linux.sh fortran
   -
@@ -111,7 +115,9 @@ for:
       only:
         - job_name: build_linux_apt_dpcpp
     install:
-      sh: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
+      sh: |
+        scripts/setup_apt_repo_linux.sh
+        scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     build_script:
       sh: scripts/build_linux.sh dpc++
 

@@ -80,6 +80,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: setup apt repo
+          command: . scripts/setup_apt_repo_linux_no_sudo.sh
+      - run:
           name: install
           command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-dpcpp-cpp-compiler-pro
       - run:
@@ -92,6 +95,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: setup apt repo
+          command: . scripts/setup_apt_repo_linux_no_sudo.sh
+      - run:
           name: install
           command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-ifort
       - run:
@@ -103,6 +109,9 @@ jobs:
       - image: ubuntu:latest
     steps:
       - checkout
+      - run:
+          name: setup apt repo
+          command: . scripts/setup_apt_repo_linux_no_sudo.sh
       - run:
           name: install
           command: . scripts/install_linux_apt_no_sudo.sh intel-oneapi-dpcpp-cpp-compiler

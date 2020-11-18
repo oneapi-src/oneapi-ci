@@ -124,6 +124,8 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
       run: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
     - name: cache install
@@ -145,6 +147,8 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
       run: scripts/apt_depends.sh $LINUX_FORTRAN_COMPONENTS | tee depends.txt
     - name: cache install
@@ -166,6 +170,8 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
       run: scripts/apt_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
     - name: cache install
