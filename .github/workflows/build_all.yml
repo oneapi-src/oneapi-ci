@@ -98,7 +98,7 @@ jobs:
           C:\Program Files (x86)\Intel\oneAPI\compiler
           C:\Program Files (x86)\Intel\oneAPI\tbb
           C:\Windows\System32\OpenCL.dll
-        key: test-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl
+        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
@@ -124,7 +124,16 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: /opt/intel/oneapi
+        key: install-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}
     - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     - name: build
       run: scripts/build_linux.sh c++
@@ -136,7 +145,16 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_FORTRAN_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: /opt/intel/oneapi
+        key: install-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}
     - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_linux.sh fortran
@@ -148,7 +166,16 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: /opt/intel/oneapi
+        key: install-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}
     - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_linux.sh dpc++
