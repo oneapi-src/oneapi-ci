@@ -13,9 +13,9 @@ IF "%VS_VER%"=="2019_build_tools" (
 @call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 )
 
-@call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+@call "C:\Program Files (x86)\Intel\oneAPI\compiler\2021.1-beta10\env\vars.bat"
 
-git clone https://github.com/oneapi-src/oneAPI-samples.git
+git clone --depth 1 https://github.com/oneapi-src/oneAPI-samples.git
 
 if "%LANGUAGE%" == "c++" goto cpp
 if "%LANGUAGE%" == "fortran" goto fortran
@@ -41,6 +41,7 @@ set RESULT=%ERRORLEVEL%
 goto exit
 
 :dpcpp
+@call "C:\Program Files (x86)\Intel\oneAPI\tbb\2021.1-beta10\env\vars.bat"
 cd oneAPI-samples\DirectProgramming\DPC++\DenseLinearAlgebra\vector-add
 nmake -f Makefile.win
 nmake -f Makefile.win run
