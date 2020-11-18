@@ -13,8 +13,7 @@ IF "%VS_VER%"=="2019_build_tools" (
 @call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 )
 
-echo compiler=2021.1-beta10>config.setvars
-@call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" --config config.setvars
+@call "C:\Program Files (x86)\Intel\oneAPI\compiler\2021.1-beta10\env\vars.bat"
 
 git clone https://github.com/oneapi-src/oneAPI-samples.git
 

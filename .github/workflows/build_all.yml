@@ -32,8 +32,8 @@ jobs:
       id: cache-install
       uses: actions/cache@v2
       with:
-        path: C:\Program Files (x86)\Intel\oneAPI
-        key: test-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}
+        path: C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: test-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
@@ -63,8 +63,8 @@ jobs:
       id: cache-install
       uses: actions/cache@v2
       with:
-        path: C:\Program Files (x86)\Intel\oneAPI
-        key: test-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}
+        path: C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: test-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
@@ -94,8 +94,8 @@ jobs:
       id: cache-install
       uses: actions/cache@v2
       with:
-        path: C:\Program Files (x86)\Intel\oneAPI
-        key: test-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}
+        path: C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: test-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
