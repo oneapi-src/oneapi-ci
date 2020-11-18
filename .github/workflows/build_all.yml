@@ -198,7 +198,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /opt/intel/oneapi
-        key: test-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_CPP_COMPONENTS }}
+        key: install-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_CPP_COMPONENTS }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
@@ -232,7 +232,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /opt/intel/oneapi
-        key: test-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_FORTRAN_COMPONENTS }}
+        key: install-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_FORTRAN_COMPONENTS }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
