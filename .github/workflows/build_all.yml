@@ -28,7 +28,14 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler
     - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++
@@ -52,7 +59,14 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler
     - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran
@@ -76,7 +90,17 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          C:\Program Files (x86)\Intel\oneAPI\compiler
+          C:\Program Files (x86)\Intel\oneAPI\tbb
+          C:\Windows\System32\OpenCL.dll
+        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl
     - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++
@@ -166,7 +190,18 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: prepare for cache restore
+      run: |
+        sudo mkdir -p /opt/intel
+        sudo chown $USER /opt/intel
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: /opt/intel/oneapi
+        key: install-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_CPP_COMPONENTS }}
     - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
     - name: build
       run: scripts/build_macos.sh c++
@@ -189,7 +224,18 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: Prepare for cache restore
+      run: |
+        sudo mkdir -p /opt/intel
+        sudo chown $USER /opt/intel
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: /opt/intel/oneapi
+        key: install-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_FORTRAN_COMPONENTS }}
     - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_macos.sh fortran
