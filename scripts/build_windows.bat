@@ -42,6 +42,7 @@ goto exit
 
 :dpcpp
 @call "C:\Program Files (x86)\Intel\oneAPI\dpl\2021.1-beta10\env\vars.bat"
+@call "C:\Program Files (x86)\Intel\oneAPI\tbb\2021.1-beta10\env\vars.bat"
 cd oneAPI-samples\DirectProgramming\DPC++\DenseLinearAlgebra\vector-add
 nmake -f Makefile.win
 nmake -f Makefile.win run
