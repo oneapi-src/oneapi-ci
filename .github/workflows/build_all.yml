@@ -90,14 +90,14 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: |
-          # C:\Program Files (x86)\Intel\oneAPI\compiler
-          # C:\Program Files (x86)\Intel\oneAPI\dpl
-        # key: test-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-dpl
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          C:\Program Files (x86)\Intel\oneAPI\compiler
+          C:\Program Files (x86)\Intel\oneAPI\tbb
+        key: test-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-dpl
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
@@ -189,6 +189,8 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: prepare for cache restore
+      run: mkdir -p /opt/intel
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
@@ -219,6 +221,8 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: Prepare for cache restore
+      run: mkdir -p /opt/intel
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
