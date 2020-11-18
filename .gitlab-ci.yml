@@ -79,6 +79,7 @@ build_linux_apt_cpp:
   image: ubuntu:latest
   stage: build
   script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - . scripts/setup_apt_repo_linux_no_sudo.sh
     - . scripts/install_linux_apt_no_sudo.sh $LINUX_CPP_COMPONENTS
     - scripts/build_linux.sh c++
@@ -87,6 +88,7 @@ build_linux_apt_fortran:
   image: ubuntu:latest
   stage: build
   script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - . scripts/setup_apt_repo_linux_no_sudo.sh
     - . scripts/install_linux_apt_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
     - scripts/build_linux.sh fortran
@@ -95,6 +97,7 @@ build_linux_apt_dpcpp:
   image: ubuntu:latest
   stage: build
   script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - . scripts/setup_apt_repo_linux_no_sudo.sh
     - . scripts/install_linux_apt_no_sudo.sh $LINUX_DPCPP_COMPONENTS
     - scripts/build_linux.sh dpc++

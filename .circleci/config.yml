@@ -80,6 +80,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install prerequisites
+          command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
+      - run:
           name: setup apt repo
           command: . scripts/setup_apt_repo_linux_no_sudo.sh
       - run:
@@ -95,6 +98,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install prerequisites
+          command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
+      - run:
           name: setup apt repo
           command: . scripts/setup_apt_repo_linux_no_sudo.sh
       - run:
@@ -109,6 +115,9 @@ jobs:
       - image: ubuntu:latest
     steps:
       - checkout
+      - run:
+          name: install prerequisites
+          command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
       - run:
           name: setup apt repo
           command: . scripts/setup_apt_repo_linux_no_sudo.sh
