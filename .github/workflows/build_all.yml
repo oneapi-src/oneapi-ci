@@ -134,8 +134,6 @@ jobs:
       with:
         path: /opt/intel/oneapi/compiler
         key: install-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler
-    - name: install prerequisites
-      run: scripts/install_prerequisites_linux_apt.sh
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
@@ -159,8 +157,6 @@ jobs:
       with:
         path: /opt/intel/oneapi/compiler
         key: install-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler
-    - name: install prerequisites
-      run: scripts/install_prerequisites_linux_apt.sh
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
@@ -186,8 +182,6 @@ jobs:
           /opt/intel/oneapi/compiler
           /opt/intel/oneapi/tbb
         key: install-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb
-    - name: install prerequisites
-      run: scripts/install_prerequisites_linux_apt.sh
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS

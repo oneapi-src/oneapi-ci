@@ -38,7 +38,6 @@ jobs:
       dist: bionic
       install: |
         scripts/setup_apt_repo_linux.sh
-        scripts/install_prerequisites_linux_apt.sh
         scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
       script: scripts/build_linux.sh c++
 
@@ -47,7 +46,6 @@ jobs:
       dist: bionic
       install: |
         scripts/setup_apt_repo_linux.sh
-        scripts/install_prerequisites_linux_apt.sh
         scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
       script: scripts/build_linux.sh fortran
 
@@ -56,7 +54,6 @@ jobs:
       dist: bionic
       install: |
         scripts/setup_apt_repo_linux.sh
-        scripts/install_prerequisites_linux_apt.sh
         scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
       script: scripts/build_linux.sh dpc++
 
