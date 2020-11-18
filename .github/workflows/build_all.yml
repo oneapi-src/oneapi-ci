@@ -90,12 +90,12 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: cache install
-      id: cache-install
-      uses: actions/cache@v2
-      with:
-        path: C:\Program Files (x86)\Intel\oneAPI\compiler
-        key: test-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler
+    # - name: cache install
+      # id: cache-install
+      # uses: actions/cache@v2
+      # with:
+        # path: C:\Program Files (x86)\Intel\oneAPI\compiler
+        # key: test-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS

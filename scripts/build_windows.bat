@@ -41,6 +41,7 @@ set RESULT=%ERRORLEVEL%
 goto exit
 
 :dpcpp
+@call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
 cd oneAPI-samples\DirectProgramming\DPC++\DenseLinearAlgebra\vector-add
 nmake -f Makefile.win
 nmake -f Makefile.win run
