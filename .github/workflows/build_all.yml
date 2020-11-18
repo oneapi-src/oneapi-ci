@@ -33,7 +33,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: C:\Program Files (x86)\Intel\oneAPI
-        key: test-${{ WINDOWS_HPCKIT_URL }}-${{ WINDOWS_CPP_COMPONENTS }}
+        key: test-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
@@ -64,7 +64,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: C:\Program Files (x86)\Intel\oneAPI
-        key: test-${{ WINDOWS_HPCKIT_URL }}-${{ WINDOWS_FORTRAN_COMPONENTS }}
+        key: test-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
@@ -95,7 +95,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: C:\Program Files (x86)\Intel\oneAPI
-        key: test-${{ WINDOWS_BASEKIT_URL }}-${{ WINDOWS_DPCPP_COMPONENTS }}
+        key: test-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
@@ -192,7 +192,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /opt/intel/oneapi
-        key: test-${{ MACOS_HPCKIT_URL }}-${{ MACOS_CPP_COMPONENTS }}
+        key: test-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_CPP_COMPONENTS }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
@@ -222,7 +222,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /opt/intel/oneapi
-        key: test-${{ MACOS_HPCKIT_URL }}-${{ MACOS_FORTRAN_COMPONENTS }}
+        key: test-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_FORTRAN_COMPONENTS }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
