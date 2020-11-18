@@ -4,4 +4,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-echo $1 | sed "s/,/ /g" | xargs -n 1 apt-cache depends
+echo "$1" | sed "s/,/ /g" | xargs -n 1 apt-cache depends
