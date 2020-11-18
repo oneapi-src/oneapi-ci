@@ -190,7 +190,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: prepare for cache restore
-      run: sudo mkdir -p /opt/intel
+      run: |
+        sudo mkdir -p /opt/intel
+        sudo chown $USER /opt/intel
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
@@ -222,7 +224,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Prepare for cache restore
-      run: sudo mkdir -p /opt/intel
+      run: |
+        sudo mkdir -p /opt/intel
+        sudo chown $USER /opt/intel
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
