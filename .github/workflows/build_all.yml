@@ -28,11 +28,6 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: checkout samples
-      uses: actions/checkout@v2
-      with:
-        repository: oneapi-src/oneAPI-samples
-        path: samples
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
@@ -68,11 +63,6 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: checkout samples
-      uses: actions/checkout@v2
-      with:
-        repository: oneapi-src/oneAPI-samples
-        path: samples
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
@@ -108,11 +98,6 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: checkout samples
-      uses: actions/checkout@v2
-      with:
-        repository: oneapi-src/oneAPI-samples
-        path: samples
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
@@ -151,11 +136,6 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: checkout samples
-      uses: actions/checkout@v2
-      with:
-        repository: oneapi-src/oneAPI-samples
-        path: samples
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
@@ -187,11 +167,6 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: checkout samples
-      uses: actions/checkout@v2
-      with:
-        repository: oneapi-src/oneAPI-samples
-        path: samples
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
@@ -219,11 +194,6 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: checkout samples
-      uses: actions/checkout@v2
-      with:
-        repository: oneapi-src/oneAPI-samples
-        path: samples
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
