@@ -58,11 +58,8 @@ Azure    |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
 Troubleshooting
 ===============
 
-The repo contains scripts that can be used in CI configurations to
-collect detailed installation logs in case of installation
-issues. Replace calls to "install" scripts with calls to
-"install_debug" or "install_debug_hang" scripts to use this
-functionality.
+Detailed install logs are saved as artefacts in most CI jobs.
+Those logs can be helpful in case of installation issues.
 
 License
 =======
