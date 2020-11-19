@@ -146,10 +146,6 @@ jobs:
       with:
         path: |
           /opt/intel/oneapi/compiler
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/compiler/lib/ia32_lin
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/bin/ia32
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/lib/emu
-          !/opt/intel/oneapi/compiler/2021.1-beta10/linux/lib/oclfpga
         key: install-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
