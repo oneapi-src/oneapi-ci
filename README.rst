@@ -58,7 +58,7 @@ Azure    |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
 Troubleshooting
 ===============
 
-Detailed install logs are saved as artefacts in most CI jobs.
+Detailed install logs are saved as artifacts in most CI jobs.
 Those logs can be helpful in case of installation issues.
 
 License
