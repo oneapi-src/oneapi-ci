@@ -33,7 +33,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: C:\Program Files (x86)\Intel\oneAPI\compiler
-        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.bat') }}
+        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
@@ -41,7 +41,7 @@ jobs:
       run: scripts/build_windows.bat c++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_windows.bat
+      run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
@@ -67,7 +67,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: C:\Program Files (x86)\Intel\oneAPI\compiler
-        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.bat') }}
+        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
@@ -75,7 +75,7 @@ jobs:
       run: scripts/build_windows.bat fortran
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_windows.bat
+      run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
@@ -104,7 +104,7 @@ jobs:
           C:\Program Files (x86)\Intel\oneAPI\compiler
           C:\Program Files (x86)\Intel\oneAPI\tbb
           C:\Windows\System32\OpenCL.dll
-        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.bat') }}
+        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
@@ -112,7 +112,7 @@ jobs:
       run: scripts/build_windows.bat dpc++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_windows.bat
+      run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
