@@ -28,6 +28,11 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: checkout samples
+      uses: actions/checkout@v2
+      with:
+        repository: oneapi-src/oneAPI-samples
+        path: samples
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
@@ -41,6 +46,7 @@ jobs:
       run: scripts/build_windows.bat c++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
+      shell: bash
       run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
@@ -62,6 +68,11 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: checkout samples
+      uses: actions/checkout@v2
+      with:
+        repository: oneapi-src/oneAPI-samples
+        path: samples
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
@@ -75,6 +86,7 @@ jobs:
       run: scripts/build_windows.bat fortran
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
+      shell: bash
       run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
@@ -96,6 +108,11 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: checkout samples
+      uses: actions/checkout@v2
+      with:
+        repository: oneapi-src/oneAPI-samples
+        path: samples
     - name: cache install
       id: cache-install
       uses: actions/cache@v2
@@ -112,6 +129,7 @@ jobs:
       run: scripts/build_windows.bat dpc++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
+      shell: bash
       run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
@@ -133,6 +151,11 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: checkout samples
+      uses: actions/checkout@v2
+      with:
+        repository: oneapi-src/oneAPI-samples
+        path: samples
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
@@ -164,6 +187,11 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: checkout samples
+      uses: actions/checkout@v2
+      with:
+        repository: oneapi-src/oneAPI-samples
+        path: samples
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
@@ -191,6 +219,11 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: checkout samples
+      uses: actions/checkout@v2
+      with:
+        repository: oneapi-src/oneAPI-samples
+        path: samples
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
