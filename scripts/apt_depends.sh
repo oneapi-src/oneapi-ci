@@ -4,5 +4,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-COMPONENTS=$(echo "$1" | sed "s/,/ /g")
-sudo apt-get install -y "$COMPONENTS"
+echo "$1" | sed "s/,/ /g" | xargs -n 1 apt-cache depends

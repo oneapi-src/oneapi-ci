@@ -118,6 +118,8 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - script: scripts/setup_apt_repo_linux.sh
+    displayName: setup apt repo
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh c++
@@ -127,6 +129,8 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - script: scripts/setup_apt_repo_linux.sh
+    displayName: setup apt repo
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh fortran
@@ -136,6 +140,8 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - script: scripts/setup_apt_repo_linux.sh
+    displayName: setup apt repo
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
   - script: scripts/build_linux.sh dpc++
