@@ -145,13 +145,15 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - script: scripts/setup_apt_repo_linux.sh
+    displayName: setup apt repo
+  - script: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of apt packages
   - task: Cache@2
     inputs:
       path: |
         /opt/intel/oneapi/compiler
       key: '"test1" | "$(LINUX_CPP_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
-  - script: scripts/setup_apt_repo_linux.sh
-    displayName: setup apt repo
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -165,13 +167,15 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - script: scripts/setup_apt_repo_linux.sh
+    displayName: setup apt repo
+  - script: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of apt packages
   - task: Cache@2
     inputs:
       path: |
         /opt/intel/oneapi/compiler
       key: '"test1" | "$(LINUX_FORTRAN_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
-  - script: scripts/setup_apt_repo_linux.sh
-    displayName: setup apt repo
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -185,14 +189,16 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - script: scripts/setup_apt_repo_linux.sh
+    displayName: setup apt repo
+  - script: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of apt packages
   - task: Cache@2
     inputs:
       path: |
         /opt/intel/oneapi/compiler
         /opt/intel/oneapi/tbb
       key: '"test1" | "$(LINUX_DPCPP_COMPONENTS)" | depends.txt | "compiler" | "tbb" | scripts/cache_exclude_linux.sh'
-  - script: scripts/setup_apt_repo_linux.sh
-    displayName: setup apt repo
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
