@@ -121,8 +121,8 @@ jobs:
       key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
   - task: Cache@2
     inputs:
-      path: opencl
-      key: '"install1" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
+      path: opencl # caching of individual files is not supported, caching OpenCL.dll in a folder as a workaround.
+      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
@@ -138,7 +138,7 @@ jobs:
   - bash: |
       mkdir -p opencl
       cp C:/Windows/System32/OpenCL.dll opencl/
-    displayName: copy OpenCL.dll to a folder so it can be cached
+    displayName: copy OpenCL.dll to a folder for caching
     condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
