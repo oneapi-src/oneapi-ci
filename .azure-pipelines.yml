@@ -47,6 +47,7 @@ jobs:
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
       key: '"test1" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | compiler | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -80,6 +81,7 @@ jobs:
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
       key: '"test1" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -109,7 +111,7 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - task: Cache@2
+  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
       key: '"test1" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
@@ -121,6 +123,7 @@ jobs:
     inputs:
       path: C:\Windows\System32\OpenCL.dll
       key: '"test1" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -158,6 +161,7 @@ jobs:
     inputs:
       path: /opt/intel/oneapi/compiler
       key: '"test1" | "$(LINUX_CPP_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -179,6 +183,7 @@ jobs:
     inputs:
       path: /opt/intel/oneapi/compiler
       key: '"test1" | "$(LINUX_FORTRAN_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -204,6 +209,7 @@ jobs:
     inputs:
       path: /opt/intel/oneapi/tbb
       key: '"test1" | "$(LINUX_DPCPP_COMPONENTS)" | depends.txt | "tbb" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -255,6 +261,7 @@ jobs:
     inputs:
       path: /opt/intel/oneapi
       key: '"test1" | "$(MACOS_HPCKIT_URL)" | "$(MACOS_CPP_COMPONENTS)"'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -288,6 +295,7 @@ jobs:
     inputs:
       path: /opt/intel/oneapi
       key: '"test1" | "$(MACOS_HPCKIT_URL)" | "$(MACOS_FORTRAN_COMPONENTS)"'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
