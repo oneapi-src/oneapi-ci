@@ -148,10 +148,8 @@ jobs:
           path: InstallLogs
 
   build_linux_apt_cpp:
-    # docker:
-      # - image: ubuntu:latest
-    machine:
-      image: ubuntu-2004:202010-01
+    docker:
+      - image: ubuntu:latest
     steps:
       - checkout
       - run:
