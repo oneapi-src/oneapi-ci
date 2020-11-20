@@ -43,10 +43,19 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
+  - task: Cache@2
+    inputs:
+      path: C:\Program Files (x86)\Intel\oneAPI\compiler
+      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | compiler | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat c++
     displayName: build
+  - bash: scripts/cache_exclude_windows.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
@@ -68,10 +77,19 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
+  - task: Cache@2
+    inputs:
+      path: C:\Program Files (x86)\Intel\oneAPI\compiler
+      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat fortran
     displayName: build
+  - bash: scripts/cache_exclude_windows.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
@@ -93,10 +111,27 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
+  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
+    inputs:
+      path: C:\Program Files (x86)\Intel\oneAPI\compiler
+      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+  - task: Cache@2
+    inputs:
+      path: C:\Program Files (x86)\Intel\oneAPI\tbb
+      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
+  - task: Cache@2
+    inputs:
+      path: C:\Windows\System32\OpenCL.dll
+      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat dpc++
     displayName: build
+  - bash: scripts/cache_exclude_windows.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
@@ -120,10 +155,21 @@ jobs:
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
+  - script: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of apt packages
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/compiler
+      key: '"install" | "$(LINUX_CPP_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh c++
     displayName: build
+  - bash: scripts/cache_exclude_linux.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
 
 - job: build_linux_apt_fortran
   pool:
@@ -131,10 +177,21 @@ jobs:
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
+  - script: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of apt packages
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/compiler
+      key: '"install" | "$(LINUX_FORTRAN_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh fortran
     displayName: build
+  - bash: scripts/cache_exclude_linux.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
 
 - job: build_linux_apt_dpcpp
   pool:
@@ -142,10 +199,25 @@ jobs:
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
+  - script: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of apt packages
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/compiler
+      key: '"install" | "$(LINUX_DPCPP_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/tbb
+      key: '"install" | "$(LINUX_DPCPP_COMPONENTS)" | depends.txt | "tbb" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh dpc++
     displayName: build
+  - bash: scripts/cache_exclude_linux.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
 
 - job: build_linux_container_cpp
   pool:
@@ -181,8 +253,18 @@ jobs:
   pool:
     vmImage: 'macOS-latest'
   steps:
+  - script: |
+      sudo mkdir -p /opt/intel
+      sudo chown $USER /opt/intel
+    displayName: prepare for cache restore
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi
+      key: '"install" | "$(MACOS_HPCKIT_URL)" | "$(MACOS_CPP_COMPONENTS)"'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_CPP_COMPONENTS)
     displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_macos.sh c++
     displayName: build
 
@@ -205,8 +287,18 @@ jobs:
   pool:
     vmImage: 'macOS-latest'
   steps:
+  - script: |
+      sudo mkdir -p /opt/intel
+      sudo chown $USER /opt/intel
+    displayName: prepare for cache restore
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi
+      key: '"install" | "$(MACOS_HPCKIT_URL)" | "$(MACOS_FORTRAN_COMPONENTS)"'
+      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_FORTRAN_COMPONENTS)
     displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_macos.sh fortran
     displayName: build
 
