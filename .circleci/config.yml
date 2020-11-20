@@ -4,6 +4,41 @@
 
 version: 2.1
 
+parameters:
+  WINDOWS_BASEKIT_URL:
+    type: string
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe"
+  WINDOWS_HPCKIT_URL:
+    type: string
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe"
+  MACOS_HPCKIT_URL:
+    type: string
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg"
+  WINDOWS_CPP_COMPONENTS:
+    type: string
+    default: "intel.oneapi.win.cpp-compiler"
+  WINDOWS_FORTRAN_COMPONENTS:
+    type: string
+    default: "intel.oneapi.win.ifort-compiler"
+  WINDOWS_DPCPP_COMPONENTS:
+    type: string
+    default: "intel.oneapi.win.dpcpp-compiler"
+  LINUX_CPP_COMPONENTS:
+    type: string
+    default: "intel-oneapi-dpcpp-cpp-compiler-pro"
+  LINUX_FORTRAN_COMPONENTS:
+    type: string
+    default: "intel-oneapi-ifort"
+  LINUX_DPCPP_COMPONENTS:
+    type: string
+    default: "intel-oneapi-dpcpp-cpp-compiler"
+  MACOS_CPP_COMPONENTS:
+    type: string
+    default: "intel.oneapi.mac.cpp-compiler"
+  MACOS_FORTRAN_COMPONENTS:
+    type: string
+    default: "intel.oneapi.mac.ifort-compiler"
+    
 orbs:
   win: circleci/windows@2.4.0
 
@@ -204,21 +239,16 @@ jobs:
             - /opt/intel/oneapi/compiler
 
   build_linux_apt_dpcpp:
-    environment:
-      LINUX_DPCPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler
     docker:
       - image: ubuntu:latest
     steps:
-      - run:
-          name: check environment variables
-          command: echo $LINUX_DPCPP_COMPONENTS
       - checkout
       - run:
           name: collect versioned dependencies of apt packages
-          command: . scripts/apt_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
+          command: . scripts/apt_depends.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >> | tee depends.txt
       - restore_cache:
           keys:
-            - test1-{{ .Environment.LINUX_DPCPP_COMPONENTS }}-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+            - test1-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install prerequisites
           command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
@@ -231,7 +261,7 @@ jobs:
           name: install
           command: |
            [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/install_linux_apt_no_sudo.sh $LINUX_DPCPP_COMPONENTS
+           . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_linux.sh dpc++
@@ -241,7 +271,7 @@ jobs:
            [ -d /opt/intel/oneapi/compiler ] && exit 0
            . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: test1-{{ .Environment.LINUX_DPCPP_COMPONENTS }}-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: test1-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
 
