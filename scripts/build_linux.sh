@@ -9,7 +9,7 @@ LANGUAGE=$1
 git clone --depth 1 https://github.com/oneapi-src/oneAPI-samples.git
 
 source /opt/intel/oneapi/compiler/2021.1-beta10/env/vars.sh
-apt install tree
+sudo apt install tree
 tree /opt/intel
 case $LANGUAGE in
 c++)
