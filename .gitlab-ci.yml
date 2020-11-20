@@ -30,14 +30,14 @@ build_windows_cpp:
   stage: build
   cache:
     key:
-      prefix: test1-$WINDOWS_HPCKIT_URL-$WINDOWS_CPP_COMPONENTS-compiler
       files:
-        - scripts/cache_exclude_windows.sh
+        - .gitlab-ci.yml
+        - scripts/cache_exclude_windows.ps1
     paths: 
       - C:\Program Files (x86)\Intel\oneAPI\compiler
   before_script:
     - scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
-    - scripts/cache_exclude_windows.sh
+    - scripts/cache_exclude_windows.ps1
   script:
     - scripts/build_windows.bat c++ 2019_build_tools
 
