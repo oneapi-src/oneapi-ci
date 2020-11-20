@@ -44,9 +44,6 @@ orbs:
 
 jobs:
   build_windows_cpp:
-    environment:
-      WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe
-      WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
     executor:
       name: win/default
       shell: bash.exe
@@ -54,12 +51,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - test1-{{ .Environment.WINDOWS_HPCKIT_URL }}-{{ .Environment.WINDOWS_CPP_COMPONENTS }}-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - test1-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
-            scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_windows.bat c++ 2017_build_tools
@@ -69,7 +66,7 @@ jobs:
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
             scripts/cache_exclude_windows.sh
       - save_cache:
-          key: test1-{{ .Environment.WINDOWS_HPCKIT_URL }}-{{ .Environment.WINDOWS_CPP_COMPONENTS }}-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: test1-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
 
@@ -83,9 +80,6 @@ jobs:
           path: InstallLogs
 
   build_windows_fortran:
-    environment:
-      WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe
-      WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
     executor:
       name: win/default
       shell: bash.exe
@@ -93,12 +87,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - test1-{{ .Environment.WINDOWS_HPCKIT_URL }}-{{ .Environment.WINDOWS_FORTRAN_COMPONENTS }}-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - test1-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
-            scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_windows.bat fortran 2017_build_tools
@@ -108,7 +102,7 @@ jobs:
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
             scripts/cache_exclude_windows.sh
       - save_cache:
-          key: test1-{{ .Environment.WINDOWS_HPCKIT_URL }}-{{ .Environment.WINDOWS_FORTRAN_COMPONENTS }}-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: test1-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
 
@@ -122,9 +116,6 @@ jobs:
           path: InstallLogs
 
   build_windows_dpcpp:
-    environment:
-      WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe
-      WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
     executor:
       name: win/default
       shell: bash.exe
@@ -132,12 +123,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - test1-{{ .Environment.WINDOWS_BASEKIT_URL }}-{{ .Environment.WINDOWS_DPCPP_COMPONENTS }}-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - test1-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
-            scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_BASEKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_windows.bat dpc++ 2017_build_tools
@@ -147,7 +138,7 @@ jobs:
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
             scripts/cache_exclude_windows.sh
       - save_cache:
-          key: test1-{{ .Environment.WINDOWS_BASEKIT_URL }}-{{ .Environment.WINDOWS_DPCPP_COMPONENTS }}-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: test1-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
 
@@ -161,18 +152,10 @@ jobs:
           path: InstallLogs
 
   build_linux_apt_cpp:
-    environment:
-      LINUX_CPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler-pro
     docker:
       - image: ubuntu:latest
     steps:
       - checkout
-      - run:
-          name: collect versioned dependencies of apt packages
-          command: . scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
-      - restore_cache:
-          keys:
-            - test1-{{ .Environment.LINUX_CPP_COMPONENTS }}-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install prerequisites
           command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
@@ -182,10 +165,16 @@ jobs:
            [ -d /opt/intel/oneapi/compiler ] && exit 0
            . scripts/setup_apt_repo_linux_no_sudo.sh
       - run:
+          name: collect versioned dependencies of apt packages
+          command: . scripts/apt_depends.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >> | tee depends.txt
+      - restore_cache:
+          keys:
+            - test1-<< pipeline.parameters.LINUX_CPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+      - run:
           name: install
           command: |
            [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/install_linux_apt_no_sudo.sh $LINUX_CPP_COMPONENTS
+           . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_linux.sh c++
@@ -195,23 +184,15 @@ jobs:
            [ -d /opt/intel/oneapi/compiler ] && exit 0
            . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: test1-{{ .Environment.LINUX_CPP_COMPONENTS }}-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: test1-<< pipeline.parameters.LINUX_CPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
 
   build_linux_apt_fortran:
-    environment:
-      LINUX_FORTRAN_COMPONENTS: intel-oneapi-ifort
     docker:
       - image: ubuntu:latest
     steps:
       - checkout
-      - run:
-          name: collect versioned dependencies of apt packages
-          command: . scripts/apt_depends.sh $LINUX_FORTRAN_COMPONENTS | tee depends.txt
-      - restore_cache:
-          keys:
-            - test1-{{ .Environment.LINUX_FORTRAN_COMPONENTS }}-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install prerequisites
           command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
@@ -221,10 +202,16 @@ jobs:
            [ -d /opt/intel/oneapi/compiler ] && exit 0
            . scripts/setup_apt_repo_linux_no_sudo.sh
       - run:
+          name: collect versioned dependencies of apt packages
+          command: . scripts/apt_depends.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >> | tee depends.txt
+      - restore_cache:
+          keys:
+            - test1-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+      - run:
           name: install
           command: |
            [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/install_linux_apt_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
+           . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_linux.sh fortran
@@ -234,7 +221,7 @@ jobs:
            [ -d /opt/intel/oneapi/compiler ] && exit 0
            . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: test1-{{ .Environment.LINUX_FORTRAN_COMPONENTS }}-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: test1-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
 
@@ -244,12 +231,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: collect versioned dependencies of apt packages
-          command: . scripts/apt_depends.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >> | tee depends.txt
-      - restore_cache:
-          keys:
-            - test1-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
-      - run:
           name: install prerequisites
           command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
       - run:
@@ -257,6 +238,12 @@ jobs:
           command: |
            [ -d /opt/intel/oneapi/compiler ] && exit 0
            . scripts/setup_apt_repo_linux_no_sudo.sh
+      - run:
+          name: collect versioned dependencies of apt packages
+          command: . scripts/apt_depends.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >> | tee depends.txt
+      - restore_cache:
+          keys:
+            - test1-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install
           command: |
