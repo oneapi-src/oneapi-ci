@@ -210,9 +210,8 @@ jobs:
       - image: ubuntu:latest
     steps:
       - run:
-          name: set environment variables
-          command: |
-            export LINUX_DPCPP_COMPONENTS=intel-oneapi-dpcpp-cpp-compiler
+          name: check environment variables
+          command: echo $LINUX_DPCPP_COMPONENTS
       - checkout
       - run:
           name: collect versioned dependencies of apt packages
