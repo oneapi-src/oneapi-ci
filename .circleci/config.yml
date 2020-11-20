@@ -209,10 +209,14 @@ jobs:
     docker:
       - image: ubuntu:latest
     steps:
+      - run:
+          name: set environment variables
+          command: |
+            export LINUX_DPCPP_COMPONENTS=intel-oneapi-dpcpp-cpp-compiler
       - checkout
       - run:
           name: collect versioned dependencies of apt packages
-          command: . scripts/apt_depends.sh {{ .Environment.LINUX_DPCPP_COMPONENTS }} | tee depends.txt
+          command: . scripts/apt_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
       - restore_cache:
           keys:
             - test1-{{ .Environment.LINUX_DPCPP_COMPONENTS }}-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
@@ -228,7 +232,7 @@ jobs:
           name: install
           command: |
            [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/install_linux_apt_no_sudo.sh {{ .Environment.LINUX_DPCPP_COMPONENTS }}
+           . scripts/install_linux_apt_no_sudo.sh $LINUX_DPCPP_COMPONENTS
       - run:
           name: build
           command: scripts/build_linux.sh dpc++
