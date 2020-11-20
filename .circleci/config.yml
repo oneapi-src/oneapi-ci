@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: MIT
 
 version: 2.1
-
 parameters:
   WINDOWS_BASEKIT_URL:
     type: string
@@ -38,7 +37,7 @@ parameters:
   MACOS_FORTRAN_COMPONENTS:
     type: string
     default: "intel.oneapi.mac.ifort-compiler"
-    
+
 orbs:
   win: circleci/windows@2.4.0
 
@@ -157,9 +156,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
       - run:
           name: setup apt repo
-          command: |
-           [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/setup_apt_repo_linux_no_sudo.sh
+          command: . scripts/setup_apt_repo_linux_no_sudo.sh
       - run:
           name: collect versioned dependencies of apt packages
           command: . scripts/apt_depends.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >> | tee depends.txt
@@ -192,9 +189,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
       - run:
           name: setup apt repo
-          command: |
-           [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/setup_apt_repo_linux_no_sudo.sh
+          command: . scripts/setup_apt_repo_linux_no_sudo.sh
       - run:
           name: collect versioned dependencies of apt packages
           command: . scripts/apt_depends.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >> | tee depends.txt
@@ -227,9 +222,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
       - run:
           name: setup apt repo
-          command: |
-           [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/setup_apt_repo_linux_no_sudo.sh
+          command: . scripts/setup_apt_repo_linux_no_sudo.sh
       - run:
           name: collect versioned dependencies of apt packages
           command: . scripts/apt_depends.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >> | tee depends.txt
