@@ -111,11 +111,16 @@ jobs:
   steps:
   - task: Cache@2
     inputs:
-      path: |
-        C:\Program Files (x86)\Intel\oneAPI\compiler
-        C:\Program Files (x86)\Intel\oneAPI\tbb
-        C:\Windows\System32\OpenCL.dll
-      key: '"test1" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | "tbb" | "opencl" | scripts/cache_exclude_windows.sh'
+      path: C:\Program Files (x86)\Intel\oneAPI\compiler
+      key: '"test1" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+  - task: Cache@2
+    inputs:
+      path: C:\Program Files (x86)\Intel\oneAPI\tbb
+      key: '"test1" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
+  - task: Cache@2
+    inputs:
+      path: C:\Windows\System32\OpenCL.dll
+      key: '"test1" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl" | scripts/cache_exclude_windows.sh'
   - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -151,8 +156,7 @@ jobs:
     displayName: collect versioned dependencies of apt packages
   - task: Cache@2
     inputs:
-      path: |
-        /opt/intel/oneapi/compiler
+      path: /opt/intel/oneapi/compiler
       key: '"test1" | "$(LINUX_CPP_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
@@ -173,8 +177,7 @@ jobs:
     displayName: collect versioned dependencies of apt packages
   - task: Cache@2
     inputs:
-      path: |
-        /opt/intel/oneapi/compiler
+      path: /opt/intel/oneapi/compiler
       key: '"test1" | "$(LINUX_FORTRAN_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
@@ -195,10 +198,12 @@ jobs:
     displayName: collect versioned dependencies of apt packages
   - task: Cache@2
     inputs:
-      path: |
-        /opt/intel/oneapi/compiler
-        /opt/intel/oneapi/tbb
-      key: '"test1" | "$(LINUX_DPCPP_COMPONENTS)" | depends.txt | "compiler" | "tbb" | scripts/cache_exclude_linux.sh'
+      path: /opt/intel/oneapi/compiler
+      key: '"test1" | "$(LINUX_DPCPP_COMPONENTS)" | depends.txt | "compiler" | scripts/cache_exclude_linux.sh'
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/tbb
+      key: '"test1" | "$(LINUX_DPCPP_COMPONENTS)" | depends.txt | "tbb" | scripts/cache_exclude_linux.sh'
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -248,8 +253,7 @@ jobs:
     displayName: prepare for cache restore
   - task: Cache@2
     inputs:
-      path: |
-        /opt/intel/oneapi
+      path: /opt/intel/oneapi
       key: '"test1" | "$(MACOS_HPCKIT_URL)" | "$(MACOS_CPP_COMPONENTS)"'
   - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_CPP_COMPONENTS)
     displayName: install
@@ -282,8 +286,7 @@ jobs:
     displayName: prepare for cache restore
   - task: Cache@2
     inputs:
-      path: |
-        /opt/intel/oneapi
+      path: /opt/intel/oneapi
       key: '"test1" | "$(MACOS_HPCKIT_URL)" | "$(MACOS_FORTRAN_COMPONENTS)"'
   - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_FORTRAN_COMPONENTS)
     displayName: install
