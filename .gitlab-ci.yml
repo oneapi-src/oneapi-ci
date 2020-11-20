@@ -28,12 +28,22 @@ build_windows_cpp:
   extends:
   - .shared_windows_runners
   stage: build
-  script:
+  cache:
+    key:
+      prefix: test1-$WINDOWS_HPCKIT_URL-$WINDOWS_CPP_COMPONENTS-compiler
+      files:
+        - scripts/cache_exclude_windows.sh
+    paths: 
+      - C:\Program Files (x86)\Intel\oneAPI\compiler
+  before_script:
     - scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
+    - scripts/cache_exclude_windows.sh
+  script:
     - scripts/build_windows.bat c++ 2019_build_tools
 
   # Delete the following if you don't want to save install logs
   artifacts:
+    name: "$CI_JOB_NAME"
     when: always
     paths:
       - extract.log
@@ -51,6 +61,7 @@ build_windows_fortran:
 
   # Delete the following if you don't want to save install logs
   artifacts:
+    name: "$CI_JOB_NAME"
     when: always
     paths:
       - extract.log
@@ -68,6 +79,7 @@ build_windows_dpcpp:
 
   # Delete the following if you don't want to save install logs
   artifacts:
+    name: "$CI_JOB_NAME"
     when: always
     paths:
       - extract.log
