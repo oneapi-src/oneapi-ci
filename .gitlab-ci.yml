@@ -36,23 +36,13 @@ build_windows_cpp:
     paths: 
       - cache #C:\Program Files (x86)\Intel\oneAPI\compiler
   before_script:
-    - >
-        IF EXIST cache ( 
-          mkdir C:\Program Files (x86)\Intel\oneAPI\
-          move cache\compiler C:\Program Files (x86)\Intel\oneAPI\
-        ) ELSE (
-          scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS)
-          scripts/cache_exclude_windows.ps1
-        )
+    - if exist cache ( mkdir C:\Program Files (x86)\Intel\oneAPI\ && move cache\compiler C:\Program Files (x86)\Intel\oneAPI\ )
+    - if not exist cache ( scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS )
+    - if not exist cache scripts/cache_exclude_windows.ps1
   script:
     - scripts/build_windows.bat c++ 2019_build_tools
   after_script:
-    - >
-        IF EXIST cache (
-        ) ELSE (
-          mkdir cache
-          move C:\Program Files (x86)\Intel\oneAPI\compiler cache\
-        )
+    - if not exist cache ( mkdir cache && move C:\Program Files (x86)\Intel\oneAPI\compiler cache\ )
 
   # Delete the following if you don't want to save install logs
   artifacts:
@@ -67,7 +57,7 @@ build_windows_fortran:
   extends:
   - .shared_windows_runners
   stage: build
-    cache:
+  cache:
     key:
       files:
         - .gitlab-ci.yml
@@ -75,23 +65,13 @@ build_windows_fortran:
     paths: 
       - cache #C:\Program Files (x86)\Intel\oneAPI\compiler
   before_script:
-    - >
-        IF EXIST cache ( 
-          mkdir C:\Program Files (x86)\Intel\oneAPI\
-          move cache\compiler C:\Program Files (x86)\Intel\oneAPI\
-        ) ELSE (
-          scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS)
-          scripts/cache_exclude_windows.ps1
-        )
+    - if exist cache ( mkdir C:\Program Files (x86)\Intel\oneAPI\ && move cache\compiler C:\Program Files (x86)\Intel\oneAPI\ )
+    - if not exist cache ( scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS )
+    - if not exist cache scripts/cache_exclude_windows.ps1
   script:
     - scripts/build_windows.bat fortran 2019_build_tools
   after_script:
-    - >
-        IF EXIST cache (
-        ) ELSE (
-          mkdir cache
-          move C:\Program Files (x86)\Intel\oneAPI\compiler cache\
-        )
+    - if not exist cache ( mkdir cache && move C:\Program Files (x86)\Intel\oneAPI\compiler cache\ )
 
   # Delete the following if you don't want to save install logs
   artifacts:
