@@ -30,8 +30,8 @@ build_windows_cpp:
   - .shared_windows_runners
   stage: build
   cache:
-    prefix: install-${RELEASE}-${WINDOWS_CPP_COMPONENTS}-compiler
     key:
+      prefix: install-${RELEASE}-${WINDOWS_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths: 
@@ -68,8 +68,8 @@ build_windows_fortran:
   - .shared_windows_runners
   stage: build
   cache:
-    prefix: install-${RELEASE}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
     key:
+      prefix: install-${RELEASE}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths: 
@@ -106,8 +106,8 @@ build_windows_dpcpp:
   - .shared_windows_runners
   stage: build
   cache:
-    prefix: install-${RELEASE}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
     key:
+      prefix: install-${RELEASE}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
       files:
         - scripts/cache_exclude_windows.ps1
     paths: 
