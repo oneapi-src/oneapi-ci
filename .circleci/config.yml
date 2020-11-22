@@ -118,7 +118,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
