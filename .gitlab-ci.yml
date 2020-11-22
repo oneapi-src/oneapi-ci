@@ -35,7 +35,6 @@ build_windows_cpp:
         - scripts/cache_exclude_windows.ps1
     paths: 
       - cache
-    policy: pull
   before_script:
     - |
         if(Test-Path cache) {
@@ -74,7 +73,6 @@ build_windows_fortran:
         - scripts/cache_exclude_windows.ps1
     paths: 
       - cache
-    policy: pull
   before_script:
     - |
         if(Test-Path cache) {
@@ -113,7 +111,6 @@ build_windows_dpcpp:
         - scripts/cache_exclude_windows.ps1
     paths: 
       - cache
-    policy: pull
   before_script:
     - |
         if(Test-Path cache) {
@@ -155,7 +152,6 @@ build_linux_apt_cpp:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths: 
       - cache
-    policy: pull
   before_script:
     - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
@@ -189,7 +185,6 @@ build_linux_apt_fortran:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths: 
       - cache
-    policy: pull
   before_script:
     - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
@@ -223,7 +218,6 @@ build_linux_apt_dpcpp:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths: 
       - cache
-    policy: pull
   before_script:
     - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
