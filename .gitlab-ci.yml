@@ -46,7 +46,7 @@ build_windows_cpp:
         )
   script:
     - scripts/build_windows.bat c++ 2019_build_tools
-  after_acript:
+  after_script:
     - |
         IF EXIST cache (
         ) ELSE (
