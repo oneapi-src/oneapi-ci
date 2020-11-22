@@ -71,7 +71,7 @@ jobs:
       - run:
           command: |
             mkdir InstallLogs
-            cp extract* bootstrapper* installer* InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs || :
           when: always
       - store_artifacts:
           path: InstallLogs
@@ -105,7 +105,7 @@ jobs:
       - run:
           command: |
             mkdir InstallLogs
-            cp extract* bootstrapper* installer* InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs || :
           when: always
       - store_artifacts:
           path: InstallLogs
@@ -118,7 +118,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
@@ -131,7 +131,7 @@ jobs:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
       - save_cache:
-          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
             - C:\Program Files (x86)\Intel\oneAPI\tbb
@@ -141,7 +141,7 @@ jobs:
       - run:
           command: |
             mkdir InstallLogs
-            cp extract* bootstrapper* installer* InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs || :
           when: always
       - store_artifacts:
           path: InstallLogs
