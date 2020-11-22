@@ -30,6 +30,7 @@ build_windows_cpp:
   stage: build
   cache:
     key:
+      prefix: install-${WINDOWS_HPCKIT_URL}-${WINDOWS_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths: 
@@ -67,6 +68,7 @@ build_windows_fortran:
   stage: build
   cache:
     key:
+      prefix: install-${WINDOWS_HPCKIT_URL}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths: 
@@ -102,10 +104,34 @@ build_windows_dpcpp:
   extends:
   - .shared_windows_runners
   stage: build
+  cache:
+    key:
+      prefix: install-${WINDOWS_BASEKIT_URL}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
+      files:
+        - scripts/cache_exclude_windows.ps1
+    paths: 
+      - cache
+  before_script:
+    - |
+        if(Test-Path cache) {
+          New-Item -ItemType "directory" -Path "C:\Program Files (x86)\Intel\oneAPI" -Force
+          Move-Item -Path cache\compiler -Destination "C:\Program Files (x86)\Intel\oneAPI"
+          Move-Item -Path cache\tbb -Destination "C:\Program Files (x86)\Intel\oneAPI"
+          Move-Item -Path cache\OpenCL.dll -Destination "C:\Windows\System32"
+        } else {
+          scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+        }
   script:
-    - scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - scripts/build_windows.bat dpc++ 2019_build_tools
-
+  after_script:
+    - |
+        if(!(Test-Path cache)) {
+          scripts/cache_exclude_windows.ps1
+          New-Item -ItemType "directory" -Path "cache"
+          Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\compiler" -Destination "cache"
+          Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\tbb" -Destination "cache"
+          Move-Item -Path "C:\Windows\System32\OpenCL.dll" -Destination "cache"
+        }
   # Delete the following if you don't want to save install logs
   artifacts:
     when: always
@@ -126,13 +152,13 @@ build_linux_apt_cpp:
     paths: 
       - cache
   before_script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
           mkdir -p /opt/intel/oneapi
           mv cache/compiler /opt/intel/oneapi/
         else
-          . scripts/install_prerequisites_linux_apt_no_sudo.sh
           . scripts/setup_apt_repo_linux_no_sudo.sh
           . scripts/install_linux_apt_no_sudo.sh $LINUX_CPP_COMPONENTS
         fi
@@ -158,13 +184,13 @@ build_linux_apt_fortran:
     paths: 
       - cache
   before_script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
           mkdir -p /opt/intel/oneapi
           mv cache/compiler /opt/intel/oneapi/
         else
-          . scripts/install_prerequisites_linux_apt_no_sudo.sh
           . scripts/setup_apt_repo_linux_no_sudo.sh
           . scripts/install_linux_apt_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
         fi
@@ -190,6 +216,7 @@ build_linux_apt_dpcpp:
     paths: 
       - cache
   before_script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
@@ -197,7 +224,6 @@ build_linux_apt_dpcpp:
           mv cache/compiler /opt/intel/oneapi/
           mv cache/tbb /opt/intel/oneapi/
         else
-          . scripts/install_prerequisites_linux_apt_no_sudo.sh
           . scripts/setup_apt_repo_linux_no_sudo.sh
           . scripts/install_linux_apt_no_sudo.sh $LINUX_DPCPP_COMPONENTS
         fi
