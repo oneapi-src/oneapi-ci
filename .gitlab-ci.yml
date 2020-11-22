@@ -31,26 +31,25 @@ build_windows_cpp:
   cache:
     key:
       files:
-        - .gitlab-ci.yml
         - scripts/cache_exclude_windows.ps1
     paths: 
-      - cache #C:\Program Files (x86)\Intel\oneAPI\compiler
+      - cache
   before_script:
     - |
         if(Test-Path cache) {
-          mkdir C:\Program Files (x86)\Intel\oneAPI\
-          move cache\compiler C:\Program Files (x86)\Intel\oneAPI\
+          New-Item -ItemType "directory" -Path "C:\Program Files (x86)\Intel\oneAPI" -Force
+          Move-Item -Path cache\compiler -Destination "C:\Program Files (x86)\Intel\oneAPI"
         } else {
           scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
-          scripts/cache_exclude_windows.ps1
         }
   script:
     - scripts/build_windows.bat c++ 2019_build_tools
   after_script:
     - |
         if(!(Test-Path cache)) {
-          mkdir cache
-          move C:\Program Files (x86)\Intel\oneAPI\compiler cache\
+          scripts/cache_exclude_windows.ps1
+          New-Item -ItemType "directory" -Path "cache"
+          Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\compiler" -Destination "cache"
         }
 
   # Delete the following if you don't want to save install logs
@@ -69,26 +68,25 @@ build_windows_fortran:
   cache:
     key:
       files:
-        - .gitlab-ci.yml
         - scripts/cache_exclude_windows.ps1
     paths: 
-      - cache #C:\Program Files (x86)\Intel\oneAPI\compiler
+      - cache
   before_script:
     - |
         if(Test-Path cache) {
-          mkdir C:\Program Files (x86)\Intel\oneAPI\
-          move cache\compiler C:\Program Files (x86)\Intel\oneAPI\
+          New-Item -ItemType "directory" -Path "C:\Program Files (x86)\Intel\oneAPI" -Force
+          Move-Item -Path cache\compiler -Destination "C:\Program Files (x86)\Intel\oneAPI"
         } else {
           scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
-          scripts/cache_exclude_windows.ps1
         }
   script:
     - scripts/build_windows.bat fortran 2019_build_tools
   after_script:
     - |
         if(!(Test-Path cache)) {
-          mkdir cache
-          move C:\Program Files (x86)\Intel\oneAPI\compiler cache\
+          scripts/cache_exclude_windows.ps1
+          New-Item -ItemType "directory" -Path "cache"
+          Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\compiler" -Destination "cache"
         }
 
   # Delete the following if you don't want to save install logs
@@ -124,27 +122,30 @@ build_linux_apt_cpp:
     key:
       prefix: test-2021.1-beta10-${LINUX_CPP_COMPONENTS}-compiler
       files:
-        - scripts/cache_exclude_windows.ps1
+        - scripts/cache_exclude_linux_no_sudo.sh
     paths: 
       - cache
   before_script:
-    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
-    - . scripts/setup_apt_repo_linux_no_sudo.sh
     - |
-        [ -d cache ] || exit 0
-        mkdir -p /opt/intel/oneapi
-        mv cache/compiler /opt/intel/oneapi/
-    - |
-        [ -d /opt/intel/oneapi/compiler ] && exit 0
-        . scripts/install_linux_apt_no_sudo.sh $LINUX_CPP_COMPONENTS
+        if [[ -d cache ]]
+        then
+          mkdir -p /opt/intel/oneapi
+          mv cache/compiler /opt/intel/oneapi/
+        else
+          . scripts/install_prerequisites_linux_apt_no_sudo.sh
+          . scripts/setup_apt_repo_linux_no_sudo.sh
+          . scripts/install_linux_apt_no_sudo.sh $LINUX_CPP_COMPONENTS
+        fi
   script:
     - scripts/build_linux.sh c++
   after_script:
-    - . scripts/cache_exclude_linux_no_sudo.sh
     - |
-        [ -d cache ] && exit 0
-        mkdir cache
-        mv /opt/intel/oneapi/compiler cache
+        if [[ ! -d cache ]]
+        then
+          . scripts/cache_exclude_linux_no_sudo.sh
+          mkdir cache
+          mv /opt/intel/oneapi/compiler cache
+        fi
 
 build_linux_apt_fortran:
   image: ubuntu:latest
@@ -153,27 +154,30 @@ build_linux_apt_fortran:
     key:
       prefix: test-2021.1-beta10-${LINUX_FORTRAN_COMPONENTS}-compiler
       files:
-        - scripts/cache_exclude_windows.ps1
+        - scripts/cache_exclude_linux_no_sudo.sh
     paths: 
       - cache
   before_script:
-    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
-    - . scripts/setup_apt_repo_linux_no_sudo.sh
     - |
-        [ -d cache ] || exit 0
-        mkdir -p /opt/intel/oneapi
-        mv cache/compiler /opt/intel/oneapi/
-    - |
-        [ -d /opt/intel/oneapi/compiler ] && exit 0
-        . scripts/install_linux_apt_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
+        if [[ -d cache ]]
+        then
+          mkdir -p /opt/intel/oneapi
+          mv cache/compiler /opt/intel/oneapi/
+        else
+          . scripts/install_prerequisites_linux_apt_no_sudo.sh
+          . scripts/setup_apt_repo_linux_no_sudo.sh
+          . scripts/install_linux_apt_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
+        fi
   script:
     - scripts/build_linux.sh fortran
   after_script:
-    - . scripts/cache_exclude_linux_no_sudo.sh
     - |
-        [ -d cache ] && exit 0
-        mkdir cache
-        mv /opt/intel/oneapi/compiler cache
+        if [[ ! -d cache ]]
+        then
+          . scripts/cache_exclude_linux_no_sudo.sh
+          mkdir cache
+          mv /opt/intel/oneapi/compiler cache
+        fi
 
 build_linux_apt_dpcpp:
   image: ubuntu:latest
@@ -182,26 +186,29 @@ build_linux_apt_dpcpp:
     key:
       prefix: test-2021.1-beta10-${LINUX_DPCPP_COMPONENTS}-compiler
       files:
-        - scripts/cache_exclude_windows.ps1
+        - scripts/cache_exclude_linux_no_sudo.sh
     paths: 
       - cache
   before_script:
-    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
-    - . scripts/setup_apt_repo_linux_no_sudo.sh
     - |
-        [ -d cache ] || exit 0
-        mkdir -p /opt/intel/oneapi
-        mv cache/compiler /opt/intel/oneapi/
-        mv cache/tbb /opt/intel/oneapi/
-    - |
-        [[ -d /opt/intel/oneapi/compiler && -d /opt/intel/oneapi/tbb ]] && exit 0
-        . scripts/install_linux_apt_no_sudo.sh $LINUX_DPCPP_COMPONENTS
+        if [[ -d cache ]]
+        then
+          mkdir -p /opt/intel/oneapi
+          mv cache/compiler /opt/intel/oneapi/
+          mv cache/tbb /opt/intel/oneapi/
+        else
+          . scripts/install_prerequisites_linux_apt_no_sudo.sh
+          . scripts/setup_apt_repo_linux_no_sudo.sh
+          . scripts/install_linux_apt_no_sudo.sh $LINUX_DPCPP_COMPONENTS
+        fi
   script:
     - scripts/build_linux.sh dpc++
   after_script:
-    - . scripts/cache_exclude_linux_no_sudo.sh
     - |
-        [ -d cache ] && exit 0
-        mkdir cache
-        mv /opt/intel/oneapi/compiler cache
-        mv /opt/intel/oneapi/tbb cache
+        if [[ ! -d cache ]]
+        then
+          . scripts/cache_exclude_linux_no_sudo.sh
+          mkdir cache
+          mv /opt/intel/oneapi/compiler cache
+          mv /opt/intel/oneapi/tbb cache
+        fi
