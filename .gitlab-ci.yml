@@ -34,9 +34,9 @@ build_windows_cpp:
       prefix: install-${RELEASE}-${WINDOWS_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
-    paths: 
-      - cache
-  before_script:
+    paths:
+      - cache # GitLab CI cannot cache files outside build directory
+  before_script: # Restoring install directory from 'cache' folder
     - |
         if(Test-Path cache) {
           New-Item -ItemType "directory" -Path "C:\Program Files (x86)\Intel\oneAPI" -Force
@@ -46,7 +46,7 @@ build_windows_cpp:
         }
   script:
     - scripts/build_windows.bat c++ 2019_build_tools
-  after_script:
+  after_script:  # Moving install directory into 'cache' folder inside build directory
     - |
         if(!(Test-Path cache)) {
           scripts/cache_exclude_windows.ps1
@@ -72,7 +72,7 @@ build_windows_fortran:
       prefix: install-${RELEASE}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
-    paths: 
+    paths:
       - cache
   before_script:
     - |
@@ -110,7 +110,7 @@ build_windows_dpcpp:
       prefix: install-${RELEASE}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
       files:
         - scripts/cache_exclude_windows.ps1
-    paths: 
+    paths:
       - cache
   before_script:
     - |
@@ -146,11 +146,11 @@ build_linux_apt_cpp:
   image: ubuntu:latest
   stage: build
   cache:
-    key:
+    key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
       prefix: install-${RELEASE}-${LINUX_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
-    paths: 
+    paths:
       - cache
   before_script:
     - . scripts/install_prerequisites_linux_apt_no_sudo.sh
@@ -182,7 +182,7 @@ build_linux_apt_fortran:
       prefix: install-${RELEASE}-${LINUX_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
-    paths: 
+    paths:
       - cache
   before_script:
     - . scripts/install_prerequisites_linux_apt_no_sudo.sh
@@ -214,7 +214,7 @@ build_linux_apt_dpcpp:
       prefix: install-${RELEASE}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
-    paths: 
+    paths:
       - cache
   before_script:
     - . scripts/install_prerequisites_linux_apt_no_sudo.sh
