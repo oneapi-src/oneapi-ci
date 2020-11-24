@@ -4,4 +4,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-sudo apt-cache pkgnames intel
+sudo apt-cache search ^intel-

@@ -5,7 +5,8 @@
 name: list_components
 
 on:
-  push
+  schedule:
+    - cron: '0 0 * * *'
 
 env:
   WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe
