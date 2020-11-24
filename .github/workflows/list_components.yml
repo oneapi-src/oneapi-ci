@@ -23,13 +23,13 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: basekit
+    - name: Intel® oneAPI Base Toolkit
       run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL
-    - name: hpckit
+    - name: Intel® oneAPI HPC Toolkit
       run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL
-    - name: iotkit
+    - name: Intel® oneAPI IoT Toolkit
       run: scripts/list_components_windows.bat $WINDOWS_IOTKIT_URL
-    - name: renderkit
+    - name: Intel® oneAPI Rendering Toolkit
       run: scripts/list_components_windows.bat $WINDOWS_RENDERKIT_URL
 
   linux:
@@ -41,7 +41,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
-    - name: apt_all
+    - name: Intel® oneAPI packages provided in APT repository
       run: scripts/list_components_linux_apt.sh
 
   macos:
@@ -51,9 +51,9 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: basekit
+    - name: Intel® oneAPI Base Toolkit
       run: scripts/list_components_macos.sh $MACOS_BASEKIT_URL
-    - name: hpckit
+    - name: Intel® oneAPI HPC Toolkit
       run: scripts/list_components_macos.sh $MACOS_HPCKIT_URL
-    - name: renderkit
+    - name: Intel® oneAPI Rendering Toolkit
       run: scripts/list_components_macos.sh $MACOS_RENDERKIT_URL
