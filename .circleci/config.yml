@@ -6,13 +6,13 @@ version: 2.1
 parameters:
   WINDOWS_BASEKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe"
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664_offline.exe"
   WINDOWS_HPCKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe"
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682_offline.exe"
   MACOS_HPCKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg"
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg"
   WINDOWS_CPP_COMPONENTS:
     type: string
     default: "intel.oneapi.win.cpp-compiler"
@@ -24,19 +24,22 @@ parameters:
     default: "intel.oneapi.win.dpcpp-compiler"
   LINUX_CPP_COMPONENTS:
     type: string
-    default: "intel-oneapi-dpcpp-cpp-compiler-pro"
+    default: "intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic"
   LINUX_FORTRAN_COMPONENTS:
     type: string
-    default: "intel-oneapi-ifort"
+    default: "intel-oneapi-compiler-fortran"
   LINUX_DPCPP_COMPONENTS:
     type: string
-    default: "intel-oneapi-dpcpp-cpp-compiler"
+    default: "intel-oneapi-compiler-dpcpp-cpp"
   MACOS_CPP_COMPONENTS:
     type: string
     default: "intel.oneapi.mac.cpp-compiler"
   MACOS_FORTRAN_COMPONENTS:
     type: string
     default: "intel.oneapi.mac.ifort-compiler"
+  RELEASE:
+    type: string
+    default: "2021.1.1"
 
 orbs:
   win: circleci/windows@2.4.0
@@ -58,7 +61,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat c++ 2017_build_tools
+          command: scripts/build_windows.bat c++ 2017_build_tools << pipeline.parameters.RELEASE >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -92,7 +95,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat fortran 2017_build_tools
+          command: scripts/build_windows.bat fortran 2017_build_tools << pipeline.parameters.RELEASE >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -126,7 +129,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_BASEKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat dpc++ 2017_build_tools
+          command: scripts/build_windows.bat dpc++ 2017_build_tools << pipeline.parameters.RELEASE >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -170,7 +173,7 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh c++
+          command: scripts/build_linux.sh c++ << pipeline.parameters.RELEASE >>
       - run:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
@@ -203,7 +206,7 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh fortran
+          command: scripts/build_linux.sh fortran << pipeline.parameters.RELEASE >>
       - run:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
@@ -236,7 +239,7 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh dpc++
+          command: scripts/build_linux.sh dpc++ << pipeline.parameters.RELEASE >>
       - run:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
@@ -256,7 +259,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh c++
+          command: scripts/build_linux.sh c++ << pipeline.parameters.RELEASE >>
 
   build_linux_container_fortran:
     docker:
@@ -268,7 +271,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh fortran
+          command: scripts/build_linux.sh fortran << pipeline.parameters.RELEASE >>
 
   build_linux_container_dpcpp:
     docker:
@@ -280,7 +283,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh dpc++
+          command: scripts/build_linux.sh dpc++ << pipeline.parameters.RELEASE >>
 
 workflows:
   build-all:

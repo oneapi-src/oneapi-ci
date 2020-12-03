@@ -8,17 +8,18 @@ on:
   push
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe
-  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664_offline.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682_offline.exe
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
   WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
-  LINUX_CPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler-pro
-  LINUX_FORTRAN_COMPONENTS: intel-oneapi-ifort
-  LINUX_DPCPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler
+  LINUX_CPP_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+  LINUX_FORTRAN_COMPONENTS: intel-oneapi-compiler-fortran
+  LINUX_DPCPP_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
+  RELEASE: 2021.1.1
 
 jobs:
   build_windows_cpp:
@@ -38,7 +39,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat c++
+      run: scripts/build_windows.bat c++ - $RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -73,7 +74,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat fortran
+      run: scripts/build_windows.bat fortran - $RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -111,7 +112,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat dpc++
+      run: scripts/build_windows.bat dpc++ - $RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -151,7 +152,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -178,7 +179,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -206,7 +207,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -219,7 +220,7 @@ jobs:
       - name: install_git
         run: apt update && apt install -y git
       - name: build
-        run: scripts/build_linux.sh c++
+        run: scripts/build_linux.sh c++ $RELEASE
 
   build_linux_container_fortran:
     runs-on: ubuntu-20.04
@@ -229,7 +230,7 @@ jobs:
       - name: install_git
         run: apt update && apt install -y git
       - name: build
-        run: scripts/build_linux.sh fortran
+        run: scripts/build_linux.sh fortran $RELEASE
 
   build_linux_container_dpcpp:
     runs-on: ubuntu-20.04
@@ -239,7 +240,7 @@ jobs:
       - name: install_git
         run: apt update && apt install -y git
       - name: build
-        run: scripts/build_linux.sh dpc++
+        run: scripts/build_linux.sh dpc++ $RELEASE
 
   build_macos_cpp:
     runs-on: macos-latest
