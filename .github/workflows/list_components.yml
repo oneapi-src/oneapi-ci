@@ -1,0 +1,59 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+name: list_components
+
+on: workflow_dispatch
+
+env:
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682.exe
+  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17406/w_IoTKit_p_2021.1.0.1220.exe
+  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17405/w_RenderKit_p_2021.1.0.626.exe
+  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17426/m_BaseKit_p_2021.1.0.2427.dmg
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17444/m_RenderKit_p_2021.1.0.626.dmg
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: Intel® oneAPI Base Toolkit
+      run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL
+    - name: Intel® oneAPI HPC Toolkit
+      run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL
+    - name: Intel® oneAPI IoT Toolkit
+      run: scripts/list_components_windows.bat $WINDOWS_IOTKIT_URL
+    - name: Intel® oneAPI Rendering Toolkit
+      run: scripts/list_components_windows.bat $WINDOWS_RENDERKIT_URL
+
+  linux:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: scripts/setup_apt_repo_linux.sh
+    - name: Intel® oneAPI packages provided in APT repository
+      run: scripts/list_components_linux_apt.sh
+
+  macos:
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: Intel® oneAPI Base Toolkit
+      run: scripts/list_components_macos.sh $MACOS_BASEKIT_URL
+    - name: Intel® oneAPI HPC Toolkit
+      run: scripts/list_components_macos.sh $MACOS_HPCKIT_URL
+    - name: Intel® oneAPI Rendering Toolkit
+      run: scripts/list_components_macos.sh $MACOS_RENDERKIT_URL
