@@ -55,7 +55,7 @@ jobs:
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat c++ - $(ONEAPI_RELEASE)
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh
+  - bash: scripts/cache_exclude_windows.sh $(ONEAPI_RELEASE)
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
@@ -89,7 +89,7 @@ jobs:
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat fortran - $(ONEAPI_RELEASE)
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh
+  - bash: scripts/cache_exclude_windows.sh $(ONEAPI_RELEASE)
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
@@ -134,7 +134,7 @@ jobs:
     condition: eq(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat dpc++ - $(ONEAPI_RELEASE)
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh
+  - bash: scripts/cache_exclude_windows.sh $(ONEAPI_RELEASE)
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
   - bash: |
@@ -177,7 +177,7 @@ jobs:
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh c++ $(ONEAPI_RELEASE)
     displayName: build
-  - bash: scripts/cache_exclude_linux.sh
+  - bash: scripts/cache_exclude_linux.sh $(ONEAPI_RELEASE)
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
@@ -199,7 +199,7 @@ jobs:
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh fortran $(ONEAPI_RELEASE)
     displayName: build
-  - bash: scripts/cache_exclude_linux.sh
+  - bash: scripts/cache_exclude_linux.sh $(ONEAPI_RELEASE)
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
@@ -225,7 +225,7 @@ jobs:
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh dpc++ $(ONEAPI_RELEASE)
     displayName: build
-  - bash: scripts/cache_exclude_linux.sh
+  - bash: scripts/cache_exclude_linux.sh $(ONEAPI_RELEASE)
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 

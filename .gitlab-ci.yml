@@ -49,7 +49,7 @@ build_windows_cpp:
   after_script:  # Moving install directory into 'cache' folder inside build directory
     - |
         if(!(Test-Path cache)) {
-          scripts/cache_exclude_windows.ps1
+          scripts/cache_exclude_windows.ps1 $ONEAPI_RELEASE
           New-Item -ItemType "directory" -Path "cache"
         }
         # "push-pull" is the default cache policy, so cache folder needs to be setup in every run.
@@ -89,7 +89,7 @@ build_windows_fortran:
   after_script:
     - |
         if(!(Test-Path cache)) {
-          scripts/cache_exclude_windows.ps1
+          scripts/cache_exclude_windows.ps1 $ONEAPI_RELEASE
           New-Item -ItemType "directory" -Path "cache"
         }
         Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\compiler" -Destination "cache"
@@ -129,7 +129,7 @@ build_windows_dpcpp:
   after_script:
     - |
         if(!(Test-Path cache)) {
-          scripts/cache_exclude_windows.ps1
+          scripts/cache_exclude_windows.ps1 $ONEAPI_RELEASE
           New-Item -ItemType "directory" -Path "cache"
         }
         Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\compiler" -Destination "cache"
@@ -171,7 +171,7 @@ build_linux_apt_cpp:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh
+          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE}
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
@@ -203,7 +203,7 @@ build_linux_apt_fortran:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh
+          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE}
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
@@ -236,7 +236,7 @@ build_linux_apt_dpcpp:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh
+          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE}
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
