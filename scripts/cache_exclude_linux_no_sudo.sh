@@ -4,7 +4,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-rm -rf /opt/intel/oneapi/compiler/2021.1-beta10/linux/compiler/lib/ia32_lin
-rm -rf /opt/intel/oneapi/compiler/2021.1-beta10/linux/bin/ia32
-rm -rf /opt/intel/oneapi/compiler/2021.1-beta10/linux/lib/emu
-rm -rf /opt/intel/oneapi/compiler/2021.1-beta10/linux/lib/oclfpga
+ONEAPI_RELEASE=$1
+
+rm -rf /opt/intel/oneapi/compiler/"$ONEAPI_RELEASE"/linux/compiler/lib/ia32_lin
+rm -rf /opt/intel/oneapi/compiler/"$ONEAPI_RELEASE"/linux/bin/ia32
+rm -rf /opt/intel/oneapi/compiler/"$ONEAPI_RELEASE"/linux/lib/emu
+rm -rf /opt/intel/oneapi/compiler/"$ONEAPI_RELEASE"/linux/lib/oclfpga
