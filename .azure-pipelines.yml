@@ -7,11 +7,11 @@ trigger:
 
 variables:
   - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664_offline.exe
   - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682_offline.exe
   - name: MACOS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-compiler
   - name: WINDOWS_FORTRAN_COMPONENTS
@@ -19,15 +19,17 @@ variables:
   - name: WINDOWS_DPCPP_COMPONENTS
     value: intel.oneapi.win.dpcpp-compiler
   - name: LINUX_CPP_COMPONENTS
-    value: intel-oneapi-dpcpp-cpp-compiler-pro
+    value: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
   - name: LINUX_FORTRAN_COMPONENTS
-    value: intel-oneapi-ifort
+    value: intel-oneapi-compiler-fortran
   - name: LINUX_DPCPP_COMPONENTS
-    value: intel-oneapi-dpcpp-cpp-compiler
+    value: intel-oneapi-compiler-dpcpp-cpp
   - name: MACOS_CPP_COMPONENTS
     value: intel.oneapi.mac.cpp-compiler
   - name: MACOS_FORTRAN_COMPONENTS
     value: intel.oneapi.mac.ifort-compiler
+  - name: ONEAPI_RELEASE
+    value: 2021.1.1
 
 resources:
     containers:
@@ -51,7 +53,7 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat c++
+  - script: scripts/build_windows.bat c++ - $(ONEAPI_RELEASE)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -85,7 +87,7 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat fortran
+  - script: scripts/build_windows.bat fortran - $(ONEAPI_RELEASE)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -130,7 +132,7 @@ jobs:
   - bash: cp opencl/OpenCL.dll C:/Windows/System32/
     displayName: restore OpenCL.dll from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat dpc++
+  - script: scripts/build_windows.bat dpc++ - $(ONEAPI_RELEASE)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -159,7 +161,7 @@ jobs:
 
 - job: build_linux_apt_cpp
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
@@ -173,7 +175,7 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh c++
+  - script: scripts/build_linux.sh c++ $(ONEAPI_RELEASE)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -181,7 +183,7 @@ jobs:
 
 - job: build_linux_apt_fortran
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
@@ -195,7 +197,7 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh fortran
+  - script: scripts/build_linux.sh fortran $(ONEAPI_RELEASE)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -203,7 +205,7 @@ jobs:
 
 - job: build_linux_apt_dpcpp
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
@@ -221,7 +223,7 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh dpc++
+  - script: scripts/build_linux.sh dpc++ $(ONEAPI_RELEASE)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -234,7 +236,7 @@ jobs:
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
-    - script: scripts/build_linux.sh c++
+    - script: scripts/build_linux.sh c++ $(ONEAPI_RELEASE)
       displayName: build
 
 - job: build_linux_container_fortran
@@ -244,7 +246,7 @@ jobs:
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
-    - script: scripts/build_linux.sh fortran
+    - script: scripts/build_linux.sh fortran $(ONEAPI_RELEASE)
       displayName: build
 
 - job: build_linux_container_dpcpp
@@ -254,7 +256,7 @@ jobs:
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
-    - script: scripts/build_linux.sh dpc++
+    - script: scripts/build_linux.sh dpc++ $(ONEAPI_RELEASE)
       displayName: build
 
 - job: build_macOS_cpp

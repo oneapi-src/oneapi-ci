@@ -4,17 +4,18 @@
 
 environment:
   global:
-    WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17191/w_BaseKit_b_2021.1.10.2260_offline.exe
-    WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17163/w_HPCKit_b_2021.1.10.2266_offline.exe
-    MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17230/m_HPCKit_b_2021.1.10.2260.dmg
+    WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664_offline.exe
+    WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682_offline.exe
+    MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg
     WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
     WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
     WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
-    LINUX_CPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler-pro
-    LINUX_FORTRAN_COMPONENTS: intel-oneapi-ifort
-    LINUX_DPCPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler
+    LINUX_CPP_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+    LINUX_FORTRAN_COMPONENTS: intel-oneapi-compiler-fortran
+    LINUX_DPCPP_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp
     MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
     MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
+    ONEAPI_RELEASE: 2021.1.1
 
   matrix:
     - job_name: build_windows_cpp
@@ -27,13 +28,13 @@ environment:
       appveyor_build_worker_image: Visual Studio 2019
 
     - job_name: build_linux_apt_cpp
-      appveyor_build_worker_image: Ubuntu
+      appveyor_build_worker_image: ubuntu2004
 
     - job_name: build_linux_apt_fortran
-      appveyor_build_worker_image: Ubuntu
+      appveyor_build_worker_image: ubuntu2004
 
     - job_name: build_linux_apt_dpcpp
-      appveyor_build_worker_image: Ubuntu
+      appveyor_build_worker_image: ubuntu2004
 
     - job_name: build_mac_cpp
       appveyor_build_worker_image: macos
@@ -49,7 +50,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_CPP_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat c++
+      cmd: scripts/build_windows.bat c++ - %ONEAPI_RELEASE%
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -65,7 +66,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_FORTRAN_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat fortran
+      cmd: scripts/build_windows.bat fortran - %ONEAPI_RELEASE%
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -81,7 +82,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_BASEKIT_URL% %WINDOWS_DPCPP_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat dpc++
+      cmd: scripts/build_windows.bat dpc++ - %ONEAPI_RELEASE%
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -99,7 +100,7 @@ for:
         scripts/setup_apt_repo_linux.sh
         scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     build_script:
-      sh: scripts/build_linux.sh c++
+      sh: scripts/build_linux.sh c++ $ONEAPI_RELEASE
   -
     matrix:
       only:
@@ -109,7 +110,7 @@ for:
         scripts/setup_apt_repo_linux.sh
         scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     build_script:
-      sh: scripts/build_linux.sh fortran
+      sh: scripts/build_linux.sh fortran $ONEAPI_RELEASE
   -
     matrix:
       only:
@@ -119,7 +120,7 @@ for:
         scripts/setup_apt_repo_linux.sh
         scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     build_script:
-      sh: scripts/build_linux.sh dpc++
+      sh: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
 
   -
     matrix:
