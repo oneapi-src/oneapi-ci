@@ -9,7 +9,7 @@ RELEASE=$2
 
 git clone --depth 1 https://github.com/oneapi-src/oneAPI-samples.git
 
-# shellcheck source=/opt/intel/oneapi/compiler/<RELEASE>/env/vars.sh
+# shellcheck source=/dev/null
 source /opt/intel/oneapi/compiler/"$RELEASE"/env/vars.sh
 
 case $LANGUAGE in
@@ -22,7 +22,7 @@ fortran)
   make && make run
   ;;
 dpc++)
-# shellcheck source=/opt/intel/oneapi/tbb/<RELEASE>/env/vars.sh
+# shellcheck source=/dev/null
   source /opt/intel/oneapi/tbb/"$RELEASE"/env/vars.sh
   cd oneAPI-samples/DirectProgramming/DPC++/DenseLinearAlgebra/vector-add
   make all && make run
