@@ -131,7 +131,7 @@ jobs:
         retention-days: 7
 
   build_linux_apt_cpp:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash
@@ -158,7 +158,7 @@ jobs:
       run: scripts/cache_exclude_linux.sh
 
   build_linux_apt_fortran:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash
@@ -185,7 +185,7 @@ jobs:
       run: scripts/cache_exclude_linux.sh
 
   build_linux_apt_dpcpp:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash

@@ -145,7 +145,7 @@ build_windows_dpcpp:
     expire_in: 1 week
 
 build_linux_apt_cpp:
-  image: ubuntu:latest
+  image: ubuntu:20.04
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
@@ -177,7 +177,7 @@ build_linux_apt_cpp:
         mv /opt/intel/oneapi/compiler cache
 
 build_linux_apt_fortran:
-  image: ubuntu:latest
+  image: ubuntu:20.04
   stage: build
   cache:
     key:
@@ -209,7 +209,7 @@ build_linux_apt_fortran:
         mv /opt/intel/oneapi/compiler cache
 
 build_linux_apt_dpcpp:
-  image: ubuntu:latest
+  image: ubuntu:20.04
   stage: build
   cache:
     key:

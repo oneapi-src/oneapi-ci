@@ -151,7 +151,7 @@ jobs:
 
   build_linux_apt_cpp:
     docker:
-      - image: ubuntu:latest
+      - image: ubuntu:20.04
     steps:
       - checkout
       - run:
@@ -184,7 +184,7 @@ jobs:
 
   build_linux_apt_fortran:
     docker:
-      - image: ubuntu:latest
+      - image: ubuntu:20.04
     steps:
       - checkout
       - run:
@@ -217,7 +217,7 @@ jobs:
 
   build_linux_apt_dpcpp:
     docker:
-      - image: ubuntu:latest
+      - image: ubuntu:20.04
     steps:
       - checkout
       - run:

@@ -161,7 +161,7 @@ jobs:
 
 - job: build_linux_apt_cpp
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
@@ -183,7 +183,7 @@ jobs:
 
 - job: build_linux_apt_fortran
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
@@ -205,7 +205,7 @@ jobs:
 
 - job: build_linux_apt_dpcpp
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-20.04'
   steps:
   - script: scripts/setup_apt_repo_linux.sh
     displayName: setup apt repo
