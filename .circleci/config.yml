@@ -37,7 +37,7 @@ parameters:
   MACOS_FORTRAN_COMPONENTS:
     type: string
     default: "intel.oneapi.mac.ifort-compiler"
-  RELEASE:
+  ONEAPI_RELEASE:
     type: string
     default: "2021.1.1"
 
@@ -61,7 +61,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat c++ 2017_build_tools << pipeline.parameters.RELEASE >>
+          command: scripts/build_windows.bat c++ 2017_build_tools << pipeline.parameters.ONEAPI_RELEASE >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -95,7 +95,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat fortran 2017_build_tools << pipeline.parameters.RELEASE >>
+          command: scripts/build_windows.bat fortran 2017_build_tools << pipeline.parameters.ONEAPI_RELEASE >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -129,7 +129,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_BASEKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat dpc++ 2017_build_tools << pipeline.parameters.RELEASE >>
+          command: scripts/build_windows.bat dpc++ 2017_build_tools << pipeline.parameters.ONEAPI_RELEASE >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -173,7 +173,7 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh c++ << pipeline.parameters.RELEASE >>
+          command: scripts/build_linux.sh c++ << pipeline.parameters.ONEAPI_RELEASE >>
       - run:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
@@ -206,7 +206,7 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh fortran << pipeline.parameters.RELEASE >>
+          command: scripts/build_linux.sh fortran << pipeline.parameters.ONEAPI_RELEASE >>
       - run:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
@@ -239,7 +239,7 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh dpc++ << pipeline.parameters.RELEASE >>
+          command: scripts/build_linux.sh dpc++ << pipeline.parameters.ONEAPI_RELEASE >>
       - run:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
@@ -259,7 +259,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh c++ << pipeline.parameters.RELEASE >>
+          command: scripts/build_linux.sh c++ << pipeline.parameters.ONEAPI_RELEASE >>
 
   build_linux_container_fortran:
     docker:
@@ -271,7 +271,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh fortran << pipeline.parameters.RELEASE >>
+          command: scripts/build_linux.sh fortran << pipeline.parameters.ONEAPI_RELEASE >>
 
   build_linux_container_dpcpp:
     docker:
@@ -283,7 +283,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh dpc++ << pipeline.parameters.RELEASE >>
+          command: scripts/build_linux.sh dpc++ << pipeline.parameters.ONEAPI_RELEASE >>
 
 workflows:
   build-all:
