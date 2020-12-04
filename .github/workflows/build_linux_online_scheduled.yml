@@ -25,18 +25,32 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: install_tree
+      run: sudo apt-get install -y tree
     - name: install_basekit
       run: scripts/install_linux.sh $LINUX_BASEKIT_URL intel.oneapi.lin.dpcpp-cpp-compiler
+    - name: tree install dir
+      run: tree /opt/intel
     - name: install_hpckit
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL
+    - name: tree install dir
+      run: tree /opt/intel
     - name: install_iotkit
       run: scripts/install_linux.sh $LINUX_IOTKIT_URL
+    - name: tree install dir
+      run: tree /opt/intel
     - name: install_aikit
       run: scripts/install_linux.sh $LINUX_AIKIT_URL
+    - name: tree install dir
+      run: tree /opt/intel
     - name: install_dlfdkit
       run: scripts/install_linux.sh $LINUX_DLFDKIT_URL
+    - name: tree install dir
+      run: tree /opt/intel
     - name: install_renderkit
       run: scripts/install_linux.sh $LINUX_RENDERKIT_URL
+    - name: tree install dir
+      run: tree /opt/intel
     - name: build_c++
       run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
     - name: build_fortran
