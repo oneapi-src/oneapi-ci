@@ -28,21 +28,21 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: C:\Program Files (x86)\Intel\oneAPI\compiler
-        # key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++ - $ONEAPI_RELEASE
-    # - name: exclude unused files from cache
-      # if: steps.cache-install.outputs.cache-hit != 'true'
-      # shell: bash
-      # run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      shell: bash
+      run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
@@ -63,21 +63,21 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: C:\Program Files (x86)\Intel\oneAPI\compiler
-        # key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran - $ONEAPI_RELEASE
-    # - name: exclude unused files from cache
-      # if: steps.cache-install.outputs.cache-hit != 'true'
-      # shell: bash
-      # run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      shell: bash
+      run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
@@ -98,24 +98,24 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: |
-          # C:\Program Files (x86)\Intel\oneAPI\compiler
-          # C:\Program Files (x86)\Intel\oneAPI\tbb
-          # C:\Windows\System32\OpenCL.dll
-        # key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          C:\Program Files (x86)\Intel\oneAPI\compiler
+          C:\Program Files (x86)\Intel\oneAPI\tbb
+          C:\Windows\System32\OpenCL.dll
+        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++ - $ONEAPI_RELEASE
-    # - name: exclude unused files from cache
-      # if: steps.cache-install.outputs.cache-hit != 'true'
-      # shell: bash
-      # run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      shell: bash
+      run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
@@ -138,23 +138,23 @@ jobs:
     - uses: actions/checkout@v2
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
-    # - name: collect versioned dependencies of apt packages
-      # run: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: |
-          # /opt/intel/oneapi/compiler
-        # key: install-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi/compiler
+        key: install-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     - name: build
       run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
-    # - name: exclude unused files from cache
-      # if: steps.cache-install.outputs.cache-hit != 'true'
-      # run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
 
   build_linux_apt_fortran:
     runs-on: ubuntu-20.04
@@ -165,23 +165,23 @@ jobs:
     - uses: actions/checkout@v2
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
-    # - name: collect versioned dependencies of apt packages
-      # run: scripts/apt_depends.sh $LINUX_FORTRAN_COMPONENTS | tee depends.txt
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: |
-          # /opt/intel/oneapi/compiler
-        # key: install-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_FORTRAN_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi/compiler
+        key: install-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
-    # - name: exclude unused files from cache
-      # if: steps.cache-install.outputs.cache-hit != 'true'
-      # run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
 
   build_linux_apt_dpcpp:
     runs-on: ubuntu-20.04
@@ -192,54 +192,54 @@ jobs:
     - uses: actions/checkout@v2
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
-    # - name: collect versioned dependencies of apt packages
-      # run: scripts/apt_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: |
-          # /opt/intel/oneapi/compiler
-          # /opt/intel/oneapi/tbb
-        # key: install-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi/compiler
+          /opt/intel/oneapi/tbb
+        key: install-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
-    # - name: exclude unused files from cache
-      # if: steps.cache-install.outputs.cache-hit != 'true'
-      # run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
 
-  # build_linux_container_cpp:
-    # runs-on: ubuntu-20.04
-    # container: intel/oneapi-hpckit
-    # steps:
-      # - uses: actions/checkout@v2
-      # - name: install_git
-        # run: apt update && apt install -y git
-      # - name: build
-        # run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
+  build_linux_container_cpp:
+    runs-on: ubuntu-20.04
+    container: intel/oneapi-hpckit
+    steps:
+      - uses: actions/checkout@v2
+      - name: install_git
+        run: apt update && apt install -y git
+      - name: build
+        run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
 
-  # build_linux_container_fortran:
-    # runs-on: ubuntu-20.04
-    # container: intel/oneapi-hpckit
-    # steps:
-      # - uses: actions/checkout@v2
-      # - name: install_git
-        # run: apt update && apt install -y git
-      # - name: build
-        # run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
+  build_linux_container_fortran:
+    runs-on: ubuntu-20.04
+    container: intel/oneapi-hpckit
+    steps:
+      - uses: actions/checkout@v2
+      - name: install_git
+        run: apt update && apt install -y git
+      - name: build
+        run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
 
-  # build_linux_container_dpcpp:
-    # runs-on: ubuntu-20.04
-    # container: intel/oneapi-basekit
-    # steps:
-      # - uses: actions/checkout@v2
-      # - name: install_git
-        # run: apt update && apt install -y git
-      # - name: build
-        # run: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
+  build_linux_container_dpcpp:
+    runs-on: ubuntu-20.04
+    container: intel/oneapi-basekit
+    steps:
+      - uses: actions/checkout@v2
+      - name: install_git
+        run: apt update && apt install -y git
+      - name: build
+        run: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
 
   build_macos_cpp:
     runs-on: macos-latest
@@ -248,18 +248,18 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    # - name: prepare for cache restore
-      # run: |
-        # sudo mkdir -p /opt/intel
-        # sudo chown $USER /opt/intel
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: /opt/intel/oneapi
-        # key: install-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_CPP_COMPONENTS }}
+    - name: prepare for cache restore
+      run: |
+        sudo mkdir -p /opt/intel
+        sudo chown $USER /opt/intel
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: /opt/intel/oneapi
+        key: install-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_CPP_COMPONENTS }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
     - name: build
       run: scripts/build_macos.sh c++
@@ -282,18 +282,18 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    # - name: prepare for cache restore
-      # run: |
-        # sudo mkdir -p /opt/intel
-        # sudo chown $USER /opt/intel
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: /opt/intel/oneapi
-        # key: install-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_FORTRAN_COMPONENTS }}
+    - name: prepare for cache restore
+      run: |
+        sudo mkdir -p /opt/intel
+        sudo chown $USER /opt/intel
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: /opt/intel/oneapi
+        key: install-${{ env.MACOS_HPCKIT_URL }}-${{ env.MACOS_FORTRAN_COMPONENTS }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_macos.sh fortran
