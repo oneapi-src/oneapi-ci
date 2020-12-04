@@ -48,17 +48,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Intel® oneAPI Base Toolkit
-      run: scripts/list_components_linux.bat $LINUX_BASEKIT_URL
+      run: scripts/list_components_linux.sh $LINUX_BASEKIT_URL
     - name: Intel® oneAPI HPC Toolkit
-      run: scripts/list_components_linux.bat $LINUX_HPCKIT_URL
+      run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL
     - name: Intel® oneAPI IoT Toolkit
-      run: scripts/list_components_linux.bat $LINUX_IOTKIT_URL
+      run: scripts/list_components_linux.sh $LINUX_IOTKIT_URL
     - name: Intel® oneAPI AI Toolkit
-      run: scripts/list_components_linux.bat $LINUX_AIKIT_URL
+      run: scripts/list_components_linux.sh $LINUX_AIKIT_URL
     - name: Intel® oneAPI DLFD Toolkit
-      run: scripts/list_components_linux.bat $LINUX_DLFDKIT_URL
+      run: scripts/list_components_linux.sh $LINUX_DLFDKIT_URL
     - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_linux.bat $LINUX_RENDERKIT_URL
+      run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL
 
   linux_apt:
     runs-on: ubuntu-latest
