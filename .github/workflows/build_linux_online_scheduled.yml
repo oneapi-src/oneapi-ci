@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+name: build_linux_online_scheduled
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+
+env:
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17431/l_BaseKit_p_2021.1.0.2659.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17427/l_HPCKit_p_2021.1.0.2684.sh
+  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17420/l_IoTKit_p_2021.1.0.2658.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17421/l_AIKit_p_2021.1.0.935.sh
+  LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17399/l_DLFDKit_p_2021.1.0.1920.sh
+  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17448/l_RenderKit_p_2021.1.0.627.sh
+  ONEAPI_RELEASE: 2021.1.1
+
+jobs:
+  build_linux_all:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_basekit
+      run: scripts/install_linux.sh $LINUX_BASEKIT_URL
+    - name: install_hpckit
+      run: scripts/install_linux.sh $LINUX_HPCKIT_URL
+    - name: install_iotkit
+      run: scripts/install_linux.sh $LINUX_IOTKIT_URL
+    - name: install_aikit
+      run: scripts/install_linux.sh $LINUX_AIKIT_URL
+    - name: install_dlfdkit
+      run: scripts/install_linux.sh $LINUX_DLFDKIT_URL
+    - name: install_renderkit
+      run: scripts/install_linux.sh $LINUX_RENDERKIT_URL
+    - name: build_c++
+      run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
+    - name: build_fortran
+      run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
+
+    # Delete the following if you don't want to save install logs
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
