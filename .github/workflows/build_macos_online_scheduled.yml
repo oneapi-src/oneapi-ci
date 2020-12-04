@@ -22,11 +22,11 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: install
+    - name: install_basekit
       run: scripts/install_macos.sh $MACOS_BASEKIT_URL
-    - name: install
+    - name: install_hpckit
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL
-    - name: install
+    - name: install_renderkit
       run: scripts/install_macos.sh $MACOS_RENDERKIT_URL
     - name: build_c++
       run: scripts/build_macos.sh c++
