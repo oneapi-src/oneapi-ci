@@ -16,4 +16,4 @@ if [ -z "$COMPONENTS" ]; then
 else
   webimage_extracted/"$WEBIMAGE_NAME"/bootstrapper -s --action install --components="$COMPONENTS" --eula=accept --continue-with-optional-error=yes --log-dir=.
 fi
-rm -rf webimage.sh
+rm -rf webimage.sh webimage_extracted

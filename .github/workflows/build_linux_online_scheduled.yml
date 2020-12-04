@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install_basekit
-      run: scripts/install_linux.sh $LINUX_BASEKIT_URL
+      run: scripts/install_linux.sh $LINUX_BASEKIT_URL intel.oneapi.lin.dpcpp-compiler
     - name: install_hpckit
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL
     - name: install_iotkit
