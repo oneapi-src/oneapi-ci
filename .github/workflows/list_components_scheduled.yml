@@ -6,7 +6,7 @@ name: list_components_scheduled
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 * * * *'
 
 env:
   WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664.exe
