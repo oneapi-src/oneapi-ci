@@ -33,6 +33,8 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: tracert
+      run: tracert registrationcenter-download.intel.com
     - name: install_basekit
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL
     - name: install_hpckit
@@ -67,6 +69,10 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - name: traceroute
+      run: |
+        sudo apt-get install -y traceroute
+        traceroute --tcp registrationcenter-download.intel.com
     - name: install_basekit
       run: scripts/install_linux.sh $LINUX_BASEKIT_URL intel.oneapi.lin.dpcpp-cpp-compiler
     - name: install_hpckit

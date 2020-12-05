@@ -28,7 +28,7 @@ jobs:
     - name: traceroute
       run: |
         sudo apt-get install -y traceroute
-        traceroute installer.repos.intel.com
+        traceroute --tcp installer.repos.intel.com
     - name: install_basekit
       run: scripts/install_linux.sh $LINUX_BASEKIT_URL intel.oneapi.lin.dpcpp-cpp-compiler
     - name: install_hpckit
