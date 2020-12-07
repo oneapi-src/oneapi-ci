@@ -18,6 +18,7 @@ env:
 jobs:
   build_windows_all:
     runs-on: windows-latest
+    timeout-minutes: 90
     defaults:
       run:
         shell: bash

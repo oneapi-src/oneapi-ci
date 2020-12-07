@@ -17,6 +17,7 @@ env:
 jobs:
   build_macos_all:
     runs-on: macos-latest
+    timeout-minutes: 40
     defaults:
       run:
         shell: bash
