@@ -6,7 +6,7 @@ name: build_macos_online_scheduled
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '40 */2 * * *'
 
 env:
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17426/m_BaseKit_p_2021.1.0.2427.dmg

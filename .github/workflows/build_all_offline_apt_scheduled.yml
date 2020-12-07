@@ -34,7 +34,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: tracert
-      run: tracert registrationcenter-download.intel.com
+      run: tracert -h 1 registrationcenter-download.intel.com
     - name: install_basekit
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL
     - name: install_hpckit
