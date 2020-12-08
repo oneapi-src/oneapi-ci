@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+name: list_components
+
+on: push
+
+env:
+  LINUX_COMPONENTS: intel-basekit,intel-hpckit,intel-iotkit,intel-aikit,intel-renderkit
+  ONEAPI_RELEASE: 2021.1.1
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: test
+      run: scripts/install_linux_yum_ubuntu.sh
