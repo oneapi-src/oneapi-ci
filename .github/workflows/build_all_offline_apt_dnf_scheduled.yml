@@ -132,7 +132,7 @@ jobs:
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc
+      run: sudo dnf -y install git make gcc g++
     - name: install
       run: scripts/install_linux_dnf.sh $LINUX_COMPONENTS
     - name: build
