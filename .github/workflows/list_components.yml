@@ -39,10 +39,43 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: setup apt repo
-      run: scripts/setup_apt_repo_linux.sh
+    - name: Intel® oneAPI Base Toolkit
+      run: scripts/list_components_linux.sh $LINUX_BASEKIT_URL
+    - name: Intel® oneAPI HPC Toolkit
+      run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL
+    - name: Intel® oneAPI IoT Toolkit
+      run: scripts/list_components_linux.sh $LINUX_IOTKIT_URL
+    - name: Intel® AI Analytics Toolkit
+      run: scripts/list_components_linux.sh $LINUX_AIKIT_URL
+    - name: Intel® oneAPI DL Framework Developer Toolkit
+      run: scripts/list_components_linux.sh $LINUX_DLFDKIT_URL
+    - name: Intel® oneAPI Rendering Toolkit
+      run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL
+
+  linux_apt:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
     - name: Intel® oneAPI packages provided in APT repository
       run: scripts/list_components_linux_apt.sh
+
+  linux_yum_dnf:
+    runs-on: ubuntu-latest
+    container: fedora
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: Intel® oneAPI packages provided in YUM/DNF repository
+      run: scripts/list_components_linux_dnf.sh
 
   macos:
     runs-on: macos-latest
