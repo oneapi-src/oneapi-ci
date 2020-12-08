@@ -129,7 +129,7 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    - name: setup apt repo
+    - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: install
       run: scripts/install_linux_dnf.sh $LINUX_COMPONENTS
