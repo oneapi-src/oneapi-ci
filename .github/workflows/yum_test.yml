@@ -13,6 +13,7 @@ env:
 jobs:
   linux:
     runs-on: ubuntu-latest
+    container: fedora
     defaults:
       run:
         shell: bash
