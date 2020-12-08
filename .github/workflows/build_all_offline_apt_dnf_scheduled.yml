@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-name: build_all_offline_apt_scheduled
+name: build_all_offline_apt_dnf_scheduled
 
 on:
   schedule:
@@ -131,6 +131,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: install prerequisites
+      run: sudo dnf -y install git make
     - name: install
       run: scripts/install_linux_dnf.sh $LINUX_COMPONENTS
     - name: build
