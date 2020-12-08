@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-name: list_components
+name: yum_test
 
 on: push
 
