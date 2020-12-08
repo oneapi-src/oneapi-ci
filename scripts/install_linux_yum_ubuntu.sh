@@ -14,6 +14,7 @@ gpgcheck=1
 repo_gpgcheck=1
 gpgkey=https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
 EOF
+sudo mkdir /etc/yum.repos.d/
 sudo mv /tmp/oneAPI.repo /etc/yum.repos.d/
 sudo yum -y --disablerepo="*" --enablerepo="oneAPI" list available
 sudo yum -y install intel-basekit
