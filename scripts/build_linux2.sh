@@ -18,7 +18,7 @@ c++)
   ./a.out
   ;;
 fortran)
-  ifx src/fortran/hello.f90
+  ifort src/fortran/hello.f90
   ./a.out
   ;;
 dpc++)
