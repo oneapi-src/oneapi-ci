@@ -4,4 +4,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-echo "$1" | sed "s/,/ /g" | xargs -n 1 dnf repoquery --deplist
+echo "$1" | sed "s/,/ /g" | xargs -n 1 dnf -y repoquery --deplist
