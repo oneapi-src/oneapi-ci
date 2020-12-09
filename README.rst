@@ -43,17 +43,17 @@ Azure Pipelines     `.azure-pipelines.yml`_             |AzureStatus|
 Supported Configurations
 ========================
 
-======== ========= ========= ============ ======= ===========
-\        C++/Fortran/DPC++                        C++/Fortran
--------- ---------------------------------------- -----------
-CI       Linux APT Linux DNF Linux Docker Windows MacOS
-======== ========= ========= ============ ======= ===========
-GitHub   |c|       |c|       |c|          |c|     |c|
-Circle   |c|       |x|       |c|          |c|     |x|
-AppVeyor |c|       |x|       |x|          |c|     |c|
-GitLab   |c|       |x|       |x|          |c|     |x|
-Azure    |c|       |x|       |c|          |c|     |c|
-======== ========= ========= ============ ======= ===========
+======== ========= ========= ============ ===== ======= ===========
+\        C++/Fortran/DPC++                              C++/Fortran
+-------- ---------------------------------------------- -----------
+CI       Linux APT Linux DNF Linux Docker Linux Windows MacOS
+======== ========= ========= ============ ===== ======= ===========
+GitHub   |c|       |c|       |c|          |c|   |c|     |c|
+Circle   |c|       |x|       |c|          |x|   |c|     |x|
+AppVeyor |c|       |x|       |x|          |x|   |c|     |c|
+GitLab   |c|       |x|       |x|          |x|   |c|     |x|
+Azure    |c|       |x|       |c|          |x|   |c|     |c|
+======== ========= ========= ============ ===== ======= ===========
 
 
 Troubleshooting
