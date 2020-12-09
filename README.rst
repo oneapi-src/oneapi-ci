@@ -17,11 +17,14 @@ applications:
 ===============  ===========================================
 Compilers        icc, ifort, dpcpp
 OS platforms     Linux, Windows, MacOS
-Install methods  Intel\ |r| installer, apt, docker container, CI cache
+Install methods  Intel\ |r| installer, apt, dnf, docker container, CI cache
 ===============  ===========================================
 
 The config files show examples of all supported configurations. Delete
 the ones you do not want.
+
+For a complete list of components available for installation,
+see |ListComponentsStatus|.
 
 Status
 ======
@@ -40,17 +43,17 @@ Azure Pipelines     `.azure-pipelines.yml`_             |AzureStatus|
 Supported Configurations
 ========================
 
-======== === ======= ===== === ======= ===== === ======= ===== === =======
-CI           Linux APT        Linux Docker        Windows         MacOS
--------- ----------------- ----------------- ----------------- -----------
-\        C++ Fortran DPC++ C++ Fortran DPC++ C++ Fortran DPC++ C++ Fortran
-======== === ======= ===== === ======= ===== === ======= ===== === =======
-GitHub   |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
-Circle   |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |x|   |x|
-AppVeyor |c|   |c|    |c|  |x|   |x|    |x|  |c|   |c|    |c|  |c|   |c|
-GitLab   |c|   |c|    |c|  |x|   |x|    |x|  |c|   |c|    |c|  |x|   |x|
-Azure    |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|    |c|  |c|   |c|
-======== === ======= ===== === ======= ===== === ======= ===== === =======
+======== =========== =========== ============ =========== ===========
+\            C++/Fortran/DPC++                            C++/Fortran
+-------- ------------------------------------------------ -----------
+CI       Linux APT   Linux DNF   Linux Docker Windows     MacOS
+======== =========== =========== ============ =========== ===========
+GitHub   |c|/|c|/|c| |c|/|c|/|c| |c|/|c|/|c|  |c|/|c|/|c| |c|/|c|
+Circle   |c|/|c|/|c| |x|/|x|/|x| |c|/|c|/|c|  |c|/|c|/|c| |x|/|x|
+AppVeyor |c|/|c|/|c| |x|/|x|/|x| |x|/|x|/|x|  |c|/|c|/|c| |c|/|c|
+GitLab   |c|/|c|/|c| |x|/|x|/|x| |x|/|x|/|x|  |c|/|c|/|c| |x|/|x|
+Azure    |c|/|c|/|c| |x|/|x|/|x| |c|/|c|/|c|  |c|/|c|/|c| |c|/|c|
+======== =========== =========== ============ =========== ===========
 
 
 Troubleshooting
@@ -98,6 +101,9 @@ See `security guidelines`_.
    :alt: Build status
 .. |AzureStatus| image:: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_apis/build/status/oneapi-src.oneapi-ci?branchName=master
    :target: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_build
+   :alt: Build status
+.. |ListComponentsStatus| image:: https://github.com/oneapi-src/oneapi-ci/workflows/list_components/badge.svg
+   :target: https://github.com/oneapi-src/oneapi-ci/actions?query=workflow%3Alist_components
    :alt: Build status
 
 .. |r| unicode:: U+000AE
