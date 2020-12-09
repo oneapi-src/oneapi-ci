@@ -17,4 +17,4 @@ else
   installer_exit_code=$?
 fi
 hdiutil detach /Volumes/"$(basename "$URL" .dmg)" -quiet
-return $installer_exit_code
+exit $installer_exit_code

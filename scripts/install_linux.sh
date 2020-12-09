@@ -20,4 +20,4 @@ else
   installer_exit_code=$?
 fi
 rm -rf webimage_extracted
-return $installer_exit_code
+exit $installer_exit_code
