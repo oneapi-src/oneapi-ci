@@ -220,7 +220,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc g++ xargs
+      run: sudo dnf -y install git make gcc g++ findutils
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: collect versioned dependencies of dnf packages
@@ -250,7 +250,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc g++ xargs
+      run: sudo dnf -y install git make gcc g++ findutils
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: collect versioned dependencies of dnf packages
@@ -280,7 +280,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc g++ xargs
+      run: sudo dnf -y install git make gcc g++ findutils
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: collect versioned dependencies of dnf packages
