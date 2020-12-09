@@ -23,6 +23,8 @@ Install methods  Intel\ |r| installer, apt, dnf, docker container
 The config files show examples of all supported configurations. Delete
 the ones you do not want.
 
+For a complete list of components available for installation, see |ListComponentsStatus|.
+
 Status
 ======
 
@@ -88,8 +90,8 @@ See `security guidelines`_.
 .. _`.github/workflows/build_all.yml`: .github/workflows/build_all.yml
 .. _`.azure-pipelines.yml`: .azure-pipelines.yml
 
-.. |TravisStatus| image:: https://travis-ci.com/mmzakhar/oneapi-ci.svg?branch=master
-   :target: https://travis-ci.com/github/mmzakhar/oneapi-ci
+.. |GitHubStatus| image:: https://github.com/mmzakhar/oneapi-ci/workflows/build_all/badge.svg
+   :target: https://github.com/mmzakhar/oneapi-ci/actions?query=workflow%3Abuild_all
    :alt: Build status
 .. |CircleStatus| image:: https://circleci.com/gh/oneapi-src/oneapi-ci.svg
    :target: https://circleci.com/gh/oneapi-src/oneapi-ci
@@ -100,13 +102,13 @@ See `security guidelines`_.
 .. |GitLabStatus| image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/master/pipeline.svg
    :target: https://gitlab.com/mmzakhar/oneapi-ci/-/commits/master
    :alt: Build status
-.. |GitHubStatus| image:: https://github.com/mmzakhar/oneapi-ci/workflows/build_all/badge.svg
-   :target: https://github.com/mmzakhar/oneapi-ci/actions?query=workflow%3Abuild_all
-   :alt: Build status
 .. |AzureStatus| image:: https://dev.azure.com/maximmzakharov/oneapi-ci/_apis/build/status/mmzakhar.oneapi-ci?branchName=master
    :target: https://dev.azure.com/maximmzakharov/oneapi-ci/_build
    :alt: Build status
-
+.. |ListComponentsStatus| image:: https://github.com/mmzakhar/oneapi-ci/workflows/list_components/badge.svg
+   :target: https://github.com/mmzakhar/oneapi-ci/actions?query=workflow%3Alist_components
+   :alt: Build status
+   
 .. |r| unicode:: U+000AE
 .. |c| unicode:: U+2714
 .. |x| unicode:: U+2717
