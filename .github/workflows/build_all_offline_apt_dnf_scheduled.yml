@@ -6,7 +6,7 @@ name: build_all_offline_apt_dnf_scheduled
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 */4 * * *'
 
 env:
   WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664_offline.exe
@@ -132,7 +132,7 @@ jobs:
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc
+      run: sudo dnf -y install git make gcc g++
     - name: install
       run: scripts/install_linux_dnf.sh $LINUX_COMPONENTS
     - name: build
