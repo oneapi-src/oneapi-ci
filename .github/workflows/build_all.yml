@@ -220,7 +220,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc g++ findutils
+      run: scripts/install_prerequisites_linux_dnf.sh
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: collect versioned dependencies of dnf packages
@@ -231,7 +231,7 @@ jobs:
       with:
         path: |
           /opt/intel/oneapi/compiler
-        key: test-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_CPP_COMPONENTS
@@ -250,7 +250,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc g++ findutils
+      run: scripts/install_prerequisites_linux_dnf.sh
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: collect versioned dependencies of dnf packages
@@ -261,7 +261,7 @@ jobs:
       with:
         path: |
           /opt/intel/oneapi/compiler
-        key: test-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_FORTRAN_COMPONENTS
@@ -280,7 +280,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc g++ findutils
+      run: scripts/install_prerequisites_linux_dnf.sh
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: collect versioned dependencies of dnf packages
@@ -292,7 +292,7 @@ jobs:
         path: |
           /opt/intel/oneapi/compiler
           /opt/intel/oneapi/tbb
-        key: test-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_DPCPP_COMPONENTS
