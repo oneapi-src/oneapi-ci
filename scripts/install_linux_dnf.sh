@@ -6,4 +6,4 @@
 
 COMPONENTS=$(echo "$1" | sed "s/,/ /g")
 #shellcheck disable=SC2086
-sudo apt-get install -y $COMPONENTS
+sudo dnf -y install $COMPONENTS
