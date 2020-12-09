@@ -74,7 +74,7 @@ jobs:
         sudo apt-get install -y traceroute
         sudo traceroute --tcp registrationcenter-download.intel.com
     - name: install_basekit
-      run: scripts/install_linux.sh $LINUX_BASEKIT_URL intel.oneapi.lin.dpcpp-cpp-compiler
+      run: scripts/install_linux.sh $LINUX_BASEKIT_URL
     - name: install_hpckit
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL
     - name: install_iotkit
