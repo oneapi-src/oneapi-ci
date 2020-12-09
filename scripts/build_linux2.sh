@@ -7,8 +7,6 @@
 LANGUAGE=$1
 ONEAPI_RELEASE=$2
 
-git clone --depth 1 https://github.com/oneapi-src/oneAPI-samples.git
-
 # shellcheck source=/dev/null
 source /opt/intel/oneapi/compiler/"$ONEAPI_RELEASE"/env/vars.sh
 
