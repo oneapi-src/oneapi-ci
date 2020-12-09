@@ -211,6 +211,91 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
 
+  build_linux_dnf_cpp:
+    runs-on: ubuntu-20.04
+    container: fedora
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: collect versioned dependencies of dnf packages
+      run: scripts/dnf_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi/compiler
+        key: test-${{ env.LINUX_CPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_dnf.sh $LINUX_CPP_COMPONENTS
+    - name: build
+      run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+
+  build_linux_dnf_fortran:
+    runs-on: ubuntu-20.04
+    container: fedora
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: collect versioned dependencies of dnf packages
+      run: scripts/dnf_depends.sh $LINUX_FORTRAN_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi/compiler
+        key: test-${{ env.LINUX_FORTRAN_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_dnf.sh $LINUX_FORTRAN_COMPONENTS
+    - name: build
+      run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+
+  build_linux_dnf_dpcpp:
+    runs-on: ubuntu-20.04
+    container: fedora
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: collect versioned dependencies of dnf packages
+      run: scripts/dnf_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi/compiler
+          /opt/intel/oneapi/tbb
+        key: test-${{ env.LINUX_DPCPP_COMPONENTS }}-${{ hashFiles('**/depends.txt') }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_dnf.sh $LINUX_DPCPP_COMPONENTS
+    - name: build
+      run: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+
   build_linux_container_cpp:
     runs-on: ubuntu-20.04
     container: intel/oneapi-hpckit
