@@ -290,6 +290,7 @@ jobs:
     - name: build
       run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
     - name: build
+      if: ${{ always() }}
       run: scripts/build_linux2.sh fortran $ONEAPI_RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
