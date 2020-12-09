@@ -14,7 +14,7 @@ source /opt/intel/oneapi/compiler/"$ONEAPI_RELEASE"/env/vars.sh
 
 case $LANGUAGE in
 c++)
-  icx src/c++/hello.cpp
+  icx src/c++/hello.cpp -lstdc++
   cd oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics
   make && make run
   ;;
