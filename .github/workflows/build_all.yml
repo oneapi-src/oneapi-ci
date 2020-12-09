@@ -260,8 +260,6 @@ jobs:
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     - name: build
       run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
-    - name: build
-      run: scripts/build_linux2.sh c++ $ONEAPI_RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
@@ -289,9 +287,6 @@ jobs:
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
-    - name: build
-      if: ${{ always() }}
-      run: scripts/build_linux2.sh fortran $ONEAPI_RELEASE
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE

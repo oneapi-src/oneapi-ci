@@ -14,12 +14,10 @@ source /opt/intel/oneapi/compiler/"$ONEAPI_RELEASE"/env/vars.sh
 
 case $LANGUAGE in
 c++)
-  icx src/c++/hello.cpp -lstdc++
   cd oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics
   make && make run
   ;;
 fortran)
-  ifx src/fortran/hello.f90
   cd oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes
   make && make run
   ;;
