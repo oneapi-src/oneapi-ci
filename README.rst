@@ -23,7 +23,8 @@ Install methods  Intel\ |r| installer, apt, dnf, docker container
 The config files show examples of all supported configurations. Delete
 the ones you do not want.
 
-For a complete list of components available for installation, see |ListComponentsStatus|.
+For a complete list of components available for installation, 
+see |ListComponentsStatus|.
 
 Status
 ======
