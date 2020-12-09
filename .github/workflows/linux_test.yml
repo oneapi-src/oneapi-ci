@@ -21,3 +21,14 @@ jobs:
     - uses: actions/checkout@v2
     - name: test
       run: scripts/install_linux.sh $LINUX_BASEKIT_URL wrong_component_name
+
+    # Delete the following if you don't want to save install logs
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7

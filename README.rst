@@ -23,7 +23,7 @@ Install methods  Intel\ |r| installer, apt, dnf, docker container
 The config files show examples of all supported configurations. Delete
 the ones you do not want.
 
-For a complete list of components available for installation, 
+For a complete list of components available for installation,
 see |ListComponentsStatus|.
 
 Status
@@ -109,7 +109,7 @@ See `security guidelines`_.
 .. |ListComponentsStatus| image:: https://github.com/mmzakhar/oneapi-ci/workflows/list_components/badge.svg
    :target: https://github.com/mmzakhar/oneapi-ci/actions?query=workflow%3Alist_components
    :alt: Build status
-   
+
 .. |r| unicode:: U+000AE
 .. |c| unicode:: U+2714
 .. |x| unicode:: U+2717
