@@ -6,7 +6,7 @@ name: build_linux_online_scheduled
 
 on:
   schedule:
-    - cron: '20 */3 * * *'
+    - cron: '0 0 * * *'
 
 env:
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17431/l_BaseKit_p_2021.1.0.2659.sh
