@@ -160,6 +160,7 @@ build_linux_cpp:
     paths:
       - cache
   before_script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
@@ -198,6 +199,7 @@ build_linux_fortran:
     paths:
       - cache
   before_script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
@@ -236,6 +238,7 @@ build_linux_dpcpp:
     paths:
       - cache
   before_script:
+    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
