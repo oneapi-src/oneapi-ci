@@ -50,9 +50,9 @@ CI       Linux APT Linux DNF Linux Docker Linux Windows MacOS
 ======== ========= ========= ============ ===== ======= ===========
 GitHub   |c|       |c|       |c|          |c|   |c|     |c|
 Circle   |c|       |c|       |c|          |x|   |c|     |x|
-AppVeyor |c|       |x|       |x|          |x|   |c|     |c|
-GitLab   |c|       |c|       |x|          |x|   |c|     |x|
-Azure    |c|       |c|       |c|          |x|   |c|     |c|
+AppVeyor |c|       |x|       |x|          |c|   |c|     |c|
+GitLab   |c|       |c|       |x|          |c|   |c|     |x|
+Azure    |c|       |c|       |c|          |c|   |c|     |c|
 ======== ========= ========= ============ ===== ======= ===========
 
 

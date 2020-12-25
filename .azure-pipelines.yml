@@ -185,6 +185,22 @@ jobs:
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
+    # Delete the following if you don't want to save install logs
+  - task: CopyFiles@2
+    condition: always()
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
+
 - job: build_linux_fortran
   pool:
     vmImage: 'ubuntu-20.04'
@@ -202,6 +218,22 @@ jobs:
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
+
+    # Delete the following if you don't want to save install logs
+  - task: CopyFiles@2
+    condition: always()
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
 
 - job: build_linux_dpcpp
   pool:
@@ -224,6 +256,22 @@ jobs:
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
+
+    # Delete the following if you don't want to save install logs
+  - task: CopyFiles@2
+    condition: always()
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
 
 - job: build_linux_apt_cpp
   pool:
