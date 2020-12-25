@@ -96,8 +96,8 @@ See `security guidelines`_.
 .. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/c1lc5jrl6akdb2ey?svg=true
    :target: https://ci.appveyor.com/project/oneapi-ci/oneapi-ci
    :alt: Build status
-.. |GitLabStatus| image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/master/pipeline.svg
-   :target: https://gitlab.com/mmzakhar/oneapi-ci/-/commits/master
+.. |GitLabStatus| image:: https://gitlab.com/rscohn2/oneapi-ci-mirror/badges/master/pipeline.svg
+   :target: https://gitlab.com/rscohn2/oneapi-ci-mirror/-/commits/master
    :alt: Build status
 .. |AzureStatus| image:: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_apis/build/status/oneapi-src.oneapi-ci?branchName=master
    :target: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_build
