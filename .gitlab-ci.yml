@@ -260,7 +260,7 @@ build_linux_dnf_cpp:
           mkdir -p /opt/intel/oneapi
           mv cache/compiler /opt/intel/oneapi/
         else
-          . scripts/setup_dnf_repo_linux_no_sudo.sh
+          . scripts/setup_yum_dnf_repo_linux_no_sudo.sh
           . scripts/install_linux_dnf_no_sudo.sh $LINUX_CPP_COMPONENTS
         fi
   script:
@@ -292,7 +292,7 @@ build_linux_dnf_fortran:
           mkdir -p /opt/intel/oneapi
           mv cache/compiler /opt/intel/oneapi/
         else
-          . scripts/setup_dnf_repo_linux_no_sudo.sh
+          . scripts/setup_yum_dnf_repo_linux_no_sudo.sh
           . scripts/install_linux_dnf_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
         fi
   script:
@@ -325,7 +325,7 @@ build_linux_dnf_dpcpp:
           mv cache/compiler /opt/intel/oneapi/
           mv cache/tbb /opt/intel/oneapi/
         else
-          . scripts/setup_dnf_repo_linux_no_sudo.sh
+          . scripts/setup_yum_dnf_repo_linux_no_sudo.sh
           . scripts/install_linux_dnf_no_sudo.sh $LINUX_DPCPP_COMPONENTS
         fi
   script:
