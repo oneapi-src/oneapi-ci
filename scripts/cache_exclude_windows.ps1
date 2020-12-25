@@ -2,13 +2,13 @@
 #
 # SPDX-License-Identifier: MIT
 
-$ONEAPI_RELEASE=$args[0]
+$LATEST_VERSION=Get-ChildItem -Path . -Name | Select-String -NotMatch latest | %{$_.Line} | Sort-Object | Select-Object -Last 1
 
-Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$ONEAPI_RELEASE\windows\compiler\lib\ia32_win" -Force  -Recurse -ErrorAction SilentlyContinue
-Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$ONEAPI_RELEASE\windows\bin\intel64_ia32" -Force  -Recurse -ErrorAction SilentlyContinue
-Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$ONEAPI_RELEASE\windows\lib\emu" -Force  -Recurse -ErrorAction SilentlyContinue
-Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$ONEAPI_RELEASE\windows\lib\oclfpga" -Force  -Recurse -ErrorAction SilentlyContinue
-Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$ONEAPI_RELEASE\windows\lib\ocloc" -Force  -Recurse -ErrorAction SilentlyContinue
-Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$ONEAPI_RELEASE\windows\lib\x86" -Force  -Recurse -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$LATEST_VERSION\windows\compiler\lib\ia32_win" -Force  -Recurse -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$LATEST_VERSION\windows\bin\intel64_ia32" -Force  -Recurse -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$LATEST_VERSION\windows\lib\emu" -Force  -Recurse -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$LATEST_VERSION\windows\lib\oclfpga" -Force  -Recurse -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$LATEST_VERSION\windows\lib\ocloc" -Force  -Recurse -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Intel\oneAPI\compiler\$LATEST_VERSION\windows\lib\x86" -Force  -Recurse -ErrorAction SilentlyContinue
 
 exit 0

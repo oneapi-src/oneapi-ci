@@ -18,7 +18,6 @@ variables:
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
   ONEAPI_RELEASE: 2021.1.1
-  ONEAPI_RELEASE_COMPILER: 2021.1.2
 
 .shared_windows_runners:
   tags:
@@ -46,11 +45,11 @@ build_windows_cpp:
           scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
         }
   script:
-    - scripts/build_windows.bat c++ 2019_build_tools $ONEAPI_RELEASE
+    - scripts/build_windows.bat c++ 2019_build_tools
   after_script:  # Moving install directory into 'cache' folder inside build directory
     - |
         if(!(Test-Path cache)) {
-          scripts/cache_exclude_windows.ps1 $ONEAPI_RELEASE
+          scripts/cache_exclude_windows.ps1
           New-Item -ItemType "directory" -Path "cache"
         }
         # "push-pull" is the default cache policy, so cache folder needs to be setup in every run.
@@ -86,11 +85,11 @@ build_windows_fortran:
           scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
         }
   script:
-    - scripts/build_windows.bat fortran 2019_build_tools $ONEAPI_RELEASE
+    - scripts/build_windows.bat fortran 2019_build_tools
   after_script:
     - |
         if(!(Test-Path cache)) {
-          scripts/cache_exclude_windows.ps1 $ONEAPI_RELEASE
+          scripts/cache_exclude_windows.ps1
           New-Item -ItemType "directory" -Path "cache"
         }
         Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\compiler" -Destination "cache"
@@ -126,11 +125,11 @@ build_windows_dpcpp:
           scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
         }
   script:
-    - scripts/build_windows.bat dpc++ 2019_build_tools $ONEAPI_RELEASE
+    - scripts/build_windows.bat dpc++ 2019_build_tools
   after_script:
     - |
         if(!(Test-Path cache)) {
-          scripts/cache_exclude_windows.ps1 $ONEAPI_RELEASE
+          scripts/cache_exclude_windows.ps1
           New-Item -ItemType "directory" -Path "cache"
         }
         Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\compiler" -Destination "cache"
@@ -150,7 +149,7 @@ build_linux_apt_cpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${ONEAPI_RELEASE_COMPILER}-${LINUX_CPP_COMPONENTS}-compiler
+      prefix: install-${ONEAPI_RELEASE}-${LINUX_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -167,12 +166,12 @@ build_linux_apt_cpp:
           . scripts/install_linux_apt_no_sudo.sh $LINUX_CPP_COMPONENTS
         fi
   script:
-    - scripts/build_linux.sh c++ ${ONEAPI_RELEASE_COMPILER}
+    - scripts/build_linux.sh c++
   after_script:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE_COMPILER}
+          . scripts/cache_exclude_linux_no_sudo.sh
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
@@ -182,7 +181,7 @@ build_linux_apt_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE_COMPILER}-${LINUX_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${ONEAPI_RELEASE}-${LINUX_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -199,12 +198,12 @@ build_linux_apt_fortran:
           . scripts/install_linux_apt_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
         fi
   script:
-    - scripts/build_linux.sh fortran ${ONEAPI_RELEASE_COMPILER}
+    - scripts/build_linux.sh fortran
   after_script:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE_COMPILER}
+          . scripts/cache_exclude_linux_no_sudo.sh
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
@@ -214,7 +213,7 @@ build_linux_apt_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE_COMPILER}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
+      prefix: install-${ONEAPI_RELEASE}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -232,12 +231,12 @@ build_linux_apt_dpcpp:
           . scripts/install_linux_apt_no_sudo.sh $LINUX_DPCPP_COMPONENTS
         fi
   script:
-    - scripts/build_linux.sh dpc++ ${ONEAPI_RELEASE_COMPILER}
+    - scripts/build_linux.sh dpc++
   after_script:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE_COMPILER}
+          . scripts/cache_exclude_linux_no_sudo.sh
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache

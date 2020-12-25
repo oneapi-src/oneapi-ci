@@ -94,8 +94,8 @@ See `security guidelines`_.
 .. |GitHubStatus| image:: https://github.com/mmzakhar/oneapi-ci/workflows/build_all/badge.svg
    :target: https://github.com/mmzakhar/oneapi-ci/actions?query=workflow%3Abuild_all
    :alt: Build status
-.. |CircleStatus| image:: https://circleci.com/gh/oneapi-src/oneapi-ci.svg
-   :target: https://circleci.com/gh/oneapi-src/oneapi-ci
+.. |CircleStatus| image:: https://circleci.com/gh/mmzakhar/oneapi-ci.svg
+   :target: https://circleci.com/gh/mmzakhar/oneapi-ci
    :alt: Build status
 .. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/y06fiwtls22x7475?svg=true
    :target: https://ci.appveyor.com/project/mmzakhar/oneapi-ci

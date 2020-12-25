@@ -12,7 +12,6 @@ env:
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17426/m_BaseKit_p_2021.1.0.2427.dmg
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681.dmg
   MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17444/m_RenderKit_p_2021.1.0.626.dmg
-  ONEAPI_RELEASE: 2021.1.1
 
 jobs:
   build_macos_all:

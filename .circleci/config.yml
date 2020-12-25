@@ -37,12 +37,6 @@ parameters:
   MACOS_FORTRAN_COMPONENTS:
     type: string
     default: "intel.oneapi.mac.ifort-compiler"
-  ONEAPI_RELEASE:
-    type: string
-    default: "2021.1.1"
-  ONEAPI_RELEASE_COMPILER:
-    type: string
-    default: "2021.1.2"
 
 orbs:
   win: circleci/windows@2.4.0
@@ -64,10 +58,10 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat c++ 2017_build_tools << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_windows.bat c++ 2017_build_tools
       - run:
           name: exclude unused files from cache
-          command: scripts/cache_exclude_windows.sh << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/cache_exclude_windows.sh
       - save_cache:
           key: install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
@@ -98,10 +92,10 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat fortran 2017_build_tools << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_windows.bat fortran 2017_build_tools
       - run:
           name: exclude unused files from cache
-          command: scripts/cache_exclude_windows.sh << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/cache_exclude_windows.sh
       - save_cache:
           key: install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
@@ -132,10 +126,10 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_BASEKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat dpc++ 2017_build_tools << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_windows.bat dpc++ 2017_build_tools
       - run:
           name: exclude unused files from cache
-          command: scripts/cache_exclude_windows.sh << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/cache_exclude_windows.sh
       - save_cache:
           key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
@@ -176,10 +170,10 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh c++ << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
+          command: scripts/build_linux.sh c++
       - run:
           name: exclude unused files from cache
-          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
+          command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
           key: install-<< pipeline.parameters.LINUX_CPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
@@ -209,10 +203,10 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh fortran << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
+          command: scripts/build_linux.sh fortran
       - run:
           name: exclude unused files from cache
-          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
+          command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
           key: install-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
@@ -242,10 +236,10 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh dpc++ << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
+          command: scripts/build_linux.sh dpc++
       - run:
           name: exclude unused files from cache
-          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
+          command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
           key: install-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
@@ -262,7 +256,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh c++ << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_linux.sh c++
 
   build_linux_container_fortran:
     docker:
@@ -274,7 +268,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh fortran << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_linux.sh fortran
 
   build_linux_container_dpcpp:
     docker:
@@ -286,7 +280,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: scripts/build_linux.sh dpc++ << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_linux.sh dpc++
 
 workflows:
   build-all:
