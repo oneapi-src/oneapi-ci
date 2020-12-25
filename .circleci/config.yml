@@ -40,6 +40,9 @@ parameters:
   ONEAPI_RELEASE:
     type: string
     default: "2021.1.1"
+  ONEAPI_RELEASE_COMPILER:
+    type: string
+    default: "2021.1.2"
 
 orbs:
   win: circleci/windows@2.4.0
@@ -173,10 +176,10 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh c++ << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_linux.sh c++ << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
       - run:
           name: exclude unused files from cache
-          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE >>
+          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
       - save_cache:
           key: install-<< pipeline.parameters.LINUX_CPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
@@ -206,10 +209,10 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh fortran << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_linux.sh fortran << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
       - run:
           name: exclude unused files from cache
-          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE >>
+          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
       - save_cache:
           key: install-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
@@ -239,10 +242,10 @@ jobs:
            . scripts/install_linux_apt_no_sudo.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_linux.sh dpc++ << pipeline.parameters.ONEAPI_RELEASE >>
+          command: scripts/build_linux.sh dpc++ << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
       - run:
           name: exclude unused files from cache
-          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE >>
+          command: . scripts/cache_exclude_linux_no_sudo.sh << pipeline.parameters.ONEAPI_RELEASE_COMPILER >>
       - save_cache:
           key: install-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:

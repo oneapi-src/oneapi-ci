@@ -18,6 +18,7 @@ variables:
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
   ONEAPI_RELEASE: 2021.1.1
+  ONEAPI_RELEASE_COMPILER: 2021.1.2
 
 .shared_windows_runners:
   tags:
@@ -149,7 +150,7 @@ build_linux_apt_cpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_CPP_COMPONENTS}-compiler
+      prefix: install-${ONEAPI_RELEASE_COMPILER}-${LINUX_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -166,12 +167,12 @@ build_linux_apt_cpp:
           . scripts/install_linux_apt_no_sudo.sh $LINUX_CPP_COMPONENTS
         fi
   script:
-    - scripts/build_linux.sh c++ ${ONEAPI_RELEASE}
+    - scripts/build_linux.sh c++ ${ONEAPI_RELEASE_COMPILER}
   after_script:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE}
+          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE_COMPILER}
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
@@ -181,7 +182,7 @@ build_linux_apt_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${ONEAPI_RELEASE_COMPILER}-${LINUX_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -198,12 +199,12 @@ build_linux_apt_fortran:
           . scripts/install_linux_apt_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
         fi
   script:
-    - scripts/build_linux.sh fortran ${ONEAPI_RELEASE}
+    - scripts/build_linux.sh fortran ${ONEAPI_RELEASE_COMPILER}
   after_script:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE}
+          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE_COMPILER}
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
@@ -213,7 +214,7 @@ build_linux_apt_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
+      prefix: install-${ONEAPI_RELEASE_COMPILER}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -231,12 +232,12 @@ build_linux_apt_dpcpp:
           . scripts/install_linux_apt_no_sudo.sh $LINUX_DPCPP_COMPONENTS
         fi
   script:
-    - scripts/build_linux.sh dpc++ ${ONEAPI_RELEASE}
+    - scripts/build_linux.sh dpc++ ${ONEAPI_RELEASE_COMPILER}
   after_script:
     - |
         if [[ ! -d cache ]]
         then
-          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE}
+          . scripts/cache_exclude_linux_no_sudo.sh ${ONEAPI_RELEASE_COMPILER}
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
