@@ -241,3 +241,101 @@ build_linux_apt_dpcpp:
         fi
         mv /opt/intel/oneapi/compiler cache
         mv /opt/intel/oneapi/tbb cache
+
+build_linux_dnf_cpp:
+  image: fedora:latest
+  stage: build
+  cache:
+    key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
+      prefix: install-${ONEAPI_RELEASE}-${LINUX_CPP_COMPONENTS}-compiler
+      files:
+        - scripts/cache_exclude_linux_no_sudo.sh
+    paths:
+      - cache
+  before_script:
+    - . scripts/install_prerequisites_linux_dnf_no_sudo.sh
+    - |
+        if [[ -d cache ]]
+        then
+          mkdir -p /opt/intel/oneapi
+          mv cache/compiler /opt/intel/oneapi/
+        else
+          . scripts/setup_dnf_repo_linux_no_sudo.sh
+          . scripts/install_linux_dnf_no_sudo.sh $LINUX_CPP_COMPONENTS
+        fi
+  script:
+    - scripts/build_linux.sh c++
+  after_script:
+    - |
+        if [[ ! -d cache ]]
+        then
+          . scripts/cache_exclude_linux_no_sudo.sh
+          mkdir cache
+        fi
+        mv /opt/intel/oneapi/compiler cache
+
+build_linux_dnf_fortran:
+  image: fedora:latest
+  stage: build
+  cache:
+    key:
+      prefix: install-${ONEAPI_RELEASE}-${LINUX_FORTRAN_COMPONENTS}-compiler
+      files:
+        - scripts/cache_exclude_linux_no_sudo.sh
+    paths:
+      - cache
+  before_script:
+    - . scripts/install_prerequisites_linux_dnf_no_sudo.sh
+    - |
+        if [[ -d cache ]]
+        then
+          mkdir -p /opt/intel/oneapi
+          mv cache/compiler /opt/intel/oneapi/
+        else
+          . scripts/setup_dnf_repo_linux_no_sudo.sh
+          . scripts/install_linux_dnf_no_sudo.sh $LINUX_FORTRAN_COMPONENTS
+        fi
+  script:
+    - scripts/build_linux.sh fortran
+  after_script:
+    - |
+        if [[ ! -d cache ]]
+        then
+          . scripts/cache_exclude_linux_no_sudo.sh
+          mkdir cache
+        fi
+        mv /opt/intel/oneapi/compiler cache
+
+build_linux_dnf_dpcpp:
+  image: fedora:latest
+  stage: build
+  cache:
+    key:
+      prefix: install-${ONEAPI_RELEASE}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
+      files:
+        - scripts/cache_exclude_linux_no_sudo.sh
+    paths:
+      - cache
+  before_script:
+    - . scripts/install_prerequisites_linux_dnf_no_sudo.sh
+    - |
+        if [[ -d cache ]]
+        then
+          mkdir -p /opt/intel/oneapi
+          mv cache/compiler /opt/intel/oneapi/
+          mv cache/tbb /opt/intel/oneapi/
+        else
+          . scripts/setup_dnf_repo_linux_no_sudo.sh
+          . scripts/install_linux_dnf_no_sudo.sh $LINUX_DPCPP_COMPONENTS
+        fi
+  script:
+    - scripts/build_linux.sh dpc++
+  after_script:
+    - |
+        if [[ ! -d cache ]]
+        then
+          . scripts/cache_exclude_linux_no_sudo.sh
+          mkdir cache
+        fi
+        mv /opt/intel/oneapi/compiler cache
+        mv /opt/intel/oneapi/tbb cache
