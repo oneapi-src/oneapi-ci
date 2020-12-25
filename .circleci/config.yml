@@ -16,18 +16,6 @@ parameters:
   LINUX_HPCKIT_URL:
     type: string
     default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17427/l_HPCKit_p_2021.1.0.2684_offline.sh"
-  WINDOWS_BASEKIT_NAME:
-    type: string
-    default: "w_BaseKit_p_2021.1.0.2664_offline.exe"
-  WINDOWS_HPCKIT_NAME:
-    type: string
-    default: "w_HPCKit_p_2021.1.0.2682_offline.exe"
-  LINUX_BASEKIT_NAME:
-    type: string
-    default: "l_BaseKit_p_2021.1.0.2659_offline.sh"
-  LINUX_HPCKIT_NAME:
-    type: string
-    default: "l_HPCKit_p_2021.1.0.2684_offline.sh"
   WINDOWS_CPP_COMPONENTS:
     type: string
     default: "intel.oneapi.win.cpp-compiler"
@@ -68,7 +56,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.WINDOWS_HPCKIT_NAME >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
@@ -81,7 +69,7 @@ jobs:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
       - save_cache:
-          key: install-<< pipeline.parameters.WINDOWS_HPCKIT_NAME >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
 
@@ -102,7 +90,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.WINDOWS_HPCKIT_NAME >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
@@ -115,7 +103,7 @@ jobs:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
       - save_cache:
-          key: install-<< pipeline.parameters.WINDOWS_HPCKIT_NAME >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
 
@@ -136,7 +124,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.WINDOWS_BASEKIT_NAME >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
@@ -149,7 +137,7 @@ jobs:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
       - save_cache:
-          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_NAME >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
             - C:\Program Files (x86)\Intel\oneAPI\tbb
@@ -174,7 +162,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.LINUX_HPCKIT_NAME >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+            - install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install
           command: |
@@ -187,7 +175,7 @@ jobs:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: install-<< pipeline.parameters.LINUX_HPCKIT_NAME >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
 
@@ -210,7 +198,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.LINUX_HPCKIT_NAME >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+            - install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install
           command: |
@@ -223,7 +211,7 @@ jobs:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: install-<< pipeline.parameters.LINUX_HPCKIT_NAME >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
 
@@ -246,7 +234,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.LINUX_BASEKIT_NAME >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+            - install-<< pipeline.parameters.LINUX_BASEKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install
           command: |
@@ -259,7 +247,7 @@ jobs:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: install-<< pipeline.parameters.LINUX_BASEKIT_NAME >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-tbb-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: install-<< pipeline.parameters.LINUX_BASEKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-tbb-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
             - /opt/intel/oneapi/tbb
