@@ -168,7 +168,7 @@ jobs:
       - checkout
       - run:
           name: install prerequisites
-          command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
+          command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
             - install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
@@ -195,7 +195,7 @@ jobs:
       - checkout
       - run:
           name: install prerequisites
-          command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
+          command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
             - install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
@@ -222,7 +222,7 @@ jobs:
       - checkout
       - run:
           name: install prerequisites
-          command: . scripts/install_prerequisites_linux_apt_no_sudo.sh
+          command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
             - install-<< pipeline.parameters.LINUX_BASEKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}

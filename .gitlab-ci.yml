@@ -22,7 +22,7 @@ variables:
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
-  ONEAPI_RELEASE: 2021.1.1
+  LINUX_APT_DNF_CACHE_NUMBER: 1
 
 .shared_windows_runners:
   tags:
@@ -36,7 +36,7 @@ build_windows_cpp:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${WINDOWS_CPP_COMPONENTS}-compiler
+      prefix: install-${WINDOWS_HPCKIT_URL}-${WINDOWS_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -76,7 +76,7 @@ build_windows_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${WINDOWS_HPCKIT_URL}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -114,7 +114,7 @@ build_windows_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
+      prefix: install-${WINDOWS_BASEKIT_URL}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -160,7 +160,7 @@ build_linux_cpp:
     paths:
       - cache
   before_script:
-    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
+    - . scripts/install_prerequisites_linux_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
@@ -199,7 +199,7 @@ build_linux_fortran:
     paths:
       - cache
   before_script:
-    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
+    - . scripts/install_prerequisites_linux_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
@@ -238,7 +238,7 @@ build_linux_dpcpp:
     paths:
       - cache
   before_script:
-    - . scripts/install_prerequisites_linux_apt_no_sudo.sh
+    - . scripts/install_prerequisites_linux_no_sudo.sh
     - |
         if [[ -d cache ]]
         then
@@ -271,7 +271,7 @@ build_linux_apt_cpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_CPP_COMPONENTS}-compiler
+      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -303,7 +303,7 @@ build_linux_apt_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -335,7 +335,7 @@ build_linux_apt_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
+      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -369,7 +369,7 @@ build_linux_dnf_cpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_CPP_COMPONENTS}-compiler
+      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -401,7 +401,7 @@ build_linux_dnf_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -433,7 +433,7 @@ build_linux_dnf_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${ONEAPI_RELEASE}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
+      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
