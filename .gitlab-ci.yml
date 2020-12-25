@@ -10,12 +10,10 @@ variables:
   WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682_offline.exe
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17431/l_BaseKit_p_2021.1.0.2659_offline.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17427/l_HPCKit_p_2021.1.0.2684_offline.sh
-  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg
   WINDOWS_BASEKIT_NAME: w_BaseKit_p_2021.1.0.2664_offline.exe
   WINDOWS_HPCKIT_NAME: w_HPCKit_p_2021.1.0.2682_offline.exe
   LINUX_BASEKIT_NAME: l_BaseKit_p_2021.1.0.2659_offline.sh
   LINUX_HPCKIT_NAME: l_HPCKit_p_2021.1.0.2684_offline.sh
-  MACOS_HPCKIT_NAME: m_HPCKit_p_2021.1.0.2681_offline.dmg
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
   WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
@@ -25,8 +23,6 @@ variables:
   LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler-pro
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-  MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
-  MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
   LINUX_APT_DNF_CACHE_NUMBER: 1
 
 .shared_windows_runners:
