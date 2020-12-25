@@ -230,7 +230,7 @@ build_linux_dpcpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${LINUX_BASEKIT_URL}-${LINUX_DPCPP_COMPONENTS_WEB}-compiler
+      prefix: install-${LINUX_BASEKIT_URL}-${LINUX_DPCPP_COMPONENTS_WEB}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:

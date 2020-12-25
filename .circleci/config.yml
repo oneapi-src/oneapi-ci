@@ -10,6 +10,12 @@ parameters:
   WINDOWS_HPCKIT_URL:
     type: string
     default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682_offline.exe"
+  LINUX_BASEKIT_URL:
+    type: string
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17431/l_BaseKit_p_2021.1.0.2659_offline.sh"
+  LINUX_HPCKIT_URL:
+    type: string
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17427/l_HPCKit_p_2021.1.0.2684_offline.sh"
   MACOS_HPCKIT_URL:
     type: string
     default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg"
@@ -31,6 +37,15 @@ parameters:
   LINUX_DPCPP_COMPONENTS:
     type: string
     default: "intel-oneapi-compiler-dpcpp-cpp"
+  LINUX_CPP_COMPONENTS_WEB:
+    type: string
+    default: "intel.oneapi.lin.dpcpp-cpp-compiler-pro"
+  LINUX_FORTRAN_COMPONENTS_WEB:
+    type: string
+    default: "intel.oneapi.lin.ifort-compiler"
+  LINUX_DPCPP_COMPONENTS_WEB:
+    type: string
+    default: "intel.oneapi.lin.dpcpp-cpp-compiler"
   MACOS_CPP_COMPONENTS:
     type: string
     default: "intel.oneapi.mac.cpp-compiler"
@@ -146,6 +161,79 @@ jobs:
       - store_artifacts:
           path: InstallLogs
 
+  build_linux_cpp:
+    docker:
+      - image: ubuntu:20.04
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+      - run:
+          name: install
+          command: |
+           [ -d /opt/intel/oneapi/compiler ] && exit 0
+           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_HPCKIT_URL >> << pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>
+      - run:
+          name: build
+          command: scripts/build_linux.sh c++
+      - run:
+          name: exclude unused files from cache
+          command: . scripts/cache_exclude_linux_no_sudo.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          paths:
+            - /opt/intel/oneapi/compiler
+
+  build_linux_fortran:
+    docker:
+      - image: ubuntu:20.04
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+      - run:
+          name: install
+          command: |
+           [ -d /opt/intel/oneapi/compiler ] && exit 0
+           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_HPCKIT_URL >> << pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>
+      - run:
+          name: build
+          command: scripts/build_linux.sh fortran
+      - run:
+          name: exclude unused files from cache
+          command: . scripts/cache_exclude_linux_no_sudo.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          paths:
+            - /opt/intel/oneapi/compiler
+
+  build_linux_dpcpp:
+    docker:
+      - image: ubuntu:20.04
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.LINUX_BASEKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+      - run:
+          name: install
+          command: |
+           [ -d /opt/intel/oneapi/compiler ] && exit 0
+           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_BASEKIT_URL >> << pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>
+      - run:
+          name: build
+          command: scripts/build_linux.sh dpc++
+      - run:
+          name: exclude unused files from cache
+          command: . scripts/cache_exclude_linux_no_sudo.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.LINUX_BASEKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-tbb-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          paths:
+            - /opt/intel/oneapi/compiler
+            - /opt/intel/oneapi/tbb
+
   build_linux_apt_cpp:
     docker:
       - image: ubuntu:20.04
@@ -241,7 +329,7 @@ jobs:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: install-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: install-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-tbb-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
             - /opt/intel/oneapi/tbb
@@ -341,7 +429,7 @@ jobs:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: install-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: install-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-tbb-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
             - /opt/intel/oneapi/tbb
