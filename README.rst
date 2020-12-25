@@ -49,10 +49,10 @@ Supported Configurations
 CI       Linux APT Linux DNF Linux Docker Linux Windows MacOS
 ======== ========= ========= ============ ===== ======= ===========
 GitHub   |c|       |c|       |c|          |c|   |c|     |c|
-Circle   |c|       |x|       |c|          |x|   |c|     |x|
-AppVeyor |c|       |x|       |x|          |x|   |c|     |c|
-GitLab   |c|       |x|       |x|          |x|   |c|     |x|
-Azure    |c|       |x|       |c|          |x|   |c|     |c|
+Circle   |c|       |c|       |c|          |c|   |c|     |x|
+AppVeyor |c|       |x|       |x|          |c|   |c|     |c|
+GitLab   |c|       |c|       |x|          |c|   |c|     |x|
+Azure    |c|       |c|       |c|          |c|   |c|     |c|
 ======== ========= ========= ============ ===== ======= ===========
 
 
@@ -96,8 +96,8 @@ See `security guidelines`_.
 .. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/c1lc5jrl6akdb2ey?svg=true
    :target: https://ci.appveyor.com/project/oneapi-ci/oneapi-ci
    :alt: Build status
-.. |GitLabStatus| image:: https://gitlab.com/rscohn2/oneapi-ci-mirror/badges/master/pipeline.svg
-   :target: https://gitlab.com/rscohn2/oneapi-ci-mirror/-/commits/master
+.. |GitLabStatus| image:: https://gitlab.com/mmzakhar/oneapi-ci/badges/master/pipeline.svg
+   :target: https://gitlab.com/mmzakhar/oneapi-ci/-/commits/master
    :alt: Build status
 .. |AzureStatus| image:: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_apis/build/status/oneapi-src.oneapi-ci?branchName=master
    :target: https://dev.azure.com/robertscohn/oneapi-ci-mirror/_build

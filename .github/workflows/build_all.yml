@@ -23,7 +23,6 @@ env:
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
-  ONEAPI_RELEASE: 2021.1.1
 
 jobs:
   build_windows_cpp:
@@ -43,15 +42,15 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat c++ - $ONEAPI_RELEASE
+      run: scripts/build_windows.bat c++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
-      run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
-      if: ${{ always() }}
+      if: steps.cache-install.outputs.cache-hit != 'true'
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs_${{ github.job }}
@@ -78,15 +77,15 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat fortran - $ONEAPI_RELEASE
+      run: scripts/build_windows.bat fortran
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
-      run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
-      if: ${{ always() }}
+      if: steps.cache-install.outputs.cache-hit != 'true'
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs_${{ github.job }}
@@ -116,15 +115,15 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat dpc++ - $ONEAPI_RELEASE
+      run: scripts/build_windows.bat dpc++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
-      run: scripts/cache_exclude_windows.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
-      if: ${{ always() }}
+      if: steps.cache-install.outputs.cache-hit != 'true'
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs_${{ github.job }}
@@ -152,14 +151,14 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_CPP_COMPONENTS_WEB
     - name: build
-      run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
+      run: scripts/build_linux.sh c++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
-      if: ${{ always() }}
+      if: steps.cache-install.outputs.cache-hit != 'true'
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs_${{ github.job }}
@@ -186,14 +185,14 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_FORTRAN_COMPONENTS_WEB
     - name: build
-      run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
+      run: scripts/build_linux.sh fortran
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
-      if: ${{ always() }}
+      if: steps.cache-install.outputs.cache-hit != 'true'
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs_${{ github.job }}
@@ -221,14 +220,14 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_BASEKIT_URL $LINUX_DPCPP_COMPONENTS_WEB
     - name: build
-      run: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
+      run: scripts/build_linux.sh dpc++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
-      if: ${{ always() }}
+      if: steps.cache-install.outputs.cache-hit != 'true'
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs_${{ github.job }}
@@ -259,10 +258,10 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
+      run: scripts/build_linux.sh c++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
   build_linux_apt_fortran:
     runs-on: ubuntu-20.04
@@ -286,10 +285,10 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
+      run: scripts/build_linux.sh fortran
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
   build_linux_apt_dpcpp:
     runs-on: ubuntu-20.04
@@ -314,10 +313,10 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
+      run: scripts/build_linux.sh dpc++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
   build_linux_dnf_cpp:
     runs-on: ubuntu-20.04
@@ -344,10 +343,10 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_CPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
+      run: scripts/build_linux.sh c++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
   build_linux_dnf_fortran:
     runs-on: ubuntu-20.04
@@ -374,10 +373,10 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
+      run: scripts/build_linux.sh fortran
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
   build_linux_dnf_dpcpp:
     runs-on: ubuntu-20.04
@@ -405,10 +404,10 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
+      run: scripts/build_linux.sh dpc++
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/cache_exclude_linux.sh $ONEAPI_RELEASE
+      run: scripts/cache_exclude_linux.sh
 
   build_linux_container_cpp:
     runs-on: ubuntu-20.04
@@ -418,7 +417,7 @@ jobs:
       - name: install_git
         run: apt update && apt install -y git
       - name: build
-        run: scripts/build_linux.sh c++ $ONEAPI_RELEASE
+        run: scripts/build_linux.sh c++
 
   build_linux_container_fortran:
     runs-on: ubuntu-20.04
@@ -428,7 +427,7 @@ jobs:
       - name: install_git
         run: apt update && apt install -y git
       - name: build
-        run: scripts/build_linux.sh fortran $ONEAPI_RELEASE
+        run: scripts/build_linux.sh fortran
 
   build_linux_container_dpcpp:
     runs-on: ubuntu-20.04
@@ -438,7 +437,7 @@ jobs:
       - name: install_git
         run: apt update && apt install -y git
       - name: build
-        run: scripts/build_linux.sh dpc++ $ONEAPI_RELEASE
+        run: scripts/build_linux.sh dpc++
 
   build_macos_cpp:
     runs-on: macos-latest
@@ -465,7 +464,7 @@ jobs:
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
-      if: ${{ always() }}
+      if: steps.cache-install.outputs.cache-hit != 'true'
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs_${{ github.job }}
@@ -499,7 +498,7 @@ jobs:
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
-      if: ${{ always() }}
+      if: steps.cache-install.outputs.cache-hit != 'true'
       uses: actions/upload-artifact@v2
       with:
         name: InstallLogs_${{ github.job }}
