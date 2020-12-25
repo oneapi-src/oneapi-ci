@@ -11,6 +11,11 @@ variables:
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17431/l_BaseKit_p_2021.1.0.2659_offline.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17427/l_HPCKit_p_2021.1.0.2684_offline.sh
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg
+  WINDOWS_BASEKIT_NAME: w_BaseKit_p_2021.1.0.2664_offline.exe
+  WINDOWS_HPCKIT_NAME: w_HPCKit_p_2021.1.0.2682_offline.exe
+  LINUX_BASEKIT_NAME: l_BaseKit_p_2021.1.0.2659_offline.sh
+  LINUX_HPCKIT_NAME: l_HPCKit_p_2021.1.0.2684_offline.sh
+  MACOS_HPCKIT_NAME: m_HPCKit_p_2021.1.0.2681_offline.dmg
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
   WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
@@ -36,7 +41,7 @@ build_windows_cpp:
   stage: build
   cache:
     key:
-      prefix: install-${WINDOWS_HPCKIT_URL}-${WINDOWS_CPP_COMPONENTS}-compiler
+      prefix: install-${WINDOWS_HPCKIT_NAME}-${WINDOWS_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -76,7 +81,7 @@ build_windows_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${WINDOWS_HPCKIT_URL}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${WINDOWS_HPCKIT_NAME}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -114,7 +119,7 @@ build_windows_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${WINDOWS_BASEKIT_URL}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
+      prefix: install-${WINDOWS_BASEKIT_NAME}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -154,7 +159,7 @@ build_linux_cpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${LINUX_HPCKIT_URL}-${LINUX_CPP_COMPONENTS_WEB}-compiler
+      prefix: install-${LINUX_HPCKIT_NAME}-${LINUX_CPP_COMPONENTS_WEB}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -193,7 +198,7 @@ build_linux_fortran:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${LINUX_HPCKIT_URL}-${LINUX_FORTRAN_COMPONENTS_WEB}-compiler
+      prefix: install-${LINUX_HPCKIT_NAME}-${LINUX_FORTRAN_COMPONENTS_WEB}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -232,7 +237,7 @@ build_linux_dpcpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${LINUX_BASEKIT_URL}-${LINUX_DPCPP_COMPONENTS_WEB}-compiler-tbb
+      prefix: install-${LINUX_BASEKIT_NAME}-${LINUX_DPCPP_COMPONENTS_WEB}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
