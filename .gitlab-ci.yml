@@ -245,6 +245,7 @@ build_linux_dpcpp:
         then
           mkdir -p /opt/intel/oneapi
           mv cache/compiler /opt/intel/oneapi/
+          mv cache/tbb /opt/intel/oneapi/
         else
           . scripts/install_linux_no_sudo.sh $LINUX_BASEKIT_URL $LINUX_DPCPP_COMPONENTS_WEB
         fi
@@ -258,6 +259,7 @@ build_linux_dpcpp:
           mkdir cache
         fi
         mv /opt/intel/oneapi/compiler cache
+        mv /opt/intel/oneapi/tbb cache
   # Delete the following if you don't want to save install logs
   artifacts:
     when: always
