@@ -49,7 +49,7 @@ Supported Configurations
 CI       Linux APT Linux DNF Linux Docker Linux Windows MacOS
 ======== ========= ========= ============ ===== ======= ===========
 GitHub   |c|       |c|       |c|          |c|   |c|     |c|
-Circle   |c|       |x|       |c|          |x|   |c|     |x|
+Circle   |c|       |c|       |c|          |x|   |c|     |x|
 AppVeyor |c|       |x|       |x|          |x|   |c|     |c|
 GitLab   |c|       |x|       |x|          |x|   |c|     |x|
 Azure    |c|       |x|       |c|          |x|   |c|     |c|

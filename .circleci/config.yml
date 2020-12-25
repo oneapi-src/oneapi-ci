@@ -246,6 +246,106 @@ jobs:
             - /opt/intel/oneapi/compiler
             - /opt/intel/oneapi/tbb
 
+  build_linux_dnf_cpp:
+    docker:
+      - image: fedora:latest
+    steps:
+      - checkout
+      - run:
+          name: install prerequisites
+          command: . scripts/install_prerequisites_linux_dnf_no_sudo.sh
+      - run:
+          name: setup yum/dnf repo
+          command: . scripts/setup_yum_dnf_repo_linux.sh
+      - run:
+          name: collect versioned dependencies of dnf packages
+          command: . scripts/dnf_depends.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >> | tee depends.txt
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.LINUX_CPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+      - run:
+          name: install
+          command: |
+           [ -d /opt/intel/oneapi/compiler ] && exit 0
+           . scripts/install_linux_dnf_no_sudo.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >>
+      - run:
+          name: build
+          command: scripts/build_linux.sh c++
+      - run:
+          name: exclude unused files from cache
+          command: . scripts/cache_exclude_linux_no_sudo.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.LINUX_CPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          paths:
+            - /opt/intel/oneapi/compiler
+
+  build_linux_dnf_fortran:
+    docker:
+      - image: fedora:latest
+    steps:
+      - checkout
+      - run:
+          name: install prerequisites
+          command: . scripts/install_prerequisites_linux_dnf_no_sudo.sh
+      - run:
+          name: setup yum/dnf repo
+          command: . scripts/setup_yum_dnf_repo_linux.sh
+      - run:
+          name: collect versioned dependencies of dnf packages
+          command: . scripts/dnf_depends.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >> | tee depends.txt
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+      - run:
+          name: install
+          command: |
+           [ -d /opt/intel/oneapi/compiler ] && exit 0
+           . scripts/install_linux_dnf_no_sudo.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>
+      - run:
+          name: build
+          command: scripts/build_linux.sh fortran
+      - run:
+          name: exclude unused files from cache
+          command: . scripts/cache_exclude_linux_no_sudo.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          paths:
+            - /opt/intel/oneapi/compiler
+
+  build_linux_dnf_dpcpp:
+    docker:
+      - image: fedora:latest
+    steps:
+      - checkout
+      - run:
+          name: install prerequisites
+          command: . scripts/install_prerequisites_linux_dnf_no_sudo.sh
+      - run:
+          name: setup yum/dnf repo
+          command: . scripts/setup_yum_dnf_repo_linux.sh
+      - run:
+          name: collect versioned dependencies of dnf packages
+          command: . scripts/dnf_depends.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >> | tee depends.txt
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+      - run:
+          name: install
+          command: |
+           [ -d /opt/intel/oneapi/compiler ] && exit 0
+           . scripts/install_linux_dnf_no_sudo.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >>
+      - run:
+          name: build
+          command: scripts/build_linux.sh dpc++
+      - run:
+          name: exclude unused files from cache
+          command: . scripts/cache_exclude_linux_no_sudo.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS >>-{{ checksum "depends.txt" }}-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          paths:
+            - /opt/intel/oneapi/compiler
+            - /opt/intel/oneapi/tbb
+
   build_linux_container_cpp:
     docker:
       - image: intel/oneapi-hpckit
