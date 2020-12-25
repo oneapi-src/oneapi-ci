@@ -5,12 +5,13 @@
 # SPDX-License-Identifier: MIT
 
 LANGUAGE=$1
-ONEAPI_RELEASE=$2
 
 git clone --depth 1 https://github.com/oneapi-src/oneAPI-samples.git
 
+#shellcheck disable=SC2010
+LATEST_VERSION=$(ls -1 /opt/intel/oneapi/compiler/ | grep -v latest | sort | tail -1)
 # shellcheck source=/dev/null
-source /opt/intel/oneapi/compiler/"$ONEAPI_RELEASE"/env/vars.sh
+source /opt/intel/oneapi/compiler/"$LATEST_VERSION"/env/vars.sh
 
 case $LANGUAGE in
 c++)
@@ -22,8 +23,10 @@ fortran)
   make && make run
   ;;
 dpc++)
+#shellcheck disable=SC2010
+  LATEST_VERSION=$(ls -1 /opt/intel/oneapi/tbb/ | grep -v latest | sort | tail -1)
 # shellcheck source=/dev/null
-  source /opt/intel/oneapi/tbb/"$ONEAPI_RELEASE"/env/vars.sh
+  source /opt/intel/oneapi/tbb/"$LATEST_VERSION"/env/vars.sh
   cd oneAPI-samples/DirectProgramming/DPC++/DenseLinearAlgebra/vector-add
   make all && make run
   ;;

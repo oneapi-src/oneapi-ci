@@ -10,6 +10,10 @@ variables:
     value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664_offline.exe
   - name: WINDOWS_HPCKIT_URL
     value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682_offline.exe
+  - name: LINUX_BASEKIT_URL
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17431/l_BaseKit_p_2021.1.0.2659_offline.sh
+  - name: LINUX_HPCKIT_URL
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17427/l_HPCKit_p_2021.1.0.2684_offline.sh
   - name: MACOS_HPCKIT_URL
     value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg
   - name: WINDOWS_CPP_COMPONENTS
@@ -24,12 +28,16 @@ variables:
     value: intel-oneapi-compiler-fortran
   - name: LINUX_DPCPP_COMPONENTS
     value: intel-oneapi-compiler-dpcpp-cpp
+  - name: LINUX_CPP_COMPONENTS_WEB
+    value: intel.oneapi.lin.dpcpp-cpp-compiler-pro
+  - name: LINUX_FORTRAN_COMPONENTS_WEB
+    value: intel.oneapi.lin.ifort-compiler
+  - name: LINUX_DPCPP_COMPONENTS_WEB
+    value: intel.oneapi.lin.dpcpp-cpp-compiler
   - name: MACOS_CPP_COMPONENTS
     value: intel.oneapi.mac.cpp-compiler
   - name: MACOS_FORTRAN_COMPONENTS
     value: intel.oneapi.mac.ifort-compiler
-  - name: ONEAPI_RELEASE
-    value: 2021.1.1
 
 resources:
     containers:
@@ -53,15 +61,15 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat c++ - $(ONEAPI_RELEASE)
+  - script: scripts/build_windows.bat c++
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh $(ONEAPI_RELEASE)
+  - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
       contents: |
@@ -70,7 +78,7 @@ jobs:
         installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
@@ -87,15 +95,15 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat fortran - $(ONEAPI_RELEASE)
+  - script: scripts/build_windows.bat fortran
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh $(ONEAPI_RELEASE)
+  - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
       contents: |
@@ -104,7 +112,7 @@ jobs:
         installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
@@ -132,9 +140,9 @@ jobs:
   - bash: cp opencl/OpenCL.dll C:/Windows/System32/
     displayName: restore OpenCL.dll from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat dpc++ - $(ONEAPI_RELEASE)
+  - script: scripts/build_windows.bat dpc++
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh $(ONEAPI_RELEASE)
+  - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
   - bash: |
@@ -145,7 +153,7 @@ jobs:
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
       contents: |
@@ -154,7 +162,113 @@ jobs:
         installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
+
+- job: build_linux_cpp
+  pool:
+    vmImage: 'ubuntu-20.04'
+  steps:
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/compiler
+      key: '"install" | "$(LINUX_HPCKIT_URL)" | "$(LINUX_CPP_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
+  - script: scripts/install_linux.sh $(LINUX_HPCKIT_URL) $(LINUX_CPP_COMPONENTS_WEB)
+    displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - script: scripts/build_linux.sh c++
+    displayName: build
+  - bash: scripts/cache_exclude_linux.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
+
+    # Delete the following if you don't want to save install logs
+  - task: CopyFiles@2
+    condition: ne(variables.CACHE_RESTORED, 'true')
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: ne(variables.CACHE_RESTORED, 'true')
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
+
+- job: build_linux_fortran
+  pool:
+    vmImage: 'ubuntu-20.04'
+  steps:
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/compiler
+      key: '"install" | "$(LINUX_HPCKIT_URL)" | "$(LINUX_FORTRAN_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
+  - script: scripts/install_linux.sh $(LINUX_HPCKIT_URL) $(LINUX_FORTRAN_COMPONENTS_WEB)
+    displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - script: scripts/build_linux.sh fortran
+    displayName: build
+  - bash: scripts/cache_exclude_linux.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
+
+    # Delete the following if you don't want to save install logs
+  - task: CopyFiles@2
+    condition: ne(variables.CACHE_RESTORED, 'true')
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: ne(variables.CACHE_RESTORED, 'true')
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: InstallLogs_$(Agent.JobName)
+
+- job: build_linux_dpcpp
+  pool:
+    vmImage: 'ubuntu-20.04'
+  steps:
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/compiler
+      key: '"install" | "$(LINUX_BASEKIT_URL)" | "$(LINUX_DPCPP_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
+  - task: Cache@2
+    inputs:
+      path: /opt/intel/oneapi/tbb
+      key: '"install" | "$(LINUX_BASEKIT_URL)" | "$(LINUX_DPCPP_COMPONENTS_WEB)" | "tbb" | scripts/cache_exclude_linux.sh'
+      cacheHitVar: CACHE_RESTORED
+  - script: scripts/install_linux.sh $(LINUX_BASEKIT_URL) $(LINUX_DPCPP_COMPONENTS_WEB)
+    displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - script: scripts/build_linux.sh dpc++
+    displayName: build
+  - bash: scripts/cache_exclude_linux.sh
+    displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
+
+    # Delete the following if you don't want to save install logs
+  - task: CopyFiles@2
+    condition: ne(variables.CACHE_RESTORED, 'true')
+    inputs:
+      sourceFolder: '$(Build.SourcesDirectory)'
+      contents: |
+        extract.log
+        bootstrapper*
+        installer*
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
@@ -175,9 +289,9 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh c++ $(ONEAPI_RELEASE)
+  - script: scripts/build_linux.sh c++
     displayName: build
-  - bash: scripts/cache_exclude_linux.sh $(ONEAPI_RELEASE)
+  - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
@@ -197,9 +311,9 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh fortran $(ONEAPI_RELEASE)
+  - script: scripts/build_linux.sh fortran
     displayName: build
-  - bash: scripts/cache_exclude_linux.sh $(ONEAPI_RELEASE)
+  - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
 
@@ -223,11 +337,62 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh dpc++ $(ONEAPI_RELEASE)
+  - script: scripts/build_linux.sh dpc++
     displayName: build
-  - bash: scripts/cache_exclude_linux.sh $(ONEAPI_RELEASE)
+  - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
+
+- job: build_linux_dnf_cpp
+  pool:
+    vmImage: 'ubuntu-20.04'
+  container: fedora:latest
+  steps:
+  - script: scripts/install_prerequisites_linux_dnf.sh
+    displayName: install prerequisites
+  - script: scripts/setup_yum_dnf_repo_linux.sh
+    displayName: setup yum/dnf repo
+  - script: scripts/dnf_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of dnf packages
+  - script: scripts/install_linux_dnf.sh $(LINUX_CPP_COMPONENTS)
+    displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - script: scripts/build_linux.sh c++
+    displayName: build
+
+- job: build_linux_dnf_fortran
+  pool:
+    vmImage: 'ubuntu-20.04'
+  container: fedora:latest
+  steps:
+  - script: scripts/install_prerequisites_linux_dnf.sh
+    displayName: install prerequisites
+  - script: scripts/setup_yum_dnf_repo_linux.sh
+    displayName: setup yum/dnf repo
+  - script: scripts/dnf_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of dnf packages
+  - script: scripts/install_linux_dnf.sh $(LINUX_FORTRAN_COMPONENTS)
+    displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - script: scripts/build_linux.sh fortran
+    displayName: build
+
+- job: build_linux_dnf_dpcpp
+  pool:
+    vmImage: 'ubuntu-20.04'
+  container: fedora:latest
+  steps:
+  - script: scripts/install_prerequisites_linux_dnf.sh
+    displayName: install prerequisites
+  - script: scripts/setup_yum_dnf_repo_linux.sh
+    displayName: setup yum/dnf repo
+  - script: scripts/dnf_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
+    displayName: collect versioned dependencies of dnf packages
+  - script: scripts/install_linux_dnf.sh $(LINUX_DPCPP_COMPONENTS)
+    displayName: install
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - script: scripts/build_linux.sh dpc++
+    displayName: build
 
 - job: build_linux_container_cpp
   pool:
@@ -236,7 +401,7 @@ jobs:
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
-    - script: scripts/build_linux.sh c++ $(ONEAPI_RELEASE)
+    - script: scripts/build_linux.sh c++
       displayName: build
 
 - job: build_linux_container_fortran
@@ -246,7 +411,7 @@ jobs:
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
-    - script: scripts/build_linux.sh fortran $(ONEAPI_RELEASE)
+    - script: scripts/build_linux.sh fortran
       displayName: build
 
 - job: build_linux_container_dpcpp
@@ -256,7 +421,7 @@ jobs:
   steps:
     - script: sudo apt-get update && sudo apt-get install -y git
       displayName: install_git
-    - script: scripts/build_linux.sh dpc++ $(ONEAPI_RELEASE)
+    - script: scripts/build_linux.sh dpc++
       displayName: build
 
 - job: build_macOS_cpp
@@ -280,7 +445,7 @@ jobs:
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
       contents: |
@@ -288,7 +453,7 @@ jobs:
         installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
@@ -314,7 +479,7 @@ jobs:
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       sourceFolder: '$(Build.SourcesDirectory)'
       contents: |
@@ -322,7 +487,7 @@ jobs:
         installer*
       targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
-    condition: always()
+    condition: ne(variables.CACHE_RESTORED, 'true')
     inputs:
       pathToPublish: '$(Build.ArtifactStagingDirectory)'
       artifactName: InstallLogs_$(Agent.JobName)
