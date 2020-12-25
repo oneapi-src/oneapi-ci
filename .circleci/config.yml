@@ -256,7 +256,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_dnf_no_sudo.sh
       - run:
           name: setup yum/dnf repo
-          command: . scripts/setup_yum_dnf_repo_linux.sh
+          command: . scripts/setup_yum_dnf_repo_linux_no_sudo.sh
       - run:
           name: collect versioned dependencies of dnf packages
           command: . scripts/dnf_depends.sh << pipeline.parameters.LINUX_CPP_COMPONENTS >> | tee depends.txt
@@ -289,7 +289,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_dnf_no_sudo.sh
       - run:
           name: setup yum/dnf repo
-          command: . scripts/setup_yum_dnf_repo_linux.sh
+          command: . scripts/setup_yum_dnf_repo_linux_no_sudo.sh
       - run:
           name: collect versioned dependencies of dnf packages
           command: . scripts/dnf_depends.sh << pipeline.parameters.LINUX_FORTRAN_COMPONENTS >> | tee depends.txt
@@ -322,7 +322,7 @@ jobs:
           command: . scripts/install_prerequisites_linux_dnf_no_sudo.sh
       - run:
           name: setup yum/dnf repo
-          command: . scripts/setup_yum_dnf_repo_linux.sh
+          command: . scripts/setup_yum_dnf_repo_linux_no_sudo.sh
       - run:
           name: collect versioned dependencies of dnf packages
           command: . scripts/dnf_depends.sh << pipeline.parameters.LINUX_DPCPP_COMPONENTS >> | tee depends.txt
@@ -391,6 +391,9 @@ workflows:
     - build_linux_apt_cpp
     - build_linux_apt_fortran
     - build_linux_apt_dpcpp
+    - build_linux_dnf_cpp
+    - build_linux_dnf_fortran
+    - build_linux_dnf_dpcpp
     - build_linux_container_cpp
     - build_linux_container_fortran
     - build_linux_container_dpcpp
