@@ -1,5 +1,4 @@
 import glob
-import os
 import sys
 
 prefix = sys.argv[1]
@@ -19,7 +18,12 @@ for name in glob.glob(f'{prefix}_*'):
     ]
 
 for i in output:
-    with open(f'{i}.rst', 'w') as outfile:
+    with open(f'source/{i}.rst', 'w') as outfile:
+        outfile.write(f'{i}\n')
+        outfile.write('='*len(i) + '\n')
         for j in output[i]:
+            outfile.write('::\n\n')
             with open(j, 'r') as infile:
-                outfile.write(infile.read())
+                for line in infile.readlines():
+                    outfile.write(f'    {line}')
+            outfile.write('\n')

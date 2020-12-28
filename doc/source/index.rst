@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Intel® oneAPI Toolkits and Components available in various distribution channels
-===========================================
+================================================================================
 
 .. toctree::
    :titlesonly:
