@@ -163,8 +163,8 @@ jobs:
     - name: Build doc
       run: |
         cp ../${{ github.workflow }}_*/* source
-        find source -type f ! -name "*apt*" ! -name "*yum*" -exec sed -i -e 1,5d {} \;
-        find source -type f -name "*windows*" -exec sed -i -e 1,2d {} \;
+        find source -type f -maxdepth 1 ! -name "*apt*" ! -name "*yum*" -exec sed -i -e 1,5d {} \;
+        find source -type f -maxdepth 1 -name "*windows*" -exec sed -i -e 1,2d {} \;
         sed -i -e 1,7d source/list_components_linux_yum_dnf
         make html
     - name: Save built doc as artifact
