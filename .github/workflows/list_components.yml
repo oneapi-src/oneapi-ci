@@ -161,9 +161,10 @@ jobs:
     - name: Build doc
       run: |
         cp ../${{ github.workflow }}_*/* source
-        ls -1 | grep -v apt | grep -v yum | sed -i -e 1,5d
-        ls -1 | grep windows | grep -v yum | sed -i -e 1,2d
-        sed -i -e 1,7d list_components_linux_yum_dnf
+        find . -type f ! -name "*tt*"
+        find source -type f ! -name "*apt*" ! -name "*yum*" -exec sed  -i -e 1,5d {}
+        find source -type f -name "*windows*" -exec sed  -i -e 1,2d {}
+        sed -i -e 1,7d source/list_components_linux_yum_dnf
         make html
     - name: Save built doc as artifact
       uses: actions/upload-artifact@v2
