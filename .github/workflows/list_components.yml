@@ -99,23 +99,20 @@ jobs:
 
   publish:
     runs-on: ubuntu-20.04
-    needs: [windows, linux, linux_apt, linux_yum_dnf, macos]
+    #needs: [windows, linux, linux_apt, linux_yum_dnf, macos]
     defaults:
       run:
         shell: bash
         working-directory: doc
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
     - name: Install prerequisites
-      run: |
-        python3 -m venv venv
-        . venv/bin/activate
-        pip install --upgrade --quiet -r requirements.txt
+      run: python -m pip install --quiet -r requirements.txt
     - name: Build doc
-      run: |
-        . venv/bin/activate
-        make html
+      run: make html
     - name: Archive build directory
       uses: actions/upload-artifact@v2
       with:
