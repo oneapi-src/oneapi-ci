@@ -4,4 +4,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-sudo apt-cache search ^intel-
+FILENAME=$1
+
+sudo apt-cache search ^intel- | sudo tee "$FILENAME"

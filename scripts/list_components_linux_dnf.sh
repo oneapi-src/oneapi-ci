@@ -4,4 +4,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-sudo dnf -y --disablerepo="*" --enablerepo="oneAPI" list available
+FILENAME=$1
+
+sudo dnf -y --disablerepo="*" --enablerepo="oneAPI" list available | sudo tee "$FILENAME"
