@@ -15,5 +15,6 @@ WEBIMAGE_NAME=$(ls -1 webimage_extracted/)
 webimage_extracted/"$WEBIMAGE_NAME"/bootstrapper --list-components > "$FILENAME"
 installer_exit_code=$?
 cat "$FILENAME"
+sed -i -e 1,5d "$FILENAME"
 rm -rf webimage_extracted
 exit $installer_exit_code

@@ -22,7 +22,7 @@ for i in output:
         outfile.write(f'{i}\n')
         outfile.write('=' * len(i) + '\n')
         for j in output[i]:
-            outfile.write('::\n')
+            outfile.write('::\n\n')
             with open(j, 'r') as infile:
                 for line in infile.readlines():
                     outfile.write(f'    {line}')

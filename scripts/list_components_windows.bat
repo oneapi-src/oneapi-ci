@@ -11,4 +11,6 @@ del webimage.exe
 webimage_extracted\bootstrapper.exe --list-components > %FILENAME%
 installer_exit_code=%ERRORLEVEL%
 type %FILENAME%
+for %%I in (%FILENAME%) do for /f "delims=, tokens=* skip=7" %%x in (%%I) do echo %%x >> tmp
+move tmp %FILENAME%
 exit /b %installer_exit_code%
