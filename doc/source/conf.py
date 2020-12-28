@@ -59,7 +59,6 @@ html_theme_options = {
     'use_issues_button': True,
     'use_edit_page_button': True,
     'repository_branch': 'master',
-    "single_page": True,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
