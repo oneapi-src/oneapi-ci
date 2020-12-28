@@ -45,7 +45,7 @@ jobs:
         path: ${{ github.workflow }}_${{ github.job }}*
 
   linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash
@@ -71,7 +71,7 @@ jobs:
         path: ${{ github.workflow }}_${{ github.job }}*
 
   linux_apt:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash
@@ -89,7 +89,7 @@ jobs:
         path: ${{ github.workflow }}_${{ github.job }}*
 
   linux_yum_dnf:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     container: fedora
     defaults:
       run:
@@ -138,17 +138,16 @@ jobs:
     - uses: actions/checkout@v2
     - name: Download artifacts
       uses: actions/download-artifact@v2
-    - name: check artifacts
-      run: |
-        cd ..
-        cat ${{ github.workflow }}_*
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
     - name: Install prerequisites
       run: python -m pip install --quiet -r requirements.txt
     - name: Build doc
-      run: make html
+      run: |
+        cp ../${{ github.workflow }}_*/* .
+        python make_rst.py ${{ github.workflow }}
+        make html
     - name: Save built doc as artifact
       uses: actions/upload-artifact@v2
       with:

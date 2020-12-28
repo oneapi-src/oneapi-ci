@@ -3,18 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to list_components's documentation!
+Intel® oneAPI Toolkits and Components available in various distribution channels
 ===========================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :titlesonly:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   windows
+   linux
+   linux_apt
+   linux_yum_dnf
+   macos
