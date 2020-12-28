@@ -113,11 +113,11 @@ jobs:
       run: python -m pip install --quiet -r requirements.txt
     - name: Build doc
       run: make html
-    - name: Archive build directory
+    - name: Save built doc as artifact
       uses: actions/upload-artifact@v2
       with:
           name: ${{ github.job }}
-          path: build
+          path: doc/build
     - name: Checkout gh-pages
       if: ${{ github.ref == 'refs/heads/master' }}
       uses: actions/checkout@v2
@@ -127,10 +127,10 @@ jobs:
     - name: Publish to github pages
       if: ${{ github.ref == 'refs/heads/master' }}
       run: |
-          cd gh-pages
+          cd ../gh-pages
           rm -rf *
           touch .nojekyll
-          cp -r ../build/html/* .
+          cp -r ../doc/build/html/* .
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
