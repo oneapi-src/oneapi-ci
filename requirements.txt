@@ -1,6 +1,0 @@
-# SPDX-FileCopyrightText: 2020 Intel Corporation
-#
-# SPDX-License-Identifier: MIT
-
-git+https://github.com/fsfe/reuse-tool.git
-pre-commit

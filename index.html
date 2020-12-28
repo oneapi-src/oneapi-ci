@@ -1,0 +1,993 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Components available for installation &#8212; Intel® oneAPI CI Samples Documentation</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="shortcut icon" href="_static/favicons.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-2 bd-sidebar site-navigation show single-page" id="site-navigation">
+    
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/index.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/mmzakhar/oneapi-ci/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/mmzakhar/oneapi-ci/edit/master/doc/source/index.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#windows-web-installer">
+   Windows, Web installer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intelr-oneapi-base-toolkit">
+     Intel® oneAPI Base Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intelr-oneapi-hpc-toolkit">
+     Intel® oneAPI HPC Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intelr-oneapi-iot-toolkit">
+     Intel® oneAPI IoT Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intelr-oneapi-rendering-toolkit">
+     Intel® oneAPI Rendering Toolkit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linux-web-installer">
+   Linux, Web installer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Intel® oneAPI Base Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Intel® oneAPI HPC Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Intel® oneAPI IoT Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intelr-ai-analytics-toolkit">
+     Intel® AI Analytics Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intelr-oneapi-dl-framework-developer-toolkit">
+     Intel® oneAPI DL Framework Developer Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Intel® oneAPI Rendering Toolkit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linux-apt">
+   Linux, APT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linux-yum-dnf">
+   Linux, YUM/DNF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#macos-web-installer">
+   MacOS, Web installer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Intel® oneAPI Base Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Intel® oneAPI HPC Toolkit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Intel® oneAPI Rendering Toolkit
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="components-available-for-installation">
+<h1>Components available for installation<a class="headerlink" href="#components-available-for-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="windows-web-installer">
+<h2>Windows, Web installer<a class="headerlink" href="#windows-web-installer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="intelr-oneapi-base-toolkit">
+<h3>Intel® oneAPI Base Toolkit<a class="headerlink" href="#intelr-oneapi-base-toolkit" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                               Version      Language Installed Name                                                  
+
+=======================================================================================================================
+
+intel.oneapi.win.vtune           2021.1.1-68           false     Intel® VTune(TM) Profiler                             
+
+intel.oneapi.win.tbb.devel       2021.1.1-133          false     Intel® oneAPI Threading Building Blocks               
+
+intel.oneapi.win.dnnl            2021.1.1-44           false     Intel® oneAPI Deep Neural Network Library             
+
+intel.oneapi.win.mkl.devel       2021.1.1-52           false     Intel® oneAPI Math Kernel Library                     
+
+intel.oneapi.win.vpl             2021.1.1-76           false     Intel® oneAPI Video Processing Library                
+
+intel.oneapi.win.dpcpp_debugger  10.0.0-2213           false     Intel® Distribution for GDB*                          
+
+intel.oneapi.win.ipp.devel       2021.1.1-47           false     Intel® Integrated Performance Primitives              
+
+intel.oneapi.win.ippcp           2021.1.1-53           false     Intel® Integrated Performance Primitives Cryptography 
+
+intel.oneapi.win.dpcpp-compiler  2021.1.1-191          false     Intel® oneAPI DPC++/C++ Compiler                      
+
+intel.oneapi.win.dpcpp-library   2021.1.1-191          false     Intel® oneAPI DPC++ Library                           
+
+intel.oneapi.win.dpcpp_ct.common 2021.1.1-54           false     Intel® DPC++ Compatibility Tool                       
+
+intel.oneapi.win.dal.devel       2021.1.1-71           false     Intel® oneAPI Data Analytics Library                  
+
+intel.oneapi.win.python3         2021.1.1-46           false     Intel® Distribution for Python*                       
+
+intel.oneapi.win.advisor         2021.1.1-53           false     Intel® Advisor                                        
+</pre></div>
+</div>
+</div>
+<div class="section" id="intelr-oneapi-hpc-toolkit">
+<h3>Intel® oneAPI HPC Toolkit<a class="headerlink" href="#intelr-oneapi-hpc-toolkit" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                              Version      Language Installed Name                                                             
+
+=================================================================================================================================
+
+intel.oneapi.win.cpp-compiler   2021.1.1-191          false     Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic   
+
+intel.oneapi.win.ifort-compiler 2021.1.1-191          false     Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 
+
+intel.oneapi.win.mpi.devel      2021.1.1-88           false     Intel® MPI Library                                               
+
+intel.oneapi.win.inspector      2021.1.1-53           false     Intel® Inspector                                                 
+
+intel.oneapi.win.itac           2021.1.1-39           false     Intel® Trace Analyzer and Collector                              
+</pre></div>
+</div>
+</div>
+<div class="section" id="intelr-oneapi-iot-toolkit">
+<h3>Intel® oneAPI IoT Toolkit<a class="headerlink" href="#intelr-oneapi-iot-toolkit" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                            Version      Language Installed Name                                                           
+
+=============================================================================================================================
+
+intel.oneapi.win.inspector    2021.1.1-53           false     Intel® Inspector                                               
+
+intel.oneapi.win.cpp-compiler 2021.1.1-191          false     Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 
+</pre></div>
+</div>
+</div>
+<div class="section" id="intelr-oneapi-rendering-toolkit">
+<h3>Intel® oneAPI Rendering Toolkit<a class="headerlink" href="#intelr-oneapi-rendering-toolkit" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                             Version   Language Installed Name                              
+
+==============================================================================================
+
+intel.oneapi.win.embree        3.12.0-91          false     Intel® Embree                     
+
+intel.oneapi.win.oidn          1.2.4-118          false     Intel® Open Image Denoise         
+
+intel.oneapi.win.ospray        2.4.0-54           false     Intel® OSPRay                     
+
+intel.oneapi.win.ospray_studio 0.5.0-81           false     Intel® OSPRay Studio              
+
+intel.oneapi.win.rkutil        1.0.0-78           false     Rendering Toolkit Utilities       
+
+intel.oneapi.win.openvkl       0.11.0-87          false     Intel® Open Volume Kernel Library 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="linux-web-installer">
+<h2>Linux, Web installer<a class="headerlink" href="#linux-web-installer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Intel® oneAPI Base Toolkit<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                  Version      Language Installed Name                                                  
+==========================================================================================================================
+intel.oneapi.lin.tbb.devel          2021.1.1-119          false     Intel® oneAPI Threading Building Blocks               
+intel.oneapi.lin.dpcpp-cpp-compiler 2021.1.1-189          false     Intel® oneAPI DPC++/C++ Compiler                      
+intel.oneapi.lin.dpcpp-library      2021.1.1-189          false     Intel® oneAPI DPC++ Library                           
+intel.oneapi.lin.mkl.devel          2021.1.1-52           false     Intel® oneAPI Math Kernel Library                     
+intel.oneapi.lin.ipp.devel          2021.1.1-47           false     Intel® Integrated Performance Primitives              
+intel.oneapi.lin.dal.devel          2021.1.1-79           false     Intel® oneAPI Data Analytics Library                  
+intel.oneapi.lin.advisor            2021.1.1-43           false     Intel® Advisor                                        
+intel.oneapi.lin.dnnl               2021.1.1-55           false     Intel® oneAPI Deep Neural Network Library             
+intel.oneapi.lin.ccl.devel          2021.1.1-54           false     Intel® oneAPI Collective Communications Library       
+intel.oneapi.lin.vtune              2021.1.1-61           false     Intel® VTune(TM) Profiler                             
+intel.oneapi.lin.dpcpp-ct           2021.1.1-59           false     Intel® DPC++ Compatibility Tool                       
+intel.oneapi.lin.python3            2021.1.1-44           false     Intel® Distribution for Python*                       
+intel.oneapi.lin.vpl                2021.1.1-66           false     Intel® oneAPI Video Processing Library                
+intel.oneapi.lin.ippcp.devel        2021.1.1-54           false     Intel® Integrated Performance Primitives Cryptography 
+intel.oneapi.lin.dpcpp_dbg          10.0.0-2219           false     Intel® Distribution for GDB*                          
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Intel® oneAPI HPC Toolkit<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                      Version      Language Installed Name                                                             
+=========================================================================================================================================
+intel.oneapi.lin.mpi.devel              2021.1.1-76           false     Intel® MPI Library                                               
+intel.oneapi.lin.inspector              2021.1.1-42           false     Intel® Inspector                                                 
+intel.oneapi.lin.dpcpp-cpp-compiler-pro 2021.1.1-189          false     Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic   
+intel.oneapi.lin.ifort-compiler         2021.1.1-189          false     Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 
+intel.oneapi.lin.clck                   2021.1.1-68           false     Intel® Cluster Checker                                           
+intel.oneapi.lin.itac                   2021.1.1-42           false     Intel® Trace Analyzer and Collector                              
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Intel® oneAPI IoT Toolkit<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                      Version      Language Installed Name                                                           
+=======================================================================================================================================
+intel.oneapi.lin.eclipse-ide            2021.1.1-52           false     Eclipse* IDE                                                   
+intel.oneapi.lin.eclipse_iot_plugin     2021.1.1-69           false     IoT Plugins for Eclipse                                        
+intel.oneapi.lin.inspector              2021.1.1-42           false     Intel® Inspector                                               
+intel.oneapi.lin.dpcpp-cpp-compiler-pro 2021.1.1-189          false     Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 
+</pre></div>
+</div>
+</div>
+<div class="section" id="intelr-ai-analytics-toolkit">
+<h3>Intel® AI Analytics Toolkit<a class="headerlink" href="#intelr-ai-analytics-toolkit" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                          Version     Language Installed Name                                     
+====================================================================================================
+intel.oneapi.lin.python3    2021.1.1-44          false     Intel® Distribution for Python*          
+intel.oneapi.lin.mz         1.8.0-204            false     Model Zoo                                
+intel.oneapi.lin.pytorch    1.5.0-726            false     PyTorch*                                 
+intel.oneapi.lin.ilit       1.0.0-204            false     Intel(R) Low Precision Optimization Tool 
+intel.oneapi.lin.tensorflow 2.2.0-219            false     Intel® Optimization for TensorFlow*      
+</pre></div>
+</div>
+</div>
+<div class="section" id="intelr-oneapi-dl-framework-developer-toolkit">
+<h3>Intel® oneAPI DL Framework Developer Toolkit<a class="headerlink" href="#intelr-oneapi-dl-framework-developer-toolkit" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                         Version     Language Installed Name                                            
+==========================================================================================================
+intel.oneapi.lin.dnnl      2021.1.1-55          false     Intel® oneAPI Deep Neural Network Library       
+intel.oneapi.lin.ccl.devel 2021.1.1-54          false     Intel® oneAPI Collective Communications Library 
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Intel® oneAPI Rendering Toolkit<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                             Version   Language Installed Name                              
+==============================================================================================
+intel.oneapi.lin.embree        3.12.0-91          false     Intel® Embree                     
+intel.oneapi.lin.oidn          1.2.4-116          false     Intel® Open Image Denoise         
+intel.oneapi.lin.ospray        2.4.0-55           false     Intel® OSPRay                     
+intel.oneapi.lin.ospray.studio 0.5.0-84           false     Intel® OSPRay Studio              
+intel.oneapi.lin.rkutil        1.0.0-76           false     Rendering Toolkit Utilities       
+intel.oneapi.lin.openvkl       0.11.0-87          false     Intel® Open Volume Kernel Library 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="linux-apt">
+<h2>Linux, APT<a class="headerlink" href="#linux-apt" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">intel</span><span class="o">-</span><span class="n">aikit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">935</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">aikit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">935</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">aikit</span><span class="o">-</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="o">.</span><span class="n">noarch</span>                                                 <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">935</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">aikit</span><span class="o">-</span><span class="n">runtime</span><span class="o">.</span><span class="n">x86_64</span>                                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">935</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">aikit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">935</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">aikit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">935</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">aikit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">935</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">.</span><span class="n">x86_64</span>                                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                                  <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">-</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="o">.</span><span class="n">noarch</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">-</span><span class="n">runtime</span><span class="o">.</span><span class="n">x86_64</span>                                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">basekit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2659</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">.</span><span class="n">x86_64</span>                                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                                  <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">-</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="o">.</span><span class="n">noarch</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">.</span><span class="n">x86_64</span>                                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">dlfdkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">1920</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">.</span><span class="n">x86_64</span>                                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">-</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="o">.</span><span class="n">noarch</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">-</span><span class="n">runtime</span><span class="o">.</span><span class="n">x86_64</span>                                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">hpckit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2684</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">.</span><span class="n">x86_64</span>                                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">-</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="o">.</span><span class="n">noarch</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">.</span><span class="n">x86_64</span>                                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">iotkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2658</span> <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">advisor</span><span class="o">.</span><span class="n">x86_64</span>                                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">43</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ccl</span><span class="o">.</span><span class="n">x86_64</span>                                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ccl</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ccl</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ccl</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">clck</span><span class="o">.</span><span class="n">x86_64</span>                                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">68</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">clck</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                  <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">68</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">licensing</span><span class="o">.</span><span class="n">noarch</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">60</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">licensing</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">60</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="nb">vars</span><span class="o">.</span><span class="n">noarch</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">60</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">noarch</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">.</span><span class="n">x86_64</span>                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">x86_64</span>                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">noarch</span>             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                 <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">i686</span>        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span> <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">classic</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">i686</span> <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">noarch</span>                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">runtime</span><span class="o">.</span><span class="n">x86_64</span>                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">noarch</span>                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">.</span><span class="n">x86_64</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">x86_64</span>                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">noarch</span>                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">runtime</span><span class="o">.</span><span class="n">x86_64</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">i686</span>                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">i686</span>                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">noarch</span>                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">noarch</span>                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">compiler</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">i686</span>                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">condaindex</span><span class="o">.</span><span class="n">x86_64</span>                                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">58</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">daal</span><span class="o">.</span><span class="n">x86_64</span>                                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">daal</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dal</span><span class="o">.</span><span class="n">x86_64</span>                                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">utilities</span><span class="o">.</span><span class="n">x86_64</span>                                                  <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">197</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">utilities</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">197</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">utilities</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">noarch</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">197</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dnnl</span><span class="o">.</span><span class="n">x86_64</span>                                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">55</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dnnl</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">55</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">ct</span><span class="o">.</span><span class="n">x86_64</span>                                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">59</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">ct</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">59</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">ct</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">noarch</span>                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">59</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">debugger</span><span class="o">.</span><span class="n">x86_64</span>                                                 <span class="mf">10.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2219</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">debugger</span><span class="o">-</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                          <span class="mf">10.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2219</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">debugger</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">noarch</span>                                     <span class="mf">10.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2219</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">ide</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">ide</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">embree</span><span class="o">.</span><span class="n">x86_64</span>                                                         <span class="mf">3.12</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">91</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">embree</span><span class="o">-</span><span class="mf">3.12</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                  <span class="mf">3.12</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">91</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ilit</span><span class="o">.</span><span class="n">x86_64</span>                                                           <span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">204</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">inspector</span><span class="o">.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">42</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">intelfpgadpcpp</span><span class="o">-</span><span class="n">a10gx</span><span class="o">-</span><span class="n">s10sx</span><span class="o">.</span><span class="n">x86_64</span>                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span>    <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">intelfpgadpcpp</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">platforms</span><span class="o">-</span><span class="n">quartus19</span><span class="o">.</span><span class="mf">4.</span><span class="n">x86_64</span>                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span>    <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">intelfpgadpcpp</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">platforms</span><span class="o">-</span><span class="n">quartus19</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">part2</span><span class="o">.</span><span class="n">x86_64</span>              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span>    <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">intelfpgadpcpp</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">platforms</span><span class="o">-</span><span class="n">quartus20</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span>    <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">intelfpgadpcpp</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">platforms</span><span class="o">-</span><span class="n">quartus20</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">part2</span><span class="o">.</span><span class="n">x86_64</span>              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span>    <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">intelfpgadpcpp</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">platforms</span><span class="o">-</span><span class="n">quartus20</span><span class="o">.</span><span class="mf">3.</span><span class="n">x86_64</span>                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span>    <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">intelfpgadpcpp</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">platforms</span><span class="o">-</span><span class="n">quartus20</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">part2</span><span class="o">.</span><span class="n">x86_64</span>              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span>    <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">iot</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">plugins</span><span class="o">.</span><span class="n">noarch</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">69</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">iot</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">69</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">iot</span><span class="o">-</span><span class="n">eclipse</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">cfg</span><span class="o">.</span><span class="n">noarch</span>                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">69</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">.</span><span class="n">x86_64</span>                                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">x86_64</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">.</span><span class="n">x86_64</span>                                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                 <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">x86_64</span>                                              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ippcp</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">itac</span><span class="o">.</span><span class="n">x86_64</span>                                                           <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">42</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">itac</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                  <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">42</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">libdpstd</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                 <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">libdpstd</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">libdpstd</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">.</span><span class="n">x86_64</span>                                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">x86_64</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">model</span><span class="o">-</span><span class="n">zoo</span><span class="o">.</span><span class="n">x86_64</span>                                                      <span class="mf">1.8</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">204</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mpi</span><span class="o">.</span><span class="n">x86_64</span>                                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">76</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">76</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">76</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">76</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">oidn</span><span class="o">.</span><span class="n">x86_64</span>                                                           <span class="mf">1.2</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mi">116</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">oidn</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mf">4.</span><span class="n">x86_64</span>                                                     <span class="mf">1.2</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mi">116</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">onevpl</span><span class="o">.</span><span class="n">x86_64</span>                                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">66</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">onevpl</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">66</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">onevpl</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">66</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">onevpl</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">66</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openmp</span><span class="o">.</span><span class="n">x86_64</span>                                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">x86_64</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">i686</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">189</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">2.</span><span class="n">noarch</span>                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openvkl</span><span class="o">.</span><span class="n">x86_64</span>                                                        <span class="mf">0.11</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">87</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">openvkl</span><span class="o">-</span><span class="mf">0.11</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                 <span class="mf">0.11</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">87</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ospray</span><span class="o">.</span><span class="n">x86_64</span>                                                         <span class="mf">2.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">55</span>      <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ospray</span><span class="o">-</span><span class="mf">2.4</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                   <span class="mf">2.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">55</span>      <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ospray</span><span class="o">-</span><span class="n">studio</span><span class="o">.</span><span class="n">x86_64</span>                                                  <span class="mf">0.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">84</span>      <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">ospray</span><span class="o">-</span><span class="n">studio</span><span class="o">-</span><span class="mf">0.5</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                            <span class="mf">0.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">84</span>      <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">python</span><span class="o">.</span><span class="n">x86_64</span>                                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">44</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">pytorch</span><span class="o">.</span><span class="n">x86_64</span>                                                        <span class="mf">1.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">726</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">rkcommon</span><span class="o">.</span><span class="n">x86_64</span>                                                       <span class="mf">1.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">118</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">rkcommon</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                 <span class="mf">1.5</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">118</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">rkutil</span><span class="o">.</span><span class="n">x86_64</span>                                                         <span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">76</span>      <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">rkutil</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                   <span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">76</span>      <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">ccl</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">compilers</span><span class="o">.</span><span class="n">x86_64</span>                                              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">compilers</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">compilers</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">noarch</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dal</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">79</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dnnl</span><span class="o">.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">55</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">.</span><span class="n">x86_64</span>                                              <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">noarch</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">x86_64</span>                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">dpcpp</span><span class="o">-</span><span class="n">library</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">fortran</span><span class="o">.</span><span class="n">x86_64</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">fortran</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">noarch</span>                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">ipp</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">noarch</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">47</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">crypto</span><span class="o">.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">crypto</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">ipp</span><span class="o">-</span><span class="n">crypto</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">noarch</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">54</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">libs</span><span class="o">.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">26</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">libs</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">26</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">mkl</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">mkl</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">noarch</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">52</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">mpi</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">76</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">opencl</span><span class="o">.</span><span class="n">x86_64</span>                                                 <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">openmp</span><span class="o">.</span><span class="n">x86_64</span>                                                 <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">noarch</span>                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="mi">266</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">tbb</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="n">noarch</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">vpl</span><span class="o">.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">66</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">.</span><span class="n">x86_64</span>                                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                                   <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">i686</span>                                               <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">noarch</span>                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="n">devel</span><span class="o">.</span><span class="n">x86_64</span>                                                      <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">x86_64</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tbb</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">1.</span><span class="n">x86_64</span>                                       <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">119</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">tensorflow</span><span class="o">.</span><span class="n">x86_64</span>                                                     <span class="mf">2.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">219</span>     <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">oneapi</span><span class="o">-</span><span class="n">vtune</span><span class="o">.</span><span class="n">x86_64</span>                                                          <span class="mf">2021.1</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">61</span>   <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">.</span><span class="n">x86_64</span>                                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                                    <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                         <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                                <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">-</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="o">.</span><span class="n">noarch</span>                                             <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">.</span><span class="n">x86_64</span>                                                     <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">x86_64</span>                                            <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">.</span><span class="n">i686</span>                                                 <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">intel</span><span class="o">-</span><span class="n">renderkit</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="mi">32</span><span class="n">bit</span><span class="o">-</span><span class="mf">2021.1</span><span class="o">.</span><span class="mf">0.</span><span class="n">i686</span>                                        <span class="mf">2021.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">627</span>  <span class="n">oneAPI</span>
+<span class="n">opae</span><span class="o">.</span><span class="n">pac_sign</span><span class="o">.</span><span class="n">x86_64</span>                                                               <span class="mf">1.0</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="mi">1</span>       <span class="n">oneAPI</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="linux-yum-dnf">
+<h2>Linux, YUM/DNF<a class="headerlink" href="#linux-yum-dnf" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>intel-microcode - Processor microcode firmware for Intel CPUs
+intel-cmt-cat - Intel cache monitoring and allocation technology config tool
+intel-gpu-tools - tools for debugging the Intel graphics driver
+intel-media-va-driver - VAAPI driver for the Intel GEN8+ Graphics family
+intel-opencl-icd - Intel graphics compute runtime for OpenCL
+rng-tools - Daemon to use a Hardware TRNG
+rng-tools-debian - daemon to use a Hardware TRNG (classic version)
+intel-media-va-driver-non-free - VAAPI driver for the Intel GEN8+ Graphics family
+intel-mkl - Intel® Math Kernel Library (Intel® MKL)
+intel-mkl-cluster - Intel® Math Kernel Library (Intel® MKL) (Cluster)
+intel-mkl-doc - Intel® Math Kernel Library (Intel® MKL) (Doc)
+intel-mkl-full - Intel® Math Kernel Library (Intel® MKL) (Full)
+intel-aikit - Intel® AI Analytics Toolkit
+intel-aikit-2021.1.0 - Intel® AI Analytics Toolkit
+intel-aikit-getting-started - Intel® AI Analytics Toolkit
+intel-aikit-runtime - Intel® AI Analytics Toolkit
+intel-aikit-runtime-2021.1.0 - Intel® AI Analytics Toolkit
+intel-basekit - Intel® oneAPI Base Toolkit
+intel-basekit-2021.1.0 - Intel® oneAPI Base Toolkit
+intel-basekit-getting-started - Intel® oneAPI Base Toolkit
+intel-basekit-runtime - Intel® oneAPI Base Toolkit
+intel-basekit-runtime-2021.1.0 - Intel® oneAPI Base Toolkit
+intel-dlfdkit - Intel® oneAPI DL Framework Developer Toolkit
+intel-dlfdkit-2021.1.0 - Intel® oneAPI DL Framework Developer Toolkit
+intel-dlfdkit-getting-started - Intel® oneAPI DL Framework Developer Toolkit
+intel-dlfdkit-runtime - Intel® oneAPI DL Framework Developer Toolkit
+intel-dlfdkit-runtime-2021.1.0 - Intel® oneAPI DL Framework Developer Toolkit
+intel-hpckit - Intel® oneAPI HPC Toolkit
+intel-hpckit-2021.1.0 - Intel® oneAPI HPC Toolkit
+intel-hpckit-getting-started - Intel® oneAPI HPC Toolkit
+intel-hpckit-runtime - Intel® oneAPI HPC Toolkit
+intel-hpckit-runtime-2021.1.0 - Intel® oneAPI HPC Toolkit
+intel-iotkit - Intel® oneAPI IoT Toolkit
+intel-iotkit-2021.1.0 - Intel® oneAPI IoT Toolkit
+intel-iotkit-getting-started - Intel® oneAPI IoT Toolkit
+intel-iotkit-runtime - Intel® oneAPI IoT Toolkit
+intel-iotkit-runtime-2021.1.0 - Intel® oneAPI IoT Toolkit
+intel-oneapi-advisor - Intel® Advisor
+intel-oneapi-ccl - Intel® oneAPI Collective Communications Library Runtime Environment
+intel-oneapi-ccl-2021.1.1 - Intel® oneAPI Collective Communications Library Runtime Environment
+intel-oneapi-ccl-devel - Intel® oneAPI Collective Communications Library
+intel-oneapi-ccl-devel-2021.1.1 - Intel® oneAPI Collective Communications Library
+intel-oneapi-clck - Intel® Cluster Checker
+intel-oneapi-clck-2021.1.1 - Intel® Cluster Checker
+intel-oneapi-common-licensing - oneAPI Common License
+intel-oneapi-common-licensing-2021.1.1 - oneAPI Common License
+intel-oneapi-common-vars - oneAPI Common Environment Scripts
+intel-oneapi-compiler-cpp-eclipse-cfg - Intel® oneAPI DPC++/C++ Compiler 2021.1.2 for Linux* eclipse integration configuration file (C++)
+intel-oneapi-compiler-dpcpp-cpp - Intel® oneAPI DPC++/C++ Compiler
+intel-oneapi-compiler-dpcpp-cpp-2021.1.1 - Intel® oneAPI DPC++/C++ Compiler
+intel-oneapi-compiler-dpcpp-cpp-2021.1.2 - Intel® oneAPI DPC++/C++ Compiler
+intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 2021.1.2 for Linux* for Intel(R) 64
+intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2021.1.1 - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 2021.1.1 for Linux* for Intel(R) 64
+intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2021.1.2 - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 2021.1.2 for Linux* for Intel(R) 64
+intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-common-2021.1.1 - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 2021.1.1 for Linux*
+intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-common-2021.1.2 - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 2021.1.2 for Linux*
+intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-runtime-2021.1.1 - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 2021.1.1 for Linux* runtime package for Intel(R) 64
+intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-runtime-2021.1.2 - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic 2021.1.2 for Linux* runtime package for Intel(R) 64
+intel-oneapi-compiler-dpcpp-cpp-classic-fortran-shared-runtime-2021.1.1 - Intel(R) DPC++/C++ Pro / Fortran Compiler Runtime Shared Files
+intel-oneapi-compiler-dpcpp-cpp-classic-fortran-shared-runtime-2021.1.2 - Intel(R) DPC++/C++ Pro / Fortran Compiler Runtime Shared Files
+intel-oneapi-compiler-dpcpp-cpp-common-2021.1.1 - Intel® oneAPI DPC++/C++ Compiler 2021.1.1 for Linux*
+intel-oneapi-compiler-dpcpp-cpp-common-2021.1.2 - Intel® oneAPI DPC++/C++ Compiler 2021.1.2 for Linux*
+intel-oneapi-compiler-dpcpp-cpp-runtime - Intel® oneAPI DPC++/C++ Compiler 2021.1.2 for Linux* runtime package for Intel(R) 64
+intel-oneapi-compiler-dpcpp-cpp-runtime-2021.1.1 - Intel® oneAPI DPC++/C++ Compiler 2021.1.1 for Linux* runtime package for Intel(R) 64
+intel-oneapi-compiler-dpcpp-cpp-runtime-2021.1.2 - Intel® oneAPI DPC++/C++ Compiler 2021.1.2 for Linux* runtime package for Intel(R) 64
+intel-oneapi-compiler-dpcpp-eclipse-cfg - Intel® oneAPI DPC++/C++ Compiler 2021.1.2 for Linux* eclipse integration configuration file (DPC++)
+intel-oneapi-compiler-fortran - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 2021.1.2 for Linux* for Intel(R) 64
+intel-oneapi-compiler-fortran-2021.1.1 - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 2021.1.1 for Linux* for Intel(R) 64
+intel-oneapi-compiler-fortran-2021.1.2 - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 2021.1.2 for Linux* for Intel(R) 64
+intel-oneapi-compiler-fortran-common-2021.1.1 - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 2021.1.1 for Linux*
+intel-oneapi-compiler-fortran-common-2021.1.2 - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 2021.1.2 for Linux*
+intel-oneapi-compiler-fortran-runtime - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 2021.1.2 for Linux* runtime package for Intel(R) 64
+intel-oneapi-compiler-fortran-runtime-2021.1.1 - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 2021.1.1 for Linux* runtime package for Intel(R) 64
+intel-oneapi-compiler-fortran-runtime-2021.1.2 - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic 2021.1.2 for Linux* runtime package for Intel(R) 64
+intel-oneapi-compiler-shared-2021.1.1 - Intel(R) Compiler Shared Files
+intel-oneapi-compiler-shared-2021.1.2 - Intel(R) Compiler Shared Files
+intel-oneapi-compiler-shared-common-2021.1.1 - Intel(R) Compiler Shared Files
+intel-oneapi-compiler-shared-common-2021.1.2 - Intel(R) Compiler Shared Files
+intel-oneapi-compiler-shared-common-runtime-2021.1.1 - Intel(R) Compiler Shared Files
+intel-oneapi-compiler-shared-common-runtime-2021.1.2 - Intel(R) Compiler Shared Files
+intel-oneapi-compiler-shared-runtime-2021.1.1 - Intel(R) Compiler Shared Files runtime contents
+intel-oneapi-compiler-shared-runtime-2021.1.2 - Intel(R) Compiler Shared Files runtime contents
+intel-oneapi-condaindex - oneAPI Common Install components
+intel-oneapi-daal - Intel® oneAPI Data Analytics Library
+intel-oneapi-daal-devel - Intel® oneAPI Data Analytics Library Development Package
+intel-oneapi-dal - Intel® oneAPI Data Analytics Library
+intel-oneapi-dal-2021.1.1 - Intel® oneAPI Data Analytics Library
+intel-oneapi-dal-common-2021.1.1 - Intel® oneAPI Data Analytics Library common
+intel-oneapi-dal-common-devel-2021.1.1 - Intel® oneAPI Data Analytics Library common
+intel-oneapi-dal-devel - Intel® oneAPI Data Analytics Library Development Package
+intel-oneapi-dal-devel-2021.1.1 - Intel® oneAPI Data Analytics Library Development Package
+intel-oneapi-dev-utilities - Dev Utilities
+intel-oneapi-dev-utilities-2021.1.1 - Dev Utilities
+intel-oneapi-dev-utilities-eclipse-cfg - intel-oneapi-dev-utilities-eclipse-cfg
+intel-oneapi-dnnl - Intel® oneAPI Deep Neural Network Library
+intel-oneapi-dnnl-devel - Intel® oneAPI Deep Neural Network Library Development Package
+intel-oneapi-dpcpp-cpp-2021.1.1 - Intel® oneAPI DPC++/C++ Compiler 2021.1.1 for Linux* for Intel(R) 64
+intel-oneapi-dpcpp-cpp-2021.1.2 - Intel® oneAPI DPC++/C++ Compiler 2021.1.2 for Linux* for Intel(R) 64
+intel-oneapi-dpcpp-ct - Intel® DPC++ Compatibility Tool
+intel-oneapi-dpcpp-ct-2021.1.1 - Intel® DPC++ Compatibility Tool
+intel-oneapi-dpcpp-ct-eclipse-cfg - Intel® DPC++ Compatibility Tool 2021.1.1 for Linux* eclipse integration configuration file
+intel-oneapi-dpcpp-debugger - Intel® Distribution for GDB*
+intel-oneapi-dpcpp-debugger-10.0.0 - Intel® Distribution for GDB*
+intel-oneapi-dpcpp-debugger-eclipse-cfg - Intel® Distribution for GDB* 10.0.0 for Linux* eclipse integration configuration file
+intel-oneapi-eclipse-ide - Eclipse* IDE
+intel-oneapi-eclipse-ide-2021.1.1 - Eclipse* IDE
+intel-oneapi-embree - Intel® Embree
+intel-oneapi-embree-3.12.0 - Intel® Embree
+intel-oneapi-ilit - Intel(R) Low Precision Optimization Tool
+intel-oneapi-inspector - Intel® Inspector
+intel-oneapi-intelfpgadpcpp-a10gx-s10sx - Intel® FPGA Add-on supporting the Intel® FPGA Programmable Acceleration Cards (PAC): Intel® FPGA PAC D5005, Intel® PAC® with Arria® 10 GX FPGA
+intel-oneapi-intelfpgadpcpp-a10gx-s10sx-2021.1.1 - Intel® FPGA Add-on supporting the Intel® FPGA Programmable Acceleration Cards (PAC): Intel® FPGA PAC D5005, Intel® PAC® with Arria® 10 GX FPGA
+intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus-part1-2021.1.1 - Intel® FPGA Add-on supporting the Intel® FPGA Programmable Acceleration Cards (PAC): Intel® FPGA PAC D5005, Intel® PAC® with Arria® 10 GX FPGA: Quartus Prime Pro, Part 1
+intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus-part2-2021.1.1 - Intel® FPGA Add-on supporting the Intel® FPGA Programmable Acceleration Cards (PAC): Intel® FPGA PAC D5005, Intel® PAC® with Arria® 10 GX FPGA: Quartus Prime Pro, Part 2
+intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus-part3-2021.1.1 - Intel® FPGA Add-on supporting the Intel® FPGA Programmable Acceleration Cards (PAC): Intel® FPGA PAC D5005, Intel® PAC® with Arria® 10 GX FPGA: Quartus Prime Pro, Part 3
+intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus-part4-2021.1.1 - Intel® FPGA Add-on supporting the Intel® FPGA Programmable Acceleration Cards (PAC): Intel® FPGA PAC D5005, Intel® PAC® with Arria® 10 GX FPGA: Quartus Prime Pro, Part 4
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 19.4
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 19.4
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4-part1-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 19.4, Part 1
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4-part2-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 19.4, Part 2
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4-part3-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 19.4, Part 3
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4-part4-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 19.4, Part 4
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4-part5-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 19.4, Part 5
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.2
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.2
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2-part1-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.2, Part 1
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2-part2-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.2, Part 2
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2-part3-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.2, Part 3
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2-part4-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.2, Part 4
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2-part5-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.2, Part 5
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.3
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.3
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3-part1-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.3, Part 1
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3-part2-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.3, Part 2
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3-part3-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.3, Part 3
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3-part4-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.3, Part 4
+intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3-part5-2021.1.1 - Intel® FPGA Add-on supporting custom platforms with Quartus Prime Pro 20.3, Part 5
+intel-oneapi-iot-eclipse-plugins - IoT Plugins for Eclipse
+intel-oneapi-iot-eclipse-plugins-2021.1.1 - IoT Plugins for Eclipse
+intel-oneapi-iot-eclipse-plugins-cfg - IoT Plugins for Eclipse
+intel-oneapi-ipp - Intel® Integrated Performance Primitives
+intel-oneapi-ipp-2021.1.1 - Intel® Integrated Performance Primitives
+intel-oneapi-ipp-common-2021.1.1 - Intel® Integrated Performance Primitives common
+intel-oneapi-ipp-common-devel-2021.1.1 - Intel® Integrated Performance Primitives common
+intel-oneapi-ipp-devel - Intel® Integrated Performance Primitives Development Package
+intel-oneapi-ipp-devel-2021.1.1 - Intel® Integrated Performance Primitives Development Package
+intel-oneapi-ipp-devel-32bit - Intel® Integrated Performance Primitives Development Package for IA-32
+intel-oneapi-ipp-devel-32bit-2021.1.1 - Intel® Integrated Performance Primitives Development Package for IA-32
+intel-oneapi-ippcp - Intel® Integrated Performance Primitives Cryptography
+intel-oneapi-ippcp-2021.1.1 - Intel® Integrated Performance Primitives Cryptography
+intel-oneapi-ippcp-common-2021.1.1 - Intel® Integrated Performance Primitives Cryptography common
+intel-oneapi-ippcp-common-devel-2021.1.1 - Intel® Integrated Performance Primitives Cryptography common
+intel-oneapi-ippcp-devel - Intel® Integrated Performance Primitives Cryptography Development Package
+intel-oneapi-ippcp-devel-2021.1.1 - Intel® Integrated Performance Primitives Cryptography Development Package
+intel-oneapi-ippcp-devel-32bit - Intel® Integrated Performance Primitives Cryptography Development Package for IA-32
+intel-oneapi-ippcp-devel-32bit-2021.1.1 - Intel® Integrated Performance Primitives Cryptography Development Package for IA-32
+intel-oneapi-itac - Intel® Trace Analyzer and Collector
+intel-oneapi-itac-2021.1.1 - Intel® Trace Analyzer and Collector
+intel-oneapi-libdpstd-devel - Intel® oneAPI DPC++ Library 2021.1.2 for Linux*
+intel-oneapi-libdpstd-devel-2021.1.1 - Intel® oneAPI DPC++ Library 2021.1.1 for Linux*
+intel-oneapi-libdpstd-devel-2021.1.2 - Intel® oneAPI DPC++ Library 2021.1.2 for Linux*
+intel-oneapi-mkl - Intel® oneAPI Math Kernel Library runtime package for Intel(R) 64
+intel-oneapi-mkl-2021.1.1 - Intel® oneAPI Math Kernel Library runtime package for Intel(R) 64
+intel-oneapi-mkl-common-2021.1.1 - Intel® oneAPI Math Kernel Library 2021.1.1 for Linux* common
+intel-oneapi-mkl-common-devel-2021.1.1 - Intel® oneAPI Math Kernel Library common
+intel-oneapi-mkl-devel - Intel® oneAPI Math Kernel Library 2021.1.1 for Linux* development package for Intel(R) 64
+intel-oneapi-mkl-devel-2021.1.1 - Intel® oneAPI Math Kernel Library 2021.1.1 for Linux* development package for Intel(R) 64
+intel-oneapi-mkl-devel-32bit - Intel® oneAPI Math Kernel Library 2021.1.1 for Linux* development package for IA-32
+intel-oneapi-mkl-devel-32bit-2021.1.1 - Intel® oneAPI Math Kernel Library 2021.1.1 for Linux* development package for IA-32
+intel-oneapi-model-zoo - Model Zoo
+intel-oneapi-mpi - Intel® MPI Library Runtime Environment
+intel-oneapi-mpi-2021.1.1 - Intel® MPI Library Runtime Environment
+intel-oneapi-mpi-devel - Intel® MPI Library
+intel-oneapi-mpi-devel-2021.1.1 - Intel® MPI Library
+intel-oneapi-oidn - Intel® Open Image Denoise
+intel-oneapi-oidn-1.2.4 - Intel® Open Image Denoise
+intel-oneapi-onevpl - Intel® oneAPI Video Processing Library
+intel-oneapi-onevpl-2021.1.1 - Intel® oneAPI Video Processing Library
+intel-oneapi-onevpl-devel - Intel® oneAPI Video Processing Library
+intel-oneapi-onevpl-devel-2021.1.1 - Intel® oneAPI Video Processing Library
+intel-oneapi-openmp - Intel® OpenMP* Runtime Library 2021.1.2 for Linux* for Intel(R) 64
+intel-oneapi-openmp-2021.1.1 - Intel® OpenMP* Runtime Library 2021.1.1 for Linux* for Intel(R) 64
+intel-oneapi-openmp-2021.1.2 - Intel® OpenMP* Runtime Library 2021.1.2 for Linux* for Intel(R) 64
+intel-oneapi-openmp-common-2021.1.1 - Intel® OpenMP* Runtime Library 2021.1.1 for Linux*
+intel-oneapi-openmp-common-2021.1.2 - Intel® OpenMP* Runtime Library 2021.1.2 for Linux*
+intel-oneapi-openvkl - Intel® Open Volume Kernel Library
+intel-oneapi-openvkl-0.11.0 - Intel® Open Volume Kernel Library
+intel-oneapi-ospray - Intel® OSPRay
+intel-oneapi-ospray-2.4.0 - Intel® OSPRay
+intel-oneapi-ospray-studio - Intel® OSPRay Studio
+intel-oneapi-ospray-studio-0.5.0 - Intel® OSPRay Studio
+intel-oneapi-python - Intel® Distribution for Python*
+intel-oneapi-pytorch - PyTorch*
+intel-oneapi-rkcommon - Rendering toolkit common
+intel-oneapi-rkcommon-1.5.0 - Rendering toolkit common
+intel-oneapi-rkutil - Rendering Toolkit Utilities
+intel-oneapi-rkutil-1.0.0 - Rendering Toolkit Utilities
+intel-oneapi-runtime-ccl - Intel® oneAPI Collective Communications Library runtime
+intel-oneapi-runtime-compilers - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic runtime common files
+intel-oneapi-runtime-compilers-common - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic runtime common files
+intel-oneapi-runtime-dal - Intel® oneAPI Data Analytics Library runtime
+intel-oneapi-runtime-dnnl - Intel® oneAPI Deep Neural Network Library runtime
+intel-oneapi-runtime-dpcpp-cpp - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic runtime
+intel-oneapi-runtime-dpcpp-cpp-common - Intel® oneAPI DPC++/C++ Compiler &amp; Intel® C++ Compiler Classic runtime
+intel-oneapi-runtime-dpcpp-library - Intel® oneAPI DPC++ Library runtime
+intel-oneapi-runtime-fortran - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic runtime
+intel-oneapi-runtime-fortran-common - Intel® Fortran Compiler (Beta) &amp; Intel® Fortran Compiler Classic runtime
+intel-oneapi-runtime-ipp - Intel® Integrated Performance Primitives runtime
+intel-oneapi-runtime-ipp-common - Intel® Integrated Performance Primitives runtime common
+intel-oneapi-runtime-ipp-crypto - Intel® Integrated Performance Primitives Cryptography runtime
+intel-oneapi-runtime-ipp-crypto-common - Intel® Integrated Performance Primitives Cryptography runtime common
+intel-oneapi-runtime-libs - Intel® oneAPI Runtime Libraries
+intel-oneapi-runtime-mkl - Intel® oneAPI Math Kernel Library runtime
+intel-oneapi-runtime-mkl-common - Intel® oneAPI Math Kernel Library runtime common
+intel-oneapi-runtime-mpi - Intel® MPI Library runtime
+intel-oneapi-runtime-opencl - Intel® CPU Runtime for OpenCL(TM) Applications runtime
+intel-oneapi-runtime-openmp - Intel® OpenMP* Runtime Library runtime
+intel-oneapi-runtime-openmp-common - l_openmp.runtime.description&gt;
+intel-oneapi-runtime-tbb - Intel® oneAPI Threading Building Blocks runtime
+intel-oneapi-runtime-tbb-common - Intel® oneAPI Threading Building Blocks runtime common
+intel-oneapi-runtime-vpl - Intel® oneAPI Video Processing Library runtime
+intel-oneapi-tbb - Intel® oneAPI Threading Building Blocks
+intel-oneapi-tbb-2021.1.1 - Intel® oneAPI Threading Building Blocks
+intel-oneapi-tbb-common-2021.1.1 - Intel® oneAPI Threading Building Blocks common
+intel-oneapi-tbb-common-devel-2021.1.1 - Intel® oneAPI Threading Building Blocks common
+intel-oneapi-tbb-devel - Intel® oneAPI Threading Building Blocks Development Package
+intel-oneapi-tbb-devel-2021.1.1 - Intel® oneAPI Threading Building Blocks Development Package
+intel-oneapi-tbb-devel-32bit - Intel® oneAPI Threading Building Blocks Development Package for IA-32
+intel-oneapi-tbb-devel-32bit-2021.1.1 - Intel® oneAPI Threading Building Blocks Development Package for IA-32
+intel-oneapi-tensorflow - Intel® Optimization for TensorFlow*
+intel-oneapi-vtune - Intel® VTune(TM) Profiler
+intel-renderkit - Intel® oneAPI Rendering Toolkit
+intel-renderkit-2021.1.0 - Intel® oneAPI Rendering Toolkit
+intel-renderkit-getting-started - Intel® oneAPI Rendering Toolkit
+intel-renderkit-runtime - Intel® oneAPI Rendering Toolkit
+intel-renderkit-runtime-2021.1.0 - Intel® oneAPI Rendering Toolkit
+</pre></div>
+</div>
+</div>
+<div class="section" id="macos-web-installer">
+<h2>MacOS, Web installer<a class="headerlink" href="#macos-web-installer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Intel® oneAPI Base Toolkit<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                           Version      Language Installed Name                                                  
+===================================================================================================================
+intel.oneapi.mac.tbb.devel   2021.1.1-110          false     Intel® oneAPI Threading Building Blocks               
+intel.oneapi.mac.mkl.devel   2021.1.1-50           false     Intel® oneAPI Math Kernel Library                     
+intel.oneapi.mac.ipp.devel   2021.1.1-45           false     Intel® Integrated Performance Primitives              
+intel.oneapi.mac.dal.devel   2021.1.1-69           false     Intel® oneAPI Data Analytics Library                  
+intel.oneapi.mac.advisor     2021.1.1-44           false     Intel® Advisor                                        
+intel.oneapi.mac.dnnl        2021.1.1-43           false     Intel® oneAPI Deep Neural Network Library             
+intel.oneapi.mac.vtune       2021.1.1-62           false     Intel® VTune(TM) Profiler                             
+intel.oneapi.mac.python3     2021.1.1-40           false     Intel® Distribution for Python*                       
+intel.oneapi.mac.ippcp.devel 2021.1.1-53           false     Intel® Integrated Performance Primitives Cryptography 
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Intel® oneAPI HPC Toolkit<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                              Version      Language Installed Name                            
+================================================================================================
+intel.oneapi.mac.cpp-compiler   2021.1.1-177          false     Intel® C++ Compiler Classic     
+intel.oneapi.mac.ifort-compiler 2021.1.1-177          false     Intel® Fortran Compiler Classic 
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>Intel® oneAPI Rendering Toolkit<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                             Version   Language Installed Name                              
+==============================================================================================
+intel.oneapi.mac.embree        3.12.0-91          false     Intel® Embree                     
+intel.oneapi.mac.oidn          1.2.4-115          false     Intel® Open Image Denoise         
+intel.oneapi.mac.ospray        2.4.0-53           false     Intel® OSPRay                     
+intel.oneapi.mac.ospray.studio 0.5.0-81           false     Intel® OSPRay Studio              
+intel.oneapi.mac.rkutil        1.0.0-76           false     Rendering Toolkit Utilities       
+intel.oneapi.mac.openvkl       0.11.0-86          false     Intel® Open Volume Kernel Library 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Intel Corporation<br/>
+        
+            &copy; Copyright 2020 Intel Corporation.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
