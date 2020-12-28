@@ -44,6 +44,7 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_book_theme'
+html_title = "Intel® oneAPI CI Samples Documentation"
 html_logo = '_static/oneAPI-rgb-rev-100.png'
 html_favicon = '_static/favicons.png'
 
@@ -58,6 +59,7 @@ html_theme_options = {
     'use_issues_button': True,
     'use_edit_page_button': True,
     'repository_branch': 'master',
+    "single_page": True,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

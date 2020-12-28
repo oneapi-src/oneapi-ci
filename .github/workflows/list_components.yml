@@ -132,9 +132,9 @@ jobs:
     - name: Intel® oneAPI Base Toolkit
       run: scripts/list_components_macos.sh $MACOS_BASEKIT_URL ${{ github.workflow }}_${{ github.job }}_basekit
     - name: Intel® oneAPI HPC Toolkit
-      run: scripts/list_components_macos.sh $MACOS_HPCKIT_URL ${{ github.workflow }}_${{ github.job }}_basekit
+      run: scripts/list_components_macos.sh $MACOS_HPCKIT_URL ${{ github.workflow }}_${{ github.job }}_hpckit
     - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_macos.sh $MACOS_RENDERKIT_URL ${{ github.workflow }}_${{ github.job }}_basekit
+      run: scripts/list_components_macos.sh $MACOS_RENDERKIT_URL ${{ github.workflow }}_${{ github.job }}_renderkit
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
@@ -160,8 +160,7 @@ jobs:
       run: python -m pip install --quiet -r requirements.txt
     - name: Build doc
       run: |
-        cp ../${{ github.workflow }}_*/* .
-        python make_rst.py ${{ github.workflow }}
+        cp ../${{ github.workflow }}_*/* source
         make html
     - name: Save built doc as artifact
       uses: actions/upload-artifact@v2
