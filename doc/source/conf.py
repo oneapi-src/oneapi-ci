@@ -54,7 +54,7 @@ html_favicon = '_static/favicons.png'
 html_theme = 'sphinx_book_theme'
 
 html_theme_options = {
-    'repository_url': 'https://github.com/mmzakhar/oneapi-ci',
+    'repository_url': 'https://github.com/oneapi-src/oneapi-ci',
     'path_to_docs': 'doc/source',
     'use_issues_button': True,
     'use_edit_page_button': True,
