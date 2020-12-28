@@ -20,10 +20,11 @@ for name in glob.glob(f'{prefix}_*'):
 for i in output:
     with open(f'source/{i}.rst', 'w') as outfile:
         outfile.write(f'{i}\n')
-        outfile.write('='*len(i) + '\n')
+        outfile.write('=' * len(i) + '\n')
         for j in output[i]:
-            outfile.write('::\n\n')
+            outfile.write('::\n')
             with open(j, 'r') as infile:
                 for line in infile.readlines():
                     outfile.write(f'    {line}')
+                outfile.write('\n')
             outfile.write('\n')

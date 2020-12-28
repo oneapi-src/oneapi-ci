@@ -29,6 +29,9 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
       run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL ${{ github.workflow }}_${{ github.job }}_basekit
     - name: Intel® oneAPI HPC Toolkit
@@ -51,6 +54,9 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
       run: scripts/list_components_linux.sh $LINUX_BASEKIT_URL ${{ github.workflow }}_${{ github.job }}_basekit
     - name: Intel® oneAPI HPC Toolkit
@@ -77,6 +83,9 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: Intel® oneAPI packages provided in APT repository
@@ -96,6 +105,9 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: Intel® oneAPI packages provided in YUM/DNF repository
@@ -114,6 +126,9 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
       run: scripts/list_components_macos.sh $MACOS_BASEKIT_URL ${{ github.workflow }}_${{ github.job }}_basekit
     - name: Intel® oneAPI HPC Toolkit

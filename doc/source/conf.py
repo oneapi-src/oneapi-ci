@@ -44,6 +44,17 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_book_theme'
+html_logo = '_static/oneAPI-rgb-rev-100.png'
+html_favicon = '_static/favicons.png'
+
+# The theme to use for HTML and HTML Help pages.  See the documentation for
+# a list of builtin themes.
+#
+html_theme = 'sphinx_book_theme'
+
+html_theme_options = {
+    'use_issues_button': True,
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
