@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+reuse
+Sphinx
+sphinx-book-theme
+sphinxcontrib-spelling

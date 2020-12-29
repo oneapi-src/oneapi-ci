@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: oneapi-ci
+Upstream-Contact: Maxim Zakharov <maxim.m.zakharov@intel.com>
+Source:
+
+Files: doc/*
+Copyright: 2020 Intel Corporation
+License: CC-BY-4.0
