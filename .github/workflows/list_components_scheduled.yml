@@ -97,7 +97,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: doc/source/${{ github.workflow }}/${{ github.job }}
+        path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
   linux_yum_dnf:
     runs-on: ubuntu-20.04
@@ -119,7 +119,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: doc/source/${{ github.workflow }}/${{ github.job }}
+        path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
   macos:
     runs-on: macos-latest
