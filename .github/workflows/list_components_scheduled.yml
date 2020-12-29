@@ -35,19 +35,19 @@ jobs:
       with:
         python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL ${{ github.job }}_basekit
+      run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL doc\source\${{ github.workflow }}\${{ github.job }}_basekit.txt
     - name: Intel® oneAPI HPC Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL ${{ github.job }}_hpckit
+      run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL doc\source\${{ github.workflow }}\${{ github.job }}_hpckit.txt
     - name: Intel® oneAPI IoT Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_IOTKIT_URL ${{ github.job }}_iotkit
+      run: scripts/list_components_windows.bat $WINDOWS_IOTKIT_URL doc\source\${{ github.workflow }}\${{ github.job }}_iotkit.txt
     - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_RENDERKIT_URL ${{ github.job }}_renderkit
+      run: scripts/list_components_windows.bat $WINDOWS_RENDERKIT_URL doc\source\${{ github.workflow }}\${{ github.job }}_renderkit.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: ${{ github.job }}_*
+        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
 
   linux:
     runs-on: ubuntu-20.04
@@ -60,23 +60,23 @@ jobs:
       with:
         python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
-      run: scripts/list_components_linux.sh $LINUX_BASEKIT_URL ${{ github.job }}_basekit
+      run: scripts/list_components_linux.sh $LINUX_BASEKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_basekit.txt
     - name: Intel® oneAPI HPC Toolkit
-      run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL ${{ github.job }}_hpckit
+      run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_hpckit.txt
     - name: Intel® oneAPI IoT Toolkit
-      run: scripts/list_components_linux.sh $LINUX_IOTKIT_URL ${{ github.job }}_iotkit
+      run: scripts/list_components_linux.sh $LINUX_IOTKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_iotkit.txt
     - name: Intel® AI Analytics Toolkit
-      run: scripts/list_components_linux.sh $LINUX_AIKIT_URL ${{ github.job }}_aikit
+      run: scripts/list_components_linux.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_aikit.txt
     - name: Intel® oneAPI DL Framework Developer Toolkit
-      run: scripts/list_components_linux.sh $LINUX_DLFDKIT_URL ${{ github.job }}_dlfdkit
+      run: scripts/list_components_linux.sh $LINUX_DLFDKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_dlfdkit.txt
     - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL ${{ github.job }}_renderkit
+      run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_renderkit.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: ${{ github.job }}_*
+        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
 
   linux_apt:
     runs-on: ubuntu-20.04
@@ -91,13 +91,13 @@ jobs:
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: Intel® oneAPI packages provided in APT repository
-      run: scripts/list_components_linux_apt.sh ${{ github.job }}
+      run: scripts/list_components_linux_apt.sh doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: ${{ github.job }}
+        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
 
   linux_yum_dnf:
     runs-on: ubuntu-20.04
@@ -113,13 +113,13 @@ jobs:
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: Intel® oneAPI packages provided in YUM/DNF repository
-      run: scripts/list_components_linux_dnf.sh ${{ github.job }}
+      run: scripts/list_components_linux_dnf.sh doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: ${{ github.job }}
+        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
 
   macos:
     runs-on: macos-latest
@@ -132,17 +132,17 @@ jobs:
       with:
         python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
-      run: scripts/list_components_macos.sh $MACOS_BASEKIT_URL ${{ github.job }}_basekit
+      run: scripts/list_components_macos.sh $MACOS_BASEKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_basekit.txt
     - name: Intel® oneAPI HPC Toolkit
-      run: scripts/list_components_macos.sh $MACOS_HPCKIT_URL ${{ github.job }}_hpckit
+      run: scripts/list_components_macos.sh $MACOS_HPCKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_hpckit.txt
     - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_macos.sh $MACOS_RENDERKIT_URL ${{ github.job }}_renderkit
+      run: scripts/list_components_macos.sh $MACOS_RENDERKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_renderkit.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: ${{ github.job }}_*
+        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
 
   publish:
     runs-on: ubuntu-20.04
@@ -166,7 +166,7 @@ jobs:
       run: |
         find source/${{ github.workflow }} -type f -maxdepth 1 ! -name "*apt*" ! -name "*yum*" -exec sed -i -e 1,5d {} \;
         find source/${{ github.workflow }} -type f -maxdepth 1 -name "*windows*" -exec sed -i -e 1,2d {} \;
-        sed -i -e 1,7d source/${{ github.workflow }}/linux_yum_dnf
+        sed -i -e 1,7d source/${{ github.workflow }}/linux_yum_dnf.txt
         make html
     - name: Save built doc as artifact
       uses: actions/upload-artifact@v2
