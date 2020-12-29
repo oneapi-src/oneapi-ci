@@ -35,13 +35,13 @@ jobs:
       with:
         python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL doc\source\${{ github.workflow }}\${{ github.job }}_basekit.txt
+      run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_basekit.txt
     - name: Intel® oneAPI HPC Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL doc\source\${{ github.workflow }}\${{ github.job }}_hpckit.txt
+      run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_hpckit.txt
     - name: Intel® oneAPI IoT Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_IOTKIT_URL doc\source\${{ github.workflow }}\${{ github.job }}_iotkit.txt
+      run: scripts/list_components_windows.bat $WINDOWS_IOTKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_iotkit.txt
     - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_RENDERKIT_URL doc\source\${{ github.workflow }}\${{ github.job }}_renderkit.txt
+      run: scripts/list_components_windows.bat $WINDOWS_RENDERKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_renderkit.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
@@ -97,7 +97,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
+        path: doc/source/${{ github.workflow }}/${{ github.job }}
 
   linux_yum_dnf:
     runs-on: ubuntu-20.04
@@ -119,7 +119,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.job }}
-        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
+        path: doc/source/${{ github.workflow }}/${{ github.job }}
 
   macos:
     runs-on: macos-latest
