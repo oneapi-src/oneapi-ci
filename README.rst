@@ -2,29 +2,32 @@
 ..
 .. SPDX-License-Identifier: CC-BY-4.0
 
-============================
-Intel\ |r| oneAPI CI Samples
-============================
+=================================
+Intel\ :sup:`®` oneAPI CI Samples
+=================================
 
 .. image:: https://api.reuse.software/badge/github.com/oneapi-src/oneapi-ci
    :target: https://api.reuse.software/info/github.com/oneapi-src/oneapi-ci
    :alt: REUSE status
 
-This repo contains sample Public/Cloud CI configurations that
-demonstrate installing Intel\ |r| oneAPI toolkit components and building
-applications:
+This repository contains sample Public/Cloud CI configurations that
+demonstrate installing Intel\ :sup:`®` oneAPI toolkit components and
+building applications. You may also find this repository useful for
+automating the install process on your own systems. The following
+configurations are supported:
 
 ===============  ===========================================
 Compilers        icc, ifort, dpcpp
 OS platforms     Linux, Windows, MacOS
-Install methods  Intel\ |r| installer, apt, dnf, docker container, CI cache
+Install methods  Intel installer, apt, dnf, docker container, CI cache
 ===============  ===========================================
 
-The config files show examples of all supported configurations. Delete
-the ones you do not want.
+The config files are intended to be samples that demonstrate a wide
+variety of use cases. For you own use, select the parts that you
+need. You may also want to customize the set of compilers and
+libraries that are installed. See `component listings`_ for the
+component names to use in the scripts.
 
-For a complete list of components available for installation,
-see |ListComponentsStatus|.
 
 Status
 ======
@@ -56,6 +59,13 @@ Azure    |c|       |c|       |c|          |c|   |c|     |c|
 ======== ========= ========= ============ ===== ======= ===========
 
 
+Cacheing
+========
+
+Some of the oneAPI components are large and can take a few minutes to
+download install. To accelerate install, we demonstrate the use of
+cacheing.
+
 Troubleshooting
 ===============
 
@@ -65,7 +75,10 @@ Those logs can be helpful in case of installation issues.
 License
 =======
 
-See licenses_
+The contents of this repository follows the SPDX_ standard for
+documenting license information. The Intel oneAPI compilers and
+libraries are distributed separately. They are free to use and are
+governed by the `oneAPI EULA`_.
 
 Contribute
 ==========
@@ -77,6 +90,9 @@ Security
 
 See `security guidelines`_.
 
+.. _`component listings`: https://oneapi-src.github.io/oneapi-ci/
+.. _SPDX: https://spdx.dev/
+.. _`oneAPI EULA`: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
 .. _licenses: LICENSES
 .. _contributing: CONTRIBUTING.rst
 .. _`security guidelines`: https://www.intel.com/content/www/us/en/security-center/default.html
