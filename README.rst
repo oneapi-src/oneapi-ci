@@ -59,12 +59,12 @@ Azure    |c|       |c|       |c|          |c|   |c|     |c|
 ======== ========= ========= ============ ===== ======= ===========
 
 
-Cacheing
-========
+Caching
+=======
 
 Some of the oneAPI components are large and can take a few minutes to
 download install. To accelerate install, we demonstrate the use of
-cacheing.
+caching.
 
 Troubleshooting
 ===============
