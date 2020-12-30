@@ -51,8 +51,29 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-2 bd-sidebar site-navigation show single-page" id="site-navigation">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="#">
+  
+  <img src="_static/oneAPI-rgb-rev-100.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Intel® oneAPI CI Samples Documentation</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
 </div>
 
 
@@ -66,6 +87,15 @@
     <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
     <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
         
         
 <div class="dropdown-buttons-trigger">
@@ -93,10 +123,10 @@
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/mmzakhar/oneapi-ci/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/oneapi-src/oneapi-ci/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/mmzakhar/oneapi-ci/edit/master/doc/source/index.rst"><button
+        <a class="edit-button" href="https://github.com/oneapi-src/oneapi-ci/edit/master/doc/source/index.rst"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -228,7 +258,9 @@
         
               <div>
                 
-  <div class="section" id="components-available-for-installation">
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="components-available-for-installation">
 <h1>Components available for installation<a class="headerlink" href="#components-available-for-installation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="windows-web-installer">
 <h2>Windows, Web installer<a class="headerlink" href="#windows-web-installer" title="Permalink to this headline">¶</a></h2>
