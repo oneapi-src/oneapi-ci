@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+version: 2.1
+jobs:
+  j1:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+workflows:
+  w1:
+    jobs:
+      - j1:
+         filters:
+           branches:
+             ignore:
+               - gh-pages
