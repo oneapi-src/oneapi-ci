@@ -5,6 +5,7 @@
 name: list_components
 
 on:
+  push: {}
   workflow_dispatch: {}
   schedule:
     - cron: '0 0 * * *'
