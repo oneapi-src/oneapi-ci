@@ -187,7 +187,7 @@ jobs:
     - name: Build doc
       run: |
         find source/${{ github.workflow }} -type f -maxdepth 1 ! -name "*apt*" ! -name "*yum*" -exec sed -i -e 1,5d {} \;
-        find source/${{ github.workflow }} -type f -maxdepth 1 -name "*windows*" -exec sed -i -e 1,2d {} \; -exec sed -i "/^$/d" \;
+        find source/${{ github.workflow }} -type f -maxdepth 1 -name "*windows*" -exec sed -i -e 1,2d {} \; -exec sed -i "/^$/d" {} \;
         sed -i -e 1,7d source/${{ github.workflow }}/linux_yum_dnf.txt
         make html
     - name: Save built doc as artifact
