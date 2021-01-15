@@ -17,7 +17,7 @@ automating the install process on your own systems. The following
 configurations are supported:
 
 ===============  ===========================================
-Compilers        icc, ifort, dpcpp
+Compilers        icc, icx, icpx, dpcpp, ifort, ifx
 OS platforms     Linux, Windows, MacOS
 Install methods  Intel installer, apt, dnf, docker container, CI cache
 ===============  ===========================================
