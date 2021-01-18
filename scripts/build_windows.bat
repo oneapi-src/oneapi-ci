@@ -27,16 +27,13 @@ cd oneAPI-samples\DirectProgramming\C++\CompilerInfrastructure\Intrinsics
 icl -O2 src\intrin_dot_sample.cpp
 icl -O2 src\intrin_double_sample.cpp
 icl -O2 src\intrin_ftz_sample.cpp
-intrin_dot_sample.exe
-intrin_double_sample.exe
-intrin_ftz_sample.exe
+intrin_dot_sample.exe && intrin_double_sample.exe && intrin_ftz_sample.exe
 set RESULT=%ERRORLEVEL%
-icx -O2 src\intrin_dot_sample.cpp
-icx -O2 src\intrin_double_sample.cpp
-icx -O2 src\intrin_ftz_sample.cpp
-intrin_dot_sample.exe
-intrin_double_sample.exe
-intrin_ftz_sample.exe
+del intrin_dot_sample.exe intrin_double_sample.exe intrin_ftz_sample.exe
+icx -O2 -msse3 src\intrin_dot_sample.cpp
+icx -O2 -msse3 src\intrin_double_sample.cpp
+icx -O2 -msse3 src\intrin_ftz_sample.cpp
+intrin_dot_sample.exe && intrin_double_sample.exe && intrin_ftz_sample.exe
 set /a RESULT=%RESULT%+%ERRORLEVEL%
 goto exit
 
