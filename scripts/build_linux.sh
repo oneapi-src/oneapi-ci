@@ -16,13 +16,11 @@ source /opt/intel/oneapi/compiler/"$LATEST_VERSION"/env/vars.sh
 case $LANGUAGE in
 c++)
   cd oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics
-  make && make run
-  make clean && make CC=icx && make run
+  make && make run && make clean && make CC='icx -msse3' && make run
   ;;
 fortran)
   cd oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes
-  make && make run
-  make clean && make FC=ifx && make run
+  make && make run && make clean && make FC=ifx && make run
   ;;
 dpc++)
 #shellcheck disable=SC2010
