@@ -17,12 +17,12 @@ case $LANGUAGE in
 c++)
   cd oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics
   make && make run
-  make CC=icx && make run
+  make clean && make CC=icx && make run
   ;;
 fortran)
   cd oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes
   make && make run
-  make FC=ifx && make run
+  make clean && make FC=ifx && make run
   ;;
 dpc++)
 #shellcheck disable=SC2010
