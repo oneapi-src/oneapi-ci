@@ -6,3 +6,4 @@
 
 COMPONENTS=$(echo "$1" | sed "s/,/ /g")
 apt-get install -y "$COMPONENTS"
+apt-get clean
