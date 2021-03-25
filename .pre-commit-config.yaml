@@ -28,9 +28,9 @@ repos:
     hooks:
     -   id: doc8
 -   repo: https://github.com/pycqa/isort
-    rev: develop
+    rev: 5.6.3
     hooks:
-    -   id: isort
+    - id: isort
 -   repo: https://github.com/pocc/pre-commit-hooks
     rev: master
     hooks:

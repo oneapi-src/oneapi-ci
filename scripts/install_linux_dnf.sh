@@ -7,3 +7,4 @@
 COMPONENTS=$(echo "$1" | sed "s/,/ /g")
 #shellcheck disable=SC2086
 sudo dnf -y install $COMPONENTS
+sudo dnf clean packages
