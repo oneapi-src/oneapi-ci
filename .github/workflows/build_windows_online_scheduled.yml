@@ -5,14 +5,16 @@
 name: build_windows_online_scheduled
 
 on:
+  push: {}
+  workflow_dispatch: {}
   schedule:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682.exe
-  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17406/w_IoTKit_p_2021.1.0.1220.exe
-  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17405/w_RenderKit_p_2021.1.0.626.exe
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17768/w_BaseKit_p_2021.2.0.2871.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17762/w_HPCKit_p_2021.2.0.2901.exe
+  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17753/w_IoTKit_p_2021.2.0.1296.exe
+  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17744/w_RenderKit_p_2021.2.0.726.exe
 
 jobs:
   build_windows_all:

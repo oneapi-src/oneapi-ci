@@ -5,13 +5,15 @@
 name: build_macos_online_scheduled
 
 on:
+  push: {}
+  workflow_dispatch: {}
   schedule:
     - cron: '0 0 * * *'
 
 env:
-  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17426/m_BaseKit_p_2021.1.0.2427.dmg
-  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681.dmg
-  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17444/m_RenderKit_p_2021.1.0.626.dmg
+  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17714/m_BaseKit_p_2021.2.0.2855.dmg
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17643/m_HPCKit_p_2021.2.0.2903.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17584/m_RenderKit_p_2021.2.0.700.dmg
 
 jobs:
   build_macos_all:
