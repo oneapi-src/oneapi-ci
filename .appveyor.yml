@@ -4,11 +4,11 @@
 
 environment:
   global:
-    WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17453/w_BaseKit_p_2021.1.0.2664_offline.exe
-    WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17392/w_HPCKit_p_2021.1.0.2682_offline.exe
-    LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17431/l_BaseKit_p_2021.1.0.2659_offline.sh
-    LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17427/l_HPCKit_p_2021.1.0.2684_offline.sh
-    MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17398/m_HPCKit_p_2021.1.0.2681_offline.dmg
+    WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17768/w_BaseKit_p_2021.2.0.2871_offline.exe
+    WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17762/w_HPCKit_p_2021.2.0.2901_offline.exe
+    LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17769/l_BaseKit_p_2021.2.0.2883_offline.sh
+    LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17764/l_HPCKit_p_2021.2.0.2997_offline.sh
+    MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17643/m_HPCKit_p_2021.2.0.2903_offline.dmg
     WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
     WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
     WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
