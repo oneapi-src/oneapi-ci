@@ -138,6 +138,7 @@ jobs:
       run: |
         sudo dpkg --add-architecture i386
         scripts/setup_apt_repo_linux.sh
+        grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
     - name: print packages info
       run: sudo apt-cache show intel-oneapi-*
     - name: dry-run install all
