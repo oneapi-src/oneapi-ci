@@ -125,11 +125,15 @@ jobs:
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
       key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - task: Cache@2
+    condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\tbb
       key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - task: Cache@2
+    condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: opencl # caching of individual files is not supported, caching OpenCL.dll in a folder as a workaround.
       key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
