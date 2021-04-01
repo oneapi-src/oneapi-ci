@@ -136,6 +136,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
+    - name: print packages info
+      run: apt-cache show intel-oneapi-*
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
