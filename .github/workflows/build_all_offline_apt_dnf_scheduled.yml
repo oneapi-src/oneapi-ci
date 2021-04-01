@@ -172,8 +172,18 @@ jobs:
       run: sudo apt install --dry-run intel-dlfdkit
     - name: dry-run install renderkit
       run: sudo apt install --dry-run intel-renderkit
-    - name: dry-run install FPGA
-      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4 intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2 intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3 intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.4
+    - name: dry-run install FPGA1
+      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx
+    - name: dry-run install FPGA2
+      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus
+    - name: dry-run install FPGA3
+      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4
+    - name: dry-run install FPGA4
+      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2
+    - name: dry-run install FPGA5
+      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3
+    - name: dry-run install FPGA6
+      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.4
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
