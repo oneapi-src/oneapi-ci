@@ -139,7 +139,9 @@ jobs:
     - name: print packages info
       run: sudo apt-cache show intel-oneapi-*
     - name: dry-run install all
-      run: sudo apt install --dry-run intel-oneapi-*
+      run: |
+        sudo dpkg --add-architecture i386
+        sudo apt install --dry-run intel-oneapi-*
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
