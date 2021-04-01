@@ -162,28 +162,40 @@ jobs:
       run: sudo apt-cache show intel-oneapi-*
     - name: dry-run install basekit
       run: sudo apt install --dry-run intel-basekit
+      if: ${{ always() }}
     - name: dry-run install hpckit
       run: sudo apt install --dry-run intel-hpckit
+      if: ${{ always() }}
     - name: dry-run install iotkit
       run: sudo apt install --dry-run intel-iotkit
+      if: ${{ always() }}
     - name: dry-run install aikit
       run: sudo apt install --dry-run intel-aikit
+      if: ${{ always() }}
     - name: dry-run install dlfdkit
       run: sudo apt install --dry-run intel-dlfdkit
+      if: ${{ always() }}
     - name: dry-run install renderkit
       run: sudo apt install --dry-run intel-renderkit
+      if: ${{ always() }}
     - name: dry-run install FPGA1
       run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx
+      if: ${{ always() }}
     - name: dry-run install FPGA2
       run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus
+      if: ${{ always() }}
     - name: dry-run install FPGA3
       run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4
+      if: ${{ always() }}
     - name: dry-run install FPGA4
       run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.2
+      if: ${{ always() }}
     - name: dry-run install FPGA5
       run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.3
+      if: ${{ always() }}
     - name: dry-run install FPGA6
       run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus20.4
+      if: ${{ always() }}
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
