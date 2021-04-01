@@ -135,13 +135,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: setup apt repo
-      run: scripts/setup_apt_repo_linux.sh
+      run: |
+        sudo dpkg --add-architecture i386
+        scripts/setup_apt_repo_linux.sh
     - name: print packages info
       run: sudo apt-cache show intel-oneapi-*
     - name: dry-run install all
-      run: |
-        sudo dpkg --add-architecture i386
-        sudo apt install --dry-run intel-oneapi-*
+      run: sudo apt install --dry-run intel-oneapi-*
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
