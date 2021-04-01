@@ -140,7 +140,7 @@ jobs:
         scripts/setup_apt_repo_linux.sh
         grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
     - name: print packages info
-      run: sudo apt-cache show intel-oneapi-*
+      run: sudo apt-cache show python3 python-jsonschema intel-oneapi-*
     - name: dry-run install all
       run: sudo apt install --dry-run intel-oneapi-*
     - name: install
