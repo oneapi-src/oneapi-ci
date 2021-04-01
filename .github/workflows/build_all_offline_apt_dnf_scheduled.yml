@@ -8,7 +8,7 @@ on:
   push: {}
   workflow_dispatch: {}
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *'
 
 env:
   WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17768/w_BaseKit_p_2021.2.0.2871_offline.exe
@@ -80,18 +80,41 @@ jobs:
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL intel.oneapi.lin.ifort-compiler
     - name: install_iotkit
       run: scripts/install_linux.sh $LINUX_IOTKIT_URL intel.oneapi.lin.dpcpp-cpp-compiler-pro
-    - name: install_aikit
-      run: scripts/install_linux.sh $LINUX_AIKIT_URL intel.oneapi.lin.tensorflow
-    - name: install_dlfdkit
-      run: scripts/install_linux.sh $LINUX_DLFDKIT_URL intel.oneapi.lin.ccl.devel
-    - name: install_renderkit
-      run: scripts/install_linux.sh $LINUX_RENDERKIT_URL intel.oneapi.lin.embree
     - name: build_c++
       run: scripts/build_linux.sh c++
     - name: build_fortran
       run: scripts/build_linux.sh fortran
     - name: build_dpcpp
       run: scripts/build_linux.sh dpc++
+
+    # Delete the following if you don't want to save install logs
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_linux_all_offline_2:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: traceroute
+      run: |
+        sudo apt-get install -y traceroute
+        sudo traceroute --tcp registrationcenter-download.intel.com
+    - name: install_aikit
+      run: scripts/install_linux.sh $LINUX_AIKIT_URL intel.oneapi.lin.tensorflow
+    - name: install_dlfdkit
+      run: scripts/install_linux.sh $LINUX_DLFDKIT_URL intel.oneapi.lin.ccl.devel
+    - name: install_renderkit
+      run: scripts/install_linux.sh $LINUX_RENDERKIT_URL intel.oneapi.lin.embree
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
