@@ -142,7 +142,7 @@ jobs:
     - name: sudo apt update
       run: |
         sudo apt update
-        cat /etc/apt/sources.list
+        sudo pip install jsonschema
     - name: print packages info
       run: sudo apt-cache show python3 python-jsonschema intel-oneapi-*
     - name: dry-run install all
