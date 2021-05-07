@@ -141,8 +141,10 @@ jobs:
         grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
     - name: print packages info
       run: sudo apt-cache show python3 python-jsonschema intel-oneapi-*
-    - name: dry-run install all
+    - name: dry-run install oneapi
       run: sudo apt install --dry-run $(apt-cache search intel-oneapi | grep -v intelfpga | grep -v -- '-tail$' | awk '{print $1}')
+    - name: dry-run install mpi
+      run: sudo apt install --dry-run intel-mpi*
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
