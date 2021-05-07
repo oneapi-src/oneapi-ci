@@ -139,14 +139,10 @@ jobs:
         sudo dpkg --add-architecture i386
         scripts/setup_apt_repo_linux.sh
         grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
-    - name: sudo apt update
-      run: |
-        sudo apt update
-        sudo pip install jsonschema
     - name: print packages info
       run: sudo apt-cache show python3 python-jsonschema intel-oneapi-*
     - name: dry-run install all
-      run: sudo apt install --dry-run intel-oneapi-*
+      run: sudo apt install --dry-run $(apt-cache search intel-oneapi | grep -v intelfpga | grep -v -- '-tail$' | awk '{print $1}')
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
@@ -187,12 +183,12 @@ jobs:
     - name: dry-run install renderkit
       run: sudo apt install --dry-run intel-renderkit
       if: ${{ always() }}
-    - name: dry-run install FPGA1
-      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx
-      if: ${{ always() }}
-    - name: dry-run install FPGA2
-      run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus
-      if: ${{ always() }}
+    # - name: dry-run install FPGA1
+      # run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx
+      # if: ${{ always() }}
+    # - name: dry-run install FPGA2
+      # run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-a10gx-s10sx-quartus
+      # if: ${{ always() }}
     - name: dry-run install FPGA3
       run: sudo apt install --dry-run intel-oneapi-intelfpgadpcpp-custom-platforms-quartus19.4
       if: ${{ always() }}
