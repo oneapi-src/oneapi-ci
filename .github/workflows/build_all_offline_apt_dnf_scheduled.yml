@@ -139,6 +139,8 @@ jobs:
         sudo dpkg --add-architecture i386
         scripts/setup_apt_repo_linux.sh
         grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
+    - name: sudo apt update
+      run: sudo apt update
     - name: print packages info
       run: sudo apt-cache show python3 python-jsonschema intel-oneapi-*
     - name: dry-run install all
@@ -161,6 +163,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
+    - name: sudo apt update
+      run: sudo apt update
     - name: print packages info
       run: sudo apt-cache show intel-oneapi-*
     - name: dry-run install basekit
