@@ -140,7 +140,9 @@ jobs:
         scripts/setup_apt_repo_linux.sh
         grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
     - name: sudo apt update
-      run: sudo apt update
+      run: |
+        sudo apt update
+        cat /etc/apt/sources.list
     - name: print packages info
       run: sudo apt-cache show python3 python-jsonschema intel-oneapi-*
     - name: dry-run install all
