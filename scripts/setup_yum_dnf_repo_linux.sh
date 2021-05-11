@@ -16,7 +16,7 @@ EOF
 sudo mv /tmp/oneAPI.repo /etc/yum.repos.d/
 
 tee > /tmp/mpi.repo << EOF
-[oneAPI]
+[MPI]
 name=Intel(R) MPI repository
 baseurl=https://yum.repos.intel.com/mpi
 enabled=1
