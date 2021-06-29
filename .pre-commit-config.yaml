@@ -44,7 +44,3 @@ repos:
     hooks:
     -   id: shellcheck
         args: [-x, --exclude=SC2001, --exclude=SC2164, --exclude=SC1091]
--   repo: https://gitlab.com/devopshq/gitlab-ci-linter
-    rev: master
-    hooks:
-    -   id: gitlab-ci-linter
