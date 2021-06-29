@@ -67,7 +67,7 @@ download install. To accelerate install, we demonstrate the use of
 caching.
 
 See also
-=======
+========
 
 `Enabling Performance Profiling in GitLab* CI`_
 
