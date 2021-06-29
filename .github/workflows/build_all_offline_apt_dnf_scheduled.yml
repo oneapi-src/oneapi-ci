@@ -18,7 +18,7 @@ env:
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17977/l_BaseKit_p_2021.3.0.3219_offline.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17912/l_HPCKit_p_2021.3.0.3230_offline.sh
   LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17918/l_IoTKit_p_2021.3.0.2811_offline.sh
-  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17766/l_AIKit_p_2021.2.0.1101_offline.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17985/l_AIKit_p_2021.3.0.1299_offline.sh
   LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17944/l_DLFDKit_p_2021.3.0.2064_offline.sh
   LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17911/l_RenderKit_p_2021.3.0.807_offline.sh
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17969/m_BaseKit_p_2021.3.0.3043_offline.dmg
