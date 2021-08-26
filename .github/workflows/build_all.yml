@@ -43,7 +43,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat c++ $SAMPLES_TAG
+      run: scripts/build_windows.bat c++ "" $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -78,7 +78,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat fortran $SAMPLES_TAG
+      run: scripts/build_windows.bat fortran "" $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -116,7 +116,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat dpc++ $SAMPLES_TAG
+      run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
