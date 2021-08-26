@@ -17,6 +17,7 @@ env:
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17985/l_AIKit_p_2021.3.0.1299.sh
   LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17944/l_DLFDKit_p_2021.3.0.2064.sh
   LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17911/l_RenderKit_p_2021.3.0.807.sh
+  SAMPLES_TAG: 2021.3.0
 
 jobs:
   build_linux_all:
@@ -44,11 +45,11 @@ jobs:
     - name: install_renderkit
       run: scripts/install_linux.sh $LINUX_RENDERKIT_URL intel.oneapi.lin.embree
     - name: build_c++
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: build_fortran
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: build_dpcpp
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs

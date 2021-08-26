@@ -15,6 +15,7 @@ env:
   WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17940/w_HPCKit_p_2021.3.0.3227.exe
   WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17934/w_IoTKit_p_2021.3.0.1365.exe
   WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17976/w_RenderKit_p_2021.3.0.802.exe
+  SAMPLES_TAG: 2021.3.0
 
 jobs:
   build_windows_all:
@@ -36,11 +37,11 @@ jobs:
     - name: install_renderkit
       run: scripts/install_windows.bat $WINDOWS_RENDERKIT_URL
     - name: build_c++
-      run: scripts/build_windows.bat c++
+      run: scripts/build_windows.bat c++ $SAMPLES_TAG
     - name: build_fortran
-      run: scripts/build_windows.bat fortran
+      run: scripts/build_windows.bat fortran $SAMPLES_TAG
     - name: build_dpc++
-      run: scripts/build_windows.bat dpc++
+      run: scripts/build_windows.bat dpc++ $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs

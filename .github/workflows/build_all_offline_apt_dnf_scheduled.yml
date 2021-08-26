@@ -25,6 +25,7 @@ env:
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17890/m_HPCKit_p_2021.3.0.3226_offline.dmg
   MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17903/m_RenderKit_p_2021.3.0.782_offline.dmg
   LINUX_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic,intel-oneapi-compiler-fortran
+  SAMPLES_TAG: 2021.3.0
 
 jobs:
   build_windows_all_offline:
@@ -45,11 +46,11 @@ jobs:
     - name: install_renderkit
       run: scripts/install_windows.bat $WINDOWS_RENDERKIT_URL intel.oneapi.win.embree
     - name: build_c++
-      run: scripts/build_windows.bat c++
+      run: scripts/build_windows.bat c++ $SAMPLES_TAG
     - name: build_fortran
-      run: scripts/build_windows.bat fortran
+      run: scripts/build_windows.bat fortran $SAMPLES_TAG
     - name: build_dpc++
-      run: scripts/build_windows.bat dpc++
+      run: scripts/build_windows.bat dpc++ $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
@@ -81,11 +82,11 @@ jobs:
     - name: install_iotkit
       run: scripts/install_linux.sh $LINUX_IOTKIT_URL intel.oneapi.lin.dpcpp-cpp-compiler-pro
     - name: build_c++
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: build_fortran
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: build_dpcpp
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
@@ -148,11 +149,11 @@ jobs:
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: build
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: build
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
 
   build_linux_apt_toolkits:
     runs-on: ubuntu-20.04
@@ -206,11 +207,11 @@ jobs:
     - name: install
       run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: build
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: build
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
 
   build_linux_dnf:
     runs-on: ubuntu-20.04
@@ -229,11 +230,11 @@ jobs:
     - name: install mpi
       run: sudo dnf -y install intel-mpi
     - name: build
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: build
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: build
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
 
   build_macos_all_offline:
     runs-on: macos-latest
@@ -249,9 +250,9 @@ jobs:
     - name: install_renderkit
       run: scripts/install_macos.sh $MACOS_RENDERKIT_URL
     - name: build_c++
-      run: scripts/build_macos.sh c++
+      run: scripts/build_macos.sh c++ $SAMPLES_TAG
     - name: build_fortran
-      run: scripts/build_macos.sh fortran
+      run: scripts/build_macos.sh fortran $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs

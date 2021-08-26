@@ -14,6 +14,7 @@ env:
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17969/m_BaseKit_p_2021.3.0.3043.dmg
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17890/m_HPCKit_p_2021.3.0.3226.dmg
   MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17903/m_RenderKit_p_2021.3.0.782.dmg
+  SAMPLES_TAG: 2021.3.0
 
 jobs:
   build_macos_all:
@@ -31,9 +32,9 @@ jobs:
     - name: install_renderkit
       run: scripts/install_macos.sh $MACOS_RENDERKIT_URL
     - name: build_c++
-      run: scripts/build_macos.sh c++
+      run: scripts/build_macos.sh c++ $SAMPLES_TAG
     - name: build_fortran
-      run: scripts/build_macos.sh fortran
+      run: scripts/build_macos.sh fortran $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
