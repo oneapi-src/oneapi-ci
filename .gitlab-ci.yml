@@ -20,7 +20,7 @@ variables:
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   LINUX_APT_DNF_CACHE_NUMBER: 2
-  SAMPLES_TAG: $SAMPLES_TAG
+  SAMPLES_TAG: 2021.3.0
 
 .shared_windows_runners:
   tags:
