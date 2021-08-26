@@ -63,7 +63,7 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat c++ "" $SAMPLES_TAG
+  - script: scripts/build_windows.bat c++ "" $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -97,7 +97,7 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat fortran "" $SAMPLES_TAG
+  - script: scripts/build_windows.bat fortran "" $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -146,7 +146,7 @@ jobs:
   - bash: cp opencl/OpenCL.dll C:/Windows/System32/
     displayName: restore OpenCL.dll from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
+  - script: scripts/build_windows.bat dpc++ "" $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -185,7 +185,7 @@ jobs:
   - script: scripts/install_linux.sh $(LINUX_HPCKIT_URL) $(LINUX_CPP_COMPONENTS_WEB)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh c++ $SAMPLES_TAG
+  - script: scripts/build_linux.sh c++ $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -219,7 +219,7 @@ jobs:
   - script: scripts/install_linux.sh $(LINUX_HPCKIT_URL) $(LINUX_FORTRAN_COMPONENTS_WEB)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh fortran $SAMPLES_TAG
+  - script: scripts/build_linux.sh fortran $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -257,7 +257,7 @@ jobs:
   - script: scripts/install_linux.sh $(LINUX_BASEKIT_URL) $(LINUX_DPCPP_COMPONENTS_WEB)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh dpc++ $SAMPLES_TAG
+  - script: scripts/build_linux.sh dpc++ $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -295,7 +295,7 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh c++ $SAMPLES_TAG
+  - script: scripts/build_linux.sh c++ $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -317,7 +317,7 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh fortran $SAMPLES_TAG
+  - script: scripts/build_linux.sh fortran $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -343,7 +343,7 @@ jobs:
   - script: scripts/install_linux_apt.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh dpc++ $SAMPLES_TAG
+  - script: scripts/build_linux.sh dpc++ $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
@@ -363,7 +363,7 @@ jobs:
   - script: scripts/install_linux_dnf.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh c++ $SAMPLES_TAG
+  - script: scripts/build_linux.sh c++ $(SAMPLES_TAG)
     displayName: build
 
 - job: build_linux_dnf_fortran
@@ -380,7 +380,7 @@ jobs:
   - script: scripts/install_linux_dnf.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh fortran $SAMPLES_TAG
+  - script: scripts/build_linux.sh fortran $(SAMPLES_TAG)
     displayName: build
 
 - job: build_linux_dnf_dpcpp
@@ -397,7 +397,7 @@ jobs:
   - script: scripts/install_linux_dnf.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_linux.sh dpc++ $SAMPLES_TAG
+  - script: scripts/build_linux.sh dpc++ $(SAMPLES_TAG)
     displayName: build
 
 - job: build_macOS_cpp
@@ -416,7 +416,7 @@ jobs:
   - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_macos.sh c++ $SAMPLES_TAG
+  - script: scripts/build_macos.sh c++ $(SAMPLES_TAG)
     displayName: build
 
   # Delete the following if you don't want to save install logs
@@ -450,7 +450,7 @@ jobs:
   - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_macos.sh fortran $SAMPLES_TAG
+  - script: scripts/build_macos.sh fortran $(SAMPLES_TAG)
     displayName: build
 
   # Delete the following if you don't want to save install logs
