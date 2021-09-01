@@ -66,6 +66,11 @@ Some of the oneAPI components are large and can take a few minutes to
 download install. To accelerate install, we demonstrate the use of
 caching.
 
+See also
+========
+
+`Enabling Performance Profiling in GitLab* CI`_
+
 Troubleshooting
 ===============
 
@@ -96,6 +101,7 @@ See `security guidelines`_.
 .. _licenses: LICENSES
 .. _contributing: CONTRIBUTING.rst
 .. _`security guidelines`: https://www.intel.com/content/www/us/en/security-center/default.html
+.. _`Enabling Performance Profiling in GitLab* CI`: https://software.intel.com/content/www/us/en/develop/documentation/vtune-cookbook/top/configuration-recipes/performance-profiling-in-gitlab-ci.html
 
 .. _`.github/workflows/build_all.yml`: .github/workflows/build_all.yml
 .. _`.circleci/config.yml`: .circleci/config.yml
