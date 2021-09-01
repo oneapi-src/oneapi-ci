@@ -4,6 +4,7 @@ REM SPDX-License-Identifier: MIT
 
 set LANGUAGE=%1
 set VS_VER=%2
+set SAMPLES_TAG=%3
 
 IF "%VS_VER%"=="2017_build_tools" (
 @call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
@@ -15,7 +16,7 @@ IF "%VS_VER%"=="2019_build_tools" (
 for /f "tokens=* usebackq" %%f in (`dir /b "C:\Program Files (x86)\Intel\oneAPI\compiler\" ^| findstr /V latest ^| sort`) do @set "LATEST_VERSION=%%f"
 @call "C:\Program Files (x86)\Intel\oneAPI\compiler\%LATEST_VERSION%\env\vars.bat"
 
-git clone --depth 1 https://github.com/oneapi-src/oneAPI-samples.git
+git clone --depth 1 --branch %SAMPLES_TAG% https://github.com/oneapi-src/oneAPI-samples.git
 
 if "%LANGUAGE%" == "c++" goto cpp
 if "%LANGUAGE%" == "fortran" goto fortran

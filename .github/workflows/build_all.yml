@@ -23,6 +23,7 @@ env:
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
+  SAMPLES_TAG: 2021.3.0
 
 jobs:
   build_windows_cpp:
@@ -42,7 +43,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat c++
+      run: scripts/build_windows.bat c++ "" $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -77,7 +78,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat fortran
+      run: scripts/build_windows.bat fortran "" $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -115,7 +116,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat dpc++
+      run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -151,7 +152,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_CPP_COMPONENTS_WEB
     - name: build
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -185,7 +186,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_FORTRAN_COMPONENTS_WEB
     - name: build
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -220,7 +221,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_BASEKIT_URL $LINUX_DPCPP_COMPONENTS_WEB
     - name: build
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -258,7 +259,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -285,7 +286,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -313,7 +314,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -343,7 +344,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_CPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh c++
+      run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -373,7 +374,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh fortran
+      run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -404,7 +405,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux_dnf.sh $LINUX_DPCPP_COMPONENTS
     - name: build
-      run: scripts/build_linux.sh dpc++
+      run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/cache_exclude_linux.sh
@@ -430,7 +431,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
     - name: build
-      run: scripts/build_macos.sh c++
+      run: scripts/build_macos.sh c++ $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
@@ -464,7 +465,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_macos.sh fortran
+      run: scripts/build_macos.sh fortran $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs

@@ -20,6 +20,7 @@ environment:
     LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
     MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
     MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
+    SAMPLES_TAG: 2021.3.0
 
   matrix:
     - job_name: build_windows_cpp
@@ -63,7 +64,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_CPP_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat c++
+      cmd: scripts/build_windows.bat c++ "" %SAMPLES_TAG%
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -79,7 +80,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_FORTRAN_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat fortran
+      cmd: scripts/build_windows.bat fortran "" %SAMPLES_TAG%
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -95,7 +96,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_BASEKIT_URL% %WINDOWS_DPCPP_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat dpc++
+      cmd: scripts/build_windows.bat dpc++ "" %SAMPLES_TAG%
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -112,7 +113,7 @@ for:
       sh: |
         scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_CPP_COMPONENTS_WEB
     build_script:
-      sh: scripts/build_linux.sh c++
+      sh: scripts/build_linux.sh c++ $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -130,7 +131,7 @@ for:
       sh: |
         scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_FORTRAN_COMPONENTS_WEB
     build_script:
-      sh: scripts/build_linux.sh fortran
+      sh: scripts/build_linux.sh fortran $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -148,7 +149,7 @@ for:
       sh: |
         scripts/install_linux.sh $LINUX_BASEKIT_URL $LINUX_DPCPP_COMPONENTS_WEB
     build_script:
-      sh: scripts/build_linux.sh dpc++
+      sh: scripts/build_linux.sh dpc++ $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -167,7 +168,7 @@ for:
         scripts/setup_apt_repo_linux.sh
         scripts/install_linux_apt.sh $LINUX_CPP_COMPONENTS
     build_script:
-      sh: scripts/build_linux.sh c++
+      sh: scripts/build_linux.sh c++ $SAMPLES_TAG
   -
     matrix:
       only:
@@ -177,7 +178,7 @@ for:
         scripts/setup_apt_repo_linux.sh
         scripts/install_linux_apt.sh $LINUX_FORTRAN_COMPONENTS
     build_script:
-      sh: scripts/build_linux.sh fortran
+      sh: scripts/build_linux.sh fortran $SAMPLES_TAG
   -
     matrix:
       only:
@@ -187,7 +188,7 @@ for:
         scripts/setup_apt_repo_linux.sh
         scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     build_script:
-      sh: scripts/build_linux.sh dpc++
+      sh: scripts/build_linux.sh dpc++ $SAMPLES_TAG
 
   -
     matrix:
@@ -196,7 +197,7 @@ for:
     install:
       sh: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
     build_script:
-      sh: scripts/build_macos.sh c++
+      sh: scripts/build_macos.sh c++ $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -211,7 +212,7 @@ for:
     install:
       sh: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
     build_script:
-      sh: scripts/build_macos.sh fortran
+      sh: scripts/build_macos.sh fortran $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     artifacts:

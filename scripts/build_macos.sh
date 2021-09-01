@@ -5,8 +5,9 @@
 # SPDX-License-Identifier: MIT
 
 LANGUAGE=$1
+SAMPLES_TAG=$2
 
-git clone --depth 1 https://github.com/oneapi-src/oneAPI-samples.git
+git clone --depth 1 --branch "$SAMPLES_TAG" https://github.com/oneapi-src/oneAPI-samples.git
 
 source /opt/intel/oneapi/setvars.sh
 
