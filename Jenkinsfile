@@ -8,7 +8,7 @@ def SAMPLES_TAG = "2021.3.0"
 pipeline {
     agent { docker { image 'intel/oneapi-hpckit' } }
     stages {
-        stage('checkout Samples')
+        stage('checkout samples')
         {
             steps
             {
@@ -25,8 +25,14 @@ pipeline {
         {
             steps
             {
-                sh 'scripts/build_linux_jenkins.sh c++'
-                sh 'scripts/build_linux_jenkins.sh fortran'
+                dir ("oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics")
+                {
+                    sh 'make && make run && make clean && make CC='icx -msse3' && make run'
+                }
+                dir ("oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes")
+                {
+                    sh 'make && make run && make clean && make FC=ifx && make run'
+                }
             }
         }
     }
