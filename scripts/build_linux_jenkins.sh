@@ -8,7 +8,12 @@ LANGUAGE=$1
 find .
 case $LANGUAGE in
 c++)
-  cd ./oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics
+  cd oneAPI-samples
+  cd DirectProgramming
+  cd C++
+  cd CompilerInfrastructure
+  cd Intrinsics
+  #cd oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics
   make && make run && make clean && make CC='icx -msse3' && make run
   ;;
 fortran)
