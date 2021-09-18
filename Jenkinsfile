@@ -12,10 +12,13 @@ pipeline {
         {
             steps
             {
-                checkout scm: [$class: 'GitSCM',
-                               userRemoteConfigs: [[url: "${SAMPLES_REPO}"]],
-                               branches: [[name: "${SAMPLES_TAG}"]]],
-                               poll: false
+                dir("oneAPI-Samples")
+                {
+                    checkout scm: [$class: 'GitSCM',
+                                   userRemoteConfigs: [[url: "${SAMPLES_REPO}"]],
+                                   branches: [[name: "${SAMPLES_TAG}"]]],
+                                   poll: false
+                }
             }
         }
         stage('build')
