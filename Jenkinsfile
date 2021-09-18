@@ -25,6 +25,8 @@ pipeline {
         {
             steps
             {
+                sh "pwd"
+                sh "find ."
                 dir("oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics")
                 {
                     sh "pwd"
