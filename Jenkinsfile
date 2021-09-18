@@ -14,7 +14,7 @@ pipeline {
             {
                 dir("oneAPI-Samples")
                 {
-                    git url: '${SAMPLES_REPO}'
+                    git url: https://github.com/oneapi-src/oneAPI-samples.git
                     //checkout scm: [$class: 'GitSCM',
                     //               userRemoteConfigs: [[url: "${SAMPLES_REPO}"]],
                     //         branches: [[name: "${SAMPLES_TAG}"]]],
