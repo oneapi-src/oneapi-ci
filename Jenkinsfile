@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                sh 'apt install -y git'
                 sh 'scripts/build_linux.sh c++ ${SAMPLES_TAG}'
             }
         }
