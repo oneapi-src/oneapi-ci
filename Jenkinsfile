@@ -6,14 +6,19 @@ def SAMPLES_TAG = "2021.3.0"
 pipeline {
     agent { docker { image 'intel/oneapi-hpckit' } }
     stages {
-        stage('build') {
-            steps {
+        stage('checkout')
+        {
+            dir("oneAPI-samples")
+            {
+                git url: 'https://github.com/oneapi-src/oneAPI-samples.git',
+                    branch: "${SAMPLES_TAG}"
+            }
+        }
+        stage('build')
+        {
+            steps
+            {
                 sh 'scripts/build_linux_jenkins.sh c++'
-                dir("oneAPI-samples")
-                {
-                    git url: 'https://github.com/oneapi-src/oneAPI-samples.git',
-                        branch: "${SAMPLES_TAG}"
-                }
             }
         }
     }
