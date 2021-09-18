@@ -25,11 +25,11 @@ pipeline {
         {
             steps
             {
-                dir ("oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics")
+                dir("oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics")
                 {
                     sh 'make && make run && make clean && make CC='icx -msse3' && make run'
                 }
-                dir ("oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes")
+                dir("oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes")
                 {
                     sh 'make && make run && make clean && make FC=ifx && make run'
                 }
