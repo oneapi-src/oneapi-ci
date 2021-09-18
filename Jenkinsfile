@@ -8,10 +8,13 @@ pipeline {
     stages {
         stage('checkout')
         {
-            dir("oneAPI-samples")
+            steps
             {
-                git url: 'https://github.com/oneapi-src/oneAPI-samples.git',
-                    branch: "${SAMPLES_TAG}"
+                dir("oneAPI-samples")
+                {
+                    git url: 'https://github.com/oneapi-src/oneAPI-samples.git',
+                        branch: "${SAMPLES_TAG}"
+                }
             }
         }
         stage('build')
