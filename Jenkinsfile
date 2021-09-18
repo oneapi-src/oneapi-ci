@@ -25,7 +25,6 @@ pipeline {
         {
             steps
             {
-                sh 'cd ..'
                 sh 'find .'
                 sh 'scripts/build_linux_jenkins.sh c++'
                 sh 'scripts/build_linux_jenkins.sh fortran'
