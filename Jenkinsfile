@@ -12,14 +12,14 @@ pipeline {
         {
             steps
             {
-                dir("oneAPI-Samples")
+                dir("oneAPI-Samples-checkout")
                 {
-                    git url: 'https://github.com/oneapi-src/oneAPI-samples.git'
-                    //checkout scm: [$class: 'GitSCM',
-                    //               userRemoteConfigs: [[url: "${SAMPLES_REPO}"]],
-                    //         branches: [[name: "${SAMPLES_TAG}"]]],
-                    //         poll: false
+                    checkout scm: [$class: 'GitSCM',
+                                   userRemoteConfigs: [[url: "${SAMPLES_REPO}"]],
+                             branches: [[name: "${SAMPLES_TAG}"]]],
+                             poll: false
                 }
+                sh 'cp -rv oneAPI-Samples-checkout oneAPI-Samples'
             }
         }
         stage('build')
