@@ -12,7 +12,7 @@ pipeline {
         {
             steps
             {
-                dir("oneAPI-Samples")
+                dir("oneAPI-samples")
                 {
                     checkout scm: [$class: 'GitSCM',
                                    userRemoteConfigs: [[url: "${SAMPLES_REPO}"]],
@@ -25,6 +25,7 @@ pipeline {
         {
             steps
             {
+                sh "find ."
                 sh "ls -la oneAPI-samples"
                 sh "oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics && make && make run && make clean && make CC='icx -msse3' && make run"
                 sh "oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes && make && make run && make clean && make FC=ifx && make run"
