@@ -9,38 +9,38 @@ exclude: LICENSES
 
 repos:
 -   repo: https://github.com/ambv/black
-    rev: stable
+    rev: 21.9b0
     hooks:
     -   id: black
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.3.0
+    rev: v4.0.1
     hooks:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
     -   id: check-yaml
     -   id: check-added-large-files
 -   repo: https://gitlab.com/pycqa/flake8
-    rev: 3.7.9
+    rev: 3.9.2
     hooks:
     -   id: flake8
 -   repo: https://github.com/pycqa/doc8
-    rev: main
+    rev: 0.9.0
     hooks:
     -   id: doc8
 -   repo: https://github.com/pycqa/isort
-    rev: 5.6.3
+    rev: 5.9.3
     hooks:
     -   id: isort
 -   repo: https://github.com/pocc/pre-commit-hooks
-    rev: master
+    rev: v1.3.4
     hooks:
     -   id: clang-format
 -   repo: https://github.com/fsfe/reuse-tool
-    rev: master
+    rev: v0.13.0
     hooks:
     -   id: reuse
 -   repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.7.1.1
+    rev: v0.7.2.1
     hooks:
     -   id: shellcheck
         args: [-x, --exclude=SC2001, --exclude=SC2164, --exclude=SC1091]
