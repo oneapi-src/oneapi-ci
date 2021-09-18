@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                git url: 'https://github.com/oneapi-src/oneAPI-samples.git', tag: "${SAMPLES_TAG}"
+                git branch: "${SAMPLES_TAG}",
+                    url: 'https://github.com/oneapi-src/oneAPI-samples.git'
                 sh 'scripts/build_linux_jenkins.sh c++'
             }
         }
