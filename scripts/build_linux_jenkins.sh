@@ -9,6 +9,8 @@ find .
 case $LANGUAGE in
 c++)
   cd oneAPI-samples
+  find .
+  cd oneAPI-samples
   cd DirectProgramming
   cd C++
   cd CompilerInfrastructure
