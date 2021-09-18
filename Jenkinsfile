@@ -27,6 +27,8 @@ pipeline {
             {
                 dir("oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics")
                 {
+                    sh "pwd"
+                    sh "find ."
                     sh "make && make run && make clean && make CC='icx -msse3' && make run"
                 }
                 dir("oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes")
