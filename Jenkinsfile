@@ -5,7 +5,37 @@
 def SAMPLES_REPO = "https://github.com/oneapi-src/oneAPI-samples.git"
 def SAMPLES_TAG = "2021.3.0"
 
-pipeline {
+pipeline
+{
+    agent { docker { image 'intel/oneapi-basekit' } }
+    stages {
+        stage('checkout samples')
+        {
+            steps
+            {
+                dir("oneAPI-samples")
+                {
+                    checkout scm: [$class: 'GitSCM',
+                                   userRemoteConfigs: [[url: "${SAMPLES_REPO}"]],
+                             branches: [[name: "${SAMPLES_TAG}"]]],
+                             poll: false
+                }
+            }
+        }
+        stage('build')
+        {
+            steps
+            {
+                dir ("oneAPI-samples/DirectProgramming/DPC++/DenseLinearAlgebra/vector-add")
+                {
+                    sh "make all && make run"
+                }
+            }
+        }
+    }
+}
+pipeline
+{
     agent { docker { image 'intel/oneapi-hpckit' } }
     stages {
         stage('checkout samples')
@@ -29,12 +59,35 @@ pipeline {
                 {
                     sh "make && make run && make clean && make CC='icx -msse3' && make run"
                 }
+            }
+        }
+    }
+}
+pipeline
+{
+    agent { docker { image 'intel/oneapi-hpckit' } }
+    stages {
+        stage('checkout samples')
+        {
+            steps
+            {
+                dir("oneAPI-samples")
+                {
+                    checkout scm: [$class: 'GitSCM',
+                                   userRemoteConfigs: [[url: "${SAMPLES_REPO}"]],
+                             branches: [[name: "${SAMPLES_TAG}"]]],
+                             poll: false
+                }
+            }
+        }
+        stage('build')
+        {
+            steps
+            {
                 dir ("oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes")
                 {
                     sh "make && make run && make clean && make FC=ifx && make run"
                 }
-                //sh "cd oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics && make && make run && make clean && make CC='icx -msse3' && make run"
-                //sh "cd oneAPI-samples/DirectProgramming/Fortran/CombinationalLogic/openmp-primes && make && make run && make clean && make FC=ifx && make run"
             }
         }
     }
