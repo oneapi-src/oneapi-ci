@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: MIT
 
 LANGUAGE=$1
-
+pwd
 case $LANGUAGE in
 c++)
   cd oneAPI-samples/DirectProgramming/C++/CompilerInfrastructure/Intrinsics
