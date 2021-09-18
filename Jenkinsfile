@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'apt update & apt install -y git'
+                git url: 'https://github.com/mmzakhar/oneapi-ci.git'
                 sh 'scripts/build_linux.sh c++ ${SAMPLES_TAG}'
             }
         }
