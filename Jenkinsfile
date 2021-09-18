@@ -13,9 +13,9 @@ pipeline {
             steps
             {
                 checkout scm: [$class: 'GitSCM',
-                               userRemoteConfigs: [[url: ${SAMPLES_REPO},
+                               userRemoteConfigs: [[url: "${SAMPLES_REPO}",
                                                     credentialsId: credential]],
-                               branches: [[name: ${SAMPLES_TAG}]]],
+                               branches: [[name: "${SAMPLES_TAG}"]]],
                                poll: false
             }
         }
