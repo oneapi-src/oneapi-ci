@@ -56,6 +56,28 @@ Azure    |c|       |c|       |c|          |c|   |c|     |c|
 ======== ========= ========= ============ ===== ======= ===========
 
 
+Using oneAPI in Jenkins pipelines
+=================================
+
+oneAPI can be used in Jenkins pipelines.
+You can either
+* setup oneAPI tools on Jenkins agent directly, by following
+instructions from `Intel® oneAPI Toolkits Installation Guides`_
+and/or using the scripts in this repository, or
+* use optimized containers from `Intel oneContainer Portal`_ for
+your build.
+This repository contains Jenkinsfile that buids DPC++, C++ and
+Fortran samples in intel/oneapi-hpckit container in Jenkins.
+To give it a try:
+1. Follow `Jenkins Install Guide`_ to setup Jenkins, or use your
+existing setup.
+2. Install Docker and Docker Pipeline plugins.
+3. Create new pipeline from this repository using
+New Item -> Pipeline.
+4. Build the pipeline.
+5. The result will look like this in Blue Ocean.
+
+
 Troubleshooting
 ===============
 
@@ -83,6 +105,9 @@ See `security guidelines`_.
 .. _licenses: LICENSES
 .. _contributing: CONTRIBUTING.rst
 .. _`security guidelines`: https://www.intel.com/content/www/us/en/security-center/default.html
+.. _`Intel® oneAPI Toolkits Installation Guides`: https://software.intel.com/content/www/us/en/develop/articles/installation-guide-for-intel-oneapi-toolkits.html
+.. _`Jenkins Install Guide`: https://www.jenkins.io/doc/book/installing/
+.. _`Intel oneContainer Portal`: https://software.intel.com/content/www/us/en/develop/tools/containers/get-started.html
 
 .. _`.travis.yml`: .travis.yml
 .. _`.circleci/config.yml`: .circleci/config.yml
