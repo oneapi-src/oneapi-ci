@@ -53,30 +53,37 @@ Circle   |c|       |c|       |c|          |c|   |c|     |x|
 AppVeyor |c|       |x|       |x|          |c|   |c|     |c|
 GitLab   |c|       |c|       |x|          |c|   |c|     |x|
 Azure    |c|       |c|       |c|          |c|   |c|     |c|
+Jenkins  |x|       |x|       |c|          |x|   |x|     |x|
 ======== ========= ========= ============ ===== ======= ===========
 
 
 Using oneAPI in Jenkins pipelines
 =================================
 
-oneAPI can be used in Jenkins pipelines.
-You can either
-* setup oneAPI tools on Jenkins agent directly, by following
-instructions from `Intel® oneAPI Toolkits Installation Guides`_
-and/or using the scripts in this repository, or
-* use optimized containers from `Intel oneContainer Portal`_ for
-your build.
-This repository contains Jenkinsfile that buids DPC++, C++ and
-Fortran samples in intel/oneapi-hpckit container in Jenkins.
-To give it a try:
-1. Follow `Jenkins Install Guide`_ to setup Jenkins, or use your
-existing setup.
-2. Install Docker and Docker Pipeline plugins.
-3. Create new pipeline from this repository using
-New Item -> Pipeline.
-4. Build the pipeline.
-5. The result will look like this in Blue Ocean.
+There are multiple ways to add oneAPI tools to a Jenkins pipeline:
 
+#. setup the tools on Jenkins agent directly, or create custom
+   container with the tools you need
+
+    * refer to `Intel® oneAPI Toolkits Installation Guides`_ for
+      details
+    * explore installation scripts in this repo for examples
+#. use optimized containers from `Intel oneContainer Portal`_
+
+The Jenkinsfile in this repo demonstrates building DPC++, C++ and
+Fortran samples in intel/oneapi-hpckit container in Jenkins.
+
+To give it a try:
+
+#. Follow `Jenkins Install Guide`_ to setup Jenkins, or use your
+   existing setup.
+#. Install Docker and Docker Pipeline plugins.
+#. Create new pipeline for this repository using
+   New Item -> Pipeline.
+#. Build the pipeline.
+#. The result will look like this in Blue Ocean.
+
+|Jenkins Pipeline Example|
 
 Troubleshooting
 ===============
@@ -134,6 +141,8 @@ See `security guidelines`_.
 .. |ListComponentsStatus| image:: https://github.com/mmzakhar/oneapi-ci/workflows/list_components/badge.svg
    :target: https://github.com/mmzakhar/oneapi-ci/actions?query=workflow%3Alist_components
    :alt: Build status
+.. |Jenkins Pipeline Example| image:: img/jenkins_pipeline_example.png
+   :alt: Jenkins Pipeline Example
 
 .. |r| unicode:: U+000AE
 .. |c| unicode:: U+2714
