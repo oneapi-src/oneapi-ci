@@ -6,3 +6,7 @@ Source:
 Files: doc/*
 Copyright: 2020 Intel Corporation
 License: CC-BY-4.0
+
+Files: img/*
+Copyright: 2021 Intel Corporation
+License: CC-BY-4.0
