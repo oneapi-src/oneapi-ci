@@ -23,7 +23,7 @@ Install methods  Intel installer, apt, dnf, docker container, CI cache
 ===============  ===========================================
 
 The config files are intended to be samples that demonstrate a wide
-variety of use cases. For you own use, select the parts that you
+variety of use cases. For your own use, select the parts that you
 need. You may also want to customize the set of compilers and
 libraries that are installed. See `component listings`_ for the
 component names to use in the scripts.
@@ -56,6 +56,7 @@ Circle   |c|       |c|       |c|          |c|   |c|     |x|
 AppVeyor |c|       |x|       |x|          |c|   |c|     |c|
 GitLab   |c|       |c|       |x|          |c|   |c|     |x|
 Azure    |c|       |c|       |c|          |c|   |c|     |c|
+Jenkins  |x|       |x|       |c|          |x|   |x|     |x|
 ======== ========= ========= ============ ===== ======= ===========
 
 
@@ -65,6 +66,36 @@ Caching
 Some of the oneAPI components are large and can take a few minutes to
 download install. To accelerate install, we demonstrate the use of
 caching.
+
+
+Using oneAPI in Jenkins pipelines
+=================================
+
+There are multiple ways to add oneAPI tools to a Jenkins pipeline:
+
+#. setup the tools on Jenkins agent directly, or create custom
+   container with the tools you need
+
+    * refer to `Intel® oneAPI Toolkits Installation Guides`_ for
+      details
+    * explore installation scripts in this repo for examples
+#. use optimized containers from `Intel oneContainer Portal`_
+
+The Jenkinsfile in this repo demonstrates building DPC++, C++ and
+Fortran samples in intel/oneapi-hpckit container in Jenkins.
+
+To give it a try:
+
+#. Follow `Jenkins Install Guide`_ to setup Jenkins, or use your
+   existing setup.
+#. Install Docker and Docker Pipeline plugins.
+#. Create new pipeline for this repository using
+   New Item -> Pipeline.
+#. Build the pipeline.
+#. The result will look like this in Blue Ocean.
+
+|Jenkins Pipeline Example|
+
 
 See also
 ========
@@ -102,6 +133,9 @@ See `security guidelines`_.
 .. _contributing: CONTRIBUTING.rst
 .. _`security guidelines`: https://www.intel.com/content/www/us/en/security-center/default.html
 .. _`Enabling Performance Profiling in GitLab* CI`: https://software.intel.com/content/www/us/en/develop/documentation/vtune-cookbook/top/configuration-recipes/performance-profiling-in-gitlab-ci.html
+.. _`Intel® oneAPI Toolkits Installation Guides`: https://software.intel.com/content/www/us/en/develop/articles/installation-guide-for-intel-oneapi-toolkits.html
+.. _`Jenkins Install Guide`: https://www.jenkins.io/doc/book/installing/
+.. _`Intel oneContainer Portal`: https://software.intel.com/content/www/us/en/develop/tools/containers/get-started.html
 
 .. _`.github/workflows/build_all.yml`: .github/workflows/build_all.yml
 .. _`.circleci/config.yml`: .circleci/config.yml
@@ -127,6 +161,8 @@ See `security guidelines`_.
 .. |ListComponentsStatus| image:: https://github.com/oneapi-src/oneapi-ci/workflows/list_components/badge.svg
    :target: https://github.com/oneapi-src/oneapi-ci/actions?query=workflow%3Alist_components
    :alt: Build status
+.. |Jenkins Pipeline Example| image:: img/jenkins_pipeline_example.png
+   :alt: Jenkins Pipeline Example
 
 .. |r| unicode:: U+000AE
 .. |c| unicode:: U+2714
