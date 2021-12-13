@@ -11,11 +11,11 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17978/w_BaseKit_p_2021.3.0.3221.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17940/w_HPCKit_p_2021.3.0.3227.exe
-  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17934/w_IoTKit_p_2021.3.0.1365.exe
-  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17976/w_RenderKit_p_2021.3.0.802.exe
-  SAMPLES_TAG: 2021.3.0
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18418/w_BaseKit_p_2022.1.0.116.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18417/w_HPCKit_p_2022.1.0.93.exe
+  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18416/w_IoTKit_p_2022.1.0.85.exe
+  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18398/w_RenderKit_p_2022.1.0.88.exe
+  SAMPLES_TAG: 2022.1.0
 
 jobs:
   build_windows_all:

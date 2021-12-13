@@ -7,15 +7,15 @@ trigger:
 
 variables:
   - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17978/w_BaseKit_p_2021.3.0.3221_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18418/w_BaseKit_p_2022.1.0.116_offline.exe
   - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17940/w_HPCKit_p_2021.3.0.3227_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18417/w_HPCKit_p_2022.1.0.93_offline.exe
   - name: LINUX_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17977/l_BaseKit_p_2021.3.0.3219_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18419/l_BaseKit_p_2022.1.0.106_offline.sh
   - name: LINUX_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17912/l_HPCKit_p_2021.3.0.3230_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18403/l_HPCKit_p_2022.1.0.87_offline.sh
   - name: MACOS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/17890/m_HPCKit_p_2021.3.0.3226_offline.dmg
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18341/m_HPCKit_p_2022.1.0.86_offline.dmg
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-compiler
   - name: WINDOWS_FORTRAN_COMPONENTS
@@ -39,7 +39,7 @@ variables:
   - name: MACOS_FORTRAN_COMPONENTS
     value: intel.oneapi.mac.ifort-compiler
   - name: SAMPLES_TAG
-    value: 2021.3.0
+    value: 2022.1.0
 
 resources:
     containers:

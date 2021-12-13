@@ -11,21 +11,21 @@ on:
     - cron: '0 * * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17978/w_BaseKit_p_2021.3.0.3221_offline.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17940/w_HPCKit_p_2021.3.0.3227_offline.exe
-  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17934/w_IoTKit_p_2021.3.0.1365_offline.exe
-  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17976/w_RenderKit_p_2021.3.0.802_offline.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17977/l_BaseKit_p_2021.3.0.3219_offline.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17912/l_HPCKit_p_2021.3.0.3230_offline.sh
-  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17918/l_IoTKit_p_2021.3.0.2811_offline.sh
-  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18040/l_AIKit_p_2021.3.0.1370_offline.sh
-  LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17944/l_DLFDKit_p_2021.3.0.2064_offline.sh
-  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17911/l_RenderKit_p_2021.3.0.807_offline.sh
-  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17969/m_BaseKit_p_2021.3.0.3043_offline.dmg
-  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17890/m_HPCKit_p_2021.3.0.3226_offline.dmg
-  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/17903/m_RenderKit_p_2021.3.0.782_offline.dmg
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18418/w_BaseKit_p_2022.1.0.116_offline.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18417/w_HPCKit_p_2022.1.0.93_offline.exe
+  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18416/w_IoTKit_p_2022.1.0.85_offline.exe
+  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18398/w_RenderKit_p_2022.1.0.88_offline.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18419/l_BaseKit_p_2022.1.0.106_offline.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18403/l_HPCKit_p_2022.1.0.87_offline.sh
+  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18405/l_IoTKit_p_2022.1.0.77_offline.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18401/l_AIKit_p_2022.1.0.99_offline.sh
+  LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18402/l_DLFDKit_p_2022.1.0.65_offline.sh
+  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18379/l_RenderKit_p_2022.1.0.74_offline.sh
+  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18342/m_BaseKit_p_2022.1.0.92_offline.dmg
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18341/m_HPCKit_p_2022.1.0.86_offline.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18352/m_RenderKit_p_2022.1.0.85_offline.dmg
   LINUX_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic,intel-oneapi-compiler-fortran
-  SAMPLES_TAG: 2021.3.0
+  SAMPLES_TAG: 2022.1.0
 
 jobs:
   build_windows_all_offline:
