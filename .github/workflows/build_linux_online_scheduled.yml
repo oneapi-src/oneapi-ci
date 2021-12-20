@@ -11,11 +11,11 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18419/l_BaseKit_p_2022.1.0.106.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18403/l_HPCKit_p_2022.1.0.87.sh
-  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18405/l_IoTKit_p_2022.1.0.77.sh
-  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18401/l_AIKit_p_2022.1.0.99.sh
-  LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18402/l_DLFDKit_p_2022.1.0.65.sh
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18445/l_BaseKit_p_2022.1.1.119.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18438/l_HPCKit_p_2022.1.1.97.sh
+  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18437/l_IoTKit_p_2022.1.1.84.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18434/l_AIKit_p_2022.1.1.106.sh
+  LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18433/l_DLFDKit_p_2022.1.1.69.sh
   LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18379/l_RenderKit_p_2022.1.0.74.sh
   SAMPLES_TAG: 2022.1.0
 
