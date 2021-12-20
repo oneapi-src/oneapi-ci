@@ -45,7 +45,7 @@ parameters:
     default: "intel.oneapi.lin.dpcpp-cpp-compiler"
   SAMPLES_TAG:
     type: string
-    default: "2021.4.0"
+    default: "2022.1.0"
 
 orbs:
   win: circleci/windows@2.4.0

@@ -39,7 +39,7 @@ variables:
   - name: MACOS_FORTRAN_COMPONENTS
     value: intel.oneapi.mac.ifort-compiler
   - name: SAMPLES_TAG
-    value: 2021.4.0
+    value: 2022.1.0
 
 resources:
     containers:
