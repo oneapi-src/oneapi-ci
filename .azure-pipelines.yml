@@ -15,7 +15,7 @@ variables:
   - name: LINUX_HPCKIT_URL
     value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18211/l_HPCKit_p_2021.4.0.3347_offline.sh
   - name: MACOS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18242/m_HPCKit_p_2021.4.0.3389_offline.dmg
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18341/m_HPCKit_p_2022.1.0.86_offline.dmg
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-compiler
   - name: WINDOWS_FORTRAN_COMPONENTS

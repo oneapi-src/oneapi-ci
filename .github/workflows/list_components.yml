@@ -21,9 +21,9 @@ env:
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18235/l_AIKit_p_2021.4.0.1460.sh
   LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18238/l_DLFDKit_p_2021.4.0.2105.sh
   LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18193/l_RenderKit_p_2021.4.0.845.sh
-  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18256/m_BaseKit_p_2021.4.0.3384.dmg
-  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18242/m_HPCKit_p_2021.4.0.3389.dmg
-  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18252/m_RenderKit_p_2021.4.0.805.dmg
+  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18342/m_BaseKit_p_2022.1.0.92.dmg
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18341/m_HPCKit_p_2022.1.0.86.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18352/m_RenderKit_p_2022.1.0.85.dmg
 
 jobs:
   windows:
