@@ -28,7 +28,7 @@ env:
   SAMPLES_TAG: 2022.1.0
 
 jobs:
-  build_windows_all_offline:
+  build_windows_base_offline:
     runs-on: windows-latest
     defaults:
       run:
@@ -39,6 +39,30 @@ jobs:
       run: tracert -h 1 registrationcenter-download.intel.com
     - name: install_basekit
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL intel.oneapi.win.dpcpp-compiler
+    - name: build_dpc++
+      run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
+
+    # Delete the following if you don't want to save install logs
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_windows_all_except_base_offline:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: tracert
+      run: tracert -h 1 registrationcenter-download.intel.com
     - name: install_hpckit
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL intel.oneapi.win.ifort-compiler
     - name: install_iotkit
@@ -49,8 +73,6 @@ jobs:
       run: scripts/build_windows.bat c++ "" $SAMPLES_TAG
     - name: build_fortran
       run: scripts/build_windows.bat fortran "" $SAMPLES_TAG
-    - name: build_dpc++
-      run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
