@@ -9,8 +9,8 @@ on: push
 env:
   WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18418/w_BaseKit_p_2022.1.0.116_offline.exe
   WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18417/w_HPCKit_p_2022.1.0.93_offline.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18236/l_BaseKit_p_2021.4.0.3422_offline.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18211/l_HPCKit_p_2021.4.0.3347_offline.sh
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18445/l_BaseKit_p_2022.1.1.119_offline.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18438/l_HPCKit_p_2022.1.1.97_offline.sh
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18341/m_HPCKit_p_2022.1.0.86_offline.dmg
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
