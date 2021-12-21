@@ -7,15 +7,15 @@ trigger:
 
 variables:
   - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18195/w_BaseKit_p_2021.4.0.3421_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18418/w_BaseKit_p_2022.1.0.116_offline.exe
   - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18247/w_HPCKit_p_2021.4.0.3340_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18417/w_HPCKit_p_2022.1.0.93_offline.exe
   - name: LINUX_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18236/l_BaseKit_p_2021.4.0.3422_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18445/l_BaseKit_p_2022.1.1.119_offline.sh
   - name: LINUX_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18211/l_HPCKit_p_2021.4.0.3347_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18438/l_HPCKit_p_2022.1.1.97_offline.sh
   - name: MACOS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18242/m_HPCKit_p_2021.4.0.3389_offline.dmg
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18341/m_HPCKit_p_2022.1.0.86_offline.dmg
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-compiler
   - name: WINDOWS_FORTRAN_COMPONENTS
@@ -39,7 +39,7 @@ variables:
   - name: MACOS_FORTRAN_COMPONENTS
     value: intel.oneapi.mac.ifort-compiler
   - name: SAMPLES_TAG
-    value: 2021.4.0
+    value: 2022.1.0
 
 resources:
     containers:
@@ -123,23 +123,23 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
-    inputs:
-      path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
-  - task: Cache@2
-    condition: eq(variables.CACHE_RESTORED, 'true')
-    inputs:
-      path: C:\Program Files (x86)\Intel\oneAPI\tbb
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
-  - task: Cache@2
-    condition: eq(variables.CACHE_RESTORED, 'true')
-    inputs:
-      path: opencl # caching of individual files is not supported, caching OpenCL.dll in a folder as a workaround.
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
+#  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
+#    inputs:
+#      path: C:\Program Files (x86)\Intel\oneAPI\compiler
+#      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+#      cacheHitVar: CACHE_RESTORED
+#  - task: Cache@2
+#    condition: eq(variables.CACHE_RESTORED, 'true')
+#    inputs:
+#      path: C:\Program Files (x86)\Intel\oneAPI\tbb
+#      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
+#      cacheHitVar: CACHE_RESTORED
+#  - task: Cache@2
+#    condition: eq(variables.CACHE_RESTORED, 'true')
+#    inputs:
+#      path: opencl # caching of individual files is not supported, caching OpenCL.dll in a folder as a workaround.
+#      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
+#      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -148,14 +148,14 @@ jobs:
     condition: eq(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat dpc++ "" $(SAMPLES_TAG)
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh
-    displayName: exclude unused files from cache
-    condition: ne(variables.CACHE_RESTORED, 'true')
-  - bash: |
-      mkdir -p opencl
-      cp C:/Windows/System32/OpenCL.dll opencl/
-    displayName: copy OpenCL.dll to a folder for caching
-    condition: ne(variables.CACHE_RESTORED, 'true')
+#  - bash: scripts/cache_exclude_windows.sh
+#    displayName: exclude unused files from cache
+#    condition: ne(variables.CACHE_RESTORED, 'true')
+#  - bash: |
+#      mkdir -p opencl
+#      cp C:/Windows/System32/OpenCL.dll opencl/
+#    displayName: copy OpenCL.dll to a folder for caching
+#    condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
@@ -352,7 +352,7 @@ jobs:
 - job: build_linux_dnf_cpp
   pool:
     vmImage: 'ubuntu-20.04'
-  container: fedora:latest
+  container: fedora:32
   steps:
   - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
@@ -369,7 +369,7 @@ jobs:
 - job: build_linux_dnf_fortran
   pool:
     vmImage: 'ubuntu-20.04'
-  container: fedora:latest
+  container: fedora:32
   steps:
   - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
@@ -386,7 +386,7 @@ jobs:
 - job: build_linux_dnf_dpcpp
   pool:
     vmImage: 'ubuntu-20.04'
-  container: fedora:latest
+  container: fedora:32
   steps:
   - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
