@@ -111,7 +111,7 @@ jobs:
           C:\Program Files (x86)\Intel\oneAPI\compiler
           C:\Program Files (x86)\Intel\oneAPI\tbb
           C:\Windows\System32\OpenCL.dll
-        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}-1
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
@@ -119,10 +119,10 @@ jobs:
       run: set
     - name: build
       run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
-    - name: exclude unused files from cache
-      if: steps.cache-install.outputs.cache-hit != 'true'
-      shell: bash
-      run: scripts/cache_exclude_windows.sh
+    # - name: exclude unused files from cache
+      # if: steps.cache-install.outputs.cache-hit != 'true'
+      # shell: bash
+      # run: scripts/cache_exclude_windows.sh
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
