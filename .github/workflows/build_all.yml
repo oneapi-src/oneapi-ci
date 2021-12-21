@@ -103,18 +103,21 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
-    # - name: cache install
-      # id: cache-install
-      # uses: actions/cache@v2
-      # with:
-        # path: |
-          # C:\Program Files (x86)\Intel\oneAPI\compiler
-          # C:\Program Files (x86)\Intel\oneAPI\tbb
-          # C:\Windows\System32\OpenCL.dll
-        # key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          C:\Program Files (x86)\Intel\oneAPI\compiler
+          C:\Program Files (x86)\Intel\oneAPI\tbb
+          C:\Windows\System32\OpenCL.dll
+        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
-      # if: steps.cache-install.outputs.cache-hit != 'true'
+      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+    - name: restore registry on cache hit
+      if: steps.cache-install.outputs.cache-hit == 'true'
+      run: reg add HKEY_LOCAL_MACHINE\SOFTWARE\Khronos\OpenCL\Vendors /v "C:\Program Files (x86)\Intel\oneAPI\compiler\2022.0.0\windows\lib\x64\intelocl64.dll" /t REG_DWORD /d 0 /f
     - name: build
       run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
     - name: exclude unused files from cache
