@@ -352,7 +352,7 @@ jobs:
 - job: build_linux_dnf_cpp
   pool:
     vmImage: 'ubuntu-20.04'
-  container: fedora:latest
+  container: centos:latest
   steps:
   - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
@@ -369,7 +369,7 @@ jobs:
 - job: build_linux_dnf_fortran
   pool:
     vmImage: 'ubuntu-20.04'
-  container: fedora:latest
+  container: centos:latest
   steps:
   - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
@@ -386,7 +386,7 @@ jobs:
 - job: build_linux_dnf_dpcpp
   pool:
     vmImage: 'ubuntu-20.04'
-  container: fedora:latest
+  container: centos:latest
   steps:
   - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
