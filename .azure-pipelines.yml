@@ -123,23 +123,23 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
-    inputs:
-      path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
-  - task: Cache@2
-    condition: eq(variables.CACHE_RESTORED, 'true')
-    inputs:
-      path: C:\Program Files (x86)\Intel\oneAPI\tbb
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
-  - task: Cache@2
-    condition: eq(variables.CACHE_RESTORED, 'true')
-    inputs:
-      path: opencl # caching of individual files is not supported, caching OpenCL.dll in a folder as a workaround.
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
+#  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
+#    inputs:
+#      path: C:\Program Files (x86)\Intel\oneAPI\compiler
+#      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+#      cacheHitVar: CACHE_RESTORED
+#  - task: Cache@2
+#    condition: eq(variables.CACHE_RESTORED, 'true')
+#    inputs:
+#      path: C:\Program Files (x86)\Intel\oneAPI\tbb
+#      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
+#      cacheHitVar: CACHE_RESTORED
+#  - task: Cache@2
+#    condition: eq(variables.CACHE_RESTORED, 'true')
+#    inputs:
+#      path: opencl # caching of individual files is not supported, caching OpenCL.dll in a folder as a workaround.
+#      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
+#      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
@@ -148,14 +148,14 @@ jobs:
     condition: eq(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat dpc++ "" $(SAMPLES_TAG)
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh
-    displayName: exclude unused files from cache
-    condition: ne(variables.CACHE_RESTORED, 'true')
-  - bash: |
-      mkdir -p opencl
-      cp C:/Windows/System32/OpenCL.dll opencl/
-    displayName: copy OpenCL.dll to a folder for caching
-    condition: ne(variables.CACHE_RESTORED, 'true')
+#  - bash: scripts/cache_exclude_windows.sh
+#    displayName: exclude unused files from cache
+#    condition: ne(variables.CACHE_RESTORED, 'true')
+#  - bash: |
+#      mkdir -p opencl
+#      cp C:/Windows/System32/OpenCL.dll opencl/
+#    displayName: copy OpenCL.dll to a folder for caching
+#    condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
   - task: CopyFiles@2
