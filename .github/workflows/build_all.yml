@@ -117,8 +117,7 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: restore registry on cache hit
       if: steps.cache-install.outputs.cache-hit == 'true'
-      shell: cmd
-      run: reg add HKLM\Software\Khronos\OpenCL\Vendors /v "C:\Program Files (x86)\Intel\oneAPI\compiler\2022.0.0\windows\lib\x64\intelocl64.dll" /t REG_DWORD /d 0 /f
+      run: scripts/restore_registry.bat
     - name: build
       run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
     - name: exclude unused files from cache

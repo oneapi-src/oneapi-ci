@@ -143,6 +143,9 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
+  - script: scripts/restore_registry.bat
+    displayName: restory registry of cache hit
+    condition: eq(variables.CACHE_RESTORED, 'true')
   - bash: cp opencl/OpenCL.dll C:/Windows/System32/
     displayName: restore OpenCL.dll from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
