@@ -118,6 +118,7 @@ jobs:
     - name: build
       run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
     - name: set
+      if: ${{ always() }}
       run: set
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
