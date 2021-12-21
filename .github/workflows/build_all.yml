@@ -103,6 +103,7 @@ jobs:
         shell: bash
     steps:
     - uses: actions/checkout@v2
+    # Temporary turned off due to caching error
 #    - name: cache install
 #      id: cache-install
 #      uses: actions/cache@v2
@@ -113,7 +114,7 @@ jobs:
 #          C:\Windows\System32\OpenCL.dll
 #        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
-      if: steps.cache-install.outputs.cache-hit != 'true'
+#      if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
