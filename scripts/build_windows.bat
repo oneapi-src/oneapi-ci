@@ -52,7 +52,6 @@ goto exit
 for /f "tokens=* usebackq" %%f in (`dir /b "C:\Program Files (x86)\Intel\oneAPI\tbb\" ^| findstr /V latest ^| sort`) do @set "LATEST_VERSION=%%f"
 @call "C:\Program Files (x86)\Intel\oneAPI\tbb\%LATEST_VERSION%\env\vars.bat"
 cd oneAPI-samples\DirectProgramming\DPC++\DenseLinearAlgebra\vector-add
-set SYCL_PI_TRACE=-1
 nmake -f Makefile.win
 nmake -f Makefile.win run
 set RESULT=%ERRORLEVEL%

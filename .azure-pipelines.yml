@@ -144,7 +144,7 @@ jobs:
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/restore_registry.bat
-    displayName: restory registry of cache hit
+    displayName: restory registry on cache hit
     condition: eq(variables.CACHE_RESTORED, 'true')
   - bash: cp opencl/OpenCL.dll C:/Windows/System32/
     displayName: restore OpenCL.dll from cache
