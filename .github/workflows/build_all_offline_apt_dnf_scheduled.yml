@@ -54,7 +54,7 @@ jobs:
           installer*
         retention-days: 7
 
-  build_windows_all_except_base_offline:
+  build_windows_hpc_iot_offline:
     runs-on: windows-latest
     defaults:
       run:
@@ -67,12 +67,34 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL intel.oneapi.win.ifort-compiler
     - name: install_iotkit
       run: scripts/install_windows.bat $WINDOWS_IOTKIT_URL intel.oneapi.win.cpp-compiler
-    - name: install_renderkit
-      run: scripts/install_windows.bat $WINDOWS_RENDERKIT_URL intel.oneapi.win.embree
     - name: build_c++
       run: scripts/build_windows.bat c++ "" $SAMPLES_TAG
     - name: build_fortran
       run: scripts/build_windows.bat fortran "" $SAMPLES_TAG
+
+    # Delete the following if you don't want to save install logs
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_windows_render_offline:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: tracert
+      run: tracert -h 1 registrationcenter-download.intel.com
+    - name: install_renderkit
+      run: scripts/install_windows.bat $WINDOWS_RENDERKIT_URL intel.oneapi.win.embree
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
