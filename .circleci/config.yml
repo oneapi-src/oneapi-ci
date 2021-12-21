@@ -125,6 +125,7 @@ jobs:
       shell: bash.exe
     steps:
       - checkout
+       # Temporary turned off due to caching error
 #      - restore_cache:
 #          keys:
 #            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
@@ -136,6 +137,7 @@ jobs:
       - run:
           name: build
           command: scripts/build_windows.bat dpc++ 2017_build_tools << pipeline.parameters.SAMPLES_TAG >>
+      # Temporary turned off due to caching error
 #      - run:
 #          name: exclude unused files from cache
 #          command: scripts/cache_exclude_windows.sh
