@@ -352,15 +352,15 @@ jobs:
 - job: build_linux_dnf_cpp
   pool:
     vmImage: 'ubuntu-20.04'
-  container: centos:latest
+  container: fedora:32
   steps:
-  - script: scripts/install_prerequisites_linux_dnf_no_sudo.sh
+  - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
   - script: scripts/setup_yum_dnf_repo_linux.sh
     displayName: setup yum/dnf repo
   - script: scripts/dnf_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
     displayName: collect versioned dependencies of dnf packages
-  - script: scripts/install_linux_dnf_no_sudo.sh $(LINUX_CPP_COMPONENTS)
+  - script: scripts/install_linux_dnf.sh $(LINUX_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh c++ $(SAMPLES_TAG)
@@ -369,15 +369,15 @@ jobs:
 - job: build_linux_dnf_fortran
   pool:
     vmImage: 'ubuntu-20.04'
-  container: centos:latest
+  container: fedora:32
   steps:
   - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
-  - script: scripts/setup_yum_dnf_repo_linux_no_sudo.sh
+  - script: scripts/setup_yum_dnf_repo_linux.sh
     displayName: setup yum/dnf repo
   - script: scripts/dnf_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
     displayName: collect versioned dependencies of dnf packages
-  - script: scripts/install_linux_dnf_no_sudo.sh $(LINUX_FORTRAN_COMPONENTS)
+  - script: scripts/install_linux_dnf.sh $(LINUX_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh fortran $(SAMPLES_TAG)
@@ -386,15 +386,15 @@ jobs:
 - job: build_linux_dnf_dpcpp
   pool:
     vmImage: 'ubuntu-20.04'
-  container: centos:latest
+  container: fedora:32
   steps:
   - script: scripts/install_prerequisites_linux_dnf.sh
     displayName: install prerequisites
-  - script: scripts/setup_yum_dnf_repo_linux_no_sudo.sh
+  - script: scripts/setup_yum_dnf_repo_linux.sh
     displayName: setup yum/dnf repo
   - script: scripts/dnf_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
     displayName: collect versioned dependencies of dnf packages
-  - script: scripts/install_linux_dnf_no_sudo.sh $(LINUX_DPCPP_COMPONENTS)
+  - script: scripts/install_linux_dnf.sh $(LINUX_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh dpc++ $(SAMPLES_TAG)
