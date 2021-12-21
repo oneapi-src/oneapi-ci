@@ -125,9 +125,9 @@ jobs:
       shell: bash.exe
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+#      - restore_cache:
+#          keys:
+#            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
@@ -139,12 +139,12 @@ jobs:
 #      - run:
 #          name: exclude unused files from cache
 #          command: scripts/cache_exclude_windows.sh
-      - save_cache:
-          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
-          paths:
-            - C:\Program Files (x86)\Intel\oneAPI\compiler
-            - C:\Program Files (x86)\Intel\oneAPI\tbb
-            - C:\Windows\System32\OpenCL.dll
+#      - save_cache:
+#          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+#          paths:
+#            - C:\Program Files (x86)\Intel\oneAPI\compiler
+#            - C:\Program Files (x86)\Intel\oneAPI\tbb
+#            - C:\Windows\System32\OpenCL.dll
 
       # Delete the following if you don't want to save install logs
       - run:
