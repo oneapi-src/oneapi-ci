@@ -14,7 +14,7 @@ env:
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18342/m_BaseKit_p_2022.1.0.92.dmg
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18341/m_HPCKit_p_2022.1.0.86.dmg
   MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18352/m_RenderKit_p_2022.1.0.85.dmg
-  SAMPLES_TAG: 2021.3.0
+  SAMPLES_TAG: 2022.1.0
 
 jobs:
   build_macos_all:

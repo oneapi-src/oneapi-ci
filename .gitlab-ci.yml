@@ -19,7 +19,7 @@ variables:
   LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler-pro
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-  LINUX_APT_DNF_CACHE_NUMBER: 4
+  LINUX_APT_DNF_CACHE_NUMBER: 5
   SAMPLES_TAG: 2022.1.0
 
 .shared_windows_runners:
