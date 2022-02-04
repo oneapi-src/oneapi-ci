@@ -24,6 +24,7 @@ env:
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
   SAMPLES_TAG: 2022.1.0
+  COMPILER_VERSION: 2022.1.2
 
 jobs:
   build_windows_cpp:
@@ -117,7 +118,7 @@ jobs:
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: restore registry on cache hit
       if: steps.cache-install.outputs.cache-hit == 'true'
-      run: scripts/restore_registry.bat
+      run: scripts/restore_registry.bat $COMPILER_VERSION
     - name: build
       run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
     - name: exclude unused files from cache

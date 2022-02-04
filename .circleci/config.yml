@@ -46,6 +46,9 @@ parameters:
   SAMPLES_TAG:
     type: string
     default: "2022.1.0"
+  COMPILER_VERSION:
+    type: string
+    default: "2022.1.2"
 
 orbs:
   win: circleci/windows@2.4.0
@@ -128,6 +131,10 @@ jobs:
       - restore_cache:
           keys:
             - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+      - run:
+          name: restory registry on cache hit
+          command: |
+            [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && scripts/restore_registry.bat << pipeline.parameters.COMPILER_VERSION >>
       - run:
           name: install
           command: |
