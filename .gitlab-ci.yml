@@ -21,6 +21,7 @@ variables:
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   LINUX_APT_DNF_CACHE_NUMBER: 5
   SAMPLES_TAG: 2022.1.0
+  COMPILER_VERSION: 2022.0.2
 
 .shared_windows_runners:
   tags:
@@ -124,6 +125,7 @@ build_windows_dpcpp:
           Move-Item -Path cache\compiler -Destination "C:\Program Files (x86)\Intel\oneAPI"
           Move-Item -Path cache\tbb -Destination "C:\Program Files (x86)\Intel\oneAPI"
           Move-Item -Path cache\OpenCL.dll -Destination "C:\Windows\System32"
+          scripts/restore_registry.bat $COMPILER_VERSION
         } else {
           scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
         }
