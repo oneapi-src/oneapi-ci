@@ -19,7 +19,7 @@ variables:
   LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler-pro
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-  LINUX_APT_DNF_CACHE_NUMBER: 5
+  CACHE_NUMBER: 5
   SAMPLES_TAG: 2022.1.0
   COMPILER_VERSION: 2022.0.2
 
@@ -35,7 +35,7 @@ build_windows_cpp:
   stage: build
   cache:
     key:
-      prefix: install-${WINDOWS_HPCKIT_URL}-${WINDOWS_CPP_COMPONENTS}-compiler
+      prefix: install-${CACHE_NUMBER}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -75,7 +75,7 @@ build_windows_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${WINDOWS_HPCKIT_URL}-${WINDOWS_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${CACHE_NUMBER}-compiler
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -113,7 +113,7 @@ build_windows_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${WINDOWS_BASEKIT_URL}-${WINDOWS_DPCPP_COMPONENTS}-compiler-tbb-opencl
+      prefix: install-${CACHE_NUMBER}-compiler-tbb-opencl
       files:
         - scripts/cache_exclude_windows.ps1
     paths:
@@ -273,7 +273,7 @@ build_linux_apt_cpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_CPP_COMPONENTS}-compiler
+      prefix: install-${CACHE_NUMBER}-${LINUX_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -305,7 +305,7 @@ build_linux_apt_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${CACHE_NUMBER}-${LINUX_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -337,7 +337,7 @@ build_linux_apt_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
+      prefix: install-${CACHE_NUMBER}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -371,7 +371,7 @@ build_linux_dnf_cpp:
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
-      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_CPP_COMPONENTS}-compiler
+      prefix: install-${CACHE_NUMBER}-${LINUX_CPP_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -403,7 +403,7 @@ build_linux_dnf_fortran:
   stage: build
   cache:
     key:
-      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_FORTRAN_COMPONENTS}-compiler
+      prefix: install-${CACHE_NUMBER}-${LINUX_FORTRAN_COMPONENTS}-compiler
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
@@ -435,7 +435,7 @@ build_linux_dnf_dpcpp:
   stage: build
   cache:
     key:
-      prefix: install-${LINUX_APT_DNF_CACHE_NUMBER}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
+      prefix: install-${CACHE_NUMBER}-${LINUX_DPCPP_COMPONENTS}-compiler-tbb
       files:
         - scripts/cache_exclude_linux_no_sudo.sh
     paths:
