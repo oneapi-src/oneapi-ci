@@ -15,7 +15,7 @@ IF "%VS_VER%"=="2019_build_tools" (
 )
 
 IF "%VS_VER%"=="2022" (
-@call "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat vs2022"
+@call "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat" vs2022
 )
 
 for /f "tokens=* usebackq" %%f in (`dir /b "C:\Program Files (x86)\Intel\oneAPI\compiler\" ^| findstr /V latest ^| sort`) do @set "LATEST_VERSION=%%f"
