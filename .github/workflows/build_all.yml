@@ -23,12 +23,13 @@ env:
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
+  CACHE_NUMBER: 1
   SAMPLES_TAG: 2022.1.0
   COMPILER_VERSION: 2022.0.3
 
 jobs:
   build_windows_cpp:
-    runs-on: windows-2016
+    runs-on: windows-latest
     defaults:
       run:
         shell: bash
@@ -38,13 +39,15 @@ jobs:
       id: cache-install
       uses: actions/cache@v2
       with:
-        path: C:\Program Files (x86)\Intel\oneAPI\compiler
-        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+        path: |
+            C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
+            C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat c++ "" $SAMPLES_TAG
+      run: scripts/build_windows.bat c++ 2022 $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -63,7 +66,7 @@ jobs:
         retention-days: 7
 
   build_windows_fortran:
-    runs-on: windows-2019
+    runs-on: windows-latest
     defaults:
       run:
         shell: bash
@@ -73,13 +76,15 @@ jobs:
       id: cache-install
       uses: actions/cache@v2
       with:
-        path: C:\Program Files (x86)\Intel\oneAPI\compiler
-        key: install-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+        path: |
+            C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
+            C:\Program Files (x86)\Intel\oneAPI\compiler
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat fortran "" $SAMPLES_TAG
+      run: scripts/build_windows.bat fortran 2022 $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -98,7 +103,7 @@ jobs:
         retention-days: 7
 
   build_windows_dpcpp:
-    runs-on: windows-2022
+    runs-on: windows-latest
     defaults:
       run:
         shell: bash
@@ -109,10 +114,11 @@ jobs:
       uses: actions/cache@v2
       with:
         path: |
+          C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
           C:\Program Files (x86)\Intel\oneAPI\compiler
           C:\Program Files (x86)\Intel\oneAPI\tbb
           C:\Windows\System32\OpenCL.dll
-        key: install-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
@@ -120,7 +126,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit == 'true'
       run: scripts/restore_registry.bat $COMPILER_VERSION
     - name: build
-      run: scripts/build_windows.bat dpc++ "" $SAMPLES_TAG
+      run: scripts/build_windows.bat dpc++ 2022 $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -151,7 +157,7 @@ jobs:
       with:
         path: |
           /opt/intel/oneapi/compiler
-        key: install-${{ env.LINUX_HPCKIT_URL }}-${{ env.LINUX_CPP_COMPONENTS_WEB }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_HPCKIT_URL }}-${{ env.LINUX_CPP_COMPONENTS_WEB }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_CPP_COMPONENTS_WEB
@@ -185,7 +191,7 @@ jobs:
       with:
         path: |
           /opt/intel/oneapi/compiler
-        key: install-${{ env.LINUX_HPCKIT_URL }}-${{ env.LINUX_FORTRAN_COMPONENTS_WEB }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_HPCKIT_URL }}-${{ env.LINUX_FORTRAN_COMPONENTS_WEB }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_FORTRAN_COMPONENTS_WEB
@@ -220,7 +226,7 @@ jobs:
         path: |
           /opt/intel/oneapi/compiler
           /opt/intel/oneapi/tbb
-        key: install-${{ env.LINUX_BASEKIT_URL }}-${{ env.LINUX_DPCPP_COMPONENTS_WEB }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_BASEKIT_URL }}-${{ env.LINUX_DPCPP_COMPONENTS_WEB }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_linux.sh $LINUX_BASEKIT_URL $LINUX_DPCPP_COMPONENTS_WEB
