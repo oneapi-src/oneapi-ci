@@ -41,7 +41,7 @@ variables:
   - name: SAMPLES_TAG
     value: 2022.1.0
   - name: COMPILER_VERSION
-    value: 2022.0.2
+    value: 2022.0.3
 
 resources:
     containers:

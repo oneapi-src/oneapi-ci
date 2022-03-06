@@ -21,7 +21,7 @@ variables:
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   CACHE_NUMBER: 5
   SAMPLES_TAG: 2022.1.0
-  COMPILER_VERSION: 2022.0.2
+  COMPILER_VERSION: 2022.0.3
 
 .shared_windows_runners:
   tags:

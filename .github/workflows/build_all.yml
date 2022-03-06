@@ -24,7 +24,7 @@ env:
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
   SAMPLES_TAG: 2022.1.0
-  COMPILER_VERSION: 2022.0.2
+  COMPILER_VERSION: 2022.0.3
 
 jobs:
   build_windows_cpp:
