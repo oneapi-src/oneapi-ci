@@ -28,7 +28,7 @@ env:
 
 jobs:
   build_windows_cpp:
-    runs-on: windows-latest
+    runs-on: windows-2016
     defaults:
       run:
         shell: bash
@@ -63,7 +63,7 @@ jobs:
         retention-days: 7
 
   build_windows_fortran:
-    runs-on: windows-latest
+    runs-on: windows-2019
     defaults:
       run:
         shell: bash
@@ -98,7 +98,7 @@ jobs:
         retention-days: 7
 
   build_windows_dpcpp:
-    runs-on: windows-latest
+    runs-on: windows-2022
     defaults:
       run:
         shell: bash

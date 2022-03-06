@@ -134,7 +134,8 @@ jobs:
       - run:
           name: restory registry on cache hit
           command: |
-            [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && scripts/restore_registry.bat << pipeline.parameters.COMPILER_VERSION >>
+            [ ! -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
+            scripts/restore_registry.bat << pipeline.parameters.COMPILER_VERSION >>
       - run:
           name: install
           command: |
