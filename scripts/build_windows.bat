@@ -26,6 +26,7 @@ for /f "tokens=* usebackq" %%f in (`dir /b "C:\Program Files (x86)\Intel\oneAPI\
 @call "C:\Program Files (x86)\Intel\oneAPI\compiler\%LATEST_VERSION%\env\vars.bat"
 
 echo %PATH%
+tree C:\Program Files (x86)\Intel\oneAPI
 
 git clone --depth 1 --branch %SAMPLES_TAG% https://github.com/oneapi-src/oneAPI-samples.git
 
