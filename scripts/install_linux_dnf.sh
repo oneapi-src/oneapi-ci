@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# SPDX-FileCopyrightText: 2020 Intel Corporation
+# SPDX-FileCopyrightText: 2022 Intel Corporation
 #
 # SPDX-License-Identifier: MIT
 

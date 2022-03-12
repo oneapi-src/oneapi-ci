@@ -1,4 +1,4 @@
-REM SPDX-FileCopyrightText: 2021 Intel Corporation
+REM SPDX-FileCopyrightText: 2022 Intel Corporation
 REM
 REM SPDX-License-Identifier: MIT
 
