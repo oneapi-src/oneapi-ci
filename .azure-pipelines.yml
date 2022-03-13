@@ -57,18 +57,32 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
+  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
+    inputs:
+      path: vcvarsall
+      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - task: Cache@2
+    condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | compiler | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
+  - bash: cp vcvarsall/setvars-vcvarsall.bat "C:/Program Files (x86)/Intel/oneAPI/"
+    displayName: restore setvars-vcvarsall.bat from cache
+    condition: eq(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat c++ 2022 $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - bash: |
+      mkdir -p vcvarsall
+      cp "C:/Program Files (x86)/Intel/oneAPI/setvars-vcvarsall.bat" vcvarsall/
+    displayName: copy setvars-vcvarsall.bat to a folder for caching
     condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
@@ -91,7 +105,13 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
+  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
+    inputs:
+      path: vcvarsall
+      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
   - task: Cache@2
+    condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
       key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
@@ -99,10 +119,18 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
+  - bash: cp vcvarsall/setvars-vcvarsall.bat "C:/Program Files (x86)/Intel/oneAPI/"
+    displayName: restore setvars-vcvarsall.bat from cache
+    condition: eq(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_windows.bat fortran 2022 $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - bash: |
+      mkdir -p vcvarsall
+      cp "C:/Program Files (x86)/Intel/oneAPI/setvars-vcvarsall.bat" vcvarsall/
+    displayName: copy setvars-vcvarsall.bat to a folder for caching
     condition: ne(variables.CACHE_RESTORED, 'true')
 
   # Delete the following if you don't want to save install logs
@@ -127,6 +155,12 @@ jobs:
   steps:
   - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
     inputs:
+      path: vcvarsall
+      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
+      cacheHitVar: CACHE_RESTORED
+  - task: Cache@2
+    condition: eq(variables.CACHE_RESTORED, 'true')
+    inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
       key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
@@ -148,6 +182,9 @@ jobs:
   - script: scripts/restore_registry.bat $(COMPILER_VERSION)
     displayName: restory registry on cache hit
     condition: eq(variables.CACHE_RESTORED, 'true')
+  - bash: cp vcvarsall/setvars-vcvarsall.bat "C:/Program Files (x86)/Intel/oneAPI/"
+    displayName: restore setvars-vcvarsall.bat from cache
+    condition: eq(variables.CACHE_RESTORED, 'true')
   - bash: cp opencl/OpenCL.dll C:/Windows/System32/
     displayName: restore OpenCL.dll from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
@@ -155,6 +192,11 @@ jobs:
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
+    condition: ne(variables.CACHE_RESTORED, 'true')
+  - bash: |
+      mkdir -p vcvarsall
+      cp "C:/Program Files (x86)/Intel/oneAPI/setvars-vcvarsall.bat" vcvarsall/
+    displayName: copy setvars-vcvarsall.bat to a folder for caching
     condition: ne(variables.CACHE_RESTORED, 'true')
   - bash: |
       mkdir -p opencl
