@@ -46,6 +46,9 @@ parameters:
   SAMPLES_TAG:
     type: string
     default: "2022.1.0"
+  COMPILER_VERSION:
+    type: string
+    default: "2022.0.3"
 
 orbs:
   win: circleci/windows@2.4.0
@@ -125,10 +128,14 @@ jobs:
       shell: bash.exe
     steps:
       - checkout
-       # Temporary turned off due to caching error
-#      - restore_cache:
-#          keys:
-#            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+      - run:
+          name: restory registry on cache hit
+          command: |
+            [ ! -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
+            scripts/restore_registry.bat << pipeline.parameters.COMPILER_VERSION >>
       - run:
           name: install
           command: |
@@ -137,16 +144,15 @@ jobs:
       - run:
           name: build
           command: scripts/build_windows.bat dpc++ 2017_build_tools << pipeline.parameters.SAMPLES_TAG >>
-      # Temporary turned off due to caching error
-#      - run:
-#          name: exclude unused files from cache
-#          command: scripts/cache_exclude_windows.sh
-#      - save_cache:
-#          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
-#          paths:
-#            - C:\Program Files (x86)\Intel\oneAPI\compiler
-#            - C:\Program Files (x86)\Intel\oneAPI\tbb
-#            - C:\Windows\System32\OpenCL.dll
+      - run:
+          name: exclude unused files from cache
+          command: scripts/cache_exclude_windows.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          paths:
+            - C:\Program Files (x86)\Intel\oneAPI\compiler
+            - C:\Program Files (x86)\Intel\oneAPI\tbb
+            - C:\Windows\System32\OpenCL.dll
 
       # Delete the following if you don't want to save install logs
       - run:
