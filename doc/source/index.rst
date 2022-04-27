@@ -5,6 +5,8 @@
 Components available for installation
 =====================================
 
+|today|
+
 Windows, Web installer
 ======================
 
