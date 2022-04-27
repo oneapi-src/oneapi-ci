@@ -55,7 +55,7 @@ resources:
 jobs:
 - job: build_windows_cpp
   pool:
-    vmImage: 'windows-latest'
+    vmImage: 'windows-2019'
   steps:
   - task: Cache@2
     inputs:
@@ -89,7 +89,7 @@ jobs:
 
 - job: build_windows_fortran
   pool:
-    vmImage: 'windows-latest'
+    vmImage: 'windows-2019'
   steps:
   - task: Cache@2
     inputs:
@@ -123,7 +123,7 @@ jobs:
 
 - job: build_windows_dpcpp
   pool:
-    vmImage: 'windows-latest'
+    vmImage: 'windows-2019'
   steps:
   - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
     inputs:

@@ -5,6 +5,8 @@
 Components available for installation
 =====================================
 
+Data collection: |today|
+
 Windows, Web installer
 ======================
 
