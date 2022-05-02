@@ -7,7 +7,7 @@
 tee > /tmp/oneAPI.repo << EOF
 [oneAPI]
 name=Intel(R) oneAPI repository
-baseurl=https://yum.repos.intel.com/oneapi
+baseurl=https://yum.repos.intel.com/staging/oneapi
 enabled=1
 gpgcheck=1
 repo_gpgcheck=1
