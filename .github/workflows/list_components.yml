@@ -17,7 +17,7 @@ env:
   WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18683/w_RenderKit_p_2022.2.0.150_offline.exe
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18673/l_BaseKit_p_2022.2.0.262_offline.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18679/l_HPCKit_p_2022.2.0.191_offline.sh
-  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18477/l_IoTKit_p_2022.1.2.102_offline.sh
+  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18677/l_IoTKit_p_2022.2.0.165_offline.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18759/l_AIKit_p_2022.2.0.231_offline.sh
   LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18682/l_RenderKit_p_2022.2.0.151_offline.sh
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18675/m_BaseKit_p_2022.2.0.226_offline.dmg
