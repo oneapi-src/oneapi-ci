@@ -70,7 +70,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat c++ 2017_build_tools << pipeline.parameters.SAMPLES_TAG >>
+          command: scripts/build_windows.bat c++ 2019_build_tools << pipeline.parameters.SAMPLES_TAG >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -104,7 +104,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat fortran 2017_build_tools << pipeline.parameters.SAMPLES_TAG >>
+          command: scripts/build_windows.bat fortran 2019_build_tools << pipeline.parameters.SAMPLES_TAG >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -143,7 +143,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_BASEKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat dpc++ 2017_build_tools << pipeline.parameters.SAMPLES_TAG >>
+          command: scripts/build_windows.bat dpc++ 2019_build_tools << pipeline.parameters.SAMPLES_TAG >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
