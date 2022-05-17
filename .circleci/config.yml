@@ -49,6 +49,9 @@ parameters:
   COMPILER_VERSION:
     type: string
     default: "2022.1.0"
+  VS_VER:
+    type: string
+    default: "vs2019"
 
 orbs:
   win: circleci/windows@4.1.1
@@ -70,7 +73,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat c++ vs2019 << pipeline.parameters.SAMPLES_TAG >>
+          command: scripts/build_windows.bat c++ << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -104,7 +107,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat fortran vs2019 << pipeline.parameters.SAMPLES_TAG >>
+          command: scripts/build_windows.bat fortran << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
@@ -143,7 +146,7 @@ jobs:
             scripts/install_windows.bat << pipeline.parameters.WINDOWS_BASEKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
       - run:
           name: build
-          command: scripts/build_windows.bat dpc++ vs2019 << pipeline.parameters.SAMPLES_TAG >>
+          command: scripts/build_windows.bat dpc++ << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
       - run:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh

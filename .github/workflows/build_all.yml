@@ -26,6 +26,7 @@ env:
   CACHE_NUMBER: 1
   SAMPLES_TAG: 2022.2.0
   COMPILER_VERSION: 2022.1.0
+  VS_VER: vs2022
 
 jobs:
   build_windows_cpp:
@@ -47,7 +48,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat c++ vs2022 $SAMPLES_TAG
+      run: scripts/build_windows.bat c++ $VS_VER $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -84,7 +85,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit != 'true'
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
-      run: scripts/build_windows.bat fortran vs2022 $SAMPLES_TAG
+      run: scripts/build_windows.bat fortran $VS_VER $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
@@ -126,7 +127,7 @@ jobs:
       if: steps.cache-install.outputs.cache-hit == 'true'
       run: scripts/restore_registry.bat $COMPILER_VERSION
     - name: build
-      run: scripts/build_windows.bat dpc++ vs2022 $SAMPLES_TAG
+      run: scripts/build_windows.bat dpc++ $VS_VER $SAMPLES_TAG
     - name: exclude unused files from cache
       if: steps.cache-install.outputs.cache-hit != 'true'
       shell: bash
