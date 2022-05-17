@@ -65,7 +65,7 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat c++ vs_2019_enterprise $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat c++ vs2019 $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -99,7 +99,7 @@ jobs:
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat fortran vs_2019_enterprise $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat fortran vs2019 $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -151,7 +151,7 @@ jobs:
   - bash: cp opencl/OpenCL.dll C:/Windows/System32/
     displayName: restore OpenCL.dll from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat dpc++ vs_2019_enterprise $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat dpc++ vs2019 $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache

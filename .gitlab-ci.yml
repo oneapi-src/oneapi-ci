@@ -49,7 +49,7 @@ build_windows_cpp:
           scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
         }
   script:
-    - scripts/build_windows.bat c++ 2019_build_tools ${SAMPLES_TAG}
+    - scripts/build_windows.bat c++ vs2019 ${SAMPLES_TAG}
   after_script:  # Moving install directory into 'cache' folder inside build directory
     - |
         if(!(Test-Path cache)) {
@@ -89,7 +89,7 @@ build_windows_fortran:
           scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
         }
   script:
-    - scripts/build_windows.bat fortran 2019_build_tools ${SAMPLES_TAG}
+    - scripts/build_windows.bat fortran vs2019 ${SAMPLES_TAG}
   after_script:
     - |
         if(!(Test-Path cache)) {
@@ -130,7 +130,7 @@ build_windows_dpcpp:
           scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
         }
   script:
-    - scripts/build_windows.bat dpc++ 2019_build_tools ${SAMPLES_TAG}
+    - scripts/build_windows.bat dpc++ vs2019 ${SAMPLES_TAG}
   after_script:
     - |
         if(!(Test-Path cache)) {
