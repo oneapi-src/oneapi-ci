@@ -7,15 +7,15 @@ trigger:
 
 variables:
   - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18599/w_BaseKit_p_2022.1.3.210_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18674/w_BaseKit_p_2022.2.0.252_offline.exe
   - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18578/w_HPCKit_p_2022.1.3.145_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18680/w_HPCKit_p_2022.2.0.173_offline.exe
   - name: LINUX_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18487/l_BaseKit_p_2022.1.2.146_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18673/l_BaseKit_p_2022.2.0.262_offline.sh
   - name: LINUX_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18479/l_HPCKit_p_2022.1.2.117_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18679/l_HPCKit_p_2022.2.0.191_offline.sh
   - name: MACOS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/irc_nas/18341/m_HPCKit_p_2022.1.0.86_offline.dmg
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18681/m_HPCKit_p_2022.2.0.158_offline.dmg
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-compiler
   - name: WINDOWS_FORTRAN_COMPONENTS
@@ -39,9 +39,11 @@ variables:
   - name: MACOS_FORTRAN_COMPONENTS
     value: intel.oneapi.mac.ifort-compiler
   - name: SAMPLES_TAG
-    value: 2022.1.0
+    value: 2022.2.0
   - name: COMPILER_VERSION
-    value: 2022.0.3
+    value: 2022.1.0
+  - name: VS_VER
+    value: vs2019
 
 resources:
     containers:
@@ -57,126 +59,28 @@ jobs:
   pool:
     vmImage: 'windows-2019'
   steps:
-  - task: Cache@2
-    inputs:
-      path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | compiler | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
-    condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat c++ "" $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat c++ ${VS_VER} $(SAMPLES_TAG)
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh
-    displayName: exclude unused files from cache
-    condition: ne(variables.CACHE_RESTORED, 'true')
-
-  # Delete the following if you don't want to save install logs
-  - task: CopyFiles@2
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      sourceFolder: '$(Build.SourcesDirectory)'
-      contents: |
-        extract.log
-        bootstrapper*
-        installer*
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
-  - task: PublishBuildArtifacts@1
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs_$(Agent.JobName)
 
 - job: build_windows_fortran
   pool:
     vmImage: 'windows-2019'
   steps:
-  - task: Cache@2
-    inputs:
-      path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
-    condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat fortran "" $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat fortran ${VS_VER} $(SAMPLES_TAG)
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh
-    displayName: exclude unused files from cache
-    condition: ne(variables.CACHE_RESTORED, 'true')
-
-  # Delete the following if you don't want to save install logs
-  - task: CopyFiles@2
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      sourceFolder: '$(Build.SourcesDirectory)'
-      contents: |
-        extract.log
-        bootstrapper*
-        installer*
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
-  - task: PublishBuildArtifacts@1
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs_$(Agent.JobName)
 
 - job: build_windows_dpcpp
   pool:
     vmImage: 'windows-2019'
   steps:
-  - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
-    inputs:
-      path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
-  - task: Cache@2
-    condition: eq(variables.CACHE_RESTORED, 'true')
-    inputs:
-      path: C:\Program Files (x86)\Intel\oneAPI\tbb
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
-  - task: Cache@2
-    condition: eq(variables.CACHE_RESTORED, 'true')
-    inputs:
-      path: opencl # caching of individual files is not supported, caching OpenCL.dll in a folder as a workaround.
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
-      cacheHitVar: CACHE_RESTORED
   - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
-    condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/restore_registry.bat $(COMPILER_VERSION)
-    displayName: restory registry on cache hit
-    condition: eq(variables.CACHE_RESTORED, 'true')
-  - bash: cp opencl/OpenCL.dll C:/Windows/System32/
-    displayName: restore OpenCL.dll from cache
-    condition: eq(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat dpc++ "" $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat dpc++ ${VS_VER} $(SAMPLES_TAG)
     displayName: build
-  - bash: scripts/cache_exclude_windows.sh
-    displayName: exclude unused files from cache
-    condition: ne(variables.CACHE_RESTORED, 'true')
-  - bash: |
-      mkdir -p opencl
-      cp C:/Windows/System32/OpenCL.dll opencl/
-    displayName: copy OpenCL.dll to a folder for caching
-    condition: ne(variables.CACHE_RESTORED, 'true')
-
-  # Delete the following if you don't want to save install logs
-  - task: CopyFiles@2
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      sourceFolder: '$(Build.SourcesDirectory)'
-      contents: |
-        extract.log
-        bootstrapper*
-        installer*
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
-  - task: PublishBuildArtifacts@1
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs_$(Agent.JobName)
 
 - job: build_linux_cpp
   pool:
