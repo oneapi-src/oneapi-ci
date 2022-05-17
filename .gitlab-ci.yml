@@ -123,6 +123,7 @@ build_windows_dpcpp:
     - |
         if(Test-Path cache) {
           New-Item -ItemType "directory" -Path "C:\Program Files (x86)\Intel\oneAPI" -Force
+          Move-Item -Path cache\setvars-vcvarsall.bat -Destination "C:\Program Files (x86)\Intel\oneAPI"
           Move-Item -Path cache\compiler -Destination "C:\Program Files (x86)\Intel\oneAPI"
           Move-Item -Path cache\tbb -Destination "C:\Program Files (x86)\Intel\oneAPI"
           Move-Item -Path cache\OpenCL.dll -Destination "C:\Windows\System32"
@@ -138,6 +139,7 @@ build_windows_dpcpp:
           scripts/cache_exclude_windows.ps1
           New-Item -ItemType "directory" -Path "cache"
         }
+        Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat" -Destination "cache"
         Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\compiler" -Destination "cache"
         Move-Item -Path "C:\Program Files (x86)\Intel\oneAPI\tbb" -Destination "cache"
         Move-Item -Path "C:\Windows\System32\OpenCL.dll" -Destination "cache"
