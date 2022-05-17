@@ -6,13 +6,8 @@ stages:
   - build
 
 variables:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18674/w_BaseKit_p_2022.2.0.252_offline.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18680/w_HPCKit_p_2022.2.0.173_offline.exe
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18673/l_BaseKit_p_2022.2.0.262_offline.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18679/l_HPCKit_p_2022.2.0.191_offline.sh
-  WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
-  WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
-  WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
   LINUX_CPP_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
   LINUX_FORTRAN_COMPONENTS: intel-oneapi-compiler-fortran
   LINUX_DPCPP_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp
@@ -23,39 +18,6 @@ variables:
   SAMPLES_TAG: 2022.2.0
   COMPILER_VERSION: 2022.1.0
   VS_VER: vs2019
-
-.shared_windows_runners:
-  tags:
-  - shared-windows
-  - windows
-  - windows-1809
-
-build_windows_cpp:
-  extends:
-  - .shared_windows_runners
-  stage: build
-  script:
-  - |
-    scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
-    scripts/build_windows.bat c++ ${VS_VER} ${SAMPLES_TAG}
-
-build_windows_fortran:
-  extends:
-  - .shared_windows_runners
-  stage: build
-  script:
-  - |
-    scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
-    scripts/build_windows.bat fortran ${VS_VER} ${SAMPLES_TAG}
-
-build_windows_dpcpp:
-  extends:
-  - .shared_windows_runners
-  stage: build
-  script:
-  - |
-    scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
-    scripts/build_windows.bat dpc++ ${VS_VER} ${SAMPLES_TAG}
 
 build_linux_cpp:
   image: ubuntu:20.04
