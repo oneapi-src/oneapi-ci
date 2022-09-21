@@ -9,7 +9,7 @@ exclude: LICENSES
 
 repos:
 -   repo: https://github.com/ambv/black
-    rev: 22.1.0
+    rev: 22.8.0
     hooks:
     -   id: black
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -24,7 +24,7 @@ repos:
     hooks:
     -   id: flake8
 -   repo: https://github.com/pycqa/doc8
-    rev: 0.10.1
+    rev: v1.0.0
     hooks:
     -   id: doc8
 -   repo: https://github.com/pycqa/isort
