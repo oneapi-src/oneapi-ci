@@ -23,7 +23,7 @@ env:
   LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18858/l_RenderKit_p_2022.3.0.8742_offline.sh
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18865/m_BaseKit_p_2022.3.0.8743_offline.dmg
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18866/m_HPCKit_p_2022.3.0.8685_offline.dmg
-  MACOS_RENDERKIT_URL:https://registrationcenter-download.intel.com/akdlm/irc_nas/18867/m_RenderKit_p_2022.3.0.8732_offline.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18867/m_RenderKit_p_2022.3.0.8732_offline.dmg
   LINUX_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic,intel-oneapi-compiler-fortran
   SAMPLES_TAG: 2022.3.0
 
