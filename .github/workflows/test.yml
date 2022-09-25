@@ -1,0 +1,57 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+name: build_all_offline_apt_dnf_scheduled
+
+on:
+  push: {}
+  workflow_dispatch: {}
+
+env:
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18851/w_BaseKit_p_2022.3.0.8811_offline.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18857/w_HPCKit_p_2022.3.0.8806_offline.exe
+  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18855/w_IoTKit_p_2022.3.0.8803_offline.exe
+  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18859/w_RenderKit_p_2022.3.0.8809_offline.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18852/l_BaseKit_p_2022.3.0.8767_offline.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18856/l_HPCKit_p_2022.3.0.8751_offline.sh
+  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18854/l_IoTKit_p_2022.3.0.8747_offline.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18860/l_AIKit_p_2022.3.0.8775_offline.sh
+  LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18853/l_DLFDKit_p_2022.3.0.8753_offline.sh
+  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18858/l_RenderKit_p_2022.3.0.8742_offline.sh
+  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18865/m_BaseKit_p_2022.3.0.8743_offline.dmg
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18866/m_HPCKit_p_2022.3.0.8685_offline.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18867/m_RenderKit_p_2022.3.0.8732_offline.dmg
+  LINUX_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic,intel-oneapi-compiler-fortran
+  SAMPLES_TAG: 2022.3.0
+
+jobs:
+  build_linux_apt_all:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: |
+        sudo dpkg --add-architecture i386
+        scripts/setup_apt_repo_linux.sh
+        grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
+    - name: apt install/remove oneapi one by one
+      run: apt-cache search intel-oneapi | grep -v intelfpga | grep -v intel-oneapi-ilit | grep -v intel-oneapi-lpot | grep -v -- '-tail$' | awk '{print $1}' | xargs -t -I % sh -c 'sudo apt install -y %; sudo apt remove -y %'
+
+  build_linux_dnf_all:
+    runs-on: ubuntu-20.04
+    container: fedora
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: install prerequisites
+      run: sudo dnf -y install git make gcc g++
+    - name: install/remove oneapi one by one
+      run: sudo dnf -y --disablerepo="*" --enablerepo="oneAPI" list available | xargs -t -I % sh -c 'sudo dnf install -y %; sudo dnf remove -y %'
