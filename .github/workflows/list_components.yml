@@ -11,18 +11,19 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18674/w_BaseKit_p_2022.2.0.252_offline.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18680/w_HPCKit_p_2022.2.0.173_offline.exe
-  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18678/w_IoTKit_p_2022.2.0.152_offline.exe
-  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18683/w_RenderKit_p_2022.2.0.150_offline.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18673/l_BaseKit_p_2022.2.0.262_offline.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18679/l_HPCKit_p_2022.2.0.191_offline.sh
-  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18677/l_IoTKit_p_2022.2.0.165_offline.sh
-  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18759/l_AIKit_p_2022.2.0.231_offline.sh
-  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18682/l_RenderKit_p_2022.2.0.151_offline.sh
-  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18675/m_BaseKit_p_2022.2.0.226_offline.dmg
-  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18681/m_HPCKit_p_2022.2.0.158_offline.dmg
-  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18684/m_RenderKit_p_2022.2.0.163.dmg
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18851/w_BaseKit_p_2022.3.0.9573.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18857/w_HPCKit_p_2022.3.0.9564.exe
+  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18855/w_IoTKit_p_2022.3.0.9561.exe
+  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18859/w_RenderKit_p_2022.3.0.9566.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18852/l_BaseKit_p_2022.3.0.8767.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18856/l_HPCKit_p_2022.3.0.8751.sh
+  LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18854/l_IoTKit_p_2022.3.0.8747.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18860/l_AIKit_p_2022.3.0.8775.sh
+  LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18853/l_DLFDKit_p_2022.3.0.8753.sh
+  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18858/l_RenderKit_p_2022.3.0.8742.sh
+  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18865/m_BaseKit_p_2022.3.0.8743.dmg
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18866/m_HPCKit_p_2022.3.0.8685.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18867/m_RenderKit_p_2022.3.0.8732.dmg
 
 jobs:
   windows:
@@ -68,6 +69,8 @@ jobs:
       run: scripts/list_components_linux.sh $LINUX_IOTKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_iotkit.txt
     - name: Intel® AI Analytics Toolkit
       run: scripts/list_components_linux.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_aikit.txt
+    - name: Intel® oneAPI DL Framework Developer Toolkit
+      run: scripts/list_components_linux.sh $LINUX_DLFDKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_dlfdkit.txt
     - name: Intel® oneAPI Rendering Toolkit
       run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_renderkit.txt
 
@@ -209,5 +212,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "Update from github actions"
+          git commit -m "Update from github actions" || exit 0
           git push

@@ -4,12 +4,27 @@
 
 version: 2.1
 parameters:
+  WINDOWS_BASEKIT_URL:
+    type: string
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/18851/w_BaseKit_p_2022.3.0.9573_offline.exe"
+  WINDOWS_HPCKIT_URL:
+    type: string
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/18857/w_HPCKit_p_2022.3.0.9564_offline.exe"
   LINUX_BASEKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/18673/l_BaseKit_p_2022.2.0.262_offline.sh"
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/18852/l_BaseKit_p_2022.3.0.8767_offline.sh"
   LINUX_HPCKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/18679/l_HPCKit_p_2022.2.0.191_offline.sh"
+    default: "https://registrationcenter-download.intel.com/akdlm/irc_nas/18856/l_HPCKit_p_2022.3.0.8751_offline.sh"
+  WINDOWS_CPP_COMPONENTS:
+    type: string
+    default: "intel.oneapi.win.cpp-compiler"
+  WINDOWS_FORTRAN_COMPONENTS:
+    type: string
+    default: "intel.oneapi.win.ifort-compiler"
+  WINDOWS_DPCPP_COMPONENTS:
+    type: string
+    default: "intel.oneapi.win.dpcpp-compiler"
   LINUX_CPP_COMPONENTS:
     type: string
     default: "intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic"
@@ -30,12 +45,130 @@ parameters:
     default: "intel.oneapi.lin.dpcpp-cpp-compiler"
   SAMPLES_TAG:
     type: string
-    default: "2022.2.0"
+    default: "2022.3.0"
   COMPILER_VERSION:
     type: string
-    default: "2022.1.0"
+    default: "2022.2"
+  VS_VER:
+    type: string
+    default: "vs2017"
+
+orbs:
+  win: circleci/windows@2.4.0
 
 jobs:
+  build_windows_cpp:
+    executor:
+      name: win/default
+      shell: bash.exe
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
+      - run:
+          name: install
+          command: |
+            [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
+      - run:
+          name: build
+          command: scripts/build_windows.bat c++ << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
+      - run:
+          name: exclude unused files from cache
+          command: scripts/cache_exclude_windows.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          paths:
+            - C:\Program Files (x86)\Intel\oneAPI\compiler
+            - C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
+
+      # Delete the following if you don't want to save install logs
+      - run:
+          command: |
+            mkdir InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs || :
+          when: always
+      - store_artifacts:
+          path: InstallLogs
+
+  build_windows_fortran:
+    executor:
+      name: win/default
+      shell: bash.exe
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
+      - run:
+          name: install
+          command: |
+            [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
+      - run:
+          name: build
+          command: scripts/build_windows.bat fortran << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
+      - run:
+          name: exclude unused files from cache
+          command: scripts/cache_exclude_windows.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          paths:
+            - C:\Program Files (x86)\Intel\oneAPI\compiler
+            - C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
+
+      # Delete the following if you don't want to save install logs
+      - run:
+          command: |
+            mkdir InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs || :
+          when: always
+      - store_artifacts:
+          path: InstallLogs
+
+  build_windows_dpcpp:
+    executor:
+      name: win/default
+      shell: bash.exe
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
+      - run:
+          name: restory registry on cache hit
+          command: |
+            [ ! -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
+            scripts/restore_registry.bat << pipeline.parameters.COMPILER_VERSION >>
+      - run:
+          name: install
+          command: |
+            [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_BASEKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
+      - run:
+          name: build
+          command: scripts/build_windows.bat dpc++ << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
+      - run:
+          name: exclude unused files from cache
+          command: scripts/cache_exclude_windows.sh
+      - save_cache:
+          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          paths:
+            - C:\Program Files (x86)\Intel\oneAPI\compiler
+            - C:\Program Files (x86)\Intel\oneAPI\tbb
+            - C:\Windows\System32\OpenCL.dll
+            - C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
+
+      # Delete the following if you don't want to save install logs
+      - run:
+          command: |
+            mkdir InstallLogs
+            cp extract* bootstrapper* installer* InstallLogs || :
+          when: always
+      - store_artifacts:
+          path: InstallLogs
+
   build_linux_cpp:
     docker:
       - image: ubuntu:20.04
@@ -384,6 +517,9 @@ jobs:
 workflows:
   build-all:
     jobs:
+    - build_windows_cpp
+    - build_windows_fortran
+    - build_windows_dpcpp
     - build_linux_cpp
     - build_linux_fortran
     - build_linux_dpcpp

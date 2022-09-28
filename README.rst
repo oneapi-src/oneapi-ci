@@ -52,9 +52,9 @@ Supported Configurations
 CI       Linux APT Linux DNF Linux Docker Linux Windows MacOS
 ======== ========= ========= ============ ===== ======= ===========
 GitHub   |c|       |c|       |c|          |c|   |c|     |c|
-Circle   |c|       |c|       |c|          |c|   |x|     |x|
+Circle   |c|       |c|       |c|          |c|   |c|     |x|
 AppVeyor |c|       |x|       |x|          |c|   |c|     |c|
-GitLab   |c|       |c|       |x|          |c|   |x|     |x|
+GitLab   |c|       |c|       |x|          |c|   |c|     |x|
 Azure    |c|       |c|       |c|          |c|   |c|     |c|
 Jenkins  |x|       |x|       |c|          |x|   |x|     |x|
 ======== ========= ========= ============ ===== ======= ===========
@@ -147,7 +147,7 @@ See `security guidelines`_.
    :target: https://github.com/oneapi-src/oneapi-ci/actions?query=workflow%3Abuild_all
    :alt: Build status
 .. |CircleStatus| image:: https://circleci.com/gh/oneapi-src/oneapi-ci.svg
-   :target: https://circleci.com/gh/oneapi-src/oneapi-ci
+   :target: https://circleci.com/gh/oneapi-src/oneapi-ci/tree/master
    :alt: Build status
 .. |AppVeyorStatus| image:: https://ci.appveyor.com/api/projects/status/c1lc5jrl6akdb2ey?svg=true
    :target: https://ci.appveyor.com/project/oneapi-ci/oneapi-ci
