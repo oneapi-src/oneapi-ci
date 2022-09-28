@@ -212,5 +212,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "Update from github actions"
+          git commit -m "Update from github actions" || exit 1
           git push
