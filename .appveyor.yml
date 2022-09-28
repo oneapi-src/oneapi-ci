@@ -21,6 +21,7 @@ environment:
     MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
     MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
     SAMPLES_TAG: 2022.3.0
+    VS_VER: vs2019
 
   matrix:
     - job_name: build_windows_cpp
@@ -64,7 +65,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_CPP_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat c++ "" %SAMPLES_TAG%
+      cmd: scripts/build_windows.bat c++ %VS_VER% %SAMPLES_TAG%
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -80,7 +81,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_HPCKIT_URL% %WINDOWS_FORTRAN_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat fortran "" %SAMPLES_TAG%
+      cmd: scripts/build_windows.bat fortran %VS_VER% %SAMPLES_TAG%
 
     # Delete the following if you don't want to save install logs
     artifacts:
@@ -96,7 +97,7 @@ for:
     install:
       cmd: scripts/install_windows.bat %WINDOWS_BASEKIT_URL% %WINDOWS_DPCPP_COMPONENTS%
     build_script:
-      cmd: scripts/build_windows.bat dpc++ "" %SAMPLES_TAG%
+      cmd: scripts/build_windows.bat dpc++ %VS_VER% %SAMPLES_TAG%
 
     # Delete the following if you don't want to save install logs
     artifacts:

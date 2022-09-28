@@ -42,6 +42,8 @@ variables:
     value: 2022.3.0
   - name: COMPILER_VERSION
     value: 2022.2
+  - name: VS_VER
+    value: vs2022
 
 resources:
     containers:
@@ -74,7 +76,7 @@ jobs:
   - bash: cp vcvarsall/setvars-vcvarsall.bat "C:/Program Files (x86)/Intel/oneAPI/"
     displayName: restore setvars-vcvarsall.bat from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat c++ 2022 $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat c++ $(VS_VER) $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -122,7 +124,7 @@ jobs:
   - bash: cp vcvarsall/setvars-vcvarsall.bat "C:/Program Files (x86)/Intel/oneAPI/"
     displayName: restore setvars-vcvarsall.bat from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat fortran 2022 $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat fortran $(VS_VER) $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache
@@ -188,7 +190,7 @@ jobs:
   - bash: cp opencl/OpenCL.dll C:/Windows/System32/
     displayName: restore OpenCL.dll from cache
     condition: eq(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_windows.bat dpc++ 2022 $(SAMPLES_TAG)
+  - script: scripts/build_windows.bat dpc++ $(VS_VER) $(SAMPLES_TAG)
     displayName: build
   - bash: scripts/cache_exclude_windows.sh
     displayName: exclude unused files from cache

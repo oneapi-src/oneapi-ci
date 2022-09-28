@@ -2,29 +2,32 @@
 ..
 .. SPDX-License-Identifier: CC-BY-4.0
 
-============================
-Intel\ |r| oneAPI CI Samples
-============================
+=================================
+Intel\ :sup:`®` oneAPI CI Samples
+=================================
 
 .. image:: https://api.reuse.software/badge/github.com/oneapi-src/oneapi-ci
    :target: https://api.reuse.software/info/github.com/oneapi-src/oneapi-ci
    :alt: REUSE status
 
-This repo contains sample Public/Cloud CI configurations that
-demonstrate installing Intel\ |r| oneAPI toolkit components and building
-applications:
+This repository contains sample Public/Cloud CI configurations that
+demonstrate installing Intel\ :sup:`®` oneAPI toolkit components and
+building applications. You may also find this repository useful for
+automating the install process on your own systems. The following
+configurations are supported:
 
 ===============  ===========================================
-Compilers        icc, ifort, dpcpp
+Compilers        icc, icx, icpx, dpcpp, ifort, ifx
 OS platforms     Linux, Windows, MacOS
-Install methods  Intel\ |r| installer, apt, dnf, docker container
+Install methods  Intel installer, apt, dnf, docker container, CI cache
 ===============  ===========================================
 
-The config files show examples of all supported configurations. Delete
-the ones you do not want.
+The config files are intended to be samples that demonstrate a wide
+variety of use cases. For your own use, select the parts that you
+need. You may also want to customize the set of compilers and
+libraries that are installed. See `component listings`_ for the
+component names to use in the scripts.
 
-For a complete list of components available for installation,
-see |ListComponentsStatus|.
 
 Status
 ======
@@ -57,6 +60,14 @@ Jenkins  |x|       |x|       |c|          |x|   |x|     |x|
 ======== ========= ========= ============ ===== ======= ===========
 
 
+Caching
+=======
+
+Some of the oneAPI components are large and can take a few minutes to
+download install. To accelerate install, we demonstrate the use of
+caching.
+
+
 Using oneAPI in Jenkins pipelines
 =================================
 
@@ -85,19 +96,25 @@ To give it a try:
 
 |Jenkins Pipeline Example|
 
+
+See also
+========
+
+`Enabling Performance Profiling in GitLab* CI`_
+
 Troubleshooting
 ===============
 
-The repo contains scripts that can be used in CI configurations to
-collect detailed installation logs in case of installation
-issues. Replace calls to "install" scripts with calls to
-"install_debug" or "install_debug_hang" scripts to use this
-functionality.
+Detailed install logs are saved as artifacts in most CI jobs.
+Those logs can be helpful in case of installation issues.
 
 License
 =======
 
-See licenses_
+The contents of this repository follows the SPDX_ standard for
+documenting license information. The Intel oneAPI compilers and
+libraries are distributed separately. They are free to use and are
+governed by the `oneAPI EULA`_.
 
 Contribute
 ==========
@@ -109,18 +126,21 @@ Security
 
 See `security guidelines`_.
 
+.. _`component listings`: https://mmzakhar.github.io/oneapi-ci/
+.. _SPDX: https://spdx.dev/
+.. _`oneAPI EULA`: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
 .. _licenses: LICENSES
 .. _contributing: CONTRIBUTING.rst
 .. _`security guidelines`: https://www.intel.com/content/www/us/en/security-center/default.html
+.. _`Enabling Performance Profiling in GitLab* CI`: https://software.intel.com/content/www/us/en/develop/documentation/vtune-cookbook/top/configuration-recipes/performance-profiling-in-gitlab-ci.html
 .. _`Intel® oneAPI Toolkits Installation Guides`: https://software.intel.com/content/www/us/en/develop/articles/installation-guide-for-intel-oneapi-toolkits.html
 .. _`Jenkins Install Guide`: https://www.jenkins.io/doc/book/installing/
 .. _`Intel oneContainer Portal`: https://software.intel.com/content/www/us/en/develop/tools/containers/get-started.html
 
-.. _`.travis.yml`: .travis.yml
+.. _`.github/workflows/build_all.yml`: .github/workflows/build_all.yml
 .. _`.circleci/config.yml`: .circleci/config.yml
 .. _`.appveyor.yml`: .appveyor.yml
 .. _`.gitlab-ci.yml`: .gitlab-ci.yml
-.. _`.github/workflows/build_all.yml`: .github/workflows/build_all.yml
 .. _`.azure-pipelines.yml`: .azure-pipelines.yml
 
 .. |GitHubStatus| image:: https://github.com/mmzakhar/oneapi-ci/workflows/build_all/badge.svg
