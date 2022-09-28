@@ -22,7 +22,7 @@ variables:
   CACHE_NUMBER: 9
   SAMPLES_TAG: 2022.3.0
   COMPILER_VERSION: "2022.2"
-  VS_VER: vs2019
+  VS_VER: 2019_build_tools
 
 .shared_windows_runners:
   tags:
