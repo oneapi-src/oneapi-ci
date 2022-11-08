@@ -11,9 +11,9 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18865/m_BaseKit_p_2022.3.0.8743.dmg
-  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18866/m_HPCKit_p_2022.3.0.8685.dmg
-  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18867/m_RenderKit_p_2022.3.0.8732.dmg
+  MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18971/m_BaseKit_p_2022.3.1.17244.dmg
+  MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18977/m_HPCKit_p_2022.3.1.15344.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18980/m_RenderKit_p_2022.3.1.15746.dmg
   SAMPLES_TAG: 2022.3.0
 
 jobs:
