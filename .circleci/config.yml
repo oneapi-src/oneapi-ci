@@ -49,6 +49,9 @@ parameters:
   COMPILER_VERSION:
     type: string
     default: "2022.2.1"
+  TBB_VERSION:
+    type: string
+    default: "2021.7.1"
   VS_VER:
     type: string
     default: "vs2017"
@@ -140,7 +143,7 @@ jobs:
           name: restory registry on cache hit
           command: |
             [ ! -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
-            scripts/restore_registry.bat << pipeline.parameters.COMPILER_VERSION >>
+            scripts/restore_registry.bat << pipeline.parameters.COMPILER_VERSION >> << pipeline.parameters.TBB_VERSION >>
       - run:
           name: install
           command: |
