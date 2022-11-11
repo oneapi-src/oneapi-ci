@@ -14,16 +14,16 @@ env:
   WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18969/w_BaseKit_p_2022.3.1.19798.exe
   WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18976/w_HPCKit_p_2022.3.1.19755.exe
   WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18974/w_IoTKit_p_2022.3.1.19753.exe
-  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18981/w_RenderKit_p_2022.3.1.15798.exe
+  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18981/w_RenderKit_p_2022.3.1.21181.exe
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18970/l_BaseKit_p_2022.3.1.17310.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18975/l_HPCKit_p_2022.3.1.16997.sh
   LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18973/l_IoTKit_p_2022.3.1.16990.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18979/l_AIKit_p_2022.3.1.20890.sh
   LINUX_DLFDKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18972/l_DLFDKit_p_2022.3.1.17050.sh
-  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18978/l_RenderKit_p_2022.3.1.16998.sh
+  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18978/l_RenderKit_p_2022.3.1.21169.sh
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18971/m_BaseKit_p_2022.3.1.17244.dmg
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18977/m_HPCKit_p_2022.3.1.15344.dmg
-  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18980/m_RenderKit_p_2022.3.1.15746.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/18980/m_RenderKit_p_2022.3.1.21170.dmg
 
 jobs:
   windows:
