@@ -59,7 +59,7 @@ mkdir build
 cd build
 cmake -G "NMake Makefiles" ..
 nmake cpu-gpu
-nmake run
+vector-add-buffers
 set RESULT=%ERRORLEVEL%
 goto exit
 
