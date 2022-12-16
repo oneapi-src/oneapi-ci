@@ -29,6 +29,6 @@ dpc++)
 # shellcheck source=/dev/null
   source /opt/intel/oneapi/tbb/"$LATEST_VERSION"/env/vars.sh
   cd oneAPI-samples/DirectProgramming/DPC++/DenseLinearAlgebra/vector-add
-  mkdir build && cd build && cmake .. && make cpu-gpu && make run
+  mkdir build && cd build && cmake .. && make cpu-gpu && ./vector-add-buffers
   ;;
 esac
