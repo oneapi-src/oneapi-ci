@@ -18,7 +18,7 @@ env:
   SAMPLES_TAG: 2023.0.0
 
 jobs:
-  build_windows_all:
+  build_windows_basekit:
     runs-on: windows-latest
     timeout-minutes: 90
     defaults:
@@ -30,18 +30,89 @@ jobs:
       run: tracert -h 1 installer.repos.intel.com
     - name: install_basekit
       run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL
+    - name: build_dpc++
+      run: scripts/build_windows.bat dpc++ 2022 $SAMPLES_TAG
+
+    # Delete the following if you don't want to save install logs
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_windows_hpckit:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: tracert
+      run: tracert -h 1 installer.repos.intel.com
     - name: install_hpckit
       run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL
-    - name: install_iotkit
-      run: scripts/install_windows.bat $WINDOWS_IOTKIT_URL
-    - name: install_renderkit
-      run: scripts/install_windows.bat $WINDOWS_RENDERKIT_URL
     - name: build_c++
       run: scripts/build_windows.bat c++ 2022 $SAMPLES_TAG
     - name: build_fortran
       run: scripts/build_windows.bat fortran 2022 $SAMPLES_TAG
-    - name: build_dpc++
-      run: scripts/build_windows.bat dpc++ 2022 $SAMPLES_TAG
+
+    # Delete the following if you don't want to save install logs
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_windows_iotkit:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: tracert
+      run: tracert -h 1 installer.repos.intel.com
+    - name: install_iotkit
+      run: scripts/install_windows.bat $WINDOWS_IOTKIT_URL
+    - name: build_c++
+      run: scripts/build_windows.bat c++ 2022 $SAMPLES_TAG
+
+    # Delete the following if you don't want to save install logs
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          extract.log
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_windows_renderkit:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: tracert
+      run: tracert -h 1 installer.repos.intel.com
+    - name: install_renderkit
+      run: scripts/install_windows.bat $WINDOWS_RENDERKIT_URL
 
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
