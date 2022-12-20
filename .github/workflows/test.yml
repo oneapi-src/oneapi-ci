@@ -54,4 +54,4 @@ jobs:
     - name: install prerequisites
       run: sudo dnf -y install git make gcc g++
     - name: install/remove oneapi one by one
-      run: sudo dnf -y --disablerepo="*" --enablerepo="oneAPI" list available | grep -v -- '-tail$' | awk '{print $1}' | grep -e 2022.3 -e 2022.2 | xargs -t -I % sh -c 'sudo dnf install -y %; tree /opt/intel; sudo dnf remove -y %'
+      run: sudo dnf -y --disablerepo="*" --enablerepo="oneAPI" list available | grep -v -- '-tail$' | awk '{print $1}' | grep -e 2023.0 | xargs -t -I % sh -c 'sudo dnf install -y %; tree /opt/intel; sudo dnf remove -y %'
