@@ -52,6 +52,6 @@ jobs:
     - name: setup yum/dnf repo
       run: scripts/setup_yum_dnf_repo_linux.sh
     - name: install prerequisites
-      run: sudo dnf -y install git make gcc g++
+      run: sudo dnf -y install git make gcc g++ findutils procps cmake
     - name: install/remove oneapi one by one
       run: sudo dnf -y --disablerepo="*" --enablerepo="oneAPI" list available | grep -v -- '-tail$' | awk '{print $1}' | grep -e 2023.0 | xargs -t -I % sh -c 'sudo dnf install -y %; tree /opt/intel; sudo dnf remove -y %'
