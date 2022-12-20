@@ -48,7 +48,7 @@ parameters:
     default: "2023.0.0"
   COMPILER_VERSION:
     type: string
-    default: "2023.0.1"
+    default: "2023.0.0"
   TBB_VERSION:
     type: string
     default: "2021.8.0"
