@@ -184,7 +184,7 @@ jobs:
       with:
         python-version: '3.x'
     - name: Install prerequisites
-      run: python -m pip install --quiet -r doc/requirements.txt
+      run: python -m pip install --quiet -U -r requirements.txt
     - name: Build doc
       run: |
         find source/${{ github.workflow }} -maxdepth 1 -type f ! -name "*apt*" ! -name "*yum*" -exec sed -i -e 1,5d {} \;
