@@ -22,7 +22,7 @@ pipeline {
       parallel {
         stage('build DPC++') {
           steps {
-            dir ("oneAPI-samples/DirectProgramming/DPC++/DenseLinearAlgebra/vector-add") {
+            dir ("oneAPI-samples/DirectProgramming/C++SYCL/DenseLinearAlgebra/vector-add") {
               sh "mkdir build && cd build && cmake .. && make cpu-gpu && ./vector-add-buffers"
             }
           }
