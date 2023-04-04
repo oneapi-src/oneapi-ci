@@ -22,7 +22,7 @@ fortran)
 dpc++)
 # shellcheck source=/dev/null
   source /opt/intel/oneapi/tbb/"$ONEAPI_RELEASE"/env/vars.sh
-  cd oneAPI-samples/DirectProgramming/DPC++/DenseLinearAlgebra/vector-add
+  cd oneAPI-samples/DirectProgramming/C++SYCL/DenseLinearAlgebra/vector-add
   make all && make run
   ;;
 esac

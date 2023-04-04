@@ -23,7 +23,7 @@ fortran)
   make && make run && make clean && make FC=ifx && make run
   ;;
 dpc++)
-  cd oneAPI-samples/DirectProgramming/DPC++/DenseLinearAlgebra/vector-add
+  cd oneAPI-samples/DirectProgramming/C++SYCL/DenseLinearAlgebra/vector-add
   make all && make run
   ;;
 esac
