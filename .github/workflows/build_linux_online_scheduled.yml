@@ -11,7 +11,7 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  LINUX_BASEKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/7deeaac4-f605-4bcf-a81b-ea7531577c61/l_BaseKit_p_2023.1.0.46401.sh 
+  LINUX_BASEKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/7deeaac4-f605-4bcf-a81b-ea7531577c61/l_BaseKit_p_2023.1.0.46401.sh
   LINUX_HPCKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/1ff1b38a-8218-4c53-9956-f0b264de35a4/l_HPCKit_p_2023.1.0.46346.sh
   LINUX_IOTKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/c1cb379a-6aab-4f18-a8c9-611ca8905ef8/l_IoTKit_p_2023.1.0.46344.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/19090/l_AIKit_p_2023.0.0.26100.sh
