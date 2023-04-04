@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 def SAMPLES_REPO = "https://github.com/oneapi-src/oneAPI-samples.git"
-def SAMPLES_TAG = "2023.0.0"
+def SAMPLES_TAG = "2023.1.0"
 
 pipeline {
   agent { docker { image 'intel/oneapi-hpckit' } }
@@ -22,7 +22,7 @@ pipeline {
       parallel {
         stage('build DPC++') {
           steps {
-            dir ("oneAPI-samples/DirectProgramming/DPC++/DenseLinearAlgebra/vector-add") {
+            dir ("oneAPI-samples/DirectProgramming/C++SYCL/DenseLinearAlgebra/vector-add") {
               sh "mkdir build && cd build && cmake .. && make cpu-gpu && ./vector-add-buffers"
             }
           }
