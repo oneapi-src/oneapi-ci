@@ -11,11 +11,11 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/19078/w_BaseKit_p_2023.0.0.25940.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/19085/w_HPCKit_p_2023.0.0.25931.exe
-  WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/19083/w_IoTKit_p_2023.0.0.25928.exe
-  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/19089/w_RenderKit_p_2023.0.0.25942.exe
-  SAMPLES_TAG: 2023.0.0
+  WINDOWS_BASEKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/c961e083-5685-4f0b-ada5-c6cf16f561dd/w_BaseKit_p_2023.1.0.47256.exe
+  WINDOWS_HPCKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/2a13d966-fcc5-4a66-9fcc-50603820e0c9/w_HPCKit_p_2023.1.0.46357.exe
+  WINDOWS_IOTKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/365570df-0a47-463b-b1eb-cda0c2e04bc6/w_IoTKit_p_2023.1.0.46355.exe
+  WINDOWS_RENDERKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/62054265-968e-4c68-88dd-c1a06861dba2/w_RenderKit_p_2023.1.0.47568.exe
+  SAMPLES_TAG: 2023.1.0
 
 jobs:
   build_windows_basekit:

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 def SAMPLES_REPO = "https://github.com/oneapi-src/oneAPI-samples.git"
-def SAMPLES_TAG = "2023.0.0"
+def SAMPLES_TAG = "2023.1.0"
 
 pipeline {
   agent { docker { image 'intel/oneapi-hpckit' } }
