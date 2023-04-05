@@ -8,7 +8,7 @@ on:
   push: {}
   workflow_dispatch: {}
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *'
 
 env:
   MACOS_BASEKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/2516a0a0-de4d-4f3d-9e83-545b32127dbb/m_BaseKit_p_2023.1.0.45568.dmg

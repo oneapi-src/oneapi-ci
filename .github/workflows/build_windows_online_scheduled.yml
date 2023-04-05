@@ -8,7 +8,7 @@ on:
   push: {}
   workflow_dispatch: {}
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *'
 
 env:
   WINDOWS_BASEKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/c961e083-5685-4f0b-ada5-c6cf16f561dd/w_BaseKit_p_2023.1.0.47256.exe
