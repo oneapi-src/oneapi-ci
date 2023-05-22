@@ -23,7 +23,7 @@ env:
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
-  CACHE_NUMBER: 7
+  CACHE_NUMBER: 8
   SAMPLES_TAG: 2023.1.0
   COMPILER_VERSION: 2023.1.0
   TBB_VERSION: 2021.9.0
