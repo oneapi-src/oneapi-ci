@@ -6,10 +6,10 @@ stages:
   - build
 
 variables:
-  WINDOWS_BASEKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/c961e083-5685-4f0b-ada5-c6cf16f561dd/w_BaseKit_p_2023.1.0.47256_offline.exe
-  WINDOWS_HPCKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/2a13d966-fcc5-4a66-9fcc-50603820e0c9/w_HPCKit_p_2023.1.0.46357_offline.exe
-  LINUX_BASEKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/7deeaac4-f605-4bcf-a81b-ea7531577c61/l_BaseKit_p_2023.1.0.46401_offline.sh
-  LINUX_HPCKIT_URL: https:/registrationcenter-download.intel.com/akdlm/IRC_NAS/1ff1b38a-8218-4c53-9956-f0b264de35a4/l_HPCKit_p_2023.1.0.46346_offline.sh
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f96c71db-2c6c-45d9-8c1f-0348ef5885cf/w_BaseKit_p_2023.2.0.49396_offline.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/438527fc-7140-422c-a851-389f2791816b/w_HPCKit_p_2023.2.0.49441_offline.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/992857b9-624c-45de-9701-f6445d845359/l_BaseKit_p_2023.2.0.49397_offline.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0722521a-34b5-4c41-af3f-d5d14e88248d/l_HPCKit_p_2023.2.0.49440_offline.sh
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
   WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
@@ -20,9 +20,9 @@ variables:
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   CACHE_NUMBER: 13
-  SAMPLES_TAG: 2023.1.0
-  COMPILER_VERSION: "2023.1.0"
-  TBB_VERSION: "2021.9.0"
+  SAMPLES_TAG: 2023.2.0
+  COMPILER_VERSION: "2023.2.0"
+  TBB_VERSION: "2021.10.0"
   VS_VER: 2019_build_tools
 
 .shared_windows_runners:
@@ -376,7 +376,7 @@ build_linux_apt_dpcpp:
         mv /opt/intel/oneapi/tbb cache
 
 build_linux_dnf_cpp:
-  image: fedora:latest
+  image: fedora:37
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
@@ -408,7 +408,7 @@ build_linux_dnf_cpp:
         mv /opt/intel/oneapi/compiler cache
 
 build_linux_dnf_fortran:
-  image: fedora:latest
+  image: fedora:37
   stage: build
   cache:
     key:
@@ -440,7 +440,7 @@ build_linux_dnf_fortran:
         mv /opt/intel/oneapi/compiler cache
 
 build_linux_dnf_dpcpp:
-  image: fedora:latest
+  image: fedora:37
   stage: build
   cache:
     key:

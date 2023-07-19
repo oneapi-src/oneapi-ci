@@ -1,9 +1,9 @@
-// SPDX-FileCopyrightText: 2022 Intel Corporation
+// SPDX-FileCopyrightText: 2023 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
 def SAMPLES_REPO = "https://github.com/oneapi-src/oneAPI-samples.git"
-def SAMPLES_TAG = "2023.1.0"
+def SAMPLES_TAG = "2023.2.0"
 
 pipeline {
   agent { docker { image 'intel/oneapi-hpckit' } }
