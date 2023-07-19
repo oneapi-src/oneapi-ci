@@ -53,11 +53,6 @@ Intel\ |r| AI Analytics Toolkit
 .. include:: list_components/linux_aikit.txt
    :literal:
 
-Intel\ |r| oneAPI DL Framework Developer Toolkit
-------------------------------------------------
-.. include:: list_components/linux_dlfdkit.txt
-   :literal:
-
 Intel\ |r| oneAPI Rendering Toolkit
 -----------------------------------
 .. include:: list_components/linux_renderkit.txt
