@@ -55,7 +55,7 @@ GitHub   |c|       |c|       |c|          |c|   |c|     |c|
 Circle   |c|       |c|       |c|          |c|   |c|     |x|
 AppVeyor |c|       |x|       |x|          |c|   |c|     |c|
 GitLab   |c|       |c|       |x|          |c|   |c|     |x|
-Azure    |c|       |c|       |c|          |c|   |c|     |c|
+Azure    |c|       |x|       |c|          |c|   |c|     |c|
 Jenkins  |x|       |x|       |c|          |x|   |x|     |x|
 ======== ========= ========= ============ ===== ======= ===========
 
