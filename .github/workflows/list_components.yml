@@ -18,7 +18,7 @@ env:
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/992857b9-624c-45de-9701-f6445d845359/l_BaseKit_p_2023.2.0.49397.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0722521a-34b5-4c41-af3f-d5d14e88248d/l_HPCKit_p_2023.2.0.49440.sh
   LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/792937e1-5667-47a9-a9df-e1142fce55b5/l_IoTKit_p_2023.2.0.49273.sh
-  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/irc_nas/19202/l_AIKit_p_2023.1.0.31760.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/af4bc50d-898e-45a4-8f7d-378448ba294a/l_AIKit_p_2023.2.0.48997.sh
   LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a75957c3-0cf8-4385-8913-07b33324f7fb/l_RenderKit_p_2023.2.0.49367.sh
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/cd013e6c-49c4-488b-8b86-25df6693a9b7/m_BaseKit_p_2023.2.0.49398.dmg
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/edb4dc2f-266f-47f2-8d56-21bc7764e119/m_HPCKit_p_2023.2.0.49443.dmg
