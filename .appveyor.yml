@@ -4,23 +4,20 @@
 
 environment:
   global:
-    WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f96c71db-2c6c-45d9-8c1f-0348ef5885cf/w_BaseKit_p_2023.2.0.49396_offline.exe
-    WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/438527fc-7140-422c-a851-389f2791816b/w_HPCKit_p_2023.2.0.49441_offline.exe
-    LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/992857b9-624c-45de-9701-f6445d845359/l_BaseKit_p_2023.2.0.49397_offline.sh
-    LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0722521a-34b5-4c41-af3f-d5d14e88248d/l_HPCKit_p_2023.2.0.49440_offline.sh
-    MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/edb4dc2f-266f-47f2-8d56-21bc7764e119/m_HPCKit_p_2023.2.0.49443_offline.dmg
-    WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-compiler
+    WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/62641e01-1e8d-4ace-91d6-ae03f7f8a71f/w_BaseKit_p_2024.0.0.49563_offline.exe
+    WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5b36181e-4974-4733-91c7-0c10c54900a5/w_HPCKit_p_2024.0.0.49588_offline.exe
+    LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/20f4e6a1-6b0b-4752-b8c1-e5eacba10e01/l_BaseKit_p_2024.0.0.49564_offline.sh
+    LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1b2baedd-a757-4a79-8abb-a5bf15adae9a/l_HPCKit_p_2024.0.0.49589_offline.sh
+    WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-dpcpp-common
     WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
-    WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.dpcpp-compiler
-    LINUX_CPP_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+    WINDOWS_DPCPP_COMPONENTS: intel.oneapi.win.cpp-dpcpp-common
+    LINUX_CPP_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler
     LINUX_FORTRAN_COMPONENTS: intel-oneapi-compiler-fortran
     LINUX_DPCPP_COMPONENTS: intel-oneapi-compiler-dpcpp-cpp
-    LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler-pro
+    LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
     LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
     LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-    MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
-    MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
-    SAMPLES_TAG: 2023.2.0
+    SAMPLES_TAG: 2024.0.0
     VS_VER: vs2019
 
   matrix:
@@ -50,12 +47,6 @@ environment:
 
     - job_name: build_linux_apt_dpcpp
       appveyor_build_worker_image: ubuntu2004
-
-    - job_name: build_mac_cpp
-      appveyor_build_worker_image: macos
-
-    - job_name: build_mac_fortran
-      appveyor_build_worker_image: macos
 
 for:
   -
@@ -190,34 +181,3 @@ for:
         scripts/install_linux_apt.sh $LINUX_DPCPP_COMPONENTS
     build_script:
       sh: scripts/build_linux.sh dpc++ $SAMPLES_TAG
-
-  -
-    matrix:
-      only:
-        - job_name: build_mac_cpp
-    install:
-      sh: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_CPP_COMPONENTS
-    build_script:
-      sh: scripts/build_macos.sh c++ $SAMPLES_TAG
-
-    # Delete the following if you don't want to save install logs
-    artifacts:
-      - name: InstallLogs
-        path: |
-          bootstrapper*
-          installer*
-  -
-    matrix:
-      only:
-        - job_name: build_mac_fortran
-    install:
-      sh: scripts/install_macos.sh $MACOS_HPCKIT_URL $MACOS_FORTRAN_COMPONENTS
-    build_script:
-      sh: scripts/build_macos.sh fortran $SAMPLES_TAG
-
-    # Delete the following if you don't want to save install logs
-    artifacts:
-      - name: InstallLogs
-        path: |
-          bootstrapper*
-          installer*
