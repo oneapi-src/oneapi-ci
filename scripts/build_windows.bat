@@ -28,11 +28,6 @@ goto exit
 
 :cpp
 cd oneAPI-samples\DirectProgramming\C++\CompilerInfrastructure\Intrinsics
-icl -O2 src\intrin_dot_sample.cpp
-icl -O2 src\intrin_double_sample.cpp
-icl -O2 src\intrin_ftz_sample.cpp
-intrin_dot_sample.exe && intrin_double_sample.exe && intrin_ftz_sample.exe
-set RESULT=%ERRORLEVEL%
 del intrin_dot_sample.exe intrin_double_sample.exe intrin_ftz_sample.exe
 icx -O2 -msse3 src\intrin_dot_sample.cpp
 icx -O2 -msse3 src\intrin_double_sample.cpp
@@ -43,10 +38,10 @@ goto exit
 
 :fortran
 cd oneAPI-samples\DirectProgramming\Fortran\CombinationalLogic\openmp-primes
-ifort -O2 -fpp -qopenmp src\openmp_sample.f90
+ifort -O2 -fpp /Qopenmp src\openmp_sample.f90
 openmp_sample.exe
 set RESULT=%ERRORLEVEL%
-ifx -O2 -fpp -qopenmp src\openmp_sample.f90
+ifx -O2 -fpp /Qopenmp src\openmp_sample.f90
 openmp_sample.exe
 set /a RESULT=%RESULT%+%ERRORLEVEL%
 goto exit
@@ -59,7 +54,7 @@ mkdir build
 cd build
 cmake -G "NMake Makefiles" ..
 nmake cpu-gpu
-vector-add-buffers
+vector-add-buffers.exe
 set RESULT=%ERRORLEVEL%
 goto exit
 
