@@ -11,18 +11,18 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f96c71db-2c6c-45d9-8c1f-0348ef5885cf/w_BaseKit_p_2023.2.0.49396.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/438527fc-7140-422c-a851-389f2791816b/w_HPCKit_p_2023.2.0.49441.exe
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/62641e01-1e8d-4ace-91d6-ae03f7f8a71f/w_BaseKit_p_2024.0.0.49563.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5b36181e-4974-4733-91c7-0c10c54900a5/w_HPCKit_p_2024.0.0.49588.exe
   WINDOWS_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/dbdf4222-ff39-4c53-9b1a-23585f9a5e25/w_IoTKit_p_2023.2.0.49274.exe
-  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b80ac7cd-0ef8-45b3-ad1f-2e8504113c34/w_RenderKit_p_2023.2.0.49368.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/992857b9-624c-45de-9701-f6445d845359/l_BaseKit_p_2023.2.0.49397.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0722521a-34b5-4c41-af3f-d5d14e88248d/l_HPCKit_p_2023.2.0.49440.sh
+  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b2a07c39-3374-4a4a-b1d0-56bbcb93ddce/w_RenderKit_p_2024.0.0.49657.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/20f4e6a1-6b0b-4752-b8c1-e5eacba10e01/l_BaseKit_p_2024.0.0.49564.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1b2baedd-a757-4a79-8abb-a5bf15adae9a/l_HPCKit_p_2024.0.0.49589.sh
   LINUX_IOTKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/792937e1-5667-47a9-a9df-e1142fce55b5/l_IoTKit_p_2023.2.0.49273.sh
-  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/af4bc50d-898e-45a4-8f7d-378448ba294a/l_AIKit_p_2023.2.0.48997.sh
-  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a75957c3-0cf8-4385-8913-07b33324f7fb/l_RenderKit_p_2023.2.0.49367.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/249dd907-b3ed-4aae-a9d2-f8e303c02dbe/l_AITools.2024.0.0.21.sh
+  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18e978f0-5a80-4006-bf34-207f205b8f4f/l_RenderKit_p_2024.0.0.49659.sh
   MACOS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/cd013e6c-49c4-488b-8b86-25df6693a9b7/m_BaseKit_p_2023.2.0.49398.dmg
   MACOS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/edb4dc2f-266f-47f2-8d56-21bc7764e119/m_HPCKit_p_2023.2.0.49443.dmg
-  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0510c852-f273-4e43-b8d6-9076cbc0dd34/m_RenderKit_p_2023.2.0.49370.dmg
+  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/c8679a2f-fe17-4879-8d53-e4866060d38e/m_RenderKit_p_2024.0.0.49658.dmg
 
 jobs:
   windows:
@@ -66,8 +66,8 @@ jobs:
       run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_hpckit.txt
     - name: Intel® oneAPI IoT Toolkit
       run: scripts/list_components_linux.sh $LINUX_IOTKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_iotkit.txt
-    - name: Intel® AI Analytics Toolkit
-      run: scripts/list_components_linux.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_aikit.txt
+    - name: Intel® AI Tools Toolkit
+      run: scripts/list_components_linux_aitools.sh $LINUX_AIKIT_URL
     - name: Intel® oneAPI Rendering Toolkit
       run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_renderkit.txt
 

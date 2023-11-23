@@ -7,43 +7,37 @@ trigger:
 
 variables:
   - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f96c71db-2c6c-45d9-8c1f-0348ef5885cf/w_BaseKit_p_2023.2.0.49396_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/62641e01-1e8d-4ace-91d6-ae03f7f8a71f/w_BaseKit_p_2024.0.0.49563_offline.exe
   - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/438527fc-7140-422c-a851-389f2791816b/w_HPCKit_p_2023.2.0.49441_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5b36181e-4974-4733-91c7-0c10c54900a5/w_HPCKit_p_2024.0.0.49588_offline.exe
   - name: LINUX_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/992857b9-624c-45de-9701-f6445d845359/l_BaseKit_p_2023.2.0.49397_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/20f4e6a1-6b0b-4752-b8c1-e5eacba10e01/l_BaseKit_p_2024.0.0.49564_offline.sh
   - name: LINUX_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0722521a-34b5-4c41-af3f-d5d14e88248d/l_HPCKit_p_2023.2.0.49440_offline.sh
-  - name: MACOS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/edb4dc2f-266f-47f2-8d56-21bc7764e119/m_HPCKit_p_2023.2.0.49443_offline.dmg
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1b2baedd-a757-4a79-8abb-a5bf15adae9a/l_HPCKit_p_2024.0.0.49589_offline.sh
   - name: WINDOWS_CPP_COMPONENTS
-    value: intel.oneapi.win.cpp-compiler
+    value: intel.oneapi.win.cpp-dpcpp-common
   - name: WINDOWS_FORTRAN_COMPONENTS
     value: intel.oneapi.win.ifort-compiler
   - name: WINDOWS_DPCPP_COMPONENTS
-    value: intel.oneapi.win.dpcpp-compiler
+    value: intel.oneapi.win.cpp-dpcpp-common
   - name: LINUX_CPP_COMPONENTS
-    value: intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+    value: intel-oneapi-dpcpp-cpp-compiler
   - name: LINUX_FORTRAN_COMPONENTS
     value: intel-oneapi-compiler-fortran
   - name: LINUX_DPCPP_COMPONENTS
     value: intel-oneapi-compiler-dpcpp-cpp
   - name: LINUX_CPP_COMPONENTS_WEB
-    value: intel.oneapi.lin.dpcpp-cpp-compiler-pro
+    value: intel.oneapi.lin.dpcpp-cpp-compiler
   - name: LINUX_FORTRAN_COMPONENTS_WEB
     value: intel.oneapi.lin.ifort-compiler
   - name: LINUX_DPCPP_COMPONENTS_WEB
     value: intel.oneapi.lin.dpcpp-cpp-compiler
-  - name: MACOS_CPP_COMPONENTS
-    value: intel.oneapi.mac.cpp-compiler
-  - name: MACOS_FORTRAN_COMPONENTS
-    value: intel.oneapi.mac.ifort-compiler
   - name: SAMPLES_TAG
-    value: 2023.2.0
+    value: 2024.0.0
   - name: COMPILER_VERSION
-    value: 2023.2.0
+    value: 2024.0.0
   - name: TBB_VERSION
-    value: 2021.10.0
+    value: 2021.11.0
   - name: VS_VER
     value: vs2022
 
@@ -399,71 +393,3 @@ jobs:
   - bash: scripts/cache_exclude_linux.sh
     displayName: exclude unused files from cache
     condition: ne(variables.CACHE_RESTORED, 'true')
-
-- job: build_macOS_cpp
-  pool:
-    vmImage: 'macOS-latest'
-  steps:
-  - script: |
-      sudo mkdir -p /opt/intel
-      sudo chown $USER /opt/intel
-    displayName: prepare for cache restore
-  - task: Cache@2
-    inputs:
-      path: /opt/intel/oneapi
-      key: '"install" | "$(MACOS_HPCKIT_URL)" | "$(MACOS_CPP_COMPONENTS)"'
-      cacheHitVar: CACHE_RESTORED
-  - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_CPP_COMPONENTS)
-    displayName: install
-    condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_macos.sh c++ $(SAMPLES_TAG)
-    displayName: build
-
-  # Delete the following if you don't want to save install logs
-  - task: CopyFiles@2
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      sourceFolder: '$(Build.SourcesDirectory)'
-      contents: |
-        bootstrapper*
-        installer*
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
-  - task: PublishBuildArtifacts@1
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs_$(Agent.JobName)
-
-- job: build_macOS_fortran
-  pool:
-    vmImage: 'macOS-latest'
-  steps:
-  - script: |
-      sudo mkdir -p /opt/intel
-      sudo chown $USER /opt/intel
-    displayName: prepare for cache restore
-  - task: Cache@2
-    inputs:
-      path: /opt/intel/oneapi
-      key: '"install" | "$(MACOS_HPCKIT_URL)" | "$(MACOS_FORTRAN_COMPONENTS)"'
-      cacheHitVar: CACHE_RESTORED
-  - script: scripts/install_macos.sh $(MACOS_HPCKIT_URL) $(MACOS_FORTRAN_COMPONENTS)
-    displayName: install
-    condition: ne(variables.CACHE_RESTORED, 'true')
-  - script: scripts/build_macos.sh fortran $(SAMPLES_TAG)
-    displayName: build
-
-  # Delete the following if you don't want to save install logs
-  - task: CopyFiles@2
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      sourceFolder: '$(Build.SourcesDirectory)'
-      contents: |
-        bootstrapper*
-        installer*
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
-  - task: PublishBuildArtifacts@1
-    condition: ne(variables.CACHE_RESTORED, 'true')
-    inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: InstallLogs_$(Agent.JobName)
