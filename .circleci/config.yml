@@ -18,16 +18,16 @@ parameters:
     default: "https://registrationcenter-download.intel.com/akdlm//IRC_NAS/1b2baedd-a757-4a79-8abb-a5bf15adae9a/l_HPCKit_p_2024.0.0.49589_offline.sh"
   WINDOWS_CPP_COMPONENTS:
     type: string
-    default: "intel.oneapi.win.cpp-compiler"
+    default: "intel.oneapi.win.cpp-dpcpp-common"
   WINDOWS_FORTRAN_COMPONENTS:
     type: string
     default: "intel.oneapi.win.ifort-compiler"
   WINDOWS_DPCPP_COMPONENTS:
     type: string
-    default: "intel.oneapi.win.dpcpp-compiler"
+    default: "intel.oneapi.win.cpp-dpcpp-common"
   LINUX_CPP_COMPONENTS:
     type: string
-    default: "intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic"
+    default: "intel-oneapi-dpcpp-cpp-compiler"
   LINUX_FORTRAN_COMPONENTS:
     type: string
     default: "intel-oneapi-compiler-fortran"
@@ -36,7 +36,7 @@ parameters:
     default: "intel-oneapi-compiler-dpcpp-cpp"
   LINUX_CPP_COMPONENTS_WEB:
     type: string
-    default: "intel.oneapi.lin.dpcpp-cpp-compiler-pro"
+    default: "intel.oneapi.lin.dpcpp-cpp-compiler"
   LINUX_FORTRAN_COMPONENTS_WEB:
     type: string
     default: "intel.oneapi.lin.ifort-compiler"
