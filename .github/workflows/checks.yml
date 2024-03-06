@@ -9,6 +9,7 @@ on: [push, pull_request]
 jobs:
   checks:
     runs-on: Ubuntu-20.04
+    permissions: read-all
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
