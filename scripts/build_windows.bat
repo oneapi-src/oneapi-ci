@@ -49,12 +49,9 @@ goto exit
 :dpcpp
 for /f "tokens=* usebackq" %%f in (`dir /b "C:\Program Files (x86)\Intel\oneAPI\tbb\" ^| findstr /V latest ^| sort`) do @set "LATEST_VERSION=%%f"
 @call "C:\Program Files (x86)\Intel\oneAPI\tbb\%LATEST_VERSION%\env\vars.bat"
-cd oneAPI-samples\DirectProgramming\C++SYCL\DenseLinearAlgebra\vector-add
-mkdir build
-cd build
-cmake -G "NMake Makefiles" ..
-nmake cpu-gpu
-vector-add-buffers.exe
+cd oneAPI-samples\DirectProgramming\C++SYCL\DenseLinearAlgebra\matrix_mul
+nmake -f Makefile.win build_sycl
+nmake -f Makefile.win run_sycl
 set RESULT=%ERRORLEVEL%
 goto exit
 
