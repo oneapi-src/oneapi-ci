@@ -50,7 +50,7 @@ goto exit
 for /f "tokens=* usebackq" %%f in (`dir /b "C:\Program Files (x86)\Intel\oneAPI\tbb\" ^| findstr /V latest ^| sort`) do @set "LATEST_VERSION=%%f"
 @call "C:\Program Files (x86)\Intel\oneAPI\tbb\%LATEST_VERSION%\env\vars.bat"
 cd oneAPI-samples\DirectProgramming\C++SYCL\DenseLinearAlgebra\matrix_mul
-REM This test seems to require specific HW to run, investigation is ongoing
+REM Sample has additional HW prerequisites. Please check sample Readme for details. Uncomment the following if the prerequisites are met.
 REM nmake -f Makefile.win build_sycl
 REM nmake -f Makefile.win run_sycl
 set RESULT=%ERRORLEVEL%
