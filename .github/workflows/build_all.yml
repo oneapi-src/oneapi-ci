@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 name: build_all
+permissions: read-all
 
 on: push
 
@@ -33,7 +34,6 @@ env:
 jobs:
   build_windows_cpp:
     runs-on: windows-latest
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -71,7 +71,6 @@ jobs:
 
   build_windows_fortran:
     runs-on: windows-latest
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -109,7 +108,6 @@ jobs:
 
   build_windows_dpcpp:
     runs-on: windows-latest
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -152,7 +150,6 @@ jobs:
 
   build_linux_cpp:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -187,7 +184,6 @@ jobs:
 
   build_linux_fortran:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -222,7 +218,6 @@ jobs:
 
   build_linux_dpcpp:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -258,7 +253,6 @@ jobs:
 
   build_linux_aitools:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -293,7 +287,6 @@ jobs:
 
   build_linux_apt_cpp:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -321,7 +314,6 @@ jobs:
 
   build_linux_apt_fortran:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -349,7 +341,6 @@ jobs:
 
   build_linux_apt_dpcpp:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -378,7 +369,6 @@ jobs:
 
   build_linux_dnf_cpp:
     runs-on: ubuntu-20.04
-    permissions: read-all
     container: fedora:37
     defaults:
       run:
@@ -409,7 +399,6 @@ jobs:
 
   build_linux_dnf_fortran:
     runs-on: ubuntu-20.04
-    permissions: read-all
     container: fedora:37
     defaults:
       run:
@@ -440,7 +429,6 @@ jobs:
 
   build_linux_dnf_dpcpp:
     runs-on: ubuntu-20.04
-    permissions: read-all
     container: fedora:37
     defaults:
       run:

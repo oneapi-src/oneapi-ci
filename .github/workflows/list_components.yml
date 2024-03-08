@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 name: list_components
+permissions: read-all
 
 on:
   push: {}
@@ -27,7 +28,6 @@ env:
 jobs:
   windows:
     runs-on: windows-latest
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -53,7 +53,6 @@ jobs:
 
   linux:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -81,7 +80,6 @@ jobs:
 
   linux_apt:
     runs-on: ubuntu-20.04
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -103,7 +101,6 @@ jobs:
 
   linux_yum_dnf:
     runs-on: ubuntu-20.04
-    permissions: read-all
     container: fedora:37
     defaults:
       run:
@@ -126,7 +123,6 @@ jobs:
 
   macos:
     runs-on: macos-latest
-    permissions: read-all
     defaults:
       run:
         shell: bash
@@ -150,7 +146,6 @@ jobs:
 
   publish:
     runs-on: ubuntu-20.04
-    permissions: read-all
     needs: [windows, linux, linux_apt, linux_yum_dnf, macos]
     defaults:
       run:
