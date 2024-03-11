@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 name: build_all
+permissions: read-all
 
 on: push
 

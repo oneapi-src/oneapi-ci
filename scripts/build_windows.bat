@@ -50,11 +50,14 @@ goto exit
 for /f "tokens=* usebackq" %%f in (`dir /b "C:\Program Files (x86)\Intel\oneAPI\tbb\" ^| findstr /V latest ^| sort`) do @set "LATEST_VERSION=%%f"
 @call "C:\Program Files (x86)\Intel\oneAPI\tbb\%LATEST_VERSION%\env\vars.bat"
 cd oneAPI-samples\DirectProgramming\C++SYCL\DenseLinearAlgebra\vector-add
-mkdir build
-cd build
-cmake -G "NMake Makefiles" ..
-nmake cpu-gpu
-vector-add-buffers.exe
+REM Sample has additional HW prerequisites. Please check sample Readme for details. Uncomment the following if the prerequisites are met.
+REM mkdir build
+REM cd build
+REM cmake -G "NMake Makefiles" ..
+REM nmake cpu-gpu
+REM Please change or unset SYCL_DEVICE_TYPE based on available devices.
+REM set SYCL_DEVICE_TYPE=CPU
+REM vector-add-buffers.exe
 set RESULT=%ERRORLEVEL%
 goto exit
 

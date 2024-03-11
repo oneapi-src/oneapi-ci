@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 name: checks
+permissions: read-all
 
 on: [push, pull_request]
 
