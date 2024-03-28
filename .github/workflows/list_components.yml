@@ -18,7 +18,7 @@ env:
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fdc7a2bc-b7a8-47eb-8876-de6201297144/l_BaseKit_p_2024.1.0.596.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7f096850-dc7b-4c35-90b5-36c12abd9eaa/l_HPCKit_p_2024.1.0.560.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0414ef18-5b64-47f2-9b2e-ae94860272b9/l_AITools.2024.1.0.9.sh
-  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7c0c40d5-dd8e-4bc3-871b-4eb9e7ea46a4/w_RenderKit_p_2024.1.0.745.exe
+  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5c90ec26-1319-4f42-9acf-841bfeb1e691/l_RenderKit_p_2024.1.0.743.sh
   MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/c112cca6-12cf-4a0c-9e5e-d0d50d3b0f8b/m_RenderKit_p_2024.1.0.744.dmg
 
 jobs:
