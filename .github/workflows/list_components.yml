@@ -61,9 +61,19 @@ jobs:
       run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_hpckit.txt
     - name: Intel® oneAPI Rendering Toolkit
       run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_renderkit.txt
+
+  linux_aitools:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
     - name: Intel® AI Tools Toolkit
       run: scripts/list_components_linux_aitools.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_aitools.txt
-
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
