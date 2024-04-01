@@ -71,7 +71,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
-        python-version: '3.x'      
+        python-version: '3.x'
     - name: Intel® AI Tools Toolkit
       run: scripts/list_components_linux_aitools.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_aitools.txt
     - name: Upload artifacts
