@@ -13,6 +13,7 @@ pwd
 df -h /home
 ./webimage.sh -b -p webimage_extracted
 rm -rf webimage.sh
+ls webimage_extracted/bin
 source "$HOME"/work/oneapi-ci/oneapi-ci/webimage_extracted/bin/activate base
 installer_exit_code=$?
 conda env list > "$FILENAME"
