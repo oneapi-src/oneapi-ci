@@ -9,9 +9,8 @@ FILENAME=$2
 
 curl --output webimage.sh --url "$URL" --retry 5 --retry-delay 5
 chmod +x webimage.sh
-df -h
-sleep 10
-sudo ./webimage.sh -b -p webimage_extracted
+free -m
+./webimage.sh -b -p webimage_extracted
 rm -rf webimage.sh
 source webimage_extracted/bin/activate base
 installer_exit_code=$?
