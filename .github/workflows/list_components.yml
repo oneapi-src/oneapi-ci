@@ -61,6 +61,11 @@ jobs:
       run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_hpckit.txt
     - name: Intel® oneAPI Rendering Toolkit
       run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_renderkit.txt
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ github.job }}
+        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
 
   linux_aitools:
     runs-on: ubuntu-20.04
@@ -144,7 +149,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-20.04
-    needs: [windows, linux, linux_apt, linux_yum_dnf, macos]
+    needs: [windows, linux, linux_aikit, linux_apt, linux_yum_dnf, macos]
     defaults:
       run:
         shell: bash
