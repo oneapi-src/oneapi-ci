@@ -12,6 +12,8 @@ chmod +x webimage.sh
 ./webimage.sh -b -p webimage_extracted
 rm -rf webimage.sh
 pwd
+df -h
+free -m
 source "$HOME"/work/oneapi-ci/oneapi-ci/webimage_extracted/bin/activate base
 installer_exit_code=$?
 conda env list > "$FILENAME"
