@@ -149,7 +149,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-20.04
-    needs: [windows, linux, linux_aikit, linux_apt, linux_yum_dnf, macos]
+    needs: [windows, linux, linux_aitools, linux_apt, linux_yum_dnf, macos]
     defaults:
       run:
         shell: bash
