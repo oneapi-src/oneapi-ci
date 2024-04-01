@@ -176,6 +176,11 @@ jobs:
       with:
         name: linux_yum_dnf
         path: doc/source/${{ github.workflow }}
+    - name: Download artifacts - linux_aitools
+      uses: actions/download-artifact@v2
+      with:
+        name: linux_aitools
+        path: doc/source/${{ github.workflow }}
     - name: Download artifacts - macos
       uses: actions/download-artifact@v2
       with:
