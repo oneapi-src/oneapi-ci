@@ -10,7 +10,7 @@ FILENAME=$2
 curl --output webimage.sh --url "$URL" --retry 5 --retry-delay 5
 chmod +x webimage.sh
 pwd
-df -h
+df -h /home
 ./webimage.sh -b -p webimage_extracted
 rm -rf webimage.sh
 source "$HOME"/work/oneapi-ci/oneapi-ci/webimage_extracted/bin/activate base
