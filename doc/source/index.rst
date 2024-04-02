@@ -20,11 +20,6 @@ Intel\ |r| oneAPI HPC Toolkit
 .. include:: list_components/windows_hpckit.txt
    :literal:
 
-Intel\ |r| oneAPI IoT Toolkit
------------------------------
-.. include:: list_components/windows_iotkit.txt
-   :literal:
-
 Intel\ |r| oneAPI Rendering Toolkit
 -----------------------------------
 .. include:: list_components/windows_renderkit.txt
@@ -41,11 +36,6 @@ Intel\ |r| oneAPI Base Toolkit
 Intel\ |r| oneAPI HPC Toolkit
 -----------------------------
 .. include:: list_components/linux_hpckit.txt
-   :literal:
-
-Intel\ |r| oneAPI IoT Toolkit
------------------------------
-.. include:: list_components/linux_iotkit.txt
    :literal:
 
 Intel\ |r| AI Analytics Toolkit
@@ -72,16 +62,6 @@ Linux, YUM/DNF
 
 MacOS, Web installer
 ====================
-
-Intel\ |r| oneAPI Base Toolkit
-------------------------------
-.. include:: list_components/macos_basekit.txt
-   :literal:
-
-Intel\ |r| oneAPI HPC Toolkit
------------------------------
-.. include:: list_components/macos_hpckit.txt
-   :literal:
 
 Intel\ |r| oneAPI Rendering Toolkit
 -----------------------------------
