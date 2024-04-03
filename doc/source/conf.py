@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Intel® oneAPI CI Samples'
-copyright = '2020 Intel Corporation'
+copyright = '2024 Intel Corporation'
 author = 'Intel Corporation'
 
 
