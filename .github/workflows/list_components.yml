@@ -149,6 +149,8 @@ jobs:
 
   publish:
     runs-on: ubuntu-20.04
+    permissions:
+      pull-requests: write
     needs: [windows, linux, linux_aitools, linux_apt, linux_yum_dnf, macos]
     defaults:
       run:
