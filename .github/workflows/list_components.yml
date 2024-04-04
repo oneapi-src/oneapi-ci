@@ -152,6 +152,7 @@ jobs:
     permissions:
       pull-requests: write
       pages: write
+      contents: write
     needs: [windows, linux, linux_aitools, linux_apt, linux_yum_dnf, macos]
     defaults:
       run:
