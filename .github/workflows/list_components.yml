@@ -78,7 +78,7 @@ jobs:
       with:
         python-version: '3.x'
     - name: Intel® AI Tools Toolkit
-      run: scripts/list_components_linux_aitools.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_aitools.txt
+      run: scripts/list_components_linux_aitools.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_aikit.txt
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
