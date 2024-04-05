@@ -17,7 +17,6 @@ sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 rm -rf webimage.sh
 source "$HOME"/work/oneapi-ci/oneapi-ci/webimage_extracted/bin/activate base
 installer_exit_code=$?
-conda env list > "$FILENAME"
-cat "$FILENAME"
+conda env list | tee "$FILENAME"
 sudo rm -rf webimage_extracted
 exit $installer_exit_code
