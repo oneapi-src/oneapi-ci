@@ -11,4 +11,5 @@ del webimage.exe
 webimage_extracted\bootstrapper.exe --list-components > %FILENAME%
 set installer_exit_code=%ERRORLEVEL%
 type %FILENAME%
+rmdir /s /q webimage_extracted
 exit /b %installer_exit_code%
