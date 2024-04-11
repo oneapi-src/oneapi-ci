@@ -40,7 +40,7 @@ Intel\ |r| oneAPI HPC Toolkit
 
 Intel\ |r| AI Analytics Toolkit
 -------------------------------
-.. include:: list_components/linux_aikit.txt
+.. include:: list_components/linux_aitools.txt
    :literal:
 
 Intel\ |r| oneAPI Rendering Toolkit
