@@ -9,6 +9,9 @@ Intel\ :sup:`®` oneAPI CI Samples
 .. image:: https://api.reuse.software/badge/github.com/oneapi-src/oneapi-ci
    :target: https://api.reuse.software/info/github.com/oneapi-src/oneapi-ci
    :alt: REUSE status
+.. image:: https://www.bestpractices.dev/projects/9064/badge
+   :target: https://www.bestpractices.dev/projects/9064
+   :alt: OpenSSF Best Practices
 
 This repository contains sample Public/Cloud CI configurations that
 demonstrate installing Intel\ :sup:`®` oneAPI toolkit components and
