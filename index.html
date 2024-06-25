@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -33,9 +33,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -126,6 +126,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="#">
   
@@ -147,7 +149,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -311,10 +313,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -322,7 +324,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -389,33 +391,35 @@ document.write(`
 <h2>Windows, Web installer<a class="headerlink" href="#windows-web-installer" title="Permalink to this heading">#</a></h2>
 <section id="intelr-oneapi-base-toolkit">
 <h3>Intel® oneAPI Base Toolkit<a class="headerlink" href="#intelr-oneapi-base-toolkit" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                Version       Installed Name                                                  
-================================================================================================================
-intel.oneapi.win.dpcpp_ct.common  2024.1.0+375  false     Intel® DPC++ Compatibility Tool                       
-intel.oneapi.win.dpcpp_debugger   2024.1.0+436  false     Intel® Distribution for GDB*                          
-intel.oneapi.win.dpl              2022.5.0+216  false     Intel® oneAPI DPC++ Library                           
-intel.oneapi.win.tbb.devel        2021.12.0+496 false     Intel® oneAPI Threading Building Blocks               
-intel.oneapi.win.cpp-dpcpp-common 2024.1.0+964  false     Intel® oneAPI DPC++/C++ Compiler                      
- └─intel.oneapi.win.dpl           2022.5.0+216  false      └─Intel® oneAPI DPC++ Library                        
-intel.oneapi.win.dal.devel        2024.2.0+277  false     Intel® oneAPI Data Analytics Library                  
-intel.oneapi.win.ipp.devel        2021.11.0+529 false     Intel® Integrated Performance Primitives              
-intel.oneapi.win.ippcp            2021.11.0+34  false     Intel® Integrated Performance Primitives Cryptography 
-intel.oneapi.win.mkl.devel        2024.1.0+692  false     Intel® oneAPI Math Kernel Library                     
-intel.oneapi.win.advisor          2024.1.0+497  false     Intel® Advisor                                        
-intel.oneapi.win.vtune            2024.1.0+516  false     Intel® VTune(TM) Profiler                             
-intel.oneapi.win.dnnl             2024.1.0+568  false     Intel® oneAPI Deep Neural Network Library             
- └─intel.oneapi.win.tbb.devel     2021.12.0+496 false      └─Intel® oneAPI Threading Building Blocks            
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                Version       Installed Name                                                             
+===========================================================================================================================
+intel.oneapi.win.dpcpp_ct.common  2024.2.0+421  false     Intel® DPC++ Compatibility Tool                                  
+intel.oneapi.win.dpcpp_debugger   2024.2.0+562  false     Intel® Distribution for GDB*                                     
+intel.oneapi.win.dpl              2022.6.0+557  false     Intel® oneAPI DPC++ Library                                      
+intel.oneapi.win.tbb.devel        2021.13.0+626 false     Intel® oneAPI Threading Building Blocks                          
+intel.oneapi.win.cpp-dpcpp-common 2024.2.0+978  false     Intel® oneAPI DPC++/C++ Compiler                                 
+ ├─intel.oneapi.win.compiler.fpga 2024.2.0+978  false      ├─FPGA Support Package for the Intel® oneAPI DPC++/C++ Compiler 
+ └─intel.oneapi.win.dpl           2022.6.0+557  false      └─Intel® oneAPI DPC++ Library                                   
+intel.oneapi.win.dal.devel        2024.5.0+276  false     Intel® oneAPI Data Analytics Library                             
+intel.oneapi.win.ipp.devel        2021.12.0+556 false     Intel® Integrated Performance Primitives                         
+intel.oneapi.win.ippcp            2021.12.0+469 false     Intel® Integrated Performance Primitives Cryptography            
+intel.oneapi.win.mkl.devel        2024.2.0+661  false     Intel® oneAPI Math Kernel Library                                
+intel.oneapi.win.advisor          2024.2.0+680  false     Intel® Advisor                                                   
+intel.oneapi.win.vtune            2024.2.0+705  false     Intel® VTune(TM) Profiler                                        
+intel.oneapi.win.dnnl             2024.2.0+568  false     Intel® oneAPI Deep Neural Network Library                        
+ └─intel.oneapi.win.tbb.devel     2021.13.0+626 false      └─Intel® oneAPI Threading Building Blocks                       
 </pre></div>
 </div>
 </section>
 <section id="intelr-oneapi-hpc-toolkit">
 <h3>Intel® oneAPI HPC Toolkit<a class="headerlink" href="#intelr-oneapi-hpc-toolkit" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                Version       Installed Name                                                      
-====================================================================================================================
-intel.oneapi.win.mpi.devel        2021.12.0+535 false     Intel® MPI Library                                        
-intel.oneapi.win.cpp-dpcpp-common 2024.1.0+964  false     Intel® oneAPI DPC++/C++ Compiler                          
- └─intel.oneapi.win.dpl           2022.5.0+216  false      └─Intel® oneAPI DPC++ Library                            
-intel.oneapi.win.ifort-compiler   2024.1.0+964  false     Intel® Fortran Compiler &amp; Intel® Fortran Compiler Classic 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                Version       Installed Name                                                             
+===========================================================================================================================
+intel.oneapi.win.mpi.devel        2021.13.0+716 false     Intel® MPI Library                                               
+intel.oneapi.win.cpp-dpcpp-common 2024.2.0+978  false     Intel® oneAPI DPC++/C++ Compiler                                 
+ ├─intel.oneapi.win.compiler.fpga 2024.2.0+978  false      ├─FPGA Support Package for the Intel® oneAPI DPC++/C++ Compiler 
+ └─intel.oneapi.win.dpl           2022.6.0+557  false      └─Intel® oneAPI DPC++ Library                                   
+intel.oneapi.win.ifort-compiler   2024.2.0+978  false     Intel® Fortran Compiler &amp; Intel® Fortran Compiler Classic        
 </pre></div>
 </div>
 </section>
@@ -446,34 +450,36 @@ intel.oneapi.win.rkutil        1.10.0+505 false     Rendering Toolkit Utilities
 <h2>Linux, Web installer<a class="headerlink" href="#linux-web-installer" title="Permalink to this heading">#</a></h2>
 <section id="id1">
 <h3>Intel® oneAPI Base Toolkit<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                  Version       Installed Name                                                  
-==================================================================================================================
-intel.oneapi.lin.dpcpp-ct           2024.1.0+374  false     Intel® DPC++ Compatibility Tool                       
-intel.oneapi.lin.dpcpp_dbg          2024.1.0+435  false     Intel® Distribution for GDB*                          
-intel.oneapi.lin.dpl                2022.5.0+215  false     Intel® oneAPI DPC++ Library                           
-intel.oneapi.lin.tbb.devel          2021.12.0+495 false     Intel® oneAPI Threading Building Blocks               
-intel.oneapi.lin.ccl.devel          2021.12.0+309 false     Intel® oneAPI Collective Communications Library       
-intel.oneapi.lin.dpcpp-cpp-compiler 2024.1.0+963  false     Intel® oneAPI DPC++/C++ Compiler                      
- └─intel.oneapi.lin.dpl             2022.5.0+215  false      └─Intel® oneAPI DPC++ Library                        
-intel.oneapi.lin.dal.devel          2024.2.0+276  false     Intel® oneAPI Data Analytics Library                  
-intel.oneapi.lin.ipp.devel          2021.11.0+528 false     Intel® Integrated Performance Primitives              
-intel.oneapi.lin.ippcp.devel        2021.11.0+33  false     Intel® Integrated Performance Primitives Cryptography 
-intel.oneapi.lin.mkl.devel          2024.1.0+691  false     Intel® oneAPI Math Kernel Library                     
-intel.oneapi.lin.advisor            2024.1.0+499  false     Intel® Advisor                                        
-intel.oneapi.lin.vtune              2024.1.0+515  false     Intel® VTune(TM) Profiler                             
-intel.oneapi.lin.dnnl               2024.1.0+567  false     Intel® oneAPI Deep Neural Network Library             
- └─intel.oneapi.lin.tbb.devel       2021.12.0+495 false      └─Intel® oneAPI Threading Building Blocks            
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                  Version       Installed Name                                                             
+=============================================================================================================================
+intel.oneapi.lin.dpcpp-ct           2024.2.0+423  false     Intel® DPC++ Compatibility Tool                                  
+intel.oneapi.lin.dpcpp_dbg          2024.2.0+564  false     Intel® Distribution for GDB*                                     
+intel.oneapi.lin.dpl                2022.6.0+559  false     Intel® oneAPI DPC++ Library                                      
+intel.oneapi.lin.tbb.devel          2021.13.0+628 false     Intel® oneAPI Threading Building Blocks                          
+intel.oneapi.lin.ccl.devel          2021.13.0+299 false     Intel® oneAPI Collective Communications Library                  
+intel.oneapi.lin.dpcpp-cpp-compiler 2024.2.0+981  false     Intel® oneAPI DPC++/C++ Compiler                                 
+ ├─intel.oneapi.lin.compiler.fpga   2024.2.0+981  false      ├─FPGA Support Package for the Intel® oneAPI DPC++/C++ Compiler 
+ └─intel.oneapi.lin.dpl             2022.6.0+559  false      └─Intel® oneAPI DPC++ Library                                   
+intel.oneapi.lin.dal.devel          2024.5.0+281  false     Intel® oneAPI Data Analytics Library                             
+intel.oneapi.lin.ipp.devel          2021.12.0+558 false     Intel® Integrated Performance Primitives                         
+intel.oneapi.lin.ippcp.devel        2021.12.0+471 false     Intel® Integrated Performance Primitives Cryptography            
+intel.oneapi.lin.mkl.devel          2024.2.0+663  false     Intel® oneAPI Math Kernel Library                                
+intel.oneapi.lin.advisor            2024.2.0+682  false     Intel® Advisor                                                   
+intel.oneapi.lin.vtune              2024.2.0+707  false     Intel® VTune(TM) Profiler                                        
+intel.oneapi.lin.dnnl               2024.2.0+570  false     Intel® oneAPI Deep Neural Network Library                        
+ └─intel.oneapi.lin.tbb.devel       2021.13.0+628 false      └─Intel® oneAPI Threading Building Blocks                       
 </pre></div>
 </div>
 </section>
 <section id="id2">
 <h3>Intel® oneAPI HPC Toolkit<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                  Version       Installed Name                                                      
-======================================================================================================================
-intel.oneapi.lin.mpi.devel          2021.12.0+534 false     Intel® MPI Library                                        
-intel.oneapi.lin.dpcpp-cpp-compiler 2024.1.0+963  false     Intel® oneAPI DPC++/C++ Compiler                          
- └─intel.oneapi.lin.dpl             2022.5.0+215  false      └─Intel® oneAPI DPC++ Library                            
-intel.oneapi.lin.ifort-compiler     2024.1.0+963  false     Intel® Fortran Compiler &amp; Intel® Fortran Compiler Classic 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ID                                  Version       Installed Name                                                             
+=============================================================================================================================
+intel.oneapi.lin.mpi.devel          2021.13.0+718 false     Intel® MPI Library                                               
+intel.oneapi.lin.dpcpp-cpp-compiler 2024.2.0+981  false     Intel® oneAPI DPC++/C++ Compiler                                 
+ ├─intel.oneapi.lin.compiler.fpga   2024.2.0+981  false      ├─FPGA Support Package for the Intel® oneAPI DPC++/C++ Compiler 
+ └─intel.oneapi.lin.dpl             2022.6.0+559  false      └─Intel® oneAPI DPC++ Library                                   
+intel.oneapi.lin.ifort-compiler     2024.2.0+981  false     Intel® Fortran Compiler &amp; Intel® Fortran Compiler Classic        
 </pre></div>
 </div>
 </section>
@@ -4050,8 +4056,8 @@ By Intel Corporation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
