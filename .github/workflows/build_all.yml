@@ -25,7 +25,7 @@ env:
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   MACOS_CPP_COMPONENTS: intel.oneapi.mac.cpp-compiler
   MACOS_FORTRAN_COMPONENTS: intel.oneapi.mac.ifort-compiler
-  CACHE_NUMBER: 4
+  CACHE_NUMBER: 5
   SAMPLES_TAG: 2024.2.0
   AI_SAMPLES_TAG: 2024.1.0
   COMPILER_VERSION: 2024.2.0

@@ -19,7 +19,7 @@ variables:
   LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler-pro
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-  CACHE_NUMBER: 3
+  CACHE_NUMBER: 4
   SAMPLES_TAG: 2024.2.0
   COMPILER_VERSION: "2024.2.0"
   TBB_VERSION: "2021.13.0"
