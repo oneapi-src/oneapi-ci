@@ -12,14 +12,11 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e83a8e64-04fc-45df-85c6-c2208d03bdb5/w_BaseKit_p_2024.2.0.635.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0d500705-397e-41b3-8b2b-2a3da1753fc2/w_HPCKit_p_2024.2.0.633.exe
-  WINDOWS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7c0c40d5-dd8e-4bc3-871b-4eb9e7ea46a4/w_RenderKit_p_2024.1.0.745.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/9a98af19-1c68-46ce-9fdd-e249240c7c42/l_BaseKit_p_2024.2.0.634.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d4e49548-1492-45c9-b678-8268cb0f1b05/l_HPCKit_p_2024.2.0.635.sh
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d91caaa0-7306-46ea-a519-79a0423e1903/w_BaseKit_p_2024.2.1.101.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/745e923a-3f85-4e1e-b6dd-637c0e9ccba6/w_HPCKit_p_2024.2.1.80.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e6ff8e9c-ee28-47fb-abd7-5c524c983e1c/l_BaseKit_p_2024.2.1.100.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d461a695-6481-426f-a22f-b5644cd1fa8b/l_HPCKit_p_2024.2.1.79.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0414ef18-5b64-47f2-9b2e-ae94860272b9/l_AITools.2024.1.0.9.sh
-  LINUX_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5c90ec26-1319-4f42-9acf-841bfeb1e691/l_RenderKit_p_2024.1.0.743.sh
-  MACOS_RENDERKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/c112cca6-12cf-4a0c-9e5e-d0d50d3b0f8b/m_RenderKit_p_2024.1.0.744.dmg
 
 jobs:
   windows:
@@ -36,8 +33,6 @@ jobs:
       run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_basekit.txt
     - name: Intel® oneAPI HPC Toolkit
       run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_hpckit.txt
-    - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_RENDERKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_renderkit.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
@@ -59,8 +54,6 @@ jobs:
       run: scripts/list_components_linux.sh $LINUX_BASEKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_basekit.txt
     - name: Intel® oneAPI HPC Toolkit
       run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_hpckit.txt
-    - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_linux.sh $LINUX_RENDERKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_renderkit.txt
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -128,32 +121,13 @@ jobs:
         name: ${{ github.job }}
         path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
-  macos:
-    runs-on: macos-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-    - name: Intel® oneAPI Rendering Toolkit
-      run: scripts/list_components_macos.sh $MACOS_RENDERKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_renderkit.txt
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: ${{ github.job }}
-        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
-
   publish:
     runs-on: ubuntu-20.04
     permissions:
       pull-requests: write
       pages: write
       contents: write
-    needs: [windows, linux, linux_aitools, linux_apt, linux_yum_dnf, macos]
+    needs: [windows, linux, linux_aitools, linux_apt, linux_yum_dnf]
     defaults:
       run:
         shell: bash
@@ -184,11 +158,6 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: linux_aitools
-        path: doc/source/${{ github.workflow }}
-    - name: Download artifacts - macos
-      uses: actions/download-artifact@v2
-      with:
-        name: macos
         path: doc/source/${{ github.workflow }}
     - uses: actions/setup-python@v2
       with:
