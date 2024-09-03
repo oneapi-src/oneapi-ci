@@ -135,27 +135,27 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Download artifacts - windows
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: windows
         path: doc/source/${{ github.workflow }}
     - name: Download artifacts - linux
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: linux
         path: doc/source/${{ github.workflow }}
     - name: Download artifacts - linux_apt
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: linux_apt
         path: doc/source/${{ github.workflow }}
     - name: Download artifacts - linux_yum_dnf
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: linux_yum_dnf
         path: doc/source/${{ github.workflow }}
     - name: Download artifacts - linux_aitools
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: linux_aitools
         path: doc/source/${{ github.workflow }}
