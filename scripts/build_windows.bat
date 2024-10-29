@@ -38,7 +38,7 @@ goto exit
 
 :fortran
 cd oneAPI-samples\DirectProgramming\Fortran\CombinationalLogic\openmp-primes
-ifort -O2 -fpp /Qopenmp src\openmp_sample.f90
+ifx -O2 -fpp /Qopenmp src\openmp_sample.f90
 openmp_sample.exe
 set RESULT=%ERRORLEVEL%
 ifx -O2 -fpp /Qopenmp src\openmp_sample.f90
