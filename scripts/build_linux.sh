@@ -13,6 +13,7 @@ git clone --depth 1 --branch "$SAMPLES_TAG" https://github.com/oneapi-src/oneAPI
 LATEST_VERSION=$(ls -1 /opt/intel/oneapi/compiler/ | grep -v latest | sort | tail -1)
 # shellcheck source=/dev/null
 source /opt/intel/oneapi/compiler/"$LATEST_VERSION"/env/vars.sh
+sycl-ls
 
 case $LANGUAGE in
 c++)
@@ -24,12 +25,9 @@ fortran)
   make && make run && make clean && make FC=ifx && make run
   ;;
 dpc++)
-#shellcheck disable=SC2010
-  LATEST_VERSION=$(ls -1 /opt/intel/oneapi/tbb/ | grep -v latest | sort | tail -1)
-# shellcheck source=/dev/null
-  source /opt/intel/oneapi/tbb/"$LATEST_VERSION"/env/vars.sh
-  cd oneAPI-samples/DirectProgramming/C++SYCL/DenseLinearAlgebra/vector-add
-  export SYCL_DEVICE_TYPE=CPU
-  mkdir build && cd build && cmake .. && make cpu-gpu && ./vector-add-buffers
-  ;;
+  cd oneAPI-samples/DirectProgramming/C++SYCL/DenseLinearAlgebra/simple-add
+  mkdir build && cd build && cmake .. && make cpu-gpu
+  # Sample has additional HW prerequisites. Please check sample Readme for details. Uncomment the following if the prerequisites are met.
+  # mkdir build && cd build && cmake .. && make cpu-gpu &&  ./simple-add-buffers
+
 esac
