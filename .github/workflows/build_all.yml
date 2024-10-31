@@ -36,10 +36,10 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
             C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
@@ -73,10 +73,10 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
             C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
@@ -110,10 +110,10 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
@@ -152,10 +152,10 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
@@ -186,10 +186,10 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
@@ -220,10 +220,10 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
@@ -255,7 +255,7 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: install
       run: scripts/install_linux_aitools.sh $LINUX_AIKIT_URL
     - name: build
@@ -278,14 +278,14 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
       run: scripts/apt_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
@@ -305,14 +305,14 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
       run: scripts/apt_depends.sh $LINUX_FORTRAN_COMPONENTS | tee depends.txt
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
@@ -332,14 +332,14 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: setup apt repo
       run: scripts/setup_apt_repo_linux.sh
     - name: collect versioned dependencies of apt packages
       run: scripts/apt_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
@@ -361,7 +361,7 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: install prerequisites
       run: scripts/install_prerequisites_linux_dnf.sh
     - name: setup yum/dnf repo
@@ -370,7 +370,7 @@ jobs:
       run: scripts/dnf_depends.sh $LINUX_CPP_COMPONENTS | tee depends.txt
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
@@ -391,7 +391,7 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: install prerequisites
       run: scripts/install_prerequisites_linux_dnf.sh
     - name: setup yum/dnf repo
@@ -400,7 +400,7 @@ jobs:
       run: scripts/dnf_depends.sh $LINUX_FORTRAN_COMPONENTS | tee depends.txt
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
@@ -421,7 +421,7 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: install prerequisites
       run: scripts/install_prerequisites_linux_dnf.sh
     - name: setup yum/dnf repo
@@ -430,7 +430,7 @@ jobs:
       run: scripts/dnf_depends.sh $LINUX_DPCPP_COMPONENTS | tee depends.txt
     - name: cache install
       id: cache-install
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           /opt/intel/oneapi/compiler
