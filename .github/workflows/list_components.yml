@@ -25,8 +25,8 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
@@ -46,8 +46,8 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: Intel® oneAPI Base Toolkit
@@ -66,8 +66,8 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: Intel® AI Tools Toolkit
@@ -84,8 +84,8 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: setup apt repo
@@ -106,8 +106,8 @@ jobs:
       run:
         shell: bash
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: setup yum/dnf repo
@@ -133,7 +133,7 @@ jobs:
         shell: bash
         working-directory: doc
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Download artifacts - windows
       uses: actions/download-artifact@v3
       with:
@@ -159,7 +159,7 @@ jobs:
       with:
         name: linux_aitools
         path: doc/source/${{ github.workflow }}
-    - uses: actions/setup-python@v2
+    - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: Install prerequisites
@@ -177,7 +177,7 @@ jobs:
           path: doc/build
     - name: Checkout gh-pages
       if: ${{ github.ref == 'refs/heads/master' }}
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: gh-pages
         path: gh-pages

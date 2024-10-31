@@ -11,8 +11,8 @@ jobs:
   checks:
     runs-on: Ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
     - name: Install prerequisites
       run: |
         sudo apt-get install -qq clang-format
