@@ -6,16 +6,16 @@ version: 2.1
 parameters:
   WINDOWS_BASEKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b380d914-366b-4b77-a74a-05e3c38b3514/intel-oneapi-base-toolkit-2025.0.0.882_offline.exe"
+    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ae29263e-38b9-4d43-86c3-376d6e0668e7/intel-oneapi-base-toolkit-2025.0.1.47_offline.exee"
   WINDOWS_HPCKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f07e32fa-b505-4b90-8a79-e328ce9ad9d6/intel-oneapi-hpc-toolkit-2025.0.0.822_offline.exe"
+    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a37c30c3-a846-4371-a85d-603e9a9eb94c/intel-oneapi-hpc-toolkit-2025.0.1.48_offline.exe"
   LINUX_BASEKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/96aa5993-5b22-4a9b-91ab-da679f422594/intel-oneapi-base-toolkit-2025.0.0.885_offline.sh"
+    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/dfc4a434-838c-4450-a6fe-2fa903b75aa7/intel-oneapi-base-toolkit-2025.0.1.46_offline.sh"
   LINUX_HPCKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0884ef13-20f3-41d3-baa2-362fc31de8eb/intel-oneapi-hpc-toolkit-2025.0.0.825_offline.sh"
+    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b7f71cf2-8157-4393-abae-8cea815509f7/intel-oneapi-hpc-toolkit-2025.0.1.47_offline.sh"
   WINDOWS_CPP_COMPONENTS:
     type: string
     default: "intel.oneapi.win.cpp-dpcpp-common"
@@ -48,7 +48,7 @@ parameters:
     default: "2025.0.0"
   COMPILER_VERSION:
     type: string
-    default: "2025.0.0"
+    default: "2025.0.4"
   TBB_VERSION:
     type: string
     default: "2022.0.0"
