@@ -16,7 +16,7 @@ env:
   WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a37c30c3-a846-4371-a85d-603e9a9eb94c/intel-oneapi-hpc-toolkit-2025.0.1.48.exe
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/dfc4a434-838c-4450-a6fe-2fa903b75aa7/intel-oneapi-base-toolkit-2025.0.1.46.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b7f71cf2-8157-4393-abae-8cea815509f7/intel-oneapi-hpc-toolkit-2025.0.1.47.sh
-  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0414ef18-5b64-47f2-9b2e-ae94860272b9/l_AITools.2024.1.0.9.sh
+  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/491d5c2a-67fe-48d0-884f-6aecd88f5d8a/ai-tools-2025.0.0.75_offline.sh
 
 jobs:
   windows:
