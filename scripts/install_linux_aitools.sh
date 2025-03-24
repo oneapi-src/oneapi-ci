@@ -14,4 +14,5 @@ sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 chmod +x webimage.sh
 sudo ./webimage.sh -b -p /intel/oneapi/intelpython
 installer_exit_code=$?
+sudo rm -rf webimage.sh
 exit $installer_exit_code

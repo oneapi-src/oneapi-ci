@@ -3,6 +3,6 @@
 # SPDX-License-Identifier: MIT
 
 reuse
-sphinx==5.0
+sphinx==6.2
 sphinx-book-theme
 sphinxcontrib-spelling

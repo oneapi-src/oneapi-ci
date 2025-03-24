@@ -12,10 +12,10 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ae29263e-38b9-4d43-86c3-376d6e0668e7/intel-oneapi-base-toolkit-2025.0.1.47.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a37c30c3-a846-4371-a85d-603e9a9eb94c/intel-oneapi-hpc-toolkit-2025.0.1.48.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/dfc4a434-838c-4450-a6fe-2fa903b75aa7/intel-oneapi-base-toolkit-2025.0.1.46.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b7f71cf2-8157-4393-abae-8cea815509f7/intel-oneapi-hpc-toolkit-2025.0.1.47.sh
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/487fd8c3-a3d8-4c22-a903-f8d54c2c57be/intel-oneapi-base-toolkit-2025.1.0.650.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0ba263f5-de00-4e91-a780-fdb9e131c1e8/intel-oneapi-hpc-toolkit-2025.1.0.665.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/cca951e1-31e7-485e-b300-fe7627cb8c08/intel-oneapi-base-toolkit-2025.1.0.651.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d0df6732-bf5c-493b-a484-6094bea53787/intel-oneapi-hpc-toolkit-2025.1.0.666.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/491d5c2a-67fe-48d0-884f-6aecd88f5d8a/ai-tools-2025.0.0.75_offline.sh
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
       run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_hpckit.txt
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ github.job }}
         path: doc/source/${{ github.workflow }}/${{ github.job }}_*
@@ -55,7 +55,7 @@ jobs:
     - name: Intel® oneAPI HPC Toolkit
       run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_hpckit.txt
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ github.job }}
         path: doc/source/${{ github.workflow }}/${{ github.job }}_*
@@ -73,7 +73,7 @@ jobs:
     - name: Intel® AI Tools Toolkit
       run: scripts/list_components_linux_aitools.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}.txt
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ github.job }}
         path: doc/source/${{ github.workflow }}/${{ github.job }}*
@@ -94,7 +94,7 @@ jobs:
       run: scripts/list_components_linux_apt.sh doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ github.job }}
         path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
@@ -116,7 +116,7 @@ jobs:
       run: scripts/list_components_linux_dnf.sh doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ github.job }}
         path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
@@ -135,27 +135,27 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Download artifacts - windows
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: windows
         path: doc/source/${{ github.workflow }}
     - name: Download artifacts - linux
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux
         path: doc/source/${{ github.workflow }}
     - name: Download artifacts - linux_apt
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux_apt
         path: doc/source/${{ github.workflow }}
     - name: Download artifacts - linux_yum_dnf
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux_yum_dnf
         path: doc/source/${{ github.workflow }}
     - name: Download artifacts - linux_aitools
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: linux_aitools
         path: doc/source/${{ github.workflow }}
@@ -171,7 +171,7 @@ jobs:
         sed -i -e 1,7d source/${{ github.workflow }}/linux_yum_dnf.txt
         make html
     - name: Save built doc as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
           name: ${{ github.job }}
           path: doc/build
