@@ -8,10 +8,10 @@ permissions: read-all
 on: push
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ae29263e-38b9-4d43-86c3-376d6e0668e7/intel-oneapi-base-toolkit-2025.0.1.47_offline.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a37c30c3-a846-4371-a85d-603e9a9eb94c/intel-oneapi-hpc-toolkit-2025.0.1.48_offline.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/dfc4a434-838c-4450-a6fe-2fa903b75aa7/intel-oneapi-base-toolkit-2025.0.1.46_offline.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b7f71cf2-8157-4393-abae-8cea815509f7/intel-oneapi-hpc-toolkit-2025.0.1.47_offline.sh
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/487fd8c3-a3d8-4c22-a903-f8d54c2c57be/intel-oneapi-base-toolkit-2025.1.0.650_offline.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0ba263f5-de00-4e91-a780-fdb9e131c1e8/intel-oneapi-hpc-toolkit-2025.1.0.665_offline.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/cca951e1-31e7-485e-b300-fe7627cb8c08/intel-oneapi-base-toolkit-2025.1.0.651_offline.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d0df6732-bf5c-493b-a484-6094bea53787/intel-oneapi-hpc-toolkit-2025.1.0.666_offline.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/491d5c2a-67fe-48d0-884f-6aecd88f5d8a/ai-tools-2025.0.0.75_offline.sh
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-dpcpp-common
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
@@ -22,11 +22,11 @@ env:
   LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-  CACHE_NUMBER: 5
-  SAMPLES_TAG: 2025.0.0
+  CACHE_NUMBER: 4
+  SAMPLES_TAG: 2025.1.0
   AI_SAMPLES_TAG: 2025.0.0
-  COMPILER_VERSION: 2025.0.4
-  TBB_VERSION: 2022.0.0
+  COMPILER_VERSION: 2025.1.0
+  TBB_VERSION: 2022.1.0
   VS_VER: vs2022
 
 jobs:
@@ -58,7 +58,7 @@ jobs:
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
       if: steps.cache-install.outputs.cache-hit != 'true'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: InstallLogs_${{ github.job }}
         path: |
@@ -95,7 +95,7 @@ jobs:
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
       if: steps.cache-install.outputs.cache-hit != 'true'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: InstallLogs_${{ github.job }}
         path: |
@@ -137,7 +137,7 @@ jobs:
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
       if: steps.cache-install.outputs.cache-hit != 'true'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: InstallLogs_${{ github.job }}
         path: |
@@ -172,7 +172,7 @@ jobs:
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
       if: steps.cache-install.outputs.cache-hit != 'true'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: InstallLogs_${{ github.job }}
         path: |
@@ -206,7 +206,7 @@ jobs:
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
       if: steps.cache-install.outputs.cache-hit != 'true'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: InstallLogs_${{ github.job }}
         path: |
@@ -241,7 +241,7 @@ jobs:
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
       if: steps.cache-install.outputs.cache-hit != 'true'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: InstallLogs_${{ github.job }}
         path: |
@@ -264,7 +264,7 @@ jobs:
     # Delete the following if you don't want to save install logs
     - name: Saving install logs
       if: steps.cache-install.outputs.cache-hit != 'true'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: InstallLogs_${{ github.job }}
         path: |
