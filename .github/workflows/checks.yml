@@ -9,7 +9,7 @@ on: [push, pull_request]
 
 jobs:
   checks:
-    runs-on: Ubuntu-20.04
+    runs-on: Ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v3

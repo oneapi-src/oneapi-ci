@@ -147,7 +147,7 @@ jobs:
         retention-days: 7
 
   build_linux_cpp:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -181,7 +181,7 @@ jobs:
         retention-days: 7
 
   build_linux_fortran:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -215,7 +215,7 @@ jobs:
         retention-days: 7
 
   build_linux_dpcpp:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -250,7 +250,7 @@ jobs:
         retention-days: 7
 
   build_linux_aitools:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -273,7 +273,7 @@ jobs:
         retention-days: 7
 
   build_linux_apt_cpp:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -300,7 +300,7 @@ jobs:
       run: scripts/cache_exclude_linux.sh
 
   build_linux_apt_fortran:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -327,7 +327,7 @@ jobs:
       run: scripts/cache_exclude_linux.sh
 
   build_linux_apt_dpcpp:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -355,7 +355,7 @@ jobs:
       run: scripts/cache_exclude_linux.sh
 
   build_linux_dnf_cpp:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container: fedora:37
     defaults:
       run:
@@ -385,7 +385,7 @@ jobs:
       run: scripts/cache_exclude_linux.sh
 
   build_linux_dnf_fortran:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container: fedora:37
     defaults:
       run:
@@ -415,7 +415,7 @@ jobs:
       run: scripts/cache_exclude_linux.sh
 
   build_linux_dnf_dpcpp:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container: fedora:37
     defaults:
       run:

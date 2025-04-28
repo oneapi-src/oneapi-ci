@@ -41,7 +41,7 @@ jobs:
         path: doc/source/${{ github.workflow }}/${{ github.job }}_*
 
   linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -61,7 +61,7 @@ jobs:
         path: doc/source/${{ github.workflow }}/${{ github.job }}_*
 
   linux_aitools:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -79,7 +79,7 @@ jobs:
         path: doc/source/${{ github.workflow }}/${{ github.job }}*
 
   linux_apt:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -100,7 +100,7 @@ jobs:
         path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
   linux_yum_dnf:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container: fedora:37
     defaults:
       run:
@@ -122,7 +122,7 @@ jobs:
         path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
   publish:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       pull-requests: write
       pages: write
