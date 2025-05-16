@@ -8,10 +8,10 @@ permissions: read-all
 on: push
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7cd9bba0-7aab-4e30-b3ae-2221006a4a05/intel-oneapi-base-toolkit-2025.1.1.34_offline.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/82a3dedc-7a9c-4577-a543-68631423e509/intel-oneapi-hpc-toolkit-2025.1.1.38_offline.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/6bfca885-4156-491e-849b-1cd7da9cc760/intel-oneapi-base-toolkit-2025.1.1.36_offline.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2cf9c083-82b5-4a8f-a515-c599b09dcefc/intel-oneapi-hpc-toolkit-2025.1.1.40_offline.sh
+  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2cbb02eb-dd4c-4058-a4ac-2e38729a8409/intel-oneapi-base-toolkit-2025.1.2.7_offline.exe
+  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ab82b3e9-3750-4c10-9872-8101928547bf/intel-oneapi-hpc-toolkit-2025.1.2.8_offline.exe
+  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ac050ae7-da93-4108-823d-4334de3f4ee8/intel-oneapi-base-toolkit-2025.1.2.9_offline.sh
+  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/27e04429-fb6f-4b1c-bc04-00db3b1b3982/intel-oneapi-hpc-toolkit-2025.1.2.11_offline.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/491d5c2a-67fe-48d0-884f-6aecd88f5d8a/ai-tools-2025.0.0.75_offline.sh
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-dpcpp-common
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
@@ -22,7 +22,7 @@ env:
   LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-  CACHE_NUMBER: 6
+  CACHE_NUMBER: 7
   SAMPLES_TAG: 2025.1.0
   AI_SAMPLES_TAG: 2025.0.0
   COMPILER_VERSION: 2025.1.1
