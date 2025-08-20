@@ -7,13 +7,13 @@ trigger:
 
 variables:
   - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e5785fb3-b5a7-4b97-89bc-918adab1f77d/intel-oneapi-base-toolkit-2025.1.3.8_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f5881e61-dcdc-40f1-9bd9-717081ac623c/intel-oneapi-base-toolkit-2025.2.1.46_offline.exe
   - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/77bf3a15-a766-4619-91b4-1011badc4a36/intel-oneapi-hpc-toolkit-2025.1.3.7_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e63ac2b4-8a9a-4768-979a-399a8b6299de/intel-oneapi-hpc-toolkit-2025.2.1.46_offline.exe
   - name: LINUX_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/4a5320d1-0b48-458d-9668-fd0e4501208c/intel-oneapi-base-toolkit-2025.1.3.7_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/3b7a16b3-a7b0-460f-be16-de0d64fa6b1e/intel-oneapi-base-toolkit-2025.2.1.44_offline.sh
   - name: LINUX_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0ed71121-bd80-4ba7-ab54-805138bf06a7/intel-oneapi-hpc-toolkit-2025.1.3.10_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2d2a6686-ff06-44ce-baf0-ab84f8dafa89/intel-oneapi-hpc-toolkit-2025.2.1.44_offline.sh
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-dpcpp-common
   - name: WINDOWS_FORTRAN_COMPONENTS
@@ -35,9 +35,9 @@ variables:
   - name: SAMPLES_TAG
     value: 2025.1.0
   - name: COMPILER_VERSION
-    value: 2025.1.1
+    value: 2025.2
   - name: TBB_VERSION
-    value: 2022.1.0
+    value: 2022.2
   - name: VS_VER
     value: vs2022
 
