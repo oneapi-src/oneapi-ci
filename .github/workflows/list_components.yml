@@ -16,8 +16,7 @@ env:
   WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/3a871580-f839-46ed-aeae-685084127279/intel-oneapi-hpc-toolkit-2025.3.0.378.exe
   LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d640da34-77cc-4ab2-8019-ac5592f4ec19/intel-oneapi-base-toolkit-2025.3.0.375.sh
   LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/66021d90-934d-41f4-bedf-b8c00bbe98bc/intel-oneapi-hpc-toolkit-2025.3.0.381.sh
-  LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/491d5c2a-67fe-48d0-884f-6aecd88f5d8a/ai-tools-2025.0.0.75_offline.sh
-
+  
 jobs:
   windows:
     runs-on: windows-latest
@@ -59,24 +58,6 @@ jobs:
       with:
         name: ${{ github.job }}
         path: doc/source/${{ github.workflow }}/${{ github.job }}_*
-
-  linux_aitools:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v3
-      with:
-        python-version: '3.x'
-    - name: Intel® AI Tools Toolkit
-      run: scripts/list_components_linux_aitools.sh $LINUX_AIKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}.txt
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ github.job }}
-        path: doc/source/${{ github.workflow }}/${{ github.job }}*
 
   linux_apt:
     runs-on: ubuntu-latest
@@ -127,7 +108,7 @@ jobs:
       pull-requests: write
       pages: write
       contents: write
-    needs: [windows, linux, linux_aitools, linux_apt, linux_yum_dnf]
+    needs: [windows, linux, linux_apt, linux_yum_dnf]
     defaults:
       run:
         shell: bash
@@ -154,11 +135,6 @@ jobs:
       with:
         name: linux_yum_dnf
         path: doc/source/${{ github.workflow }}
-    - name: Download artifacts - linux_aitools
-      uses: actions/download-artifact@v4
-      with:
-        name: linux_aitools
-        path: doc/source/${{ github.workflow }}
     - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
@@ -166,7 +142,7 @@ jobs:
       run: python -m pip install --quiet -r requirements.txt
     - name: Build doc
       run: |
-        find source/${{ github.workflow }} -maxdepth 1 -type f ! -name "*apt*" ! -name "*yum*" ! -name "*aitools*" -exec sed -i -e 1,5d {} \;
+        find source/${{ github.workflow }} -maxdepth 1 -type f ! -name "*apt*" ! -name "*yum*" -exec sed -i -e 1,5d {} \;
         find source/${{ github.workflow }} -maxdepth 1 -type f -name "*windows*" -exec sed -i -e 1,2d {} \; -exec sed -i s"/\r//g" {} \;
         sed -i -e 1,7d source/${{ github.workflow }}/linux_yum_dnf.txt
         make html
