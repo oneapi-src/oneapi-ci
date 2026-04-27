@@ -12,10 +12,8 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1f18901e-877d-469d-a41a-a10f11b39336/intel-oneapi-base-toolkit-2025.3.0.372.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/3a871580-f839-46ed-aeae-685084127279/intel-oneapi-hpc-toolkit-2025.3.0.378.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d640da34-77cc-4ab2-8019-ac5592f4ec19/intel-oneapi-base-toolkit-2025.3.0.375.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/66021d90-934d-41f4-bedf-b8c00bbe98bc/intel-oneapi-hpc-toolkit-2025.3.0.381.sh
+  WINDOWS_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bae85ab1-cfcd-4251-8d42-a0c27949ea33/intel-oneapi-toolkit-2026.0.0.193.exe
+  LINUX_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/71180075-e4e3-4c6f-bbbb-19017ed0cf7d/intel-oneapi-toolkit-2026.0.0.198.sh
   
 jobs:
   windows:
@@ -28,16 +26,14 @@ jobs:
     - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
-    - name: Intel® oneAPI Base Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_BASEKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_basekit.txt
-    - name: Intel® oneAPI HPC Toolkit
-      run: scripts/list_components_windows.bat $WINDOWS_HPCKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}_hpckit.txt
+    - name: Intel® oneAPI Toolkit
+      run: scripts/list_components_windows.bat $WINDOWS_TOOLKIT_URL doc\\source\\${{ github.workflow }}\\${{ github.job }}.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
         name: ${{ github.job }}
-        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
+        path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
   linux:
     runs-on: ubuntu-latest
@@ -49,15 +45,13 @@ jobs:
     - uses: actions/setup-python@v3
       with:
         python-version: '3.x'
-    - name: Intel® oneAPI Base Toolkit
-      run: scripts/list_components_linux.sh $LINUX_BASEKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_basekit.txt
-    - name: Intel® oneAPI HPC Toolkit
-      run: scripts/list_components_linux.sh $LINUX_HPCKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}_hpckit.txt
+    - name: Intel® oneAPI Toolkit
+      run: scripts/list_components_linux.sh $LINUX_TOOLKIT_URL doc/source/${{ github.workflow }}/${{ github.job }}.txt
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
         name: ${{ github.job }}
-        path: doc/source/${{ github.workflow }}/${{ github.job }}_*
+        path: doc/source/${{ github.workflow }}/${{ github.job }}.txt
 
   linux_apt:
     runs-on: ubuntu-latest

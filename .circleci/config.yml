@@ -4,18 +4,12 @@
 
 version: 2.1
 parameters:
-  WINDOWS_BASEKIT_URL:
+  WINDOWS_TOOLKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1f18901e-877d-469d-a41a-a10f11b39336/intel-oneapi-base-toolkit-2025.3.0.372_offline.exe"
-  WINDOWS_HPCKIT_URL:
+    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bae85ab1-cfcd-4251-8d42-a0c27949ea33/intel-oneapi-toolkit-2026.0.0.193_offline.exe"
+  LINUX_TOOLKIT_URL:
     type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/3a871580-f839-46ed-aeae-685084127279/intel-oneapi-hpc-toolkit-2025.3.0.378_offline.exe"
-  LINUX_BASEKIT_URL:
-    type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d640da34-77cc-4ab2-8019-ac5592f4ec19/intel-oneapi-base-toolkit-2025.3.0.375_offline.sh"
-  LINUX_HPCKIT_URL:
-    type: string
-    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/66021d90-934d-41f4-bedf-b8c00bbe98bc/intel-oneapi-hpc-toolkit-2025.3.0.381_offline.sh"
+    default: "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/71180075-e4e3-4c6f-bbbb-19017ed0cf7d/intel-oneapi-toolkit-2026.0.0.198_offline.sh"
   WINDOWS_CPP_COMPONENTS:
     type: string
     default: "intel.oneapi.win.cpp-dpcpp-common"
@@ -45,13 +39,13 @@ parameters:
     default: "intel.oneapi.lin.dpcpp-cpp-compiler"
   SAMPLES_TAG:
     type: string
-    default: "2025.3.0"
+    default: "master"
   COMPILER_VERSION:
     type: string
-    default: "2025.3"
+    default: "2026.0"
   TBB_VERSION:
     type: string
-    default: "2022.3"
+    default: "2023.0"
   VS_VER:
     type: string
     default: "vs2017"
@@ -68,12 +62,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - install-<< pipeline.parameters.WINDOWS_TOOLKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
-            scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_TOOLKIT_URL >> << pipeline.parameters.WINDOWS_CPP_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_windows.bat c++ << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
@@ -81,7 +75,7 @@ jobs:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
       - save_cache:
-          key: install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: install-<< pipeline.parameters.WINDOWS_TOOLKIT_URL >>-<< pipeline.parameters.WINDOWS_CPP_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
             - C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
@@ -103,12 +97,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - install-<< pipeline.parameters.WINDOWS_TOOLKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: install
           command: |
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
-            scripts/install_windows.bat << pipeline.parameters.WINDOWS_HPCKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_TOOLKIT_URL >> << pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_windows.bat fortran << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
@@ -116,7 +110,7 @@ jobs:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
       - save_cache:
-          key: install-<< pipeline.parameters.WINDOWS_HPCKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: install-<< pipeline.parameters.WINDOWS_TOOLKIT_URL >>-<< pipeline.parameters.WINDOWS_FORTRAN_COMPONENTS >>-compiler-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
             - C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
@@ -138,7 +132,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
+            - install-<< pipeline.parameters.WINDOWS_TOOLKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-vcvarsall-{{ checksum "scripts/cache_exclude_windows.sh" }}
       - run:
           name: restory registry on cache hit
           command: |
@@ -148,7 +142,7 @@ jobs:
           name: install
           command: |
             [ -d "C:\Program Files (x86)\Intel\oneAPI\compiler" ] && exit 0
-            scripts/install_windows.bat << pipeline.parameters.WINDOWS_BASEKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
+            scripts/install_windows.bat << pipeline.parameters.WINDOWS_TOOLKIT_URL >> << pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>
       - run:
           name: build
           command: scripts/build_windows.bat dpc++ << pipeline.parameters.VS_VER >> << pipeline.parameters.SAMPLES_TAG >>
@@ -156,7 +150,7 @@ jobs:
           name: exclude unused files from cache
           command: scripts/cache_exclude_windows.sh
       - save_cache:
-          key: install-<< pipeline.parameters.WINDOWS_BASEKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
+          key: install-<< pipeline.parameters.WINDOWS_TOOLKIT_URL >>-<< pipeline.parameters.WINDOWS_DPCPP_COMPONENTS >>-compiler-tbb-opencl-{{ checksum "scripts/cache_exclude_windows.sh" }}
           paths:
             - C:\Program Files (x86)\Intel\oneAPI\compiler
             - C:\Program Files (x86)\Intel\oneAPI\tbb
@@ -182,12 +176,12 @@ jobs:
           command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+            - install-<< pipeline.parameters.LINUX_TOOLKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install
           command: |
            [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_HPCKIT_URL >> << pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>
+           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_TOOLKIT_URL >> << pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>
       - run:
           name: build
           command: scripts/build_linux.sh c++ << pipeline.parameters.SAMPLES_TAG >>
@@ -195,7 +189,7 @@ jobs:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: install-<< pipeline.parameters.LINUX_TOOLKIT_URL >>-<< pipeline.parameters.LINUX_CPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
 
@@ -218,12 +212,12 @@ jobs:
           command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+            - install-<< pipeline.parameters.LINUX_TOOLKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install
           command: |
            [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_HPCKIT_URL >> << pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>
+           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_TOOLKIT_URL >> << pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>
       - run:
           name: build
           command: scripts/build_linux.sh fortran << pipeline.parameters.SAMPLES_TAG >>
@@ -231,7 +225,7 @@ jobs:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: install-<< pipeline.parameters.LINUX_HPCKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: install-<< pipeline.parameters.LINUX_TOOLKIT_URL >>-<< pipeline.parameters.LINUX_FORTRAN_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
 
@@ -254,12 +248,12 @@ jobs:
           command: . scripts/install_prerequisites_linux_no_sudo.sh
       - restore_cache:
           keys:
-            - install-<< pipeline.parameters.LINUX_BASEKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+            - install-<< pipeline.parameters.LINUX_TOOLKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
       - run:
           name: install
           command: |
            [ -d /opt/intel/oneapi/compiler ] && exit 0
-           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_BASEKIT_URL >> << pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>
+           . scripts/install_linux_no_sudo.sh << pipeline.parameters.LINUX_TOOLKIT_URL >> << pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>
       - run:
           name: build
           command: scripts/build_linux.sh dpc++ << pipeline.parameters.SAMPLES_TAG >>
@@ -267,7 +261,7 @@ jobs:
           name: exclude unused files from cache
           command: . scripts/cache_exclude_linux_no_sudo.sh
       - save_cache:
-          key: install-<< pipeline.parameters.LINUX_BASEKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-tbb-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
+          key: install-<< pipeline.parameters.LINUX_TOOLKIT_URL >>-<< pipeline.parameters.LINUX_DPCPP_COMPONENTS_WEB >>-compiler-tbb-${{ checksum "scripts/cache_exclude_linux_no_sudo.sh" }}
           paths:
             - /opt/intel/oneapi/compiler
             - /opt/intel/oneapi/tbb
@@ -483,7 +477,7 @@ jobs:
 
   build_linux_container_cpp:
     docker:
-      - image: intel/oneapi-hpckit
+      - image: intel/oneapi-toolkit
     steps:
       - run:
           name: install_git
@@ -495,7 +489,7 @@ jobs:
 
   build_linux_container_fortran:
     docker:
-      - image: intel/oneapi-hpckit
+      - image: intel/oneapi-toolkit
     steps:
       - run:
           name: install_git
@@ -507,7 +501,7 @@ jobs:
 
   build_linux_container_dpcpp:
     docker:
-      - image: intel/oneapi-basekit
+      - image: intel/oneapi-toolkit
     steps:
       - run:
           name: install_git
