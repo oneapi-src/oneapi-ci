@@ -374,7 +374,7 @@ build_linux_apt_dpcpp:
         mv /opt/intel/oneapi/tbb cache
 
 build_linux_dnf_cpp:
-  image: fedora:37
+  image: fedora:43
   stage: build
   cache:
     key: # GitLab CI doesn't support steps before cache is restored, i.e. only static cache keys are supported.
@@ -406,7 +406,7 @@ build_linux_dnf_cpp:
         mv /opt/intel/oneapi/compiler cache
 
 build_linux_dnf_fortran:
-  image: fedora:37
+  image: fedora:43
   stage: build
   cache:
     key:
@@ -438,7 +438,7 @@ build_linux_dnf_fortran:
         mv /opt/intel/oneapi/compiler cache
 
 build_linux_dnf_dpcpp:
-  image: fedora:37
+  image: fedora:43
   stage: build
   cache:
     key:

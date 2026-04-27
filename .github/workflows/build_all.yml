@@ -354,7 +354,7 @@ jobs:
 
   build_linux_dnf_cpp:
     runs-on: ubuntu-latest
-    container: fedora:37
+    container: fedora:43
     defaults:
       run:
         shell: bash
@@ -384,7 +384,7 @@ jobs:
 
   build_linux_dnf_fortran:
     runs-on: ubuntu-latest
-    container: fedora:37
+    container: fedora:43
     defaults:
       run:
         shell: bash
@@ -414,7 +414,7 @@ jobs:
 
   build_linux_dnf_dpcpp:
     runs-on: ubuntu-latest
-    container: fedora:37
+    container: fedora:43
     defaults:
       run:
         shell: bash
