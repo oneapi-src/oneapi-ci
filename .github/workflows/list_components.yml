@@ -14,7 +14,7 @@ on:
 env:
   WINDOWS_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bae85ab1-cfcd-4251-8d42-a0c27949ea33/intel-oneapi-toolkit-2026.0.0.193.exe
   LINUX_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/71180075-e4e3-4c6f-bbbb-19017ed0cf7d/intel-oneapi-toolkit-2026.0.0.198.sh
-  
+
 jobs:
   windows:
     runs-on: windows-latest
