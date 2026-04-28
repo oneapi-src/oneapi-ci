@@ -6,7 +6,7 @@ def SAMPLES_REPO = "https://github.com/oneapi-src/oneAPI-samples.git"
 def SAMPLES_TAG = "2023.2.0"
 
 pipeline {
-  agent { docker { image 'intel/oneapi-hpckit' } }
+  agent { docker { image 'intel/oneapi-toolkit' } }
   stages {
     stage('checkout samples') {
       steps {

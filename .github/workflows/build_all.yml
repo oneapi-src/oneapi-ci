@@ -8,10 +8,8 @@ permissions: read-all
 on: push
 
 env:
-  WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1f18901e-877d-469d-a41a-a10f11b39336/intel-oneapi-base-toolkit-2025.3.0.372_offline.exe
-  WINDOWS_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/3a871580-f839-46ed-aeae-685084127279/intel-oneapi-hpc-toolkit-2025.3.0.378_offline.exe
-  LINUX_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d640da34-77cc-4ab2-8019-ac5592f4ec19/intel-oneapi-base-toolkit-2025.3.0.375_offline.sh
-  LINUX_HPCKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/66021d90-934d-41f4-bedf-b8c00bbe98bc/intel-oneapi-hpc-toolkit-2025.3.0.381_offline.sh
+  WINDOWS_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bae85ab1-cfcd-4251-8d42-a0c27949ea33/intel-oneapi-toolkit-2026.0.0.193_offline.exe
+  LINUX_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/71180075-e4e3-4c6f-bbbb-19017ed0cf7d/intel-oneapi-toolkit-2026.0.0.198_offline.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/491d5c2a-67fe-48d0-884f-6aecd88f5d8a/ai-tools-2025.0.0.75_offline.sh
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-dpcpp-common
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
@@ -22,11 +20,11 @@ env:
   LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-  CACHE_NUMBER: 11
-  SAMPLES_TAG: 2025.3.0
+  CACHE_NUMBER: 12
+  SAMPLES_TAG: master
   AI_SAMPLES_TAG: 2025.0.0
-  COMPILER_VERSION: 2025.3
-  TBB_VERSION: 2022.3
+  COMPILER_VERSION: 2026.0
+  TBB_VERSION: 2023.0
   VS_VER: vs2022
 
 jobs:
@@ -44,10 +42,10 @@ jobs:
         path: |
             C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
             C:\Program Files (x86)\Intel\oneAPI\compiler
-        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_TOOLKIT_URL }}-${{ env.WINDOWS_CPP_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_CPP_COMPONENTS
+      run: scripts/install_windows.bat $WINDOWS_TOOLKIT_URL $WINDOWS_CPP_COMPONENTS
     - name: build
       run: scripts/build_windows.bat c++ $VS_VER $SAMPLES_TAG
     - name: exclude unused files from cache
@@ -81,10 +79,10 @@ jobs:
         path: |
             C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat
             C:\Program Files (x86)\Intel\oneAPI\compiler
-        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_HPCKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_TOOLKIT_URL }}-${{ env.WINDOWS_FORTRAN_COMPONENTS }}-compiler-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/install_windows.bat $WINDOWS_HPCKIT_URL $WINDOWS_FORTRAN_COMPONENTS
+      run: scripts/install_windows.bat $WINDOWS_TOOLKIT_URL $WINDOWS_FORTRAN_COMPONENTS
     - name: build
       run: scripts/build_windows.bat fortran $VS_VER $SAMPLES_TAG
     - name: exclude unused files from cache
@@ -120,10 +118,10 @@ jobs:
           C:\Program Files (x86)\Intel\oneAPI\compiler
           C:\Program Files (x86)\Intel\oneAPI\tbb
           C:\Windows\System32\OpenCL.dll
-        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_BASEKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.WINDOWS_TOOLKIT_URL }}-${{ env.WINDOWS_DPCPP_COMPONENTS }}-compiler-tbb-opencl-${{ hashFiles('**/scripts/cache_exclude_windows.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/install_windows.bat $WINDOWS_BASEKIT_URL $WINDOWS_DPCPP_COMPONENTS
+      run: scripts/install_windows.bat $WINDOWS_TOOLKIT_URL $WINDOWS_DPCPP_COMPONENTS
     - name: restore registry on cache hit
       if: steps.cache-install.outputs.cache-hit == 'true'
       run: scripts/restore_registry.bat $COMPILER_VERSION $TBB_VERSION
@@ -159,10 +157,10 @@ jobs:
       with:
         path: |
           /opt/intel/oneapi/compiler
-        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_HPCKIT_URL }}-${{ env.LINUX_CPP_COMPONENTS_WEB }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_TOOLKIT_URL }}-${{ env.LINUX_CPP_COMPONENTS_WEB }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_CPP_COMPONENTS_WEB
+      run: scripts/install_linux.sh $LINUX_TOOLKIT_URL $LINUX_CPP_COMPONENTS_WEB
     - name: build
       run: scripts/build_linux.sh c++ $SAMPLES_TAG
     - name: exclude unused files from cache
@@ -193,10 +191,10 @@ jobs:
       with:
         path: |
           /opt/intel/oneapi/compiler
-        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_HPCKIT_URL }}-${{ env.LINUX_FORTRAN_COMPONENTS_WEB }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_TOOLKIT_URL }}-${{ env.LINUX_FORTRAN_COMPONENTS_WEB }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/install_linux.sh $LINUX_HPCKIT_URL $LINUX_FORTRAN_COMPONENTS_WEB
+      run: scripts/install_linux.sh $LINUX_TOOLKIT_URL $LINUX_FORTRAN_COMPONENTS_WEB
     - name: build
       run: scripts/build_linux.sh fortran $SAMPLES_TAG
     - name: exclude unused files from cache
@@ -228,10 +226,10 @@ jobs:
         path: |
           /opt/intel/oneapi/compiler
           /opt/intel/oneapi/tbb
-        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_BASEKIT_URL }}-${{ env.LINUX_DPCPP_COMPONENTS_WEB }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+        key: install-${{ env.CACHE_NUMBER }}-${{ env.LINUX_TOOLKIT_URL }}-${{ env.LINUX_DPCPP_COMPONENTS_WEB }}-compiler-tbb-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
     - name: install
       if: steps.cache-install.outputs.cache-hit != 'true'
-      run: scripts/install_linux.sh $LINUX_BASEKIT_URL $LINUX_DPCPP_COMPONENTS_WEB
+      run: scripts/install_linux.sh $LINUX_TOOLKIT_URL $LINUX_DPCPP_COMPONENTS_WEB
     - name: build
       run: scripts/build_linux.sh dpc++ $SAMPLES_TAG
     - name: exclude unused files from cache
@@ -356,7 +354,7 @@ jobs:
 
   build_linux_dnf_cpp:
     runs-on: ubuntu-latest
-    container: fedora:37
+    container: fedora:43
     defaults:
       run:
         shell: bash
@@ -386,7 +384,7 @@ jobs:
 
   build_linux_dnf_fortran:
     runs-on: ubuntu-latest
-    container: fedora:37
+    container: fedora:43
     defaults:
       run:
         shell: bash
@@ -416,7 +414,7 @@ jobs:
 
   build_linux_dnf_dpcpp:
     runs-on: ubuntu-latest
-    container: fedora:37
+    container: fedora:43
     defaults:
       run:
         shell: bash

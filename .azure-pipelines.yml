@@ -6,14 +6,10 @@ trigger:
 - master
 
 variables:
-  - name: WINDOWS_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1f18901e-877d-469d-a41a-a10f11b39336/intel-oneapi-base-toolkit-2025.3.0.372_offline.exe
-  - name: WINDOWS_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/3a871580-f839-46ed-aeae-685084127279/intel-oneapi-hpc-toolkit-2025.3.0.378_offline.exe
-  - name: LINUX_BASEKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d640da34-77cc-4ab2-8019-ac5592f4ec19/intel-oneapi-base-toolkit-2025.3.0.375_offline.sh
-  - name: LINUX_HPCKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/66021d90-934d-41f4-bedf-b8c00bbe98bc/intel-oneapi-hpc-toolkit-2025.3.0.381_offline.sh
+  - name: WINDOWS_TOOLKIT_URL
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bae85ab1-cfcd-4251-8d42-a0c27949ea33/intel-oneapi-toolkit-2026.0.0.193_offline.exe
+  - name: LINUX_TOOLKIT_URL
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/71180075-e4e3-4c6f-bbbb-19017ed0cf7d/intel-oneapi-toolkit-2026.0.0.198_offline.sh
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-dpcpp-common
   - name: WINDOWS_FORTRAN_COMPONENTS
@@ -33,21 +29,18 @@ variables:
   - name: LINUX_DPCPP_COMPONENTS_WEB
     value: intel.oneapi.lin.dpcpp-cpp-compiler
   - name: SAMPLES_TAG
-    value: 2025.1.0
+    value: master
   - name: COMPILER_VERSION
-    value: 2025.3
+    value: 2026.0
   - name: TBB_VERSION
-    value: 2022.3
+    value: 2023.0
   - name: VS_VER
     value: vs2022
 
 resources:
     containers:
-      - container: oneapi-hpckit
-        image: intel/oneapi-hpckit:latest
-        options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
-      - container: oneapi-basekit
-        image: intel/oneapi-basekit:latest
+      - container: oneapi-toolkit
+        image: intel/oneapi-toolkit:latest
         options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so'
 
 jobs:
@@ -58,15 +51,15 @@ jobs:
   - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
     inputs:
       path: vcvarsall
-      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_TOOLKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
   - task: Cache@2
     condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_TOOLKIT_URL)" | "$(WINDOWS_CPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
-  - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_CPP_COMPONENTS)
+  - script: scripts/install_windows.bat $(WINDOWS_TOOLKIT_URL) $(WINDOWS_CPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - bash: cp vcvarsall/setvars-vcvarsall.bat "C:/Program Files (x86)/Intel/oneAPI/"
@@ -106,15 +99,15 @@ jobs:
   - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
     inputs:
       path: vcvarsall
-      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_TOOLKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
   - task: Cache@2
     condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_HPCKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_TOOLKIT_URL)" | "$(WINDOWS_FORTRAN_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
-  - script: scripts/install_windows.bat $(WINDOWS_HPCKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
+  - script: scripts/install_windows.bat $(WINDOWS_TOOLKIT_URL) $(WINDOWS_FORTRAN_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - bash: cp vcvarsall/setvars-vcvarsall.bat "C:/Program Files (x86)/Intel/oneAPI/"
@@ -154,27 +147,27 @@ jobs:
   - task: Cache@2 # multiple paths per cache not supported yet. See https://github.com/microsoft/azure-pipelines-agent/pull/2834
     inputs:
       path: vcvarsall
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_TOOLKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "vcvarsall" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
   - task: Cache@2
     condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\compiler
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_TOOLKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "compiler" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
   - task: Cache@2
     condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: C:\Program Files (x86)\Intel\oneAPI\tbb
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_TOOLKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "tbb" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
   - task: Cache@2
     condition: eq(variables.CACHE_RESTORED, 'true')
     inputs:
       path: opencl # caching of individual files is not supported, caching OpenCL.dll in a folder as a workaround.
-      key: '"install" | "$(WINDOWS_BASEKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
+      key: '"install" | "$(WINDOWS_TOOLKIT_URL)" | "$(WINDOWS_DPCPP_COMPONENTS)" | "opencl_folder" | scripts/cache_exclude_windows.sh'
       cacheHitVar: CACHE_RESTORED
-  - script: scripts/install_windows.bat $(WINDOWS_BASEKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
+  - script: scripts/install_windows.bat $(WINDOWS_TOOLKIT_URL) $(WINDOWS_DPCPP_COMPONENTS)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/restore_registry.bat $(COMPILER_VERSION) $(TBB_VERSION)
@@ -225,9 +218,9 @@ jobs:
   - task: Cache@2
     inputs:
       path: /opt/intel/oneapi/compiler
-      key: '"install" | "$(LINUX_HPCKIT_URL)" | "$(LINUX_CPP_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
+      key: '"install" | "$(LINUX_TOOLKIT_URL)" | "$(LINUX_CPP_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
       cacheHitVar: CACHE_RESTORED
-  - script: scripts/install_linux.sh $(LINUX_HPCKIT_URL) $(LINUX_CPP_COMPONENTS_WEB)
+  - script: scripts/install_linux.sh $(LINUX_TOOLKIT_URL) $(LINUX_CPP_COMPONENTS_WEB)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh c++ $(SAMPLES_TAG)
@@ -259,9 +252,9 @@ jobs:
   - task: Cache@2
     inputs:
       path: /opt/intel/oneapi/compiler
-      key: '"install" | "$(LINUX_HPCKIT_URL)" | "$(LINUX_FORTRAN_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
+      key: '"install" | "$(LINUX_TOOLKIT_URL)" | "$(LINUX_FORTRAN_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
       cacheHitVar: CACHE_RESTORED
-  - script: scripts/install_linux.sh $(LINUX_HPCKIT_URL) $(LINUX_FORTRAN_COMPONENTS_WEB)
+  - script: scripts/install_linux.sh $(LINUX_TOOLKIT_URL) $(LINUX_FORTRAN_COMPONENTS_WEB)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh fortran $(SAMPLES_TAG)
@@ -293,13 +286,13 @@ jobs:
   - task: Cache@2
     inputs:
       path: /opt/intel/oneapi/compiler
-      key: '"install" | "$(LINUX_BASEKIT_URL)" | "$(LINUX_DPCPP_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
+      key: '"install" | "$(LINUX_TOOLKIT_URL)" | "$(LINUX_DPCPP_COMPONENTS_WEB)" | "compiler" | scripts/cache_exclude_linux.sh'
   - task: Cache@2
     inputs:
       path: /opt/intel/oneapi/tbb
-      key: '"install" | "$(LINUX_BASEKIT_URL)" | "$(LINUX_DPCPP_COMPONENTS_WEB)" | "tbb" | scripts/cache_exclude_linux.sh'
+      key: '"install" | "$(LINUX_TOOLKIT_URL)" | "$(LINUX_DPCPP_COMPONENTS_WEB)" | "tbb" | scripts/cache_exclude_linux.sh'
       cacheHitVar: CACHE_RESTORED
-  - script: scripts/install_linux.sh $(LINUX_BASEKIT_URL) $(LINUX_DPCPP_COMPONENTS_WEB)
+  - script: scripts/install_linux.sh $(LINUX_TOOLKIT_URL) $(LINUX_DPCPP_COMPONENTS_WEB)
     displayName: install
     condition: ne(variables.CACHE_RESTORED, 'true')
   - script: scripts/build_linux.sh dpc++ $(SAMPLES_TAG)
