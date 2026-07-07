@@ -10,42 +10,17 @@ Data collection: |today|
 Windows, Web installer
 ======================
 
-Intel\ |r| oneAPI Base Toolkit
-------------------------------
-.. include:: list_components/windows_basekit.txt
-   :literal:
-
-Intel\ |r| oneAPI HPC Toolkit
------------------------------
-.. include:: list_components/windows_hpckit.txt
-   :literal:
-
-Intel\ |r| oneAPI Rendering Toolkit
------------------------------------
-.. include:: list_components/windows_renderkit.txt
+Intel\ |r| oneAPI Toolkit
+--------------------------
+.. include:: list_components/windows.txt
    :literal:
 
 Linux, Web installer
 ====================
 
-Intel\ |r| oneAPI Base Toolkit
-------------------------------
-.. include:: list_components/linux_basekit.txt
-   :literal:
-
-Intel\ |r| oneAPI HPC Toolkit
------------------------------
-.. include:: list_components/linux_hpckit.txt
-   :literal:
-
-Intel\ |r| AI Analytics Toolkit
--------------------------------
-.. include:: list_components/linux_aitools.txt
-   :literal:
-
-Intel\ |r| oneAPI Rendering Toolkit
------------------------------------
-.. include:: list_components/linux_renderkit.txt
+Intel\ |r| oneAPI Toolkit
+--------------------------
+.. include:: list_components/linux.txt
    :literal:
 
 Linux, APT
