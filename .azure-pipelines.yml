@@ -7,9 +7,9 @@ trigger:
 
 variables:
   - name: WINDOWS_TOOLKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bae85ab1-cfcd-4251-8d42-a0c27949ea33/intel-oneapi-toolkit-2026.0.0.193_offline.exe
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/4144bec3-82ce-4672-bd71-5c93a79cd5e7/intel-oneapi-toolkit-2026.1.0.191_offline.exe
   - name: LINUX_TOOLKIT_URL
-    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/71180075-e4e3-4c6f-bbbb-19017ed0cf7d/intel-oneapi-toolkit-2026.0.0.198_offline.sh
+    value: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/33cb2a22-ddf1-4aa9-8d68-1f5a118acaf2/intel-oneapi-toolkit-2026.1.0.192_offline.sh
   - name: WINDOWS_CPP_COMPONENTS
     value: intel.oneapi.win.cpp-dpcpp-common
   - name: WINDOWS_FORTRAN_COMPONENTS
@@ -31,9 +31,9 @@ variables:
   - name: SAMPLES_TAG
     value: master
   - name: COMPILER_VERSION
-    value: 2026.0
+    value: 2026.1
   - name: TBB_VERSION
-    value: 2023.0
+    value: 2023.1
   - name: VS_VER
     value: vs2022
 
