@@ -35,12 +35,4 @@ Linux, YUM/DNF
 .. include:: list_components/linux_yum_dnf.txt
    :literal:
 
-MacOS, Web installer
-====================
-
-Intel\ |r| oneAPI Rendering Toolkit
------------------------------------
-.. include:: list_components/macos_renderkit.txt
-   :literal:
-
 .. |r| unicode:: U+000AE
