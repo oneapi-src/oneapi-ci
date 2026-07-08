@@ -6,4 +6,4 @@
 
 FILENAME=$1
 
-sudo dnf -y --disablerepo="*" --enablerepo="oneAPI" list available | sudo tee "$FILENAME"
+sudo dnf -y --repo="oneAPI" list --available | sudo tee "$FILENAME"
