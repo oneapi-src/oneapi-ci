@@ -8,8 +8,8 @@ permissions: read-all
 on: push
 
 env:
-  WINDOWS_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/4144bec3-82ce-4672-bd71-5c93a79cd5e7/intel-oneapi-toolkit-2026.1.0.191_offline.exe
-  LINUX_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/33cb2a22-ddf1-4aa9-8d68-1f5a118acaf2/intel-oneapi-toolkit-2026.1.0.192_offline.sh
+  WINDOWS_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/728c4418-1b40-47a9-ad51-31530fb27c94/intel-oneapi-toolkit-2026.2.0.661_offline.exe
+  LINUX_TOOLKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/902d3dfc-ece4-4282-9a4a-48020ca454e6/intel-oneapi-toolkit-2026.2.0.667_offline.sh
   LINUX_AIKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/491d5c2a-67fe-48d0-884f-6aecd88f5d8a/ai-tools-2025.0.0.75_offline.sh
   WINDOWS_CPP_COMPONENTS: intel.oneapi.win.cpp-dpcpp-common
   WINDOWS_FORTRAN_COMPONENTS: intel.oneapi.win.ifort-compiler
@@ -20,11 +20,11 @@ env:
   LINUX_CPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
   LINUX_FORTRAN_COMPONENTS_WEB: intel.oneapi.lin.ifort-compiler
   LINUX_DPCPP_COMPONENTS_WEB: intel.oneapi.lin.dpcpp-cpp-compiler
-  CACHE_NUMBER: 13
+  CACHE_NUMBER: 14
   SAMPLES_TAG: master
   AI_SAMPLES_TAG: 2025.0.0
-  COMPILER_VERSION: 2026.1
-  TBB_VERSION: 2023.1
+  COMPILER_VERSION: 2026.2
+  TBB_VERSION: 2023.2
   VS_VER: vs2022
 
 jobs:
